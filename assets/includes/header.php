@@ -38,7 +38,7 @@
             <a href="Home" class="nav-link current">Home</a>
         </li>
         <li class="nav-item">
-            <a href="Home" class="nav-link">Destination</a>
+            <a href="register.php" class="nav-link">Inscription</a>
         </li>
         <li class="nav-item">
             <a href="Home" class="nav-link">Pricing</a>
