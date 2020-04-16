@@ -1,7 +1,7 @@
 <?php
 
  const DB_HOST = 'localhost';
- const DB_NAME = 'SWAP';
+ const DB_NAME = 'van_dream';
  const DB_USER = 'root';
  const DB_PASS = 'root';
 
