@@ -21,7 +21,7 @@
     <div class=container>
         <nav>
             <div class="nav-brand">
-        <a href="index.html">
+        <a href="index.php">
             <img src="assets/img/logo_1.png" alt="">
         </a>
     </div>
