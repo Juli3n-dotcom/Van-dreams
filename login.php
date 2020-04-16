@@ -41,27 +41,29 @@ $page_title ='connexion';
 include __DIR__.'/assets/includes/header.php';
 ?>
 
+<?php include __DIR__.'/assets/includes/flash.php';?>
 
-<div class="login-div">
+<form action="login.php" method="POST">
+  <div class="login-div">
     <div class="logo"></div>
-        <div class="title">Van Dreams</div>
-        <div class="sub-title">Connexion</div>
+        <div class="title">Connexion</div>
+        <!-- <div class="sub-title">Connexion</div> -->
             <div class="fields">
                 <div class="username">
-                    <input type="username" name="identifiant" class="user-input" placeholder="Pseudo ou email" />
+                    <input type="text" name="identifiant" class="user-input" placeholder="Pseudo ou email" value="<?= $_POST['identifiant'] ?? '' ?>">
                 </div>
                 <div class="password">
                     <input type="password" name="password" class="pass-input" placeholder="password" />
                 </div>
             </div>
-        <button class="signin-button" name="login">Login</button>
+        <button type="submit" class="signin-button" name="login">Login</button>
         <div class="link">
             <a href="#">Mot de passe oublié</a> 
             <a href="register.php">Inscription</a>
-        </div>
+      </div>
     </div>
-
-
+  </form>
+    
 
 
 <?php

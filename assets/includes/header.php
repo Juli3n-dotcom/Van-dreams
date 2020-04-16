@@ -15,6 +15,7 @@
     <link href="https://fonts.googleapis.com/css?family=Aldrich&display=swap" rel="stylesheet">
     <!--Our own stylesheet-->
     <link rel="stylesheet" href="assets/css/style.css">
+    
 </head>
 <body>
 <header>
