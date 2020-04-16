@@ -8,6 +8,6 @@
  const ROLE_USER = 0;
  const ROLE_ADMIN = 1;
 
- //Civilit� des utilisateurs
+ //Civilité des utilisateurs
  const HOMME = 0;
  const FEMME = 1;
