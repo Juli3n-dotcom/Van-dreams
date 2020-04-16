@@ -1,12 +1,12 @@
 <?php foreach (recupererFlash() as $messages): ?>
 
 
-<div id="toats" class="alert-<?= $messages['type'];?>" onload="killToats()">
+<div id="toats" class="notif alert-<?= $messages['type'];?>" onload="killToats()">
     <div class="toats_headers">
         <a class="toats_die">
             <i class="icon ion-md-close"></i>
         </a>
-            <h5>Notification :</h5>
+            <h5><i class="fas fa-exclamation-circle"></i> Notification :</h5>
     </div>
     <div class="toats_core">
         <p>

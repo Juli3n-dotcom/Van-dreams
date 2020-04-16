@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/assets/config/bootstrap.php';
 
 if(isset($_POST['login'])){
    
@@ -64,7 +65,6 @@ include __DIR__.'/assets/includes/header.php';
     </div>
   </form>
     
-
 
 <?php
 include __DIR__.'/assets/includes/footer.php';

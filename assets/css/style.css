@@ -311,7 +311,6 @@ nav{
     position: fixed;
     top:8rem;
    right: 1rem;
-    
     color: var(--white-fa);
     border-radius: 4px;
     min-width: 100px;
@@ -326,14 +325,13 @@ nav{
 #toats.alert-danger{
     background-color: rgba(240,52,52,.8);
 }
-#toats.alert-succes{
-    background-color: rgba(240,52,52,.8);
+#toats.alert-success{
+    background-color: rgba(0,177,106,.8) !important;
 }
 #toats.hiden{
     visibility: hidden;
 }
-#toats .toats_header{
-
+#toats .toats_headers{
     margin-bottom: 1rem;
     color: #fff;
 }
