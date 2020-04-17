@@ -27,6 +27,7 @@ if (isset($_POST['register'])){
 
         $hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
         $ip = getIp();
+        $token = bin2hex(random_bytes(16));
 
         $req = $pdo->prepare(
             'INSERT INTO membre (email, password, civilite, nom, prenom, statut, date_enregistrement, confirmation, token, ip)
@@ -41,7 +42,7 @@ if (isset($_POST['register'])){
         $req->bindValue(':statut',1);
         $req->bindValue(':date',(new DateTime())->format('Y-m-d H:i:s'));
         $req->bindValue(':confirmation',0);
-        $req->bindParam(':token',bin2hex(random_bytes(16)));
+        $req->bindParam(':token',$token);
         $req->bindParam(':ip',$ip);
         $req->execute();
 
