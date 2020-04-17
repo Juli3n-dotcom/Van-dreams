@@ -5,17 +5,16 @@ USE van_dream;
 CREATE TABLE membre
 (
  id_membre INT(3) NOT NULL AUTO_INCREMENT,
- pseudo VARCHAR(20) NOT NULL,
+ email VARCHAR(50) NOT NULL,
  password VARCHAR(60) NOT NULL,
+ civilite BOOLEAN,
  nom VARCHAR(20) NOT NULL,
  prenom VARCHAR(20) NOT NULL,
- telephone VARCHAR(20) NOT NULL,
- email VARCHAR(50) NOT NULL,
- civilite BOOLEAN,
  statut INT(3) NOT NULL,
  date_enregistrement DATETIME NOT NULL,
  confirmation TINYINT DEFAULT NULL,
  token VARCHAR(255) DEFAULT NULL,
+ ip VARCHAR(255) NOT NULL,
  PRIMARY KEY(id_membre)
 )ENGINE=INNODB;
 
@@ -50,9 +49,10 @@ CREATE TABLE annonce
  photo_id INT(3) DEFAULT NULL,
  pays VARCHAR(20)NOT NULL,
  region VARCHAR(50)NOT NULL,
- adresse VARCHAR(255) NOT NULL,
 CP INT(5) NOT NULL,
  ville VARCHAR(20) NOT NULL,
+ telephone VARCHAR(20) NOT NULL,
+ est_publie TINYINT NOT NULL,
  date_enregistrement DATETIME NOT NULL,
  PRIMARY KEY(id_annonce),
  CONSTRAINT fk_annonce_membre

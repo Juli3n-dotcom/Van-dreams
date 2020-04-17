@@ -7,10 +7,8 @@ if(isset($_POST['login'])){
       'SELECT * 
       FROM membre
       WHERE
-      pseudo = :pseudo
-      OR email = :email'
+       email = :email'
     );
-    $req->bindParam(':pseudo',$_POST['identifiant']);
     $req->bindParam(':email',$_POST['identifiant']);
     $req->execute();
     $membre = $req->fetch(PDO::FETCH_ASSOC);
@@ -51,10 +49,10 @@ include __DIR__.'/assets/includes/header.php';
         <!-- <div class="sub-title">Connexion</div> -->
             <div class="fields">
                 <div class="username">
-                    <input type="text" name="identifiant" class="user-input" placeholder="Pseudo ou email" value="<?= $_POST['identifiant'] ?? '' ?>">
+                    <input type="text" name="identifiant" class="user-input" placeholder="Email" value="<?= $_POST['identifiant'] ?? '' ?>">
                 </div>
                 <div class="password">
-                    <input type="password" name="password" class="pass-input" placeholder="password" />
+                    <input type="password" name="password" class="pass-input" placeholder="Mot de passe" />
                 </div>
             </div>
         <button type="submit" class="signin-button" name="login">Login</button>
