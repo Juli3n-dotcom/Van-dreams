@@ -15,10 +15,8 @@ const title = document.querySelector('.nav_title');
    if(window.scrollY > 150){
       navigation.classList.add('scroll');
       hamburger.classList.add('active');
-      title.textContent = 'Böryunn';
    }else{
       navigation.classList.remove('scroll');
       hamburger.classList.remove('active');
-      title.textContent = '';
    }
 })

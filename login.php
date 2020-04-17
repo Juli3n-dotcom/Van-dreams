@@ -9,7 +9,7 @@ if(isset($_POST['login'])){
       WHERE
        email = :email'
     );
-    $req->bindParam(':email',$_POST['identifiant']);
+    $req->bindParam(':email',htmlspecialchars($_POST['identifiant']));
     $req->execute();
     $membre = $req->fetch(PDO::FETCH_ASSOC);
   
@@ -25,7 +25,7 @@ if(isset($_POST['login'])){
       unset($membre['password']);
       $_SESSION['membre']=$membre;
       session_write_close();
-      header('Location: index.php');
+      header('Location: user/profil.php');
     }
   }
   
@@ -33,6 +33,7 @@ if(isset($_POST['login'])){
   //Déconnexion
   if(isset($_GET['logout'])){
     unset($_SESSION['membre']);
+    header('Location: index.php');
     ajouterFlash('success','Vous avez bien été déconnecté');
   }
 
@@ -49,7 +50,7 @@ include __DIR__.'/assets/includes/header.php';
         <!-- <div class="sub-title">Connexion</div> -->
             <div class="fields">
                 <div class="username">
-                    <input type="text" name="identifiant" class="user-input" placeholder="Email" value="<?= $_POST['identifiant'] ?? '' ?>">
+                    <input type="email" name="identifiant" class="user-input" placeholder="Email" value="<?= $_POST['identifiant'] ?? '' ?>">
                 </div>
                 <div class="password">
                     <input type="password" name="password" class="pass-input" placeholder="Mot de passe" />
