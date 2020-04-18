@@ -25,18 +25,11 @@ if(isset($_POST['login'])){
       unset($membre['password']);
       $_SESSION['membre']=$membre;
       session_write_close();
+      ajouterFlash('success','Bonjour'.getMembre()['pseudo']);
       header('Location: user/profil.php');
     }
   }
   
-  
-  //Déconnexion
-  if(isset($_GET['logout'])){
-    unset($_SESSION['membre']);
-    header('Location: index.php');
-    ajouterFlash('success','Vous avez bien été déconnecté');
-  }
-
 $page_title ='connexion';
 include __DIR__.'/assets/includes/header.php';
 ?>

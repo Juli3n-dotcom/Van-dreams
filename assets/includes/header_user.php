@@ -1,9 +1,6 @@
 <?php
-//Déconnexion
-if(isset($_GET['logout'])){
-    unset($_SESSION['membre']);
-    ajouterFlash('success','Vous avez bien été déconnecté');
-    header('Location: /../index.php');
+if (session_status() === PHP_SESSION_NONE){
+    session_start();
   }
 ?>
 <!doctype html>
@@ -30,7 +27,7 @@ if(isset($_GET['logout'])){
     <div class=container>
         <nav>
             <div class="nav-brand">
-        <a href="index.php">
+        <a href="../index.php">
             <img src="../assets/img/logo_1.png" alt="">
         </a>
     </div>
@@ -44,7 +41,7 @@ if(isset($_GET['logout'])){
             <i class="icon ion-md-close"></i>
         </div>
         <li class="nav-item">
-            <a href="../index.php?logout" class="nav-link">Déconnexion</a>
+            <a href="../logout.php" class="nav-link">Déconnexion</a>
         </li>
     </ul>
 </nav>

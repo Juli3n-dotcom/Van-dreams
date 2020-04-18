@@ -3,6 +3,7 @@ $page_title ='Accueil';
 include __DIR__.'/assets/includes/header.php';
 ?>
 
+<?php include __DIR__.'/assets/includes/flash.php';?>
 
 <section class="hero">
         <div class="container">

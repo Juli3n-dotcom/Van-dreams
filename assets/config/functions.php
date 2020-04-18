@@ -17,25 +17,6 @@ unset($_SESSION['flash']);
     return $messages;
   }
 
-// vérification si utilisateur est connecté
-  function getMembre() :?array
-  {
-   return $_SESSION['membre'] ?? null;
-  }
-
-//vérification du ROLE de l'utilisateur
-   function role(int $role): bool
-   {
-    
-      if (getMembre() === null){
-        
-        return false;
-      } 
-    
-        return getMembre()['statut'] == $role;
-           
-   }
-  
 
    function getMembreBy(PDO $pdo, string $colonne, $valeur): ?array
      {
@@ -53,14 +34,3 @@ unset($_SESSION['flash']);
      return $utilisateur ?: null;
       }
 
-//récupération de l'IP
-function getIp(){
-  if(!empty($_SERVER['HTTP_CLIENT_IP'])){
-    $ip = $_SERVER['HTTP_CLIENT_IP'];
-  }elseif(!empty($_SERVER['HTTP_X_FORWARDED_FOR'])){
-    $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
-  }else{
-    $ip = $_SERVER['REMOTE_ADDR'];
-  }
-  return $ip;
-}

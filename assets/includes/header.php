@@ -1,10 +1,5 @@
 <?php
-//Déconnexion
-if(isset($_GET['logout'])){
-    unset($_SESSION['membre']);
-    ajouterFlash('success','Vous avez bien été déconnecté');
-    header('Location: index.php');
-  }
+require_once __DIR__ . '/../config/bootstrap.php';
 ?>
 <!doctype html>
 <html lang="fr">
@@ -47,20 +42,26 @@ if(isset($_GET['logout'])){
             <a href="Home" class="nav-link current">Home</a>
         </li>
         <li class="nav-item">
-            <a href="register.php" class="nav-link">Inscription</a>
-        </li>
-        <li class="nav-item">
             <a href="Home" class="nav-link">Pricing</a>
         </li>
         <li class="nav-item">
-            <a href="Home" class="nav-link">Booking</a>
+            <a href="logout.php" class="nav-link">logout.php</a>
+        </li>
+        <?php if(getMembre() === null):?>
+        <li class="nav-item">
+            <a href="register.php" class="nav-link">Inscription</a>
         </li>
         <li class="nav-item">
             <a href="login.php" class="nav-link">Login</a>
         </li>
+        <?php else :?>
         <li class="nav-item">
-            <a href="index.php?logout" class="nav-link">Déconnexion</a>
+            <a href="user/profil.php" class="nav-link">Profil</a>
         </li>
+        <li class="nav-item">
+            <a href="logout.php" class="nav-link">Déconnexion</a>
+        </li>
+        <?php endif;?>
     </ul>
 </nav>
 </div>
