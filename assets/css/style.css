@@ -1,13 +1,4 @@
-
-:root{
-    --primary-color: linear-gradient(135deg, rgba(111,225,231,0.2)0%,rgba(72,56,149,0.8)100%);
-    --white : #FAFAFA;
-    --marine-blue: #556080;
-    --light-green: #2fdbb6;
-    --light-black: rgba(0, 0, 0, .7);
-    --aldrich: 'Aldrich', sans-serif;
-    }
-    
+@import url('var.css');
 *,
 *::before,
 *::after{
@@ -64,12 +55,7 @@ header{
     margin: 0 auto;
     padding: 0 1.5rem;
 }
-    
-.nav_container.scroll{
-    background-color: var(--white);
-    transition: background-color 0.5s;
-}
-    
+        
 nav{
     width: 100%;
     display: flex;

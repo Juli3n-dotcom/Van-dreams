@@ -24,8 +24,8 @@ if(isset($_POST['login'])){
   
       unset($membre['password']);
       $_SESSION['membre']=$membre;
+      ajouterFlash('success','Bonjour '.getMembre()['prenom']);
       session_write_close();
-      ajouterFlash('success','Bonjour'.getMembre()['pseudo']);
       header('Location: user/profil.php');
     }
   }

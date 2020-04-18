@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/../config/bootstrap.php';
+require_once __DIR__ . '/../../../assets/config/bootstrap_admin.php';
 ?>
 <!doctype html>
 <html lang="fr">
@@ -22,11 +22,11 @@ require_once __DIR__ . '/../config/bootstrap.php';
 </head>
 <body>
 <header>
-    <div class=container>
+    <div class=container_header>
         <nav>
             <div class="nav-brand">
-        <a href="index.php">
-            <img src="assets/img/logo_1.png" alt="">
+        <a href="../index.php">
+            Back-office
         </a>
     </div>
 
@@ -42,29 +42,18 @@ require_once __DIR__ . '/../config/bootstrap.php';
             <a href="Home" class="nav-link current">Home</a>
         </li>
         <li class="nav-item">
-            <a href="Home" class="nav-link">Pricing</a>
+            <a href="Home" class="nav-link">Membres</a>
         </li>
         <li class="nav-item">
-            <a href="logout.php" class="nav-link">logout.php</a>
-        </li>
-        <?php if(getMembre() === null):?>
-        <li class="nav-item">
-            <a href="register.php" class="nav-link">Inscription</a>
+            <a href="logout.php" class="nav-link">Annonces</a>
         </li>
         <li class="nav-item">
-            <a href="login.php" class="nav-link">Login</a>
-        </li>
-        <?php else :?>
-        <li class="nav-item">
-            <a href="user/profil.php" class="nav-link">Profil</a>
+            <a href="logout.php" class="nav-link">Catégories</a>
         </li>
         <li class="nav-item">
-            <a href="admin/index_admin.php" class="nav-link">Back-office</a>
+            <a href="../logout.php" class="nav-link">Déconnexion</a>
         </li>
-        <li class="nav-item">
-            <a href="logout.php" class="nav-link">Déconnexion</a>
-        </li>
-        <?php endif;?>
+        
     </ul>
 </nav>
 </div>
