@@ -18,7 +18,6 @@ require_once __DIR__ . '/../../../assets/config/bootstrap_admin.php';
     <link href="https://fonts.googleapis.com/css?family=Aldrich&display=swap" rel="stylesheet">
     <!--Our own stylesheet-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
     <link rel="stylesheet" href="assets/css/style_admin.css">
     
 </head>
@@ -69,10 +68,19 @@ require_once __DIR__ . '/../../../assets/config/bootstrap_admin.php';
                 </div>
             </div>
             <div class="submenu" id="submenu">
-                <a href="#"><i class="fas fa-cubes"></i>Catégories <i class="fas fa-chevron-down right"></i></a>
+                <a href="#"><i class="fas fa-cubes"></i> Catégories <i class="fas fa-chevron-down right"></i></a>
                 <div class="sub-content hide" id="sub-content">
                     <a href="category.php"> Les catégories</a>
                     <a href="category.php#add_cat"> Ajouter une catégorie</a>
+                </div>
+            </div>
+            <div class="submenu" id="submenu">
+                <a href="#"><i class="fas fa-globe"></i> Pays & Regions <i class="fas fa-chevron-down right"></i></a>
+                <div class="sub-content hide" id="sub-content">
+                    <a href="country.php#country"> Les Pays</a>
+                    <a href="country.php#add_country"> Ajouter un pays</a>
+                    <a href="country.php#region"> Les Regions</a>
+                    <a href="country.php#add_region"> Ajouter une region</a>
                 </div>
             </div>
         </div>
