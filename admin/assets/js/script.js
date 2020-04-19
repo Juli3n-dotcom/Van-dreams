@@ -7,6 +7,6 @@ const title = document.querySelector('.nav_title');
     nav.classList.add('active');
  });
 
- document.querySelector('.close').addEventListener('click',()=>{
+ document.querySelector('.close_btn').addEventListener('click',()=>{
     nav.classList.remove('active');
  });

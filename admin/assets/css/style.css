@@ -1,4 +1,5 @@
 @import url('../../../assets/css/var.css');
+@import url('../../../assets/css/flash.css');
 
 *,
 *::before,
@@ -36,6 +37,9 @@ img{
 section{
     padding: 5rem 0;
 }
+h1{
+    text-align: center;
+}
 
 /* body{
     background-color: cornflowerblue;
@@ -58,7 +62,7 @@ header{
 }
 
 .container_header{
-    background-color: var(--light-black);
+    background-color: #000;
 }
 
     
@@ -79,9 +83,14 @@ nav{
 .nav-brand{
     width: 100%;
 }
+.nav-brand img{
+    width: 3rem;
+    margin-left: 10px;
+}
 .nav-brand a {
     color: var(--white);
     font-size: 2rem;
+    margin-left: 10px;
 }
     
 .nav-brand h2{
@@ -100,7 +109,7 @@ nav{
     transition: color 0.5s;
 }
 
-.close i{
+.close_btn i{
     color: var(--white);
 }
 
@@ -123,7 +132,7 @@ nav{
     right: 0;
 }
 
-.close{
+.close_btn{
     position: absolute;
     top: 1rem;
     left: 1.5rem;
@@ -138,3 +147,26 @@ nav{
     text-transform: uppercase;
     color: var(--light-black);
 }
+
+.title_page{
+    margin-top: 10rem;
+    margin-bottom: 5rem;
+}
+
+
+
+/* *************** */
+/* **** categorie **** */
+/* *************** */
+
+table{
+    margin-bottom: 10rem;
+}
+.add_cat{
+    margin-top: 10rem;
+    margin-bottom: 10rem;
+}
+.add_cat h3{
+    text-align: center;
+}
+

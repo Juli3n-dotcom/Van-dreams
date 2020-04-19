@@ -29,9 +29,10 @@ CREATE TABLE photo
  PRIMARY KEY(id_photo)
 )ENGINE=INNODB;
 
-CREATE TABLE categorie
+CREATE TABLE category
 (
-    id_categorie INT(3)NOT NULL AUTO_INCREMENT,
+    id_category INT(3)NOT NULL AUTO_INCREMENT,
+    name VARCHAR(255),
     titre VARCHAR(255),
     motscles TEXT(255),
     PRIMARY KEY (id_categorie)
