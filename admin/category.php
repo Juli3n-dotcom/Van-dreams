@@ -179,7 +179,7 @@ include __DIR__.'/assets/includes/header_admin.php';
 </div>
 
 
-<div class="container add_cat">
+<div class="container add_cat" id="add_cat">
     <h3>Ajouter une catégorie</h3>
 <form action="category.php" method="post">
   <div class="form-group">

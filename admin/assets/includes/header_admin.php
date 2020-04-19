@@ -19,47 +19,63 @@ require_once __DIR__ . '/../../../assets/config/bootstrap_admin.php';
     <!--Our own stylesheet-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style_admin.css">
     
 </head>
 <body>
-<header class="container_header">
-    <div class="container">
-        <nav>
-            <div class="nav-brand">
+<header >
+    <div class="container_header">
+        <div class="nav-brand">
                 <img src="../assets/img/control-panel.png" alt="">
-        <a href="../index.php">
-            Back-office
-        </a>
-    </div>
-
-    <div class="menu-icons open" >
-        <i class="icon ion-md-menu"></i>
-    </div>
-
-    <ul class="nav-list">
-        <div class="menu-icons close_btn">
-            <i class="icon ion-md-close"></i>
+                <a href="../index.php">Back-office</a>
         </div>
-        <li class="nav-item">
-            <a href="Home" class="nav-link current">Home</a>
-        </li>
-        <li class="nav-item">
-            <a href="Home" class="nav-link">Membres</a>
-        </li>
-        <li class="nav-item">
-            <a href="logout.php" class="nav-link">Annonces</a>
-        </li>
-        <li class="nav-item">
-            <a href="category.php" class="nav-link">Catégories</a>
-        </li>
-        <li class="nav-item">
-            <a href="../logout.php" class="nav-link">Déconnexion</a>
-        </li>
+        <div class="admin_control">
+            <div class="account" id="account">
+                <img src="assets/img/avatar.jpg" alt="">
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="topmenu hide" id="topbar-menu">
+                <a href=""><i class="ion-person"></i> Mes informations</a>
+                <a href="../logout.php"><i class="ion-power"></i> Se deconnecter</a>
+            </div>
+        </div>
         
-    </ul>
-</nav>
+        
+    
 </div>
 </header>
 
-<main>
+<div class="container-fluid">
+    <div class="row">
+
+    
+<div class="nav col-md-2 d-none d-md-block  sidebar">
+            <div class="menu">
+                <a href="#"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+            </div>
+            <div class="submenu" id="submenu">
+                <a href="#"><i class="fas fa-user"></i> Utilisateurs <i class="fas fa-chevron-down right"></i></a>
+                <div class="sub-content hide" id="sub-content">
+                    <a href="#"> Ajouter un utilisateur</a>
+                    <a href="#"> Statistiques</a>
+                </div>
+            </div>
+            <div class="submenu" id="submenu">
+                <a href="#"><i class="far fa-envelope"></i> Messages <i class="fas fa-chevron-down right"></i></a>
+                <div class="sub-content hide" id="sub-content">
+                    <a href="#"> Nouveau message</a>
+                    <a href="#"> Messages reçus</a>
+                    <a href="#"> Messages envoyés</a>
+                </div>
+            </div>
+            <div class="submenu" id="submenu">
+                <a href="#"><i class="fas fa-cubes"></i>Catégories <i class="fas fa-chevron-down right"></i></a>
+                <div class="sub-content hide" id="sub-content">
+                    <a href="category.php"> Les catégories</a>
+                    <a href="category.php#add_cat"> Ajouter une catégorie</a>
+                </div>
+            </div>
+        </div>
+        
+
+<main class="ccol-md-9 ml-sm-auto col-lg-10 px-4">
