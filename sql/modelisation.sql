@@ -117,3 +117,11 @@ CREATE TABLE message_admin
     date_enregistrement DATETIME NOT NULL,
    PRIMARY KEY (id_message)
 )ENGINE=INNODB;
+
+CREATE TABLE online
+(
+    id INT(3)NOT NULL AUTO_INCREMENT,
+    time int(),
+    user_ip VARCHAR(255) NOT NULL,
+    PRIMARY KEY (id)
+)ENGINE=INNODB;

@@ -50,7 +50,14 @@ require_once __DIR__ . '/../../../assets/config/bootstrap_admin.php';
     
 <div class="nav col-md-2 d-none d-md-block  sidebar">
             <div class="menu">
-                <a href="#"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                <a href="index_admin.php"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+            </div>
+            <div class="submenu" id="submenu">
+                <a href="#"><i class="fas fa-signal"></i> Stats <i class="fas fa-chevron-down right"></i></a>
+                <div class="sub-content hide" id="sub-content">
+                    <a href="views.php"> Visites</a>
+                    <a href="#"> Statistiques</a>
+                </div>
             </div>
             <div class="submenu" id="submenu">
                 <a href="#"><i class="fas fa-user"></i> Utilisateurs <i class="fas fa-chevron-down right"></i></a>

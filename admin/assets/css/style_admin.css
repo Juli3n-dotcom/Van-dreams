@@ -54,7 +54,6 @@
      font-family:Open Sans;
  }
  a{
-     color:#FFF;
      text-decoration:none !important;
  }
     
@@ -190,6 +189,7 @@ nav{
     border-bottom: 1px solid #000;
     border-top:1px solid #32353e;
     font-size:14px;
+    color: white;
 }
 .nav .menu, .nav .submenu {
     width: 100%;
@@ -270,7 +270,15 @@ nav{
     font-size: 3rem;
 }
 
+/* *************** */
+/* **** dashboard **** */
+/* *************** */
 
+.title_container{
+    margin-bottom: 2rem;
+    text-align: center;
+    font-size: 2rem;
+}
 
 /* *************** */
 /* **** categorie **** */
@@ -290,7 +298,10 @@ table{
 }
 
 /* *************** */
-/* **** country **** */
+/* **** views **** */
 /* *************** */
 
 
+.views .list-group .views_link{
+color: #000 !important;
+}

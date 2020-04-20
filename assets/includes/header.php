@@ -45,7 +45,7 @@ require_once __DIR__ . '/../config/bootstrap.php';
             <a href="Home" class="nav-link">Pricing</a>
         </li>
         <li class="nav-item">
-            <a href="logout.php" class="nav-link">logout.php</a>
+            <a href="views.php" class="nav-link">vue</a>
         </li>
         <?php if(getMembre() === null):?>
         <li class="nav-item">
