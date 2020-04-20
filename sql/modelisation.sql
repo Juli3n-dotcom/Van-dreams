@@ -29,13 +29,34 @@ CREATE TABLE photo
  PRIMARY KEY(id_photo)
 )ENGINE=INNODB;
 
-CREATE TABLE categorie
+CREATE TABLE category
 (
-    id_categorie INT(3)NOT NULL AUTO_INCREMENT,
+    id_category INT(3)NOT NULL AUTO_INCREMENT,
+    name VARCHAR(255),
     titre VARCHAR(255),
     motscles TEXT(255),
     PRIMARY KEY (id_categorie)
 )ENGINE=INNODB;
+
+CREATE TABLE country
+(
+    id_country INT(3)NOT NULL AUTO_INCREMENT,
+    name VARCHAR(255),
+    PRIMARY KEY (id_country)
+)ENGINE=INNODB;
+
+CREATE TABLE region
+(
+    id_region INT(3)NOT NULL AUTO_INCREMENT,
+    name VARCHAR(255),
+    country_id INT(3) DEFAULT NULL,
+    PRIMARY KEY (id_region),
+    CONSTRAINT fk_country_region
+      FOREIGN KEY  (country_id)
+      REFERENCES  country(id_country)
+      ON DELETE CASCADE
+)ENGINE=INNODB;
+
 
 CREATE TABLE annonce
 (

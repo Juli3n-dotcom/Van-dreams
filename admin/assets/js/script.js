@@ -1,12 +1,19 @@
-const nav = document.querySelector('.nav-list');
-const navigation = document.querySelector('.nav_container');
-const hamburger = document.querySelector('.open i');
-const title = document.querySelector('.nav_title');
 
- document.querySelector('.open').addEventListener('click',()=>{
-    nav.classList.add('active');
- });
+$(function() {
 
- document.querySelector('.close').addEventListener('click',()=>{
-    nav.classList.remove('active');
- });
+
+   $(document).on('click','#account',function (){;
+       $("#topbar-menu").toggleClass("show");
+       $("#topbar-menu").toggleClass("hide");
+       $(this).find('#ico-account').toggleClass('ion-chevron-down');
+       $(this).find('#ico-account').toggleClass('ion-chevron-up');
+   })
+   $(document).on('click','.submenu',function (){
+       $(this).find("#sub-content").toggleClass("show");
+       $(this).find("#sub-content").toggleClass("hide");
+       $(this).find('#icon').toggleClass('ion-chevron-right');
+       $(this).find('#icon').toggleClass('ion-chevron-up');
+   })
+    
+});
+
