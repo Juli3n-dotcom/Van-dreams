@@ -79,8 +79,8 @@ require_once __DIR__ . '/../../../assets/config/bootstrap_admin.php';
                 <div class="sub-content hide" id="sub-content">
                     <a href="country.php#country"> Les Pays</a>
                     <a href="country.php#add_country"> Ajouter un pays</a>
-                    <a href="country.php#region"> Les Regions</a>
-                    <a href="country.php#add_region"> Ajouter une region</a>
+                    <a href="region.php"> Les Regions</a>
+                    <a href="region.php#add_region"> Ajouter une region</a>
                 </div>
             </div>
         </div>
