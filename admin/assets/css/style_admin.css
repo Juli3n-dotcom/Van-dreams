@@ -89,7 +89,7 @@ nav{
     float:left;
     width:230px;
     height:70px;
-
+position: fixed;
     background:#36a3ff;
     color:#FFF;
 
@@ -167,12 +167,12 @@ nav{
  */
 
  .nav{
-    position:absolute;
+    position:fixed;
     top:70px;
     left:0;
     bottom:30px;
     width:230px;
-    height: 200%;
+    height: 100vh;
     background:#272930;
     display: block;
 }

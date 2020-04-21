@@ -94,7 +94,7 @@ include __DIR__.'/assets/includes/header_admin.php';
 <?php include __DIR__.'/../assets/includes/flash.php';?>
 
 <div class="container">
-    <table class="table table-bordered">
+    <table class="table table-bordered text-center">
         <thead class="thead-dark">
             <th scope="col">id_category</th>
             <th scope="col">Titre</th>
@@ -141,7 +141,7 @@ include __DIR__.'/assets/includes/header_admin.php';
                                 </div>
                         </div>
                     </td> <!-- fin td update-->
-                    <td><a href="category.php?id=<?=$cat['id_category'];?>" class="btn btn-danger" data-toggle="modal" data-target="#<?= $cat['name'];?>sup"><i class='fas fa-trash-alt'></i> delete</a>
+                    <td><a href="category.php?id=<?=$cat['id_category'];?>" class="btn btn-danger" data-toggle="modal" data-target="#<?= $cat['name'];?>sup"><i class='fas fa-trash-alt'></i> Delete</a>
 
                         <!-- Modal delete -->
 
@@ -157,10 +157,10 @@ include __DIR__.'/assets/includes/header_admin.php';
                                     <div class="modal-body">
                                         <form action="category.php?id=<?=$cat['id_category'];?>" method="post">
                                             
-                                                <p>Etes vous sur de vouloir supprimer la catégorie?</p>
+                                                <p class="mb-2">Etes vous sur de vouloir supprimer la catégorie?</p>
                                             
                                                 <div class='confirm_delete' id="confirm_delete">
-                                                <input type="checkbox" class="delete_check" name="delete_check"/><label for="delete_check" class="delete_label">Je confirme la suppression</label>
+                                                <input type="checkbox" class="delete_check mr-3" name="delete_check"/><label for="delete_check" class="delete_label">Je confirme la suppression</label>
                                                 <input type="hidden" name="idSupr" value="<?=$cat['id_category'];?>">
                                                 </div>
                                          </div>

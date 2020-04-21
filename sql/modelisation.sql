@@ -6,6 +6,7 @@ CREATE TABLE membre
 (
  id_membre INT(3) NOT NULL AUTO_INCREMENT,
  email VARCHAR(50) NOT NULL,
+ name VARCHAR(255) NOT NULL,
  password VARCHAR(60) NOT NULL,
  civilite BOOLEAN,
  nom VARCHAR(20) NOT NULL,

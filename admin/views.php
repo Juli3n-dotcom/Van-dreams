@@ -33,6 +33,7 @@ include __DIR__.'/assets/includes/header_admin.php';
 <div class="title_page">
     <h1><i class="fas fa-eye"></i> Stats Visites</h1>
 </div>
+<?php include __DIR__.'/../assets/includes/flash.php';?>
 
 <div class="row">
     <div class="col-md-4">

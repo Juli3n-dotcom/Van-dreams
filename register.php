@@ -28,13 +28,15 @@ if (isset($_POST['register'])){
 
         $hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
         $ip = getIp();
+        $name = $_POST['name'].$_POST['first_name'];
 
         $req = $pdo->prepare(
-            'INSERT INTO membre (email, password, civilite, nom, prenom, statut, date_enregistrement, confirmation, token, ip)
-            VALUES (:email, :password, :civilite, :nom,:prenom, :statut, :date, :confirmation, :token, :ip)'
+            'INSERT INTO membre (email, name, password, civilite, nom, prenom, statut, date_enregistrement, confirmation, token, ip)
+            VALUES (:email, :name, :password, :civilite, :nom,:prenom, :statut, :date, :confirmation, :token, :ip)'
         );
 
         $req->bindParam(':email',$_POST['email']);
+        $req->bindParam(':password',$name);
         $req->bindParam(':password',$hash);
         $req->bindValue(':civilite',$_POST['civilite']);
         $req->bindParam(':nom',$_POST['name']);
@@ -68,8 +70,8 @@ include __DIR__.'/assets/includes/header.php';
                 <div class="custom-dropdown custom-dropdown--white">
                     <select class="custom-dropdown__select custom-dropdown__select--white" name="civilite">
                         <option value="">Civilité</option>
-                        <option value="<?= HOMME ?>">Mme</option>
-                        <option value="<?= FEMME ?>">Mr</option>
+                        <option value="<?= FEMME ?>">Mme</option>
+                        <option value="<?= HOMME ?>">Mr</option>
                     </select>
                 </div>
                 <div class="username">

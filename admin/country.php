@@ -35,7 +35,7 @@ include __DIR__.'/assets/includes/header_admin.php';
 
 
 <div id="country">
-  <table class="table table-bordered">
+  <table class="table table-bordered text-center">
     <thead class="thead-dark">
             <th scope="col">id_pays</th>
             <th scope="col">Nom</th>
