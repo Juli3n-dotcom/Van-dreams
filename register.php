@@ -36,7 +36,7 @@ if (isset($_POST['register'])){
         );
 
         $req->bindParam(':email',$_POST['email']);
-        $req->bindParam(':password',$name);
+        $req->bindParam(':name',$name);
         $req->bindParam(':password',$hash);
         $req->bindValue(':civilite',$_POST['civilite']);
         $req->bindParam(':nom',$_POST['name']);

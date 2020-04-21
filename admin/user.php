@@ -97,7 +97,6 @@ include __DIR__.'/assets/includes/header_admin.php';
         </thead>
         <tbody>
         <?php while($Membre = $Allmembres->fetch()) : ?>
-            <?php foreach(getUser($pdo) as $Membre): ?>
                 <tr scope="row" class="table_tr">
                 <td scope="row"><?= $Membre['id_membre'];?></td>
                 <td><?= $Membre['email'];?></td>
@@ -112,7 +111,7 @@ include __DIR__.'/assets/includes/header_admin.php';
                 <td><?= $Membre['prenom'];?></td>
                 <td>
                     <?php if ($Membre['statut'] == 0):?>
-                        <?= '<p class="btn btn-secondary">User</p>';?>
+                        <?= '<p class="btn btn-primary">User</p>';?>
                     <?php else:?>
                         <?= '<p class="btn btn-dark">Admin</p>';?>
                     <?php endif;?>         
@@ -144,7 +143,7 @@ include __DIR__.'/assets/includes/header_admin.php';
                                                 <div class="row">
 
                                                     <div class="col form-group form-control-lg">
-                                                        <label class="my-1 mr-2" for="confirmation">Confirmation Actuelle : <?= $Membre['confirmation'] == 0 ? '<p class="btn btn-danger">Non</p' :'<p class="btn btn-success">Oui</p>' ;?></label>
+                                                        <label class="my-1 mr-2" for="confirmation">Confirmation Actuelle : <?= $Membre['confirmation'] == 0 ? '<p class="btn btn-danger">Non</p>' :'<p class="btn btn-success">Oui</p>' ;?></label>
                                                         <select class="custom-select" name="confirmation">
                                                             <option> Modifier </option>
                                                             <option value="<?= 1 ?>">Oui</option>
@@ -153,7 +152,7 @@ include __DIR__.'/assets/includes/header_admin.php';
                                                     </div>
                                      
                                                     <div class="col form-group form-control-lg">
-                                                        <label class="my-1 mr-2" for="statut">Statut actuel : <?= $Membre['statut'] == 0 ? '<p class="btn btn-secondary">User</p>' :'<p class="btn btn-dark">Admin</p>' ;?></label>
+                                                        <label class="my-1 mr-2" for="statut">Statut actuel : <?= $Membre['statut'] == 0 ? '<p class="btn btn-primary">User</p>' :'<p class="btn btn-dark">Admin</p>' ;?></label>
                                                         <select class="custom-select" name="statut">
                                                             <option> Modifier </option>
                                                             <option value="<?= ROLE_ADMIN ?>">Admin</option>
@@ -203,7 +202,6 @@ include __DIR__.'/assets/includes/header_admin.php';
                                 </div>
                         </div>
                     </td>
-            <?php endforeach; ?>
         <?php endwhile; ?>
         </tbody>
     </table>
@@ -215,7 +213,7 @@ include __DIR__.'/assets/includes/header_admin.php';
             if($i == $pageCourante){
                 echo '<li class="page-item active" aria-current="page"><span class="page-link">'.$i.'<span class="sr-only">(current)</span></span></li>';
             }else{
-                echo'<li class="page-item"><a class="page-link" href="membre.php?page='.$i.'">'.$i.'</a></li> ';
+                echo'<li class="page-item"><a class="page-link" href="user.php?page='.$i.'">'.$i.'</a></li> ';
             }
             }
         ?>

@@ -62,7 +62,7 @@ require_once __DIR__ . '/../../../assets/config/bootstrap_admin.php';
             <div class="submenu" id="submenu">
                 <a href="#"><i class="fas fa-user"></i> Utilisateurs <i class="fas fa-chevron-down right"></i></a>
                 <div class="sub-content hide" id="sub-content">
-                    <a href="#"> Ajouter un utilisateur</a>
+                    <a href="add_user.php"> Ajouter un utilisateur</a>
                     <a href="user.php"> Gestion des membres</a>
                 </div>
             </div>

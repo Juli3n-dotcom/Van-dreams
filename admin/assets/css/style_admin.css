@@ -1,5 +1,6 @@
 @import url('../../../assets/css/var.css');
 @import url('../../../assets/css/flash.css');
+@import url('../../../assets/css/checkbox.css');
 
 /*
 **     RESET CSS
@@ -305,3 +306,9 @@ table{
 .views .list-group .views_link{
 color: #000 !important;
 }
+
+
+
+
+
+

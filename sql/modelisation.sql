@@ -15,7 +15,7 @@ CREATE TABLE membre
  date_enregistrement DATETIME NOT NULL,
  confirmation TINYINT DEFAULT NULL,
  token VARCHAR(255) DEFAULT NULL,
- ip VARCHAR(255) NOT NULL,
+ ip VARCHAR(255),
  PRIMARY KEY(id_membre)
 )ENGINE=INNODB;
 
