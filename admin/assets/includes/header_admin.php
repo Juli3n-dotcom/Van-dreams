@@ -28,16 +28,7 @@ require_once __DIR__ . '/../../../assets/config/bootstrap_admin.php';
                 <img src="../assets/img/control-panel.png" alt="">
                 <a href="../index.php">Back-office</a>
         </div>
-        <div class="admin_control">
-            <div class="account" id="account">
-                <img src="assets/img/avatar.jpg" alt="">
-                <i class="fas fa-chevron-down"></i>
-            </div>
-            <div class="topmenu hide" id="topbar-menu">
-                <a href=""><i class="ion-person"></i> Mes informations</a>
-                <a href="../logout.php"><i class="ion-power"></i> Se deconnecter</a>
-            </div>
-        </div>
+        
         
         
     
@@ -90,6 +81,13 @@ require_once __DIR__ . '/../../../assets/config/bootstrap_admin.php';
                     <a href="region.php#add_region"> Ajouter une region</a>
                 </div>
             </div>
+            <div class="menu">
+                <a href="profil.php"><i class="fas fa-cogs"></i> Mon Profil</a>
+            </div>
+            <div class="menu">
+                <a href="../logout.php"><i class="fas fa-power-off"></i> Se deconnecter</a>
+            </div>
+        
         </div>
         
 

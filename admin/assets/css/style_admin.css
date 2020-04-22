@@ -90,7 +90,7 @@ nav{
     float:left;
     width:230px;
     height:70px;
-position: fixed;
+    position: fixed;
     background:#36a3ff;
     color:#FFF;
 
@@ -309,6 +309,17 @@ color: #000 !important;
 
 
 
+/* *************** */
+/* **** profil **** */
+/* *************** */
+.left{
 
-
-
+    border-right: .5px solid var(--light-black);
+    
+}
+.avatar{
+    border-radius: 50%;
+}
+.info_admin p{
+    margin-bottom: 2rem;
+}
