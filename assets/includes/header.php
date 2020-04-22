@@ -8,6 +8,7 @@ require_once __DIR__ . '/../config/bootstrap.php';
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="vandreams.fr : le site de petites annonces DE TRIPPERS à TRIPPERS. Consultez des milliers d'annonces van aménagé  >>>">
     <title><?=$page_title?> | Van Dreams </title>
     <link rel="icon" href="assets/img/logo_1.png">
     <!--Ion Icons-->
