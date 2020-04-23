@@ -77,7 +77,7 @@ include __DIR__.'/assets/includes/header.php';
 
         <div class="newsletter middle">
           
-          <h2>Nous arrivons bientôt</h2>
+          <h2>vandreams.fr : le site de petites annonces DE TRIPPEURS à TRIPPEURS.</h2>
           <h4>Abonnez-vous pour recevoir une notification lors de l'ouverture du site</h4>
           <form action="index.php" method="POST">
             <input type="text" name="email" placeholder="Enter votre email">
