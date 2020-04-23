@@ -66,6 +66,13 @@ require_once __DIR__ . '/../../../assets/config/bootstrap_admin.php';
                 </div>
             </div>
             <div class="submenu" id="submenu">
+                <a href="#"><i class="far fa-newspaper"></i> Newsletter <i class="fas fa-chevron-down right"></i></a>
+                <div class="sub-content hide" id="sub-content">
+                    <a href="newsletter.php"> Liste de diffusion</a>
+                    <a href="#"> Créer une Newsletter</a>
+                </div>
+            </div>
+            <div class="submenu" id="submenu">
                 <a href="#"><i class="fas fa-cubes"></i> Catégories <i class="fas fa-chevron-down right"></i></a>
                 <div class="sub-content hide" id="sub-content">
                     <a href="category.php"> Les catégories</a>

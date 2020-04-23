@@ -36,7 +36,7 @@ CREATE TABLE category
     name VARCHAR(255),
     titre VARCHAR(255),
     motscles TEXT(255),
-    PRIMARY KEY (id_categorie)
+    PRIMARY KEY (id_category)
 )ENGINE=INNODB;
 
 CREATE TABLE country
@@ -67,7 +67,7 @@ CREATE TABLE annonce
  description_courte VARCHAR(255) NOT NULL,
  description_longue TEXT NOT NULL,
  prix DECIMAL(10,2),
- categorie_id INT(3) DEFAULT NULL,
+ category_id INT(3) DEFAULT NULL,
  photo_id INT(3) DEFAULT NULL,
  pays VARCHAR(20)NOT NULL,
  region VARCHAR(50)NOT NULL,
@@ -86,8 +86,8 @@ CONSTRAINT fk_annonce_photo
       REFERENCES  photo(id_photo)
       ON DELETE CASCADE,
 CONSTRAINT fk_annonce_categorie
-        FOREIGN KEY (categorie_id)
-        REFERENCES categorie(id_categorie)
+        FOREIGN KEY (category_id)
+        REFERENCES category(id_category)
         ON DELETE CASCADE
 )ENGINE=INNODB;
 
@@ -122,7 +122,16 @@ CREATE TABLE message_admin
 CREATE TABLE online
 (
     id INT(3)NOT NULL AUTO_INCREMENT,
-    time int(),
+    time int(255),
     user_ip VARCHAR(255) NOT NULL,
+    PRIMARY KEY (id)
+)ENGINE=INNODB;
+
+CREATE TABLE liste_newsletter
+(
+    id INT(3)NOT NULL AUTO_INCREMENT,
+    email varchar(255),
+    user_ip VARCHAR(255) NOT NULL,
+    date_enregistrement DATETIME NOT NULL,
     PRIMARY KEY (id)
 )ENGINE=INNODB;

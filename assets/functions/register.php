@@ -10,3 +10,20 @@ function getIp(){
     }
     return $ip;
   }
+
+
+  function getEmailsBy(PDO $pdo, string $colonne, $valeur): ?array
+     {
+       $req =$pdo->prepare(sprintf(
+       'SELECT *
+       FROM liste_newsletter
+       WHERE %s = :valeur',
+       $colonne
+       ));
+    
+     $req->bindParam(':valeur', $valeur);
+     $req->execute();
+
+     $utilisateur =$req->fetch(PDO::FETCH_ASSOC);
+     return $utilisateur ?: null;
+      }
