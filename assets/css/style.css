@@ -130,7 +130,7 @@ nav{
 .hero{
     width: 100%;
     height: 100vh;
-    background: linear-gradient(135deg, rgba(111,225,231,0.2)0%,rgba(72,56,149,0.8)100%),url("../img/hero.jpg") center,no-repeat;
+    background: linear-gradient(135deg, rgba(0,0,0,0.4),rgba(0,0,0,0.4)100%),url("../img/mini_van.jpg") center,no-repeat;
     background-size: cover;
     position: relative;
     }
@@ -383,3 +383,105 @@ nav{
     padding: 3rem;
   }
 
+/* ******************** */
+/* **** Login2 page **** */
+/* ******************** */
+
+.hero_login{
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url('../img/mini_van.jpg');
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+}
+
+.form-box{
+    width: 380px;
+    height: 480px;
+    position: relative;
+    margin: 15rem auto;
+    background-color:  rgba(255,255,255,.7);
+    padding: 5px;
+    overflow: hidden;
+    border-radius: 5%;
+}
+
+.button-box{
+    width: 240px;;
+    margin: 35px auto;
+    position: relative;
+    box-shadow: 0 0 20px 1px var(--light-black);
+    border-radius: 30px;
+}
+
+.toggle-btn{
+    padding: 10px 30px;
+    cursor: pointer;
+    background: transparent;
+     border:0;
+     outline: none;
+     position: relative;
+     color: var(--white);
+}
+#btn{
+  top: 0;
+  left:0;
+  position: absolute; 
+  width: 120px;
+  height: 100%;
+  background: linear-gradient(to right, #3498db,#34495e);
+  
+  border-radius: 30px;
+  transition: .5s;
+}
+
+.input-group{
+    top:110px;
+    position: absolute;
+    width: 280px;
+    transition: .5s;
+
+}
+
+.input-field{
+    width: 100%;
+    padding: 10px 0;
+    margin: 5px 0;
+    border-left: 0;
+    border-right: 0;
+    border-top: 0;
+    border-bottom: 1Px solid #999;
+    outline: none;
+    background: transparent;
+}
+
+.submit-btn{
+    width: 85%;
+    padding: 10px 30px;
+    cursor: pointer;
+    display: block;
+    margin: auto;
+    color: var(--white);
+    background: linear-gradient(to right,#3498db,#34495e);
+    box-shadow: 0 0 10px 1px var(--light-black);
+    border: 0;
+    outline: none;
+    border-radius: 30px;
+}
+
+.check-box{
+    margin: 30px 10px 30px 0;
+}
+span{
+    color: #777;
+    font-size: 12px;
+    bottom: 68px;
+    position: absolute;
+}
+#login{
+    left: 50px;
+}
+#register{
+    left: 450px;
+}

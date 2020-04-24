@@ -9,16 +9,12 @@ include __DIR__.'/assets/includes/header.php';
 <section class="hero">
         <div class="container">
             <div class="main-message">
-                <h3>The Great Outdoor</h3>
-                <H1>Adventure</H1>
+                <H1>Van Dreams</H1>
                 <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                    Perspiciatis dolore quidem sit aut quo illum repellendus unde 
-                    beatae pariatur suscipit, recusandae delectus maxime veritatis
-                     mollitia ipsam saepe odit? Accusantium, eius.
+                le site de petites annonces DE TRIPPEURS à TRIPPEURS. Consultez des milliers d'annonces de van aménagé
                 </p>
                 <div class="cta">
-                    <a href="" class="btn">Book Now</a>
+                    <a href="" class="btn">Trouve le tien</a>
                 </div>
             </div>
         </div>

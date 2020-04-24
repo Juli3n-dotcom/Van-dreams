@@ -8,7 +8,7 @@ CREATE TABLE membre
  email VARCHAR(50) NOT NULL,
  name VARCHAR(255) NOT NULL,
  password VARCHAR(60) NOT NULL,
- civilite BOOLEAN,
+ cgu BOOLEAN,
  nom VARCHAR(20) NOT NULL,
  prenom VARCHAR(20) NOT NULL,
  statut INT(3) NOT NULL,
