@@ -53,11 +53,16 @@ header{
     
 .container{
     width: 100%;
-    max-width: 98rem;
+    /* max-width: 98rem; */
     margin: 0 auto;
     padding: 0 1.5rem;
 }
-        
+  .container_header{
+    width: 100%;
+    /* max-width: 98rem; */
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }      
 nav{
     width: 100%;
     display: flex;
@@ -125,8 +130,137 @@ nav{
     text-transform: uppercase;
     color: var(--light-black);
 }
-    
+   
+.coords{
+    font-size: 1rem;
+    display: inline-block;
+    float: left;
+    color: var(--light-white);
+    position: relative;
+    top: 75%;
+    /* top: 40%; */
+    letter-spacing: .2rem;
+    left: -11.5rem;
+    transform: rotate(-90deg) translateY(50%);
+}
+.ellipse-container{
+    /* width: 50rem;
+    height: 50rem; */
+    width: 30rem;
+    height: 30rem;
+    border-radius: 50%;
+    margin: 0 auto;
+    position: relative;
+    /* top: 7rem; */
+    top:15rem;
+}
 
+.ellipse-container .greeting{
+    position: relative;
+    /* top: 14rem; */
+    top:10rem;
+    /* left: -6rem; */
+    left: -3rem;
+    right: 0;
+    margin: 0 auto;
+    text-transform: uppercase;
+    letter-spacing: 4rem;
+    /* font-size: 8rem; */
+    font-size: 4rem;
+    font-weight: 400;
+    opacity: .5;
+    color: var(--light-white);
+}
+
+.ellipse-container .greeting::after{
+    content: '';
+    width: .3rem;
+    height: .3rem;
+    border-radius: 50%;
+    display: inline-block;
+    background-color: #fafafa;
+    top: -0.65rem;
+    left: -5.05rem;
+}
+
+.ellipse{
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    border-style: solid;
+}
+.ellipse__outer--thin{
+    width: 100%;
+    height: 100%;
+border-width: 1px;
+border-color: rgba(9,56,62,.1);
+animation: ellipseOrbit 15s ease-in-out infinite;
+}
+
+.ellipse__outer--thin::after{
+    /* content: '';
+    background-image: url('https://s29.postimg.org/5h0r4ftkn/ellipses_dial.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    color: #FFF;
+    position: absolute;
+    opacity: .3; */
+}
+
+.ellipse__outer--thick{
+    width: 99.5%;
+    height: 99.5%;
+    border-color: #fff transparent;
+    border-width: 2px;
+    transform: rotate(-45deg);
+    animation: ellipseRotate 15s ease-in-out infinite;
+}
+.ellipse__orbit{
+    width: 2.5rem;
+    height: 2.5rem;
+    border-width: 2px;
+    border-color: #FFF;
+    top: 1rem;
+    /* top: 5rem; */
+    right: 6.75rem;
+}
+
+.ellipse__orbit::before{
+    content: '';
+    width: 0.7rem;
+    height: 0.7rem;
+    border-radius: 50%;
+    display: inline-block;
+    background-color: #FFF;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+@keyframes ellipseRotate{
+    0%{
+        transform: rotate(-45deg);
+    }
+    100%{
+        transform: rotate(-405deg);
+    }
+}
+
+@keyframes ellipseOrbit{
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
 .hero{
     width: 100%;
     height: 100vh;
@@ -484,4 +618,137 @@ span{
 }
 #register{
     left: 450px;
+}
+
+
+
+
+
+
+/* ******************** */
+/* **** Media query **** */
+/* ******************** */
+
+@media screen and (min-width: 350px){
+    .main-message{
+        transform: translateY(40%);
+    }
+}
+
+@media screen and (min-width: 470px){
+    .hero::before{
+        height: 9.4rem;
+        background: url('../img/wave-medium.png');
+        background-size: cover;
+    }
+    .testimonials::before{
+        height: 9.4rem;
+        background: url('../img/wave-medium-reversed.png');
+        background-size: cover;
+    }
+}
+
+@media screen and (min-width: 700px){
+    header{
+        height: 8rem;
+    }
+    .nav-brand{
+        width: 3.5rem;
+    }
+    .nav-list{
+        width: initial;
+        height: initial;
+        background-color: transparent;
+        position: initial;
+        top: initial;
+        right: initial;
+        flex-direction: row;
+        transition: initial;
+    }
+    .menu-icons{
+        display: none;
+    }
+    .nav-item{
+        margin: 0 2.5rem;
+    }
+    .nav-link, .current{
+        color: #FAFAFA;
+        position: relative;
+        font-size: 1.3rem;
+    }
+    .nav-link::before,
+    .current::before{
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -.5rem;
+        background-color: #eb648c;
+        width: 100%;
+        height: 2px;
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 650ms;
+    }
+    .current::before{
+        transform: scaleX(1);
+    }
+    .nav-link:hover::before{
+        transform: scaleX(1);
+    }
+    .hero{
+        height: 100vh ;
+    }
+    .main-message{
+        transform: translateY(50%);
+    }
+    .title-heading h1{
+        font-size: 2.5rem;
+    }
+
+    .coords{
+        
+        top: 50%;
+        
+    }
+    .ellipse-container{
+        width: 50rem;
+        height: 50rem;
+        
+        top: 7rem;
+       
+    }
+    
+    .ellipse-container .greeting{
+        position: relative;
+        top: 14rem;
+        
+        left: -6rem;
+        
+     font-size: 8rem;
+        
+    }
+    .ellipse__orbit{
+        
+        top: 5rem;
+        
+    }
+}
+
+@media screen and (min-width: 950px){
+    .hero::before{
+        height: 22.7rem;
+        background: url('../img/wave-large.png');
+        background-size: cover;
+    }
+    .testimonials::before{
+        height: 22.7rem;
+        background: url('../img/wave-large-reversed.png');
+        background-size: cover;
+    }
+}
+
+@media screen and (min-width: 1200px){
+    .hero{
+        height: 100vh;
+    }
 }
