@@ -116,7 +116,7 @@ include __DIR__.'/assets/includes/header.php';
             <input type="email" name="email" class="input-field" placeholder="Email" value="<?= $_POST['email'] ?? '' ?>">
             <input type="password" name="password" class="input-field" placeholder="Mot de passe">
             <input type="password" name="confirm" class="input-field" placeholder="Confirmer MDP">
-            <input type="checkbox" class="check-box" name="cgu"><span>J'accepte les conditions générales d'utilisation</span>
+            <input type="checkbox" class="check-box" name="cgu"><span>J'accepte <a href="cgu.php">les conditions générales d'utilisation</a></span>
             <button type="submit" class="submit-btn" name="register">Valider</button>
         </form>
     </div>

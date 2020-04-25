@@ -198,8 +198,8 @@ animation: ellipseOrbit 15s ease-in-out infinite;
 }
 
 .ellipse__outer--thin::after{
-    /* content: '';
-    background-image: url('https://s29.postimg.org/5h0r4ftkn/ellipses_dial.png');
+    content: '';
+    background-image: url('../img/circle_mini.svg');
     background-repeat: no-repeat;
     background-position: center;
     top: 0;
@@ -208,7 +208,8 @@ animation: ellipseOrbit 15s ease-in-out infinite;
     right: 0;
     color: #FFF;
     position: absolute;
-    opacity: .3; */
+    opacity: .1;
+    
 }
 
 .ellipse__outer--thick{
@@ -545,7 +546,7 @@ animation: ellipseOrbit 15s ease-in-out infinite;
     width: 240px;;
     margin: 35px auto;
     position: relative;
-    box-shadow: 0 0 20px 1px var(--light-black);
+    box-shadow: 0 0 10px 1px var(--light-black);
     border-radius: 30px;
 }
 
@@ -564,7 +565,7 @@ animation: ellipseOrbit 15s ease-in-out infinite;
   position: absolute; 
   width: 120px;
   height: 100%;
-  background: linear-gradient(to right, #3498db,#34495e);
+  background: linear-gradient(to right, #00bd71,#008656);
   
   border-radius: 30px;
   transition: .5s;
@@ -597,7 +598,7 @@ animation: ellipseOrbit 15s ease-in-out infinite;
     display: block;
     margin: auto;
     color: var(--white);
-    background: linear-gradient(to right,#3498db,#34495e);
+    background: linear-gradient(to right, #00bd71,#008656);
     box-shadow: 0 0 10px 1px var(--light-black);
     border: 0;
     outline: none;
@@ -612,6 +613,12 @@ span{
     font-size: 12px;
     bottom: 68px;
     position: absolute;
+}
+span a {
+    color: #777;;
+}
+span a:hover{
+    color: #00bd71;
 }
 #login{
     left: 50px;
@@ -730,6 +737,12 @@ span{
     .ellipse__orbit{
         
         top: 5rem;
+        
+    }
+    .ellipse__outer--thin::after{
+       
+        background-image: url('../img/circle.svg');
+        
         
     }
 }
