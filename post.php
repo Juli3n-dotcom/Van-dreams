@@ -111,7 +111,7 @@ if(isset($_POST['add'])){
                               $req2->bindParam(':marque',$_POST['marque']);
                               $req2->bindParam(':modele',$_POST['modele']);
                               $req2->bindParam(':annee_modele',$_POST['date']);
-                              $req2->bindValue(':category_id', $_POST['categorie']);
+                              $req2->bindValue(':category_id', $_POST['category']);
                               $req2->bindValue(':subcat_id', $_POST['subcat']);
                               $req2->bindValue(':photo_id', $id_photo);
                               $req2->bindParam(':country_id',$_POST['pays']);
@@ -153,7 +153,7 @@ include __DIR__.'/assets/includes/header_index.php';
             <button type="button" class="toggle-btn"  id="valid_btn">5</button>
         </div>
         <form action="post.php" method="post" enctype="multipart/form-data">
-            <div class="input-group" id="depot_1">
+            <div class="input-group_depot" id="depot_1">
                 <h3 class="title_part">Les détails de votre annonces</h3>
                     <input type="text" class="input-field" name="titre_annonce" placeholder="Le titre de votre annonce" value="<?= htmlspecialchars($_POST['titre_annonce']??'');?>">
                     <textarea class="input-field" name="description" cols="30" rows="10" placeholder="Description de votre annonce" 
@@ -162,13 +162,13 @@ include __DIR__.'/assets/includes/header_index.php';
                     <button type="button" class="submit-btn_depot" id="next1">Suivant</button>
             </div>
         
-            <div class="input-group" id="depot_2">
+            <div class="input-group_depot" id="depot_2">
                 <h3 class="title_part">Le véhicule</h3>
                 <div class="depot_radio">
                     <h5  class="label_name">Catégories :</h5> 
                     <?php foreach(getCategory($pdo) as $cat) : ?>
-                        <input type="radio" name="categorie" value="<?=$cat['id_category'];?>">
-                        <label for="categorie"><?=$cat['titre'];?></label>
+                        <input type="radio" name="category" value="<?=$cat['id_category'];?>">
+                        <label for="category"><?=$cat['titre'];?></label>
                     <?php endforeach; ?> 
                 </div>
                 <div class="depot_radio">
@@ -189,7 +189,7 @@ include __DIR__.'/assets/includes/header_index.php';
                 </div>
             </div>
 
-            <div class="input-group" id="depot_3">
+            <div class="input-group_depot" id="depot_3">
                 <h3 class="title_part">Les Photos</h3>
                 <div class="picture_box">
                     <input type="file" class="display_none" id="photo1" name="photo1">
@@ -202,7 +202,7 @@ include __DIR__.'/assets/includes/header_index.php';
                 <div class="container-fluid">
                     <div class="row">       
                         <?php for($i =0; $i <3; $i++) : ?>
-                            <div id="preview<?= ($i+1)?>"></div>
+                            <div class=""id="preview<?= ($i+1)?>"></div>
                         <?php endfor; ?>                      
                     </div>
                 </div>      
@@ -212,7 +212,7 @@ include __DIR__.'/assets/includes/header_index.php';
                 </div>
             </div>
 
-            <div class="input-group" id="depot_4">
+            <div class="input-group_depot" id="depot_4">
                 <h3 class="title_part">Coordonnées</h3>
                 <div class="depot_select">
                     
@@ -241,9 +241,9 @@ include __DIR__.'/assets/includes/header_index.php';
                     <button type="button" class="submit-btn_depot" id="next4">Suivant</button>
                 </div>
             </div>
-            <div class="input-group" id="depot_5">
+            <div class="input-group_depot" id="depot_5">
             <h3 class="title_part">Validation</h3>
-
+            <input type="checkbox" class="check-box" name="payment"><span>Je publie gratuitement mon annonce</span>
             <input type="submit" class="submit-btn_depot" name="add" value="Valider">
             </div>
         </form>
@@ -264,7 +264,9 @@ include __DIR__.'/assets/includes/header_index.php';
         img.file = file;
         preview.appendChild(img);
         img.style.width = '50%';
-        img.style.heigt = '100px';
+        img.style.maxWidth = '100px';
+        img.style.heigt = 'auto';
+        img.style.maxHeight = '150px';
         img.style.display = 'block';
         img.style.marginLeft = 'auto';
         img.style.marginRight = 'auto';

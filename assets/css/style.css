@@ -71,7 +71,7 @@ nav{
     padding: 1rem 0;
     border-bottom: 1px solid rgba(255, 255, 255, .2);
 }
-    
+
 .nav-brand{
     width: 3rem;
 }
@@ -523,12 +523,13 @@ animation: ellipseOrbit 15s ease-in-out infinite;
 /* ******************** */
 
 .hero_login{
-    height: 100%;
+    height: 100vh;
     width: 100%;
+    padding: 5rem;
     background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url('../img/mini_van.jpg');
     background-position: center;
     background-size: cover;
-    position: absolute;
+    /* position: absolute; */
 }
 
 .form-box{
@@ -613,6 +614,7 @@ span{
     color: #777;
     font-size: 12px;
     bottom: 68px;
+    left: 5rem;
     position: absolute;
 }
 span a {
@@ -634,12 +636,13 @@ span a:hover{
 /* ******************** */
 
 .hero_depot{
-    height: 100vh;
+    height: 1000px;
     width: 100%;
-    background-color:green;
+    padding: 1rem;
+   background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url('../img/mini_van.jpg');
     background-position: center;
     background-size: cover;
-    position: absolute;
+    /* position: absolute; */
 }
 
 .form-box_depot{
@@ -650,18 +653,17 @@ span a:hover{
     background-color:  rgba(255,255,255,.7);
     padding: 5px;
     overflow: hidden;
-    /* border-radius: 5%; */
 }
 .title_part{
     font-size: 2rem;
-    text-align: center;
+    text-align: cente !important;
     margin-bottom: 2rem;
 }
 .button-box_depot{
     width: 360px;;
     margin: 35px auto;
     position: relative;
-    box-shadow: 0 0 10px 1px var(--light-black);
+    box-shadow: 0 0 5px 1px var(--light-black);
     border-radius: 30px;
 }
 
@@ -686,7 +688,7 @@ span a:hover{
   transition: .5s;
 }
 
-.input-group{
+.input-group_depot{
     top:110px;
     position: absolute;
     width: 280px;
@@ -721,8 +723,6 @@ span a:hover{
     border-radius: 30px;
 }
 
-
-
 .depot_radio{
     margin-bottom: 2rem;
 }
@@ -731,11 +731,12 @@ span a:hover{
     width: 360px;
     padding: 1.5rem;
     position: relative;
+    margin-bottom: 1rem;
 }
 .depot_annonce_photo {
-    height: 300px;
-    width: 300px;
-    padding: 1rem;
+    /* height: 300px;
+    width: 300px; */
+    padding: 2rem;
     margin: 1rem;
     background:linear-gradient(to right, #00bd71,#008656);
     font-size: 200%;
@@ -800,6 +801,90 @@ span a:hover{
 }
 #depot_5{
     left: 1350px;
+}
+
+#depot_5 span {
+    bottom: 110px;
+}
+/* ******************** */
+/* **** Footer **** */
+/* ******************** */
+
+footer{
+    padding:4rem;
+    background-color: #000;
+}
+
+.footer-part1{
+    text-align: center;
+    border-right: 1px solid var(--light-white);
+    margin-bottom: 4rem;
+}
+.footer-part1 h5, 
+.footer-part2 h5,
+.footer-part3 h5{
+    color: #FFF;
+    font-size: 16px;
+    margin-bottom: 4rem;
+}
+.input-field-footer{
+    color: #FFF;
+    width: 60%;
+    padding: 10px 0;
+    display: block;
+    margin: auto;
+    margin-bottom: 5px ;
+    border-left: 0;
+    border-right: 0;
+    border-top: 0;
+    border-bottom: 1Px solid #999;
+    outline: none;
+    background: transparent;
+}
+
+.submit-btn-footer{
+    width: 40%;
+    padding: 10px 30px;
+    cursor: pointer;
+    display: block;
+    margin: auto;
+    color: var(--white);
+    background: linear-gradient(to right, #00bd71,#008656);
+    box-shadow: 0 0 10px 1px var(--light-black);
+    border: 0;
+    outline: none;
+    border-radius: 30px;
+}
+
+.footer-part2{
+    text-align: center;
+    border-right: 1px solid var(--light-white);
+    margin-bottom: 4rem;
+}
+.footer-part2 ul li{
+    
+    list-style: none;
+}
+.footer-part2 ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 12px;
+}
+.footer-part3{
+    text-align: center;
+}
+.footer-part3 a img{
+    margin:2rem;
+    height: 30px;
+    width: 30px;
+}
+
+.copy{
+background-color:#FFF;
+color: #000;
+height: 20px;
+width: 100%;
+text-align: center;
 }
 /* ******************** */
 /* **** Media query **** */
