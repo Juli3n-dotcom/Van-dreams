@@ -628,10 +628,86 @@ span a:hover{
 }
 
 
+/* ******************** */
+/* **** Footer **** */
+/* ******************** */
 
+footer{
+    padding:4rem;
+    background-color: #000;
+}
 
+.footer-part1{
+    text-align: center;
+    border-right: 1px solid var(--light-white);
+    margin-bottom: 4rem;
+}
+.footer-part1 h5, 
+.footer-part2 h5,
+.footer-part3 h5{
+    color: #FFF;
+    font-size: 16px;
+    margin-bottom: 4rem;
+}
+.input-field-footer{
+    color: #FFF;
+    width: 60%;
+    padding: 10px 0;
+    display: block;
+    margin: auto;
+    margin-bottom: 5px ;
+    border-left: 0;
+    border-right: 0;
+    border-top: 0;
+    border-bottom: 1Px solid #999;
+    outline: none;
+    background: transparent;
+}
 
+.submit-btn-footer{
+    width: 40%;
+    padding: 10px 30px;
+    cursor: pointer;
+    display: block;
+    margin: auto;
+    color: var(--white);
+    background: linear-gradient(to right, #00bd71,#008656);
+    box-shadow: 0 0 10px 1px var(--light-black);
+    border: 0;
+    outline: none;
+    border-radius: 30px;
+}
 
+.footer-part2{
+    text-align: center;
+    border-right: 1px solid var(--light-white);
+    margin-bottom: 4rem;
+}
+.footer-part2 ul li{
+    
+    list-style: none;
+}
+.footer-part2 ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 12px;
+}
+.footer-part3{
+    text-align: center;
+}
+.footer-part3 a img{
+    margin:2rem;
+    height: 50px;
+    width: 50px;
+}
+
+.copy{
+background-color:#FFF;
+color: #000;
+height: 20px;
+width: 100%;
+text-align: center;
+}
 /* ******************** */
 /* **** Media query **** */
 /* ******************** */
