@@ -1,7 +1,5 @@
 <?php
-if (session_status() === PHP_SESSION_NONE){
-    session_start();
-  }
+require_once __DIR__ . '/../config/bootstrap.php';
 ?>
 <!doctype html>
 <html lang="fr">
@@ -20,9 +18,9 @@ if (session_status() === PHP_SESSION_NONE){
   gtag('config', 'UA-164356474-1');
 </script>
 
-    <meta name="description" content="vandreams.fr : le site de petites annonces DE TRIPPERS à TRIPPERS. Consultez des milliers d'annonces van aménagé  >>>">
+    <meta name="description" content="vandreams.fr : le site de petites annonces DE TRIPPEURS à TRIPPEURS. Consultez des milliers d'annonces de van aménagé  >>>">
     <title><?=$page_title?> | Van Dreams </title>
-    <link rel="icon" href="../assets/img/logo_1.png">
+    <link rel="icon" href="assets/img/logo_1.png">
     <!--Ion Icons-->
     <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
     <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
@@ -30,16 +28,16 @@ if (session_status() === PHP_SESSION_NONE){
     <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Aldrich&display=swap" rel="stylesheet">
     <!--Our own stylesheet-->
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
     
 </head>
 <body>
 <header>
-    <div class=container>
+    <div class=container_header>
         <nav>
             <div class="nav-brand">
-        <a href="../index.php">
-            <img src="../assets/img/logo_1.png" alt="">
+        <a href="index.php">
+            <img src="assets/img/logo_1.png" alt="">
         </a>
     </div>
 
@@ -52,8 +50,32 @@ if (session_status() === PHP_SESSION_NONE){
             <i class="icon ion-md-close"></i>
         </div>
         <li class="nav-item">
-            <a href="../logout.php" class="nav-link">Déconnexion</a>
+            <a href="Home" class="nav-link current">Home</a>
         </li>
+        <li class="nav-item">
+            <a href="Home" class="nav-link">Pricing</a>
+        </li>
+        <li class="nav-item">
+            <a href="post.php" class="nav-link">Déposer une annonces</a>
+        </li>
+        <?php if(getMembre() === null):?>
+        <li class="nav-item">
+            <a href="login.php#register" class="nav-link">Inscription</a>
+        </li>
+        <li class="nav-item">
+            <a href="login.php" class="nav-link">Login</a>
+        </li>
+        <?php else :?>
+        <li class="nav-item">
+            <a href="user/profil.php" class="nav-link">Profil</a>
+        </li>
+        <li class="nav-item">
+            <a href="admin/index_admin.php" class="nav-link">Back-office</a>
+        </li>
+        <li class="nav-item">
+            <a href="logout.php" class="nav-link">Déconnexion</a>
+        </li>
+        <?php endif;?>
     </ul>
 </nav>
 </div>

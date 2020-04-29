@@ -77,6 +77,8 @@ require_once __DIR__ . '/../../../assets/config/bootstrap_admin.php';
                 <div class="sub-content hide" id="sub-content">
                     <a href="category.php"> Les catégories</a>
                     <a href="category.php#add_cat"> Ajouter une catégorie</a>
+                    <a href="subcat.php"> Les sous catégories</a>
+                    <a href="subcat.php#add_cat"> Ajouter une sous catégorie</a>
                 </div>
             </div>
             <div class="submenu" id="submenu">

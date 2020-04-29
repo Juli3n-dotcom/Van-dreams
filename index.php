@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/assets/config/bootstrap.php';
 $page_title ='Accueil';
-include __DIR__.'/assets/includes/header.php';
+include __DIR__.'/assets/includes/header_index.php';
 ?>
 
 <?php include __DIR__.'/assets/includes/flash.php';?>
@@ -9,7 +9,7 @@ include __DIR__.'/assets/includes/header.php';
 <section class="hero">
         
             
-        <p class="coords">N 49° 16' 35.173" / W 0° 42' 11.30"</p>
+        <p class="coords">N 48° 42' 2.571" / E 2° 31' 1.023"</p>
 
 <div class="ellipse-container">
     <h2 class="greeting">Van Dreams</h2>
@@ -22,5 +22,5 @@ include __DIR__.'/assets/includes/header.php';
     </section>
 
 <?php
-include __DIR__.'/assets/includes/footer.php';
+include __DIR__.'/assets/includes/footer_index.php';
 ?>
