@@ -57,6 +57,18 @@ require_once __DIR__ . '/../../../assets/config/bootstrap_admin.php';
                     <a href="user.php"> Gestion des membres</a>
                 </div>
             </div>
+<?php
+$annoncesSignale=$pdo->query('SELECT COUNT(*)AS nb FROM annonces WHERE est_signal = 1');
+$data = $annoncesSignale ->fetch();
+$signal = $data['nb'];
+?>
+            <div class="submenu" id="submenu">
+                <a href="#"><i class="fas fa-archive"></i> Les Annonces <i class="fas fa-chevron-down right"></i></a>
+                <div class="sub-content hide" id="sub-content">
+                    <a href="annonces.php"> Gestion des annonces</a>
+                    <a href="user.php"> Annonces signalées <span class="badge badge-secondary"><?= $signal ;?></span></a>
+                </div>
+            </div>
             <div class="submenu" id="submenu">
                 <a href="#"><i class="far fa-envelope"></i> Messages <i class="fas fa-chevron-down right"></i></a>
                 <div class="sub-content hide" id="sub-content">
