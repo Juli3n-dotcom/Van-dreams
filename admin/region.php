@@ -70,6 +70,13 @@ include __DIR__.'/assets/includes/header_admin.php';
                     $name_country = $data->fetch(PDO::FETCH_ASSOC);
                     ?>
                 <td><?php echo $name_country['name'];?></td>
+                <?php
+                $id = $region['id_region'];
+                $counter =$pdo->query("SELECT COUNT(*) as nb FROM annonces WHERE region_id = '$id'");
+                $data = $counter->fetch();
+                $totalAnnonces =$data['nb'];
+                ?>
+                <td><?= $totalAnnonces; ?></td>
                 <?php endwhile; ?>  
         <?php endforeach; ?>
 

@@ -43,9 +43,16 @@ include __DIR__.'/assets/includes/header_admin.php';
     </thead>
     <tbody>
         <?php foreach(getCountry($pdo) as $country) : ?>
+        <?php
+        $id = $country['id_country'];
+        $counter =$pdo->query("SELECT COUNT(*) as nb FROM annonces WHERE country_id = '$id'");
+        $data = $counter->fetch();
+        $totalAnnonces =$data['nb'];
+        ?>
             <tr scope="row" class="table_tr">
                 <td scope="row"><?php echo $country['id_country'];?></td>
                 <td><?php echo $country['name'];?></td>
+                <td><?= $totalAnnonces; ?></td>
         <?php endforeach; ?>
     </tbody>
   </table>

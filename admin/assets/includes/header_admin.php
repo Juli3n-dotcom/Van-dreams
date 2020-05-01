@@ -63,10 +63,10 @@ $data = $annoncesSignale ->fetch();
 $signal = $data['nb'];
 ?>
             <div class="submenu" id="submenu">
-                <a href="#"><i class="fas fa-archive"></i> Les Annonces <i class="fas fa-chevron-down right"></i></a>
+<a href="#"><i class="fas fa-archive"></i> Les Annonces <i class="fas fa-chevron-down right"></i></a>
                 <div class="sub-content hide" id="sub-content">
                     <a href="annonces.php"> Gestion des annonces</a>
-                    <a href="user.php"> Annonces signalées <span class="badge badge-secondary"><?= $signal ;?></span></a>
+                    <a href="annonces_signalee.php"> Annonces signalées <span class="badge badge-secondary"><?= $signal ;?></span></a>
                 </div>
             </div>
             <div class="submenu" id="submenu">

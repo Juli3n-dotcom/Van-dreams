@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ . '/../assets/config/bootstrap_admin.php';
-require __DIR__ . '/assets/functions/cat.php';
+require __DIR__ . '/assets/functions/cat_functions.php';
 
 
 
@@ -99,6 +99,7 @@ include __DIR__.'/assets/includes/header_admin.php';
             <th scope="col">#id</th>
             <th scope="col">Titre</th>
             <th scope="col">Mots Clés</th>
+            <th scope="col">Nombre d'annonces</th>
             <th scope="col">Update</th>
             <th scope="col">Delete</th>
         </thead>
@@ -108,6 +109,13 @@ include __DIR__.'/assets/includes/header_admin.php';
                     <td scope="row"><?php echo $subcat['id_sub_cat'];?></td>
                     <td><?php echo $subcat['titre'];?></td>
                     <td><?php echo $subcat['motscles'];?></td>
+                    <?php
+                    $id = $subcat['id_sub_cat'];
+                    $counter =$pdo->query("SELECT COUNT(*) as nb FROM annonces WHERE subcat_id = '$id'");
+                    $data = $counter->fetch();
+                    $totalAnnonces =$data['nb'];
+                    ?>
+                    <td><?= $totalAnnonces; ?></td>
                     <td>
                         <a href="sub_cat.php?id=<?=$subcat['id_sub_cat'];?>" class="btn btn-info" data-toggle="modal" data-target="#<?= $subcat['name'];?>"> <i class="fas fa-edit"></i> Update </a>
 

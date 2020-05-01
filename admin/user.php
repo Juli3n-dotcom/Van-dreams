@@ -21,7 +21,12 @@ if (isset($_POST['update'])){
 }
 
 // tratement suppression
-if(isset($_POST['delete'])){
+if(isset($_POST['delete_membre'])){
+
+    if(!isset($_POST['delete_check'])){
+        ajouterFlash('danger','Merci de confirmer la suppression !');
+    
+      }else{
 
     $req =$pdo->prepare(
     'DELETE FROM membre
@@ -32,6 +37,7 @@ if(isset($_POST['delete'])){
     $req->execute();
 
 ajouterFlash('success','membre supprimée !');
+      }
 }  
 
 // gestion de l'affichage
@@ -87,7 +93,6 @@ include __DIR__.'/assets/includes/header_admin.php';
         <thead class="thead-dark">
             <th scope="col">#id</th>
             <th scope="col">Email</th>
-            <th scope="col">Civilité</th>
             <th scope="col">Nom</th>
             <th scope="col">Prénom</th>
             <th scope="col">Statut</th>
@@ -100,13 +105,6 @@ include __DIR__.'/assets/includes/header_admin.php';
                 <tr scope="row" class="table_tr">
                 <td scope="row"><?= $Membre['id_membre'];?></td>
                 <td><?= $Membre['email'];?></td>
-                <td>
-                    <?php if ($Membre['civilite'] == 0):?>
-                        <?=  'Mme';?>
-                    <?php else:?>
-                        <?=  'Mr';?>
-                    <?php endif;?> 
-                </td>
                 <td><?= $Membre['nom'];?></td>
                 <td><?= $Membre['prenom'];?></td>
                 <td>
@@ -195,7 +193,7 @@ include __DIR__.'/assets/includes/header_admin.php';
                                                 </div>
                                          </div>
                                     <div class="modal-footer">
-                                        <input type="submit" class="btn btn-danger" name="delete" value="Supprimer" >
+                                        <input type="submit" class="btn btn-danger" name="delete_membre" value="Supprimer" >
                                     </div>
                                         </form>  
                                     </div>

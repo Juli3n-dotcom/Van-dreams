@@ -75,7 +75,7 @@ if(isset($_POST['login'])){
         $req->bindParam(':password',$hash);
         $req->bindParam(':nom',$_POST['name']);
         $req->bindParam(':prenom',$_POST['first_name']);
-        $req->bindValue(':statut',1);
+        $req->bindValue(':statut',0);
         $req->bindValue(':cgu',1);
         $req->bindValue(':date',(new DateTime())->format('Y-m-d H:i:s'));
         $req->bindValue(':confirmation',0);
@@ -86,7 +86,7 @@ if(isset($_POST['login'])){
         unset($_POST);
         ajouterFlash('success','Welcome!');
         session_write_close();
-        header('location:login2.php#login');
+        header('location:login.php#login');
     }
 }
   

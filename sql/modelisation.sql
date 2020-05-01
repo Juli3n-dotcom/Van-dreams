@@ -70,6 +70,7 @@ CREATE TABLE annonces
 (
  id_annonce INT(3) NOT NULL AUTO_INCREMENT,
  titre_annonce VARCHAR(255) NOT NULL,
+ name VARCHAR(255),
  membre_id INT(3) DEFAULT NULL,
  description_annonce TEXT DEFAULT NULL,
  prix DECIMAL(10,2),

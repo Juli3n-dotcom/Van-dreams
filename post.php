@@ -97,12 +97,15 @@ if(isset($_POST['add'])){
                 $req1->execute();
 
                 $id_photo = $pdo-> lastInsertId();
+                // $explode = explode('',$_POST['titre_annonce']);
+                $name = 'vd'.getMembre()['id_membre'].$_POST['category'].$_POST['subcat'].bin2hex(random_bytes(6));
            
                 $req2 = $pdo->prepare(
-                   'INSERT INTO annonces (titre_annonce, membre_id, description_annonce, prix, km, places, marque, modele, annee_modele, category_id, subcat_id, photo_id, country_id, region_id, cp, ville, telephone, est_publie, est_signal, date_enregistrement)
-                    VALUES (:titre_annonce, :membre_id, :description_annonce, :prix, :km, :places, :marque, :modele, :annee_modele, :category_id, :subcat_id, :photo_id, :country_id, :region_id, :cp, :ville, :telephone, :publie, :signal, :date)'
+                   'INSERT INTO annonces (titre_annonce, name, membre_id, description_annonce, prix, km, places, marque, modele, annee_modele, category_id, subcat_id, photo_id, country_id, region_id, cp, ville, telephone, est_publie, est_signal, date_enregistrement)
+                    VALUES (:titre_annonce, :name, :membre_id, :description_annonce, :prix, :km, :places, :marque, :modele, :annee_modele, :category_id, :subcat_id, :photo_id, :country_id, :region_id, :cp, :ville, :telephone, :publie, :signal, :date)'
                            );
-                           $req2->bindParam(':titre_annonce',$_POST['titre_annonce']);
+                              $req2->bindParam(':titre_annonce',$_POST['titre_annonce']);
+                              $req2->bindParam(':name',$name);
                               $req2->bindParam(':membre_id', getMembre()['id_membre'], PDO::PARAM_INT);
                               $req2->bindParam(':description_annonce',$_POST['description']);
                               $req2->bindParam(':prix',$_POST['prix']);

@@ -48,53 +48,21 @@ if(isset($_POST['delete_annonce'])){
   
 }  
 
-$page_title ='Gestion des annonces';
+
+$page_title ='Annonces Signalée';
 include __DIR__.'/assets/includes/header_admin.php';
 ?>
 
 <div class="title_page">
-    <h1><i class="fas fa-archive"></i> Gestion des annonces</h1>
+    <h1><i class="fas fa-exclamation-triangle"></i> Annonces Signalée</h1>
 </div>
 <?php include __DIR__.'/../assets/includes/flash.php';?>
 
-<div class="py-5"> <!-- Membre -->
-    <div class="container-fluid">
-      <div class="row hidden-md-up">
-          
-        <?php
-        $counter =$pdo->query('SELECT COUNT(*) as nb FROM annonces');
-        $data_annonces = $counter->fetch();
-        $totalAnnonces =$data_annonces['nb'];
-        ?>
-        <div class="col-md-3">
-          <div class="card text-white text-center bg-info"> 
-            <div class="card-header">Annonces total</div>
-                <div class="card-body">
-                    <p class="card-text"><?= $totalAnnonces; ?></p>
-                </div>
-          </div>
-        </div>
-        <?php
-        $annoncesSignale=$pdo->query('SELECT COUNT(*)AS nb FROM annonces WHERE est_signal = 1');
-        $data = $annoncesSignale ->fetch();
-        $signal = $data['nb'];
-        ?>
-        <div class="col-md-3">
-          <div class="card text-white text-center bg-warning"> 
-            <div class="card-header">Annonces signalée</div>
-                <div class="card-body">
-                    <p class="card-text"><?= $signal; ?></p>
-                </div>
-          </div>
-        </div>
 
-      </div> <!-- end row -->
-    </div> <!-- end container-->
-  </div>
 
-  <div class="container-fluid">
+<div class="container-fluid">
     <div class="row">
-<?php foreach(getAnnonces($pdo) as $annonce):?>
+<?php foreach(getAnnoncesSignalee($pdo) as $annonce):?>
     <div class="card col-md-4 mb-4 <?php if($annonce['est_signal']==1):?>bg-warning<?php endif;?>" style="width: 8rem;">
     <div class="card-header">Annonce #<?=$annonce['id_annonce']?></div>
     <?php
