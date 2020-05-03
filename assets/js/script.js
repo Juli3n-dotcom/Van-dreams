@@ -21,7 +21,6 @@
 //    }
 // })
 
-// page login
    
 
   //page dépot
@@ -85,3 +84,5 @@ prev3.addEventListener('click', function(){
    depot_5.style.left="50px";
    btn_depot.style.width ="360px";
 })
+
+

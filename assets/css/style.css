@@ -1,6 +1,7 @@
 @import url('var.css');
 @import url('flash.css');
 @import url('checkbox.css');
+@import url('fiche.css');
 *,
 *::before,
 *::after{
@@ -140,7 +141,7 @@ nav{
     top: 75%;
     /* top: 40%; */
     letter-spacing: .2rem;
-    left: -11.5rem;
+    left: -10.5rem;
     transform: rotate(-90deg) translateY(50%);
 }
 .ellipse-container{
@@ -225,7 +226,7 @@ animation: ellipseOrbit 15s ease-in-out infinite;
     height: 2.5rem;
     border-width: 2px;
     border-color: #FFF;
-    top: 1rem;
+    top: .7rem;
     /* top: 5rem; */
     right: 6.75rem;
 }
@@ -991,7 +992,7 @@ text-align: center;
     }
     .ellipse__orbit{
         
-        top: 5rem;
+        top: 5.3rem;
         
     }
     .ellipse__outer--thin::after{

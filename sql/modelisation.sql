@@ -127,11 +127,30 @@ CREATE TABLE `paiements` (
  `payer_email` text NOT NULL
 );
 
+CREATE TABLE favoris(
+    id_favoris INT(3) NOT NULL AUTO_INCREMENT,
+    favoris TINYINT DEFAULT NULL,
+    membre_id INT(3) DEFAULT NULL,
+    ip VARCHAR(255)DEFAULT NULL,
+    annonce_id INT(3)NOT NULL,
+PRIMARY KEY(id_favoris),
+ CONSTRAINT fk_favoris_membre
+      FOREIGN KEY  (membre_id)
+      REFERENCES  membre(id_membre)
+      ON DELETE CASCADE,
+CONSTRAINT fk_favoris_annonce
+      FOREIGN KEY  (annonce_id)
+      REFERENCES  annonces(id_annonce)
+      ON DELETE CASCADE
+)ENGINE=INNODB;
+
 CREATE TABLE message
 (
    id_message INT(3) NOT NULL AUTO_INCREMENT,
    membre_id1 INT(3) DEFAULT NULL,
    membre_id2 INT(3) DEFAULT NULL,
+   annonce_id INT(3) DEFAULT NULL,
+   subject VARCHAR(255)DEFAULT NULL,
     message TEXT NOT NULL,
     date_enregistrement DATETIME NOT NULL,
    PRIMARY KEY (id_message),
@@ -142,6 +161,10 @@ CREATE TABLE message
    CONSTRAINT fk_message_membre_id2
       FOREIGN KEY (membre_id2)
       REFERENCES membre(id_membre)
+      ON DELETE CASCADE,
+      CONSTRAINT fk_message_annonce
+      FOREIGN KEY  (annonce_id)
+      REFERENCES  annonces(id_annonce)
       ON DELETE CASCADE
 )ENGINE=INNODB;
 
