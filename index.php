@@ -103,6 +103,7 @@ include __DIR__.'/assets/includes/header_index.php';
     </div>
   </div>
 
+  <script type="text/javascript" src="assets/js/index.js"></script>
 <?php
-include __DIR__.'/assets/includes/footer_index.php';
+include __DIR__.'/assets/includes/footer.php';
 ?>

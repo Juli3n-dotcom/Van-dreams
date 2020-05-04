@@ -35,8 +35,8 @@ require_once __DIR__ . '/../config/bootstrap.php';
     
 </head>
 <body>
-<header>
-    <div class=container_header>
+<header class="header_index">
+    <div class=container_header_index>
         <nav>
             <div class="nav-brand">
         <a href="index.php">
@@ -44,7 +44,7 @@ require_once __DIR__ . '/../config/bootstrap.php';
         </a>
     </div>
 
-    <div class="menu-icons open" >
+    <div class="menu-icons_index open" >
         <i class="icon ion-md-menu"></i>
     </div>
 
@@ -53,30 +53,31 @@ require_once __DIR__ . '/../config/bootstrap.php';
             <i class="icon ion-md-close"></i>
         </div>
         <li class="nav-item">
-            <a href="Home" class="nav-link current">Home</a>
+            <a href="index.php" class="nav-link link1">Accueil</a>
         </li>
         <li class="nav-item">
-            <a href="Home" class="nav-link">Pricing</a>
+            <a href="post.php" class="nav-link link2">Les annonces</a>
         </li>
         <li class="nav-item">
-            <a href="post.php" class="nav-link">Déposer une annonces</a>
+            <a href="post.php" class="nav-link link3">Déposer une annonces</a>
         </li>
+        <li class="nav-item">
+            <a href="admin/index_admin.php" class="nav-link link4">Back-office</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link dropdown-toggle link5" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-user"></i>
+            </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
         <?php if(getMembre() === null):?>
-        <li class="nav-item">
-            <a href="login.php#register" class="nav-link">Inscription</a>
-        </li>
-        <li class="nav-item">
-            <a href="login.php" class="nav-link">Login</a>
-        </li>
-        <?php else :?>
-        <li class="nav-item">
-            <a href="user/profil.php" class="nav-link">Profil</a>
-        </li>
-        <li class="nav-item">
-            <a href="admin/index_admin.php" class="nav-link">Back-office</a>
-        </li>
-        <li class="nav-item">
-            <a href="logout.php" class="nav-link">Déconnexion</a>
+            <a href="login.php#register" class="dropdown-item">Inscription</a>    
+            <a href="login.php" class="dropdown-item">Connexion</a>
+        <?php else :?>          
+          <a class="dropdown-item"  href="user/profil.php">Mon Profil</a>
+          <a class="dropdown-item" href="#">Messagerie </a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="logout.php">Déconnexion</a>
+        </div>
         </li>
         <?php endif;?>
     </ul>

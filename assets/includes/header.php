@@ -22,7 +22,7 @@ if (session_status() === PHP_SESSION_NONE){
 
     <meta name="description" content="vandreams.fr : le site de petites annonces DE TRIPPERS à TRIPPERS. Consultez des milliers d'annonces van aménagé  >>>">
     <title><?=$page_title?> | Van Dreams </title>
-    <link rel="icon" href="../assets/img/logo_1.png">
+    <link rel="icon" href="assets/img/logo_1.png">
     <!--Ion Icons-->
     <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
     <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
@@ -36,12 +36,12 @@ if (session_status() === PHP_SESSION_NONE){
     <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
 </head>
 <body>
-<header>
+<header class="header">
     <div class=container_header>
         <nav>
             <div class="nav-brand">
-        <a href="../index.php">
-            <img src="../assets/img/logo_1.png" alt="">
+        <a href="index.php">
+            <img src="assets/img/logo_1.png" alt="">
         </a>
     </div>
 
@@ -54,8 +54,33 @@ if (session_status() === PHP_SESSION_NONE){
             <i class="icon ion-md-close"></i>
         </div>
         <li class="nav-item">
-            <a href="../logout.php" class="nav-link">Déconnexion</a>
+            <a href="index.php" class="nav-link">Accueil</a>
         </li>
+        <li class="nav-item">
+            <a href="post.php" class="nav-link">Les annonces</a>
+        </li>
+        <li class="nav-item">
+            <a href="post.php" class="nav-link">Déposer une annonces</a>
+        </li>
+        <li class="nav-item">
+            <a href="admin/index_admin.php" class="nav-link">Back-office</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-user"></i>
+            </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <?php if(getMembre() === null):?>
+            <a href="login.php#register" class="dropdown-item">Inscription</a>    
+            <a href="login.php" class="dropdown-item">Connexion</a>
+        <?php else :?>          
+          <a class="dropdown-item"  href="user/profil.php">Mon Profil</a>
+          <a class="dropdown-item" href="#">Messagerie </a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="logout.php">Déconnexion</a>
+        </div>
+        </li>
+        <?php endif;?>
     </ul>
 </nav>
 </div>

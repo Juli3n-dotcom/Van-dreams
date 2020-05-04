@@ -91,7 +91,7 @@ if(isset($_POST['login'])){
 }
   
 $page_title ='connexion';
-include __DIR__.'/assets/includes/header_index.php';
+include __DIR__.'/assets/includes/header.php';
 ?>
 
 <?php include __DIR__.'/assets/includes/flash.php';?>
@@ -122,7 +122,7 @@ include __DIR__.'/assets/includes/header_index.php';
     </div>
 </div>
 
-
+<script type="text/javascript" src="assets/js/login.js"></script>
 <?php
-include __DIR__.'/assets/includes/footer_index.php';
+include __DIR__.'/assets/includes/footer.php';
 ?>

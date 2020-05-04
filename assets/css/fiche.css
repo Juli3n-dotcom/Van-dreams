@@ -66,22 +66,34 @@
     background-size: cover;
     text-align: center;
   }
-  .form-box_fiche{
-    width: 80%;
-    height: 500px;
-    position: relative;
-    margin: 0 auto;
-    /* padding-left: 90px; */
-    background-color:  rgba(255,255,255,.7);
-    padding: 0 auto;
-    text-align: center;
+  
+  .hero_fiche{
+    height: auto;
+    width: 100%;
+    padding: 2rem;
+    background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url('../img/mini_van.jpg');
+    background-position: center;
+    background-size: cover;
+    /* position: absolute; */
 }
-
+.form-box_fiche{
+  width: 380px;
+    height: 480px;
+    position: relative;
+    margin: 2rem auto;
+    background-color:  rgba(255,255,255,.7);
+    padding: 5px;
+    overflow: hidden;
+}
+.hero_fiche h4{
+  text-align: center;
+  color: var(--white);
+}
 .input-group_fiche{
   top:50px;
   position: absolute;
   width: 280px;
-  
+  left: 50px;
 }
 
 #login_fiche{
@@ -160,6 +172,12 @@
 /* **** Media query **** */
 /* ******************** */
 
+@media screen and (min-width: 400px){
+  .input-group_fiche{
+    left: 40px;
+  }
+}
+
 @media screen and (min-width: 570px){
   #info1 .info-right{
     margin-top:0;
@@ -172,6 +190,9 @@
   #info2 .info-right{
     margin-left: 50px;
   }
+  .input-group_fiche{
+    left: 40px;
+  }
 
   #showcase img{
     margin-top: 10rem;
@@ -180,7 +201,7 @@
 
 @media screen and (min-width: 900px){
   .form-box_fiche{
-    width: 100%;
+    width: 50%;
     padding-left: 10px;
     
 }
@@ -192,10 +213,12 @@
 
 @media screen and (min-width: 1000px){
   .form-box_fiche{
-   
+    width: 40%;
     padding-left: 70px;
     
 }
-
+.input-group_fiche{
+  left: 50px;
+}
 
 }

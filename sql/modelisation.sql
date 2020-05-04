@@ -144,27 +144,51 @@ CONSTRAINT fk_favoris_annonce
       ON DELETE CASCADE
 )ENGINE=INNODB;
 
+CREATE TABLE conversation
+(
+   id_conversation INT(3) NOT NULL AUTO_INCREMENT,
+   membre_id1 INT(3) DEFAULT NULL,
+   destinataire INT(3) DEFAULT NULL,
+   annonce_id INT(3) DEFAULT NULL,
+   subject VARCHAR(255)DEFAULT NULL,
+    message TEXT NOT NULL,
+    date_enregistrement DATETIME NOT NULL,
+   PRIMARY KEY (id_conversation),
+   CONSTRAINT fk_conversation_membre_id1
+      FOREIGN KEY (membre_id1)
+      REFERENCES membre(id_membre)
+      ON DELETE CASCADE,
+   CONSTRAINT fk_conversation_destinataire
+      FOREIGN KEY (destinataire)
+      REFERENCES membre(id_membre)
+      ON DELETE CASCADE,
+      CONSTRAINT fk_conversation_annonce
+      FOREIGN KEY  (annonce_id)
+      REFERENCES  annonces(id_annonce)
+      ON DELETE CASCADE
+)ENGINE=INNODB;
+
 CREATE TABLE message
 (
    id_message INT(3) NOT NULL AUTO_INCREMENT,
    membre_id1 INT(3) DEFAULT NULL,
-   membre_id2 INT(3) DEFAULT NULL,
-   annonce_id INT(3) DEFAULT NULL,
-   subject VARCHAR(255)DEFAULT NULL,
+   destinataire INT(3) DEFAULT NULL,
+   conversation_id INT(3) DEFAULT NULL,
     message TEXT NOT NULL,
+    est_lu TINYINT NOT NULL,
     date_enregistrement DATETIME NOT NULL,
    PRIMARY KEY (id_message),
    CONSTRAINT fk_message_membre_id1
       FOREIGN KEY (membre_id1)
       REFERENCES membre(id_membre)
       ON DELETE CASCADE,
-   CONSTRAINT fk_message_membre_id2
-      FOREIGN KEY (membre_id2)
+   CONSTRAINT fk_message_destinataire
+      FOREIGN KEY (destinataire)
       REFERENCES membre(id_membre)
       ON DELETE CASCADE,
-      CONSTRAINT fk_message_annonce
-      FOREIGN KEY  (annonce_id)
-      REFERENCES  annonces(id_annonce)
+      CONSTRAINT fk_message_conversation
+      FOREIGN KEY  (conversation_id)
+      REFERENCES  conversation(id_conversation)
       ON DELETE CASCADE
 )ENGINE=INNODB;
 

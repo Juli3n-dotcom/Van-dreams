@@ -140,7 +140,7 @@ if(isset($_POST['add'])){
 
 
 $page_title ='Dépot d\'annonces';
-include __DIR__.'/assets/includes/header_index.php';
+include __DIR__.'/assets/includes/header.php';
 ?>
 
 <?php include __DIR__.'/assets/includes/flash.php';?>
@@ -253,52 +253,9 @@ include __DIR__.'/assets/includes/header_index.php';
     </div>
 </div>
 
-<script>
-    function handleFiles(file, preview) {
-        preview.innerHTML = "";
-        let imageType = /^image\//;
 
-        if (!imageType.test(file.type)) {
-            return null;
-        }
-
-        let img = document.createElement("img");
-        img.classList.add("image_preview");
-        img.file = file;
-        preview.appendChild(img);
-        img.style.width = '50%';
-        img.style.maxWidth = '100px';
-        img.style.heigt = 'auto';
-        img.style.maxHeight = '150px';
-        img.style.display = 'block';
-        img.style.marginLeft = 'auto';
-        img.style.marginRight = 'auto';
-        img.style.marginBottom = '1rem';
-        let reader = new FileReader();
-        reader.onload = (function (aImg) {
-            return function (e) {
-                aImg.src = e.target.result;
-            };
-        })(img);
-        reader.readAsDataURL(file);
-    }
-    for (let i = 0; i < 3; i++) {
-
-        let inputFileElt = document.getElementById('photo' + (i + 1));
-        let etiquetteImageElt = document.getElementById('etiquette_image' + (i + 1));
-        let previewElt = document.getElementById('preview' + (i + 1));
-       
-
-        inputFileElt.addEventListener('change', function () {
-            handleFiles(inputFileElt.files[0], previewElt);
-            let nom_image = 'ok';
-            etiquetteImageElt.textContent = nom_image;
-        });
-
-    }   
-
-    
-</script>
+<script type="text/javascript" src="assets/js/ajax_post.js"></script>
+<script type="text/javascript" src="assets/js/depot.js"></script>
 <?php
 include __DIR__.'/assets/includes/footer.php';
 ?>

@@ -6,12 +6,12 @@ require_once __DIR__ . '/assets/functions/register.php';
 $Annonce =  getAnnonceByID($pdo, $_GET['id'] ?? null);
 $Membre = getMembre($pdo, $_GET['id_membre'] ?? null);
 
-// if ($Annonce === null && !role(ROLE_ADMIN)){
+if ($Annonce === null && !role(ROLE_ADMIN)){
 
-//     ajouterFlash('warning', 'Annonce inconnu.');
-//     session_write_close();
-//     header('location:index.php');
-// }
+    ajouterFlash('warning', 'Annonce inconnu.');
+    session_write_close();
+    header('location:index.php');
+}
 
 // traitement login
 if(isset($_POST['login'])){
@@ -39,7 +39,6 @@ if(isset($_POST['login'])){
     $_SESSION['membre']=$membre;
     ajouterFlash('success','Bonjour '.getMembre()['prenom']);
     session_write_close();
-    header("Location: index.php#id=".$Annonce['id_annonce']);
   }
 }
 
@@ -97,38 +96,50 @@ if (isset($_POST['register'])){
       unset($_POST);
       ajouterFlash('success','Welcome!');
       session_write_close();
-      header('location:login.php#login');
+
   }
 }
 
 //Message
 if(isset($_POST['envoyer'])){
+  
 
-
-  // if(empty($_POST['message'])||strlen($_POST['message'])>255){
-  //  ajouterFlash('danger','Votre message est vide.');
-  //   }else{
-    // $id_membre = $Annonce['membre_id'];
-    // $data_membre = $pdo->query("SELECT * FROM membre WHERE id_membre = '$id_membre'");
-    // $membre = $data_membre->fetch(PDO::FETCH_ASSOC);
- var_dumpt('coucou');
+  if(empty($_POST['message'])||strlen($_POST['message'])>255){
+   ajouterFlash('danger','Votre message est vide.');
+    }else{
       
-    //     $req = $pdo->prepare(
-    //         'INSERT INTO message(membre_id1, membre_id2, message, date_enregistrement, lu)
-    //         VALUES (:membre_id1, :membre_id2, :message, :date, :lu)'
-    //     );
-    //     $req->bindParam(':membre_id1', getMembre()['id_membre'], PDO::PARAM_INT);
-    //     $req->bindParam(':membre_id2', $_POST['destinataire']);
-    //     $req->bindParam(':message', $_POST['message']);
-    //     $req->bindValue(':date',(new DateTime())->format('Y-m-d H:i:s'));
-    //     $req->bindValue(':lu',0);
-    //     $req->execute();
-    // }
+        $req = $pdo->prepare(
+            'INSERT INTO conversation (membre_id1, destinataire, annonce_id, subject, date_enregistrement)
+            VALUES (:membre_id1, :destinataire, :annonce_id, :subject,  :date)'
+        );
+        $req->bindParam(':membre_id1', getMembre()['id_membre'], PDO::PARAM_INT);
+        $req->bindParam(':destinataire', $Annonce['membre_id']);
+        $req->bindParam(':annonce_id', $Annonce['id_annonce']);
+        $req->bindParam(':subject', $_POST['subject']);
+        $req->bindValue(':date',(new DateTime())->format('Y-m-d H:i:s'));
+        $req->execute();
+
+        $id_conversation = $pdo-> lastInsertId();
+
+        $req2 = $pdo->prepare(
+          'INSERT INTO message (membre_id1, destinataire, conversation_id,  message, est_lu, date_enregistrement)
+          VALUES (:membre_id1, :destinataire, :conversation_id, :message, :lu, :date)'
+      );
+      $req2->bindParam(':membre_id1', getMembre()['id_membre'], PDO::PARAM_INT);
+      $req2->bindParam(':destinataire', $Annonce['membre_id']);
+      $req2->bindParam(':conversation_id', $id_conversation);
+      $req2->bindParam(':message', $_POST['message']);
+      $req2->bindValue(':date',(new DateTime())->format('Y-m-d H:i:s'));
+      $req2->bindValue(':lu',0);
+      $req2->execute();
+    }
+    unset($_POST);
+    ajouterFlash('success','Votre message a bien été envoyé');
 }
 
 
 $page_title ='Annonce N°VD-00'.$Annonce['id_annonce'];
-include __DIR__.'/assets/includes/header_index.php';
+include __DIR__.'/assets/includes/header.php';
 ?>
 
 <?php include __DIR__.'/assets/includes/flash.php';?>
@@ -254,39 +265,43 @@ include __DIR__.'/assets/includes/header_index.php';
       </div>
     </section>
 
+    
     <div class="contact_form_fiche">
-    <?php if(getMembre() !== null):?>
-      <div id="contact">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-5 col-sm-5 form-box_fiche">
-            <form action="fiche.php?id=<?=$Annonce['id_annonce'];?>" method="POST">
-              <div class="input-group_fiche">
-                <h3 class="title_part">Votre message pour <?= $membre['prenom']?></h3>
-                    <input type="text" class="input-field" name="subject" placeholder="Le suject de votre message" value="<?= htmlspecialchars($_POST['subject']??'');?>">
-                    <textarea class="input-field" name="message" cols="40" rows="12" placeholder="Votre message" 
-                    value="<?= htmlspecialchars($_POST['message']??'');?>"></textarea>
-                    <input type="submit" class="submit-btn_depot" name="envoyer" value="Envoyer">
-              </div>
-        </form>
-    </div>
+      <?php if(getMembre() !== null):?>
+        <div id="contact">
+          <div class="container">
+            <div class="row">
+              <div class="form-box_fiche">
+                <form action="" method="post">
+                  <div class="input-group_fiche">
+                    <h3 class="title_part">Votre message pour <?= $membre['prenom']?></h3>
+                      <input type="text" class="input-field" name="subject" placeholder="Le suject de votre message" value="<?= htmlspecialchars($_POST['subject']??'');?>">
+                      <textarea class="input-field" name="message" cols="40" rows="12" placeholder="Votre message" 
+                      value="<?= htmlspecialchars($_POST['message']??'');?>"></textarea>
+                      <button type="submit" class="submit-btn_depot" name="envoyer">Envoyer</button>
+                  </div>
+                </form>
+            </div>
+          </div>
+        </div>
+      </div>
     <?php else:?>
-      <div id="login_fiche">
-      <h3>Merci de vous connecter pour vous envoyer un message</h3>
-      <div class="form-box">
+      <div class="hero_fiche">
+        <h4>Merci de vous connecter pour contacter <?= $membre['prenom']?></h4>
+    <div class="form-box">
         <div class="button-box">
             <div id="btn"></div>
             <button type="button" class="toggle-btn"  id="login_btn">Connexion</button>
             <button type="button" class="toggle-btn"  id="register_btn">Inscription</button>
         </div>
-        <form action="fiche.php?id=<?=$Annonce['id_annonce'];?>" method="POST" class="input-group" id="login">
+        <form action="" method="POST" class="input-group" id="login">
         <div class="logo"></div>
             <input type="email" class="input-field" name="identifiant" placeholder="Votre adresse email">
             <input type="password" class="input-field" name="password_login" placeholder="Votre mot de passe">
             <input type="checkbox" class="check-box"><span>Se souvenir de moi</span>
             <button type="submit" class="submit-btn" name="login">Connexion</button>
         </form>
-        <form action="fiche.php?id=<?=$Annonce['id_annonce']?>" method="POST" class="input-group" id="register">
+        <form action="" method="POST" class="input-group" id="register">
             <input type="text" name="name" class="input-field" placeholder="Votre Nom" value="<?= $_POST['name'] ?? '' ?>">
             <input type="text" name="first_name" class="input-field" placeholder="Votre Prénom" value="<?= $_POST['first_name'] ?? '' ?>">
             <input type="email" name="email" class="input-field" placeholder="Email" value="<?= $_POST['email'] ?? '' ?>">
@@ -296,11 +311,10 @@ include __DIR__.'/assets/includes/header_index.php';
             <button type="submit" class="submit-btn" name="register">Valider</button>
         </form>
     </div>
-    </div>
+</div>
     <?php endif;?>
     </div>  
-    </div> 
-    </div> 
+    
 
 <div class="portfolio-lightboxes">
 
@@ -332,6 +346,8 @@ include __DIR__.'/assets/includes/header_index.php';
 </div>
 
 </div>
+
+<script type="text/javascript" src="assets/js/scroll.js"></script>
 <?php
-include __DIR__.'/assets/includes/footer_index.php';
+include __DIR__.'/assets/includes/footer.php';
 ?>

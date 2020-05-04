@@ -30,6 +30,6 @@ function getAnnonces(PDO $pdo):array
           FROM annonces
           ORDER BY date_enregistrement DESC'
         );
-       $Annonce = $req->fetchAll(PDO::FETCH_ASSOC);
-      return $Annonce;
+       $annonce = $req->fetchAll(PDO::FETCH_ASSOC);
+      return $annonce;
         }
