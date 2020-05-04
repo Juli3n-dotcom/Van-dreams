@@ -63,18 +63,23 @@ $data = $annoncesSignale ->fetch();
 $signal = $data['nb'];
 ?>
             <div class="submenu" id="submenu">
-<a href="#"><i class="fas fa-archive"></i> Les Annonces <i class="fas fa-chevron-down right"></i></a>
+<a href="#"><i class="fas fa-archive"></i> Les Annonces <span class="badge badge-secondary"><?= $signal ;?></span> <i class="fas fa-chevron-down right"></i></a>
                 <div class="sub-content hide" id="sub-content">
                     <a href="annonces.php"> Gestion des annonces</a>
                     <a href="annonces_signalee.php"> Annonces signalées <span class="badge badge-secondary"><?= $signal ;?></span></a>
                 </div>
             </div>
+<?php
+$newmessages=$pdo->query('SELECT COUNT(*)AS nb FROM message_admin WHERE est_lu = 0');
+$data = $newmessages ->fetch();
+$newM = $data['nb'];
+?>
             <div class="submenu" id="submenu">
-                <a href="#"><i class="far fa-envelope"></i> Messages <i class="fas fa-chevron-down right"></i></a>
+                <a href="#"><i class="far fa-envelope"></i> Messages <span class="badge badge-secondary"><?= $newM ;?></span> <i class="fas fa-chevron-down right"></i></a>
                 <div class="sub-content hide" id="sub-content">
-                    <a href="#"> Nouveau message</a>
-                    <a href="#"> Messages reçus</a>
-                    <a href="#"> Messages envoyés</a>
+                    <a href="new_msg.php"> Nouveaux messages <span class="badge badge-secondary"><?= $newM ;?></span></a>
+                    <a href="oldmsg.php"> Messages reçus</a>
+                    <a href="sendmsg.php"> Messages envoyés</a>
                 </div>
             </div>
             <div class="submenu" id="submenu">

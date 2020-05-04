@@ -195,11 +195,29 @@ CREATE TABLE message
 CREATE TABLE message_admin
 (
    id_message INT(3) NOT NULL AUTO_INCREMENT,
-   membre_id1 INT(3) DEFAULT NULL,
+   name VARCHAR(255),
    email VARCHAR(50) NOT NULL,
+   subject VARCHAR(255)DEFAULT NULL,
     message TEXT NOT NULL,
+    est_lu TINYINT NOT NULL,
     date_enregistrement DATETIME NOT NULL,
    PRIMARY KEY (id_message)
+)ENGINE=INNODB;
+
+CREATE TABLE reponse_admin
+(
+   id_message INT(3) NOT NULL AUTO_INCREMENT,
+   name VARCHAR(255),
+   email VARCHAR(50) NOT NULL,
+   subject VARCHAR(255)DEFAULT NULL,
+    message TEXT NOT NULL,
+    message_id INT(3) DEFAULT NULL,
+    date_enregistrement DATETIME NOT NULL,
+   PRIMARY KEY (id_message),
+    CONSTRAINT fk_message_reponse
+      FOREIGN KEY  (message_id)
+      REFERENCES  message_admin(id_message)
+      ON DELETE CASCADE
 )ENGINE=INNODB;
 
 CREATE TABLE online
