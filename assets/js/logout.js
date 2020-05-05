@@ -5,7 +5,7 @@ $(function()
         setInterval(function(){
          var storedTimeStamp = sessionStorage.getItem("lastTimeStamp");
          timeCompare(storedTimeStamp);
-        },3000);
+        },10000);
       }
 
       function timeCompare(timeString){

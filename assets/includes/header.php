@@ -71,7 +71,7 @@ if (session_status() === PHP_SESSION_NONE){
             </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
         <?php if(getMembre() === null):?>
-            <a href="login.php#register" class="dropdown-item">Inscription</a>    
+            <a href="login.php" class="dropdown-item">Inscription</a>    
             <a href="login.php" class="dropdown-item">Connexion</a>
         <?php else :?>          
           <a class="dropdown-item"  href="user/profil.php">Mon Profil</a>
