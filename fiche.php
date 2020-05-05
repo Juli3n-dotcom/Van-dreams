@@ -35,6 +35,10 @@ if(isset($_POST['login'])){
 
   }else{
 
+    if(isset($_POST['rememberme'])){
+      setcookie('token',$membre['token'],time()+365*24*3600, null, null, false, true);
+  }
+
     unset($membre['password']);
     $_SESSION['membre']=$membre;
     ajouterFlash('success','Bonjour '.getMembre()['prenom']);
