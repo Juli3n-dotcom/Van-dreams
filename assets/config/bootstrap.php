@@ -13,3 +13,4 @@ require_once __DIR__ . '/../functions/counter.php';
 include __DIR__.'/../includes/user_nbr_live.php';
 
 session_start();
+

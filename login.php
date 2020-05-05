@@ -23,6 +23,10 @@ if(isset($_POST['login'])){
         ajouterFlash('danger','Mot de passe erroné!');
   
     }else{
+
+        if(isset($_POST['rememberme'])){
+            setcookie('token',$membre['token'],time()+365*24*3600, null, null, false, true);
+        }
   
       unset($membre['password']);
       $_SESSION['membre']=$membre;
@@ -107,7 +111,7 @@ include __DIR__.'/assets/includes/header.php';
         <div class="logo"></div>
             <input type="email" class="input-field" name="identifiant" placeholder="Votre adresse email">
             <input type="password" class="input-field" name="password_login" placeholder="Votre mot de passe">
-            <input type="checkbox" class="check-box"><span>Se souvenir de moi</span>
+            <!-- <input type="checkbox" class="check-box" name="rememberme"><span>Se souvenir de moi</span> -->
             <button type="submit" class="submit-btn" name="login">Connexion</button>
         </form>
         <form action="login.php" method="POST" class="input-group" id="register">
