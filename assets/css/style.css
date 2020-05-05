@@ -784,8 +784,22 @@ text-align: center;
         background-size: cover;
     }
 }
+@media screen and (min-height: 470px){
+    .ellipse-container{
+        
+        
+        top: 8rem;
+       
+    }
+    
+    .coords{
+        
+        top: 50%;
+        
+    }
+}
 
-@media screen and (min-width: 700px){
+@media (min-height: 700px) and (min-width: 700px){
     header{
         height: 6rem;
     }
