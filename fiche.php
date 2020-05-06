@@ -304,6 +304,7 @@ include __DIR__.'/assets/includes/header.php';
             <input type="password" class="input-field" name="password_login" placeholder="Votre mot de passe">
             <input type="checkbox" class="check-box"><span>Se souvenir de moi</span>
             <button type="submit" class="submit-btn" name="login">Connexion</button>
+            <a href="lost_password.php">Mot de passe oublié </a>
         </form>
         <form action="" method="POST" class="input-group" id="register">
             <input type="text" name="name" class="input-field" placeholder="Votre Nom" value="<?= $_POST['name'] ?? '' ?>">

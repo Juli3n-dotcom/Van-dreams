@@ -236,3 +236,12 @@ CREATE TABLE liste_newsletter
     date_enregistrement DATETIME NOT NULL,
     PRIMARY KEY (id)
 )ENGINE=INNODB;
+
+CREATE TABLE recuperation
+(
+    id INT(3)NOT NULL AUTO_INCREMENT,
+    email varchar(255),
+    code INT(11),
+    confirm TINYINT,
+    PRIMARY KEY (id)
+)ENGINE=INNODB;

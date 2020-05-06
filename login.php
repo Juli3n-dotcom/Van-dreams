@@ -109,18 +109,19 @@ include __DIR__.'/assets/includes/header.php';
         </div>
         <form action="login.php" method="POST" class="input-group" id="login">
         <div class="logo"></div>
-            <input type="email" class="input-field" name="identifiant" placeholder="Votre adresse email">
+            <input type="email" class="input-field" name="identifiant" placeholder="Votre adresse email" value="<?= htmlspecialchars($_POST['identifiant']) ?? '' ?>">
             <input type="password" class="input-field" name="password_login" placeholder="Votre mot de passe">
             <input type="checkbox" class="check-box" name="rememberme"><span>Se souvenir de moi</span>
             <button type="submit" class="submit-btn" name="login">Connexion</button>
+            <a href="lost_password.php">Mot de passe oublié </a>
         </form>
         <form action="login.php" method="POST" class="input-group" id="register">
-            <input type="text" name="name" class="input-field" placeholder="Votre Nom" value="<?= $_POST['name'] ?? '' ?>">
-            <input type="text" name="first_name" class="input-field" placeholder="Votre Prénom" value="<?= $_POST['first_name'] ?? '' ?>">
-            <input type="email" name="email" class="input-field" placeholder="Email" value="<?= $_POST['email'] ?? '' ?>">
+            <input type="text" name="name" class="input-field" placeholder="Votre Nom" value="<?= htmlspecialchars($_POST['name']) ?? '' ?>">
+            <input type="text" name="first_name" class="input-field" placeholder="Votre Prénom" value="<?= htmlspecialchars($_POST['first_name']) ?? '' ?>">
+            <input type="email" name="email" class="input-field" placeholder="Email" value="<?= htmlspecialchars($_POST['email']) ?? '' ?>">
             <input type="password" name="password" class="input-field" placeholder="Mot de passe">
             <input type="password" name="confirm" class="input-field" placeholder="Confirmer MDP">
-            <input type="checkbox" class="check-box" name="cgu"><span>J'accepte <a href="cgu.php">les conditions générales d'utilisation</a></span>
+            <input type="checkbox" class="check-box" name="cgu"><span class="cgu">J'accepte <a href="cgu.php">les conditions générales d'utilisation</a></span>
             <button type="submit" class="submit-btn" name="register">Valider</button>
         </form>
     </div>
