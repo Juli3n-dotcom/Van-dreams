@@ -127,10 +127,11 @@ if(isset($_POST['add'])){
                               $req2->bindValue(':date',(new DateTime())->format('Y-m-d H:i:s'));
                               $req2->execute();
            }
+        $annonce = $pdo-> lastInsertId();
         unset($_POST);
         ajouterFlash('success','Annonce Validée');
         session_write_close();
-        header('location:post.php');
+        header('location:fiche.php?id='.$annonce);
    } 
 
 }

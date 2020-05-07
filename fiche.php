@@ -260,7 +260,6 @@ include __DIR__.'/assets/includes/header.php';
                 <p>La personne qui publie ne souhaite pas afficher ses coordonnées,</p>
                 <p>Merci d'utilser le formulaire de contact</p>
              <?php else:?>
-              <p ><strong>Email :</strong> <?= $membre['email']?></p>
               <p ><strong>Téléphone :</strong> <?= $Annonce['telephone']?></p>
              <?php endif;?>
             </div>
