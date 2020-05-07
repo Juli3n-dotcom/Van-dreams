@@ -105,5 +105,6 @@ include __DIR__.'/assets/includes/header_index.php';
 
   <script type="text/javascript" src="assets/js/index.js"></script>
 <?php
+include __DIR__.'/assets/includes/cookie.php';
 include __DIR__.'/assets/includes/footer.php';
 ?>
