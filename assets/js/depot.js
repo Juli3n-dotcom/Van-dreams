@@ -101,5 +101,5 @@ prev3.addEventListener('click', function(){
   next4.addEventListener('click', function(){
    depot_4.style.left ="-400px";
    depot_5.style.left="50px";
-   btn_depot.style.width ="360px";
+   btn_depot.style.width ="350px";
 })

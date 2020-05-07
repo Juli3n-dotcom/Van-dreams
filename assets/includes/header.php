@@ -21,7 +21,12 @@ if (session_status() === PHP_SESSION_NONE){
   gtag('config', 'UA-164356474-1');
 </script>
 
-    <meta name="description" content="vandreams.fr : le site de petites annonces DE TRIPPERS à TRIPPERS. Consultez des milliers d'annonces van aménagé  >>>">
+    <meta name="description" content="vandreams.fr : le site de petites annonces DE TRIPPERS à TRIPPERS. Consultez des milliers d'annonces van aménagé">
+    <meta property="og:url"           content="https://http://vandreams.fr/" />
+    <meta property="og:type"          content="website" />
+    <meta property="og:title"         content="Van Dreams" />
+    <meta property="og:description"   content="vandreams.fr : le site de petites annonces DE TRIPPERS à TRIPPERS. Consultez des milliers d'annonces van aménagé" />
+    <meta property="og:image"         content="assets/img/logo_1.png" />
     <title><?=$page_title?> | Van Dreams </title>
     <link rel="icon" href="assets/img/logo_1.png">
     <!--Ion Icons-->
@@ -63,9 +68,11 @@ if (session_status() === PHP_SESSION_NONE){
         <li class="nav-item">
             <a href="post.php" class="nav-link">Déposer une annonces</a>
         </li>
+        <?php if(role(ROLE_ADMIN)):?>
         <li class="nav-item">
-            <a href="admin/index_admin.php" class="nav-link">Back-office</a>
+            <a href="admin/index_admin.php" class="nav-link link4">Back-office</a>
         </li>
+        <?php endif;?>
         <li class="nav-item">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-user"></i>
