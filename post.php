@@ -127,15 +127,13 @@ if(isset($_POST['add'])){
                               $req2->bindValue(':date',(new DateTime())->format('Y-m-d H:i:s'));
                               $req2->execute();
            }
-        
-        ajouterFlash('success','Annonce Validée');
-        
+        $annonce = $pdo-> lastInsertId();
+        $email = getMembre()['email'];
+        $prenom = getMembre()['prenom'];
+        $title = $_POST['titre_annonce'];
 
-        // envoi email de confirmation
-                $prenom = $Membre['prenom'];
-                $email = $Membre['email'];
-                $annonce = lastInsertId();
-                $header="MIME-Version: 1.0\r\n";
+
+        $header="MIME-Version: 1.0\r\n";
                 $header.='From:"vandreams.fr"<postmaster@vandreams.fr>'."\n";
                 $header.='Content-Type:text/html; charset="utf-8"'."\n";
                 $header.='Content-Transfer-Encoding: 8bit';
@@ -154,9 +152,9 @@ if(isset($_POST['add'])){
                             
                             <div align="center">Bonjour <b>'.$prenom.'</b>,</div>
                             <br><br>
-                            <div align="center"> Félicitation votre annonce : <b>'.$_POST['titre_annonce'].'</b> est publiée .</div>
+                            <div align="center">Félicitation votre annonce : <b>'.$title.'</b> est en ligne.</div>
                             <br><br>
-                            <div align="center"> Retrouvé votre annonce <a href="fiche.php?id='.$annonce.';"> ICI </a> .</div>
+                            <div align="center">Cliquer : <a href=https://beta.julien-quentier.fr/fiche.php?id='.$annonce.'> ICI </a> pour la retrouver</div>
                             <br><br>
                             <div align="center">A bientôt sur <a href="vandreams.fr">VanDreams.fr</a> !</div>
                             
@@ -176,9 +174,11 @@ if(isset($_POST['add'])){
                 </html>
                 ';
                 mail($email, "Votre annonce - vandreams.fr", $message, $header);
-                header("Location:fiche.php?id=".$annonce);
-                unset($_POST);
-                session_write_close();
+
+        unset($_POST);
+        session_write_close();
+        header('location:fiche.php?id='.$annonce);
+        ajouterFlash('success','Annonce Validée');
    } 
 
 }
@@ -302,7 +302,6 @@ include __DIR__.'/assets/includes/header.php';
 </div>
 
 
-<script type="text/javascript" src="assets/js/ajax_post.js"></script>
 <script type="text/javascript" src="assets/js/depot.js"></script>
 <?php
 include __DIR__.'/assets/includes/footer.php';

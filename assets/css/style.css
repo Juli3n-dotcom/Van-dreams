@@ -884,7 +884,16 @@ text-align: center;
         
     }
 }
-
+@media screen and (min-height: 670px){
+    
+    
+    .coords{
+        font-size: 0.8rem;
+        top: 50%;
+        left: -9.5rem;
+        
+    }
+}
 
 @media (min-height: 700px) and (min-width: 700px){
     header{
