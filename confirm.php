@@ -2,13 +2,30 @@
 
 require_once __DIR__ . '/assets/config/bootstrap.php';
 
-if(isset($_GET['email'],$_GET['token'])AND !empty($_GET['email']) AND !empty($_GET['token'])){
+if(isset($_GET['name'],$_GET['token'])AND !empty($_GET['name']) AND !empty($_GET['token'])){
 
-    $email = htmlspecialchars(urldecode($_GET['email']));
+    $name = htmlspecialchars(urldecode($_GET['name']));
     $token = htmlspecialchars($_GET['token']);
-    $req = $pdo->prepare("SELECT * FROM membre WHERE email = ? AND confirmKey = ?");
-    $req -> execute(array($pseudo, $token));
+    $req = $pdo->prepare("SELECT * FROM membre WHERE name = ? AND token = ?");
+    $req -> execute(array($name, $token));
 
+    $userexist = $req->rowCount();
+
+    if($userexist == 1){
+        $user = $req ->fetch();
+        if($user['confirmation'] == 0){
+            $updateuser = $pdo->prepare('UPDATE membre SET confirmation = 1 WHERE name = ? AND token = ?');
+            $updateuser->execute(array($name,$token));
+            ajouterFlash("success","Votre compte est maintenant confirmé!");
+            header('location:login.php');
+        }else{
+            ajouterFlash("success","Votre compte est déjà validé!");
+            header('location:login.php');
+        }
+    }else{
+        ajouterFlash("danger","l\'utilisateur n\'existe pas !");
+        header('location:login.php');
+    }
 }
 
 ?>
