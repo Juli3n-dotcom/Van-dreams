@@ -17,14 +17,14 @@ if(isset($_GET['name'],$_GET['token'])AND !empty($_GET['name']) AND !empty($_GET
             $updateuser = $pdo->prepare('UPDATE membre SET confirmation = 1 WHERE name = ? AND token = ?');
             $updateuser->execute(array($name,$token));
             ajouterFlash("success","Votre compte est maintenant confirmé!");
-            header('location:login.php');
+            header('location:welcome');
         }else{
             ajouterFlash("success","Votre compte est déjà validé!");
-            header('location:login.php');
+            header('location:welcome');
         }
     }else{
         ajouterFlash("danger","l\'utilisateur n\'existe pas !");
-        header('location:login.php');
+        header('location:welcome');
     }
 }
 

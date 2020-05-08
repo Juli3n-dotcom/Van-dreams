@@ -10,7 +10,7 @@ if ($Annonce === null && !role(ROLE_ADMIN)){
 
     ajouterFlash('warning', 'Annonce inconnu.');
     session_write_close();
-    header('location:index.php');
+    header('location:welcome');
 }
 
 // traitement login

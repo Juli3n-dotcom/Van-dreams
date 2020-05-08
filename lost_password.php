@@ -138,7 +138,7 @@ if(isset($_POST['submit_mdp'])){
                 $ins_mdp->execute(array($password,$_SESSION['recup_email']));
                 $del_req = $pdo->prepare('DELETE FROM recuperation WHERE email = ?');
                 $del_req->execute(array($_SESSION['recup_email']));
-                header('location:login.php#login');
+                header('location:login');
             }else{ 
                 ajouterFlash('danger','Vos mots de passe de correspondent pas ');
             }

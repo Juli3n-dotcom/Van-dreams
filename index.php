@@ -62,7 +62,7 @@ include __DIR__.'/assets/includes/header_index.php';
         <p class="card-text mb-3">Catégorie :  <?=$category['titre']?> /  <?=$subcat['titre']?></p>
         <p class="card-text mb-3">Localisation :  <?=$country['name']?> / <?=$region['name']?></p>
         <p class="card-text mb-3"><small class="text-muted">Publiée le: <?=$annonce['date_enregistrement']?></small></p>
-        <a href="fiche.php?id=<?=$annonce['id_annonce'];?>" class="btn btn-primary">Voir l'annonce</a>
+        <a href="annonce/<?=$annonce['id_annonce'];?>" class="btn btn-primary">Voir l'annonce</a>
       </div>
       <div class="card-footer">
       <a href="annonces.php#id=<?=$annonce['id_annonce']?>" class="btn btn-danger"data-toggle="modal" data-target="#<?=$annonce['name']?>"><i class='fas fa-trash-alt'></i> Delete</a>

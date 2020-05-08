@@ -1,0 +1,11 @@
+RewriteEngine On
+
+RewriteRule ^welcome$ index.php
+RewriteRule ^post$ post.php
+RewriteRule ^login$ login.php
+RewriteRule ^logout$ logout.php
+RewriteRule ^contactus$ contact.php
+RewriteRule ^cgu$ cgu.php
+RewriteRule ^resetpassword$ lost_password.php
+RewriteRule ^annonce/([0-9]+)$ fiche.php?id=$1
+

@@ -4,7 +4,7 @@
 
 <footer class="footer">
 <div class="company">
-                <a href="../index.php"><i class="fas fa-arrow-circle-left"></i>
+                <a href="../welcome"><i class="fas fa-arrow-circle-left"></i>
                  Retour au site</a>
             </div>
 </footer>

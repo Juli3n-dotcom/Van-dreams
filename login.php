@@ -32,7 +32,7 @@ if(isset($_POST['login'])){
       $_SESSION['membre']=$membre;
       ajouterFlash('success','Bonjour '.getMembre()['prenom']);
       session_write_close();
-      header('Location: index.php');
+      header('Location: welcome');
     }
   }
 
@@ -141,7 +141,7 @@ if(isset($_POST['login'])){
         unset($_POST);    
         session_write_close();
         ajouterFlash('success','Bienvenue!');
-        header('location:login.php');
+        header('location:login');
     }
 }
   
@@ -164,7 +164,7 @@ include __DIR__.'/assets/includes/header.php';
             <input type="password" class="input-field" name="password_login" placeholder="Votre mot de passe">
             <input type="checkbox" class="check-box" name="rememberme"><span>Se souvenir de moi</span>
             <button type="submit" class="submit-btn" name="login">Connexion</button>
-            <a href="lost_password.php">Mot de passe oublié </a>
+            <a href="resetpassword">Mot de passe oublié </a>
         </form>
         <form action="login.php" method="POST" class="input-group" id="register">
             <input type="text" name="name" class="input-field" placeholder="Votre Nom" value="<?= htmlspecialchars($_POST['name']) ?? '' ?>">
@@ -172,7 +172,7 @@ include __DIR__.'/assets/includes/header.php';
             <input type="email" name="email" class="input-field" placeholder="Email" value="<?= htmlspecialchars($_POST['email']) ?? '' ?>">
             <input type="password" name="password" class="input-field" placeholder="Mot de passe">
             <input type="password" name="confirm" class="input-field" placeholder="Confirmer MDP">
-            <input type="checkbox" class="check-box" name="cgu"><span class="cgu">J'accepte <a href="cgu.php">les conditions générales d'utilisation</a></span>
+            <input type="checkbox" class="check-box" name="cgu"><span class="cgu">J'accepte <a href="cgu">les conditions générales d'utilisation</a></span>
             <button type="submit" class="submit-btn" name="register">Valider</button>
         </form>
     </div>

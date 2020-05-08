@@ -38,6 +38,7 @@ require_once __DIR__ . '/../config/bootstrap.php';
     <link href="https://fonts.googleapis.com/css?family=Aldrich&display=swap" rel="stylesheet">
     <!--Our own stylesheet-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <base href="/Van%20dreams/">
     <link rel="stylesheet" href="assets/css/style.css">
     <!-- Js-->
     <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
@@ -48,7 +49,7 @@ require_once __DIR__ . '/../config/bootstrap.php';
     <div class=container_header_index>
         <nav>
             <div class="nav-brand">
-        <a href="index.php">
+        <a href="welcome">
             <img src="assets/img/logo_1.png" alt="">
         </a>
     </div>
@@ -62,13 +63,13 @@ require_once __DIR__ . '/../config/bootstrap.php';
             <i class="icon ion-md-close"></i>
         </div>
         <li class="nav-item">
-            <a href="index.php" class="nav-link link1">Accueil</a>
+            <a href="welcome" class="nav-link link1">Accueil</a>
         </li>
         <li class="nav-item">
-            <a href="post.php" class="nav-link link2">Les annonces</a>
+            <a href="#" class="nav-link link2">Les annonces</a>
         </li>
         <li class="nav-item">
-            <a href="post.php" class="nav-link link3">Déposer une annonces</a>
+            <a href="post" class="nav-link link3">Déposer une annonces</a>
         </li>
         <?php if(role(ROLE_ADMIN)):?>
         <li class="nav-item">
@@ -81,13 +82,13 @@ require_once __DIR__ . '/../config/bootstrap.php';
             </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
         <?php if(getMembre() === null):?>
-            <a href="login.php" class="dropdown-item">Inscription</a>    
-            <a href="login.php" class="dropdown-item">Connexion</a>
+            <a href="login" class="dropdown-item">Inscription</a>    
+            <a href="login" class="dropdown-item">Connexion</a>
         <?php else :?>          
           <a class="dropdown-item"  href="user/profil.php">Mon Profil</a>
           <a class="dropdown-item" href="#">Messagerie </a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="logout.php">Déconnexion</a>
+          <a class="dropdown-item" href="logout">Déconnexion</a>
         </div>
         </li>
         <?php endif;?>

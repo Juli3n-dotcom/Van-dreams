@@ -6,7 +6,7 @@ $Membre = getMembre($pdo, $_GET['id_membre'] ?? null);
 
 if(($Membre === null)){
   ajouterFlash('danger','Veuillez vous connecter');
-  header('location:login.php');
+  header('location:login');
 }
 
 
