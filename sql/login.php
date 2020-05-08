@@ -67,9 +67,9 @@ if(isset($_POST['login'])){
 
         $hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
         $ip = getIp();
-        $explode_name = explode(' ',$_POST['name']);
-        $explode_fn = explode(' ',$_POST['first_name']);
-        $name = 'vd'.$explode_fn[0].$explode_name[0].bin2hex(random_bytes(6));
+        $explode_name = multiexplode(array(",",".","|",":"," ","-"),$_POST['name']);
+        $explode_fn = multiexplode(array(",",".","|",":"," ","-"),$_POST['first_name']);
+        $name = 'vd'.$explode_fn.$explode_name.bin2hex(random_bytes(6));
         $token = bin2hex(random_bytes(16));
 
         $req = $pdo->prepare(
@@ -90,7 +90,6 @@ if(isset($_POST['login'])){
         $req->bindParam(':ip',$ip);
         $req->execute();
 
-        
 
         $email = $_POST['email'];
         $prenom = $_POST['first_name'];
@@ -102,7 +101,7 @@ if(isset($_POST['login'])){
         $message = '
                 <html>
                 <head>
-                  <title>Confirmer Votre adresse email - Van Dreams.fr</title>
+                  <title>Confirmer Votre email - Van Dreams.fr</title>
                   <meta charset="utf-8" />
                 </head>
                 <body>
@@ -114,9 +113,9 @@ if(isset($_POST['login'])){
                             
                             <div align="center">Bonjour <b>'.$prenom.'</b>,</div>
                             <br><br>
-                            <div align="center">Bienvenue Chez Van Dreams.</div>
+                            <div align="center">Merci de votre inscription.</div>
                             <br><br>
-                            <div align="center"><a href="https://beta.julien-quentier.fr/confirm.php?name='.urlencode($name).'&token='.$token.'">Merci de confirmer votre adresse email</a></div>
+                            <div align="center"><a href="https://beta.julien-quentier.fr/confirm.php?name='.urlencode($name).'&token='.$token.'">Merci de confirmer votre compte</a></div>
                             <br><br>
                             <div align="center">A bientôt sur <a href="vandreams.fr">VanDreams.fr</a> !</div>
                             
@@ -135,13 +134,12 @@ if(isset($_POST['login'])){
                 </body>
                 </html>
                 ';
-    
         mail($email, "Confimer votre email - vandreams.fr", $message, $header);
 
-        unset($_POST);    
-        session_write_close();
+        unset($_POST);
         ajouterFlash('success','Bienvenue!');
-        header('location:login.php');
+        session_write_close();
+        header('location:login.php#login');
     }
 }
   

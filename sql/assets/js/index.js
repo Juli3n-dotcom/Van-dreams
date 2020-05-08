@@ -5,7 +5,7 @@ const title = document.querySelector('.nav_title');
 const lien1 = document.querySelector('.link1');
  const lien2 = document.querySelector('.link2');
  const lien3 = document.querySelector('.link3');
- const lien4 = document.querySelector('.link4 i');
+ const lien4 = document.querySelector('.link4');
  const lien5 = document.querySelector('.link5');
  
 
