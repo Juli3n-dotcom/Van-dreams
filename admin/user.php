@@ -88,6 +88,19 @@ include __DIR__.'/assets/includes/header_admin.php';
     </div> <!-- end container-->
   </div>
 
+  <div class="container-fluid">
+    <form method="post">
+        <div class="form-group">
+            <input type="search" class="form-control mb-2" id="search_user" name="search_user" placeholder="Rechercher un membre">
+            <input type="submit" value="Rechercher" id="search" class='btn btn-info'>
+        </div>
+    </form>
+  </div>
+        
+      
+
+  <div id="resultat">
+
 <div class="container-fluid">
     <table class="table table-bordered text-center">
         <thead class="thead-dark">
@@ -183,7 +196,7 @@ include __DIR__.'/assets/includes/header_admin.php';
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <form action="user.php?id=<?=$cat['id_category'];?>" method="post">
+                                        <form action="user.php?id=<?=$Membre['id_membre'];?>" method="post">
                                             
                                                 <p class="mb-2">Etes vous sur de vouloir supprimer le membre #<?= $Membre['id_membre'];?> ?</p>
                                             
@@ -203,6 +216,8 @@ include __DIR__.'/assets/includes/header_admin.php';
         <?php endwhile; ?>
         </tbody>
     </table>
+
+</div><!-- fin resultat-->
 
     <nav aria-label="...">
         <ul class="pagination justify-content-center">
