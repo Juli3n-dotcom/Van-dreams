@@ -102,8 +102,8 @@ if(isset($_POST['add'])){
                 $name = 'vd'.getMembre()['id_membre'].$_POST['category'].$_POST['subcat'].bin2hex(random_bytes(6));
            
                 $req2 = $pdo->prepare(
-                   'INSERT INTO annonces (titre_annonce, name, membre_id, description_annonce, prix, km, places, marque, modele, annee_modele, category_id, subcat_id, photo_id, country_id, region_id, cp, ville, telephone, est_publie, est_signal, date_enregistrement)
-                    VALUES (:titre_annonce, :name, :membre_id, :description_annonce, :prix, :km, :places, :marque, :modele, :annee_modele, :category_id, :subcat_id, :photo_id, :country_id, :region_id, :cp, :ville, :telephone, :publie, :signal, :date)'
+                   'INSERT INTO annonces (titre_annonce, name, membre_id, description_annonce, prix, km, places, vasp, marque, modele, annee_modele, category_id, subcat_id, photo_id, country_id, region_id, cp, ville, telephone, est_publie, est_signal, date_enregistrement)
+                    VALUES (:titre_annonce, :name, :membre_id, :description_annonce, :prix, :km, :places, :vasp, :marque, :modele, :annee_modele, :category_id, :subcat_id, :photo_id, :country_id, :region_id, :cp, :ville, :telephone, :publie, :signal, :date)'
                            );
                               $req2->bindParam(':titre_annonce',$_POST['titre_annonce']);
                               $req2->bindParam(':name',$name);
@@ -112,6 +112,7 @@ if(isset($_POST['add'])){
                               $req2->bindParam(':prix',$_POST['prix']);
                               $req2->bindParam(':km',$_POST['km']);
                               $req2->bindParam(':places',$_POST['places']);
+                              $req2->bindValue(':vasp',isset($_POST['vasp']),PDO::PARAM_BOOL);
                               $req2->bindParam(':marque',$_POST['marque']);
                               $req2->bindParam(':modele',$_POST['modele']);
                               $req2->bindParam(':annee_modele',$_POST['date']);
@@ -230,6 +231,7 @@ include __DIR__.'/assets/includes/header.php';
                         <label for="subcat"><?=$subcat['titre'];?></label>
                     <?php endforeach; ?> 
                 </div>
+                <span id="vasp">VASP</span><input type="checkbox" class="vasp" name="vasp">
                 <input type="text" name="marque" class="input-field" placeholder="La marque du véhicule" value="<?= htmlspecialchars($_POST['marque']??'');?>">
                 <input type="text" name="modele" class="input-field" placeholder="Le modele" value="<?= htmlspecialchars($_POST['modele']??'');?>">
                 <input type="text" name="km" class="input-field" placeholder="Nombre de Kilométre" value="<?= htmlspecialchars($_POST['km']??'');?>">

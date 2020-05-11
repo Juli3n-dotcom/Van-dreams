@@ -280,6 +280,7 @@ include __DIR__.'/assets/includes/header.php';
               <p ><strong>Kilomètres :</strong> <?= $Annonce['km']?></p>
               <p ><strong>Annee modele :</strong> <?= $Annonce['annee_modele']?></p>
               <p ><strong>Nombres de places :</strong> <?= $Annonce['places']?></p>
+              <p ><strong>VASP :</strong> <?= $Annonce['vasp'] == 1 ? 'OUI' :' NON ' ;?></p>
               <br>
             </div>
           </div>
