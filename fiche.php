@@ -303,7 +303,7 @@ include __DIR__.'/assets/includes/header.php';
             <input type="password" class="input-field" name="password_login" placeholder="Votre mot de passe">
             <input type="checkbox" class="check-box"><span>Se souvenir de moi</span>
             <button type="submit" class="submit-btn" name="login">Connexion</button>
-            <a href="lost_password.php">Mot de passe oublié </a>
+            <a href="resetpassword">Mot de passe oublié </a>
         </form>
         <form action="" method="POST" class="input-group" id="register">
             <input type="text" name="name" class="input-field" placeholder="Votre Nom" value="<?= $_POST['name'] ?? '' ?>">
@@ -311,7 +311,7 @@ include __DIR__.'/assets/includes/header.php';
             <input type="email" name="email" class="input-field" placeholder="Email" value="<?= $_POST['email'] ?? '' ?>">
             <input type="password" name="password" class="input-field" placeholder="Mot de passe">
             <input type="password" name="confirm" class="input-field" placeholder="Confirmer MDP">
-            <input type="checkbox" class="check-box" name="cgu"><span>J'accepte <a href="cgu.php">les conditions générales d'utilisation</a></span>
+            <input type="checkbox" class="check-box" name="cgu"><span>J'accepte <a href="cgu">les conditions générales d'utilisation</a></span>
             <button type="submit" class="submit-btn" name="register">Valider</button>
         </form>
     </div>
@@ -352,6 +352,7 @@ include __DIR__.'/assets/includes/header.php';
 </div>
 
 <script type="text/javascript" src="assets/js/scroll.js"></script>
+<script type="text/javascript" src="assets/js/login.js"></script>
 <?php
 include __DIR__.'/assets/includes/footer.php';
 ?>

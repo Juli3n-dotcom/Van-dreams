@@ -22,6 +22,7 @@
     }
 
 
+
 //récupération des annonces
 function getAnnonces(PDO $pdo):array
       {

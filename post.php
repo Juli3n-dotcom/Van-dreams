@@ -5,6 +5,7 @@ require_once __DIR__ . '/assets/functions/post.php';
 $Membre = getMembre($pdo, $_GET['id_membre'] ?? null);
 
 if(($Membre === null)){
+setcookie('post', true, time()+3600);
   ajouterFlash('danger','Veuillez vous connecter');
   header('location:login');
 }
@@ -177,7 +178,7 @@ if(isset($_POST['add'])){
 
         unset($_POST);
         session_write_close();
-        header('location:fiche.php?id='.$annonce);
+        header('location:annonce/'.$annonce);
         ajouterFlash('success','Annonce Validée');
    } 
 

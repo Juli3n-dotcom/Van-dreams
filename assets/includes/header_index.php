@@ -71,13 +71,9 @@ require_once __DIR__ . '/../config/bootstrap.php';
         <li class="nav-item">
             <a href="post" class="nav-link link3">Déposer une annonces</a>
         </li>
-        <?php if(role(ROLE_ADMIN)):?>
+        
         <li class="nav-item">
-            <a href="admin/index_admin.php" class="nav-link link4">Back-office</a>
-        </li>
-        <?php endif;?>
-        <li class="nav-item">
-            <a class="nav-link dropdown-toggle link5" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link dropdown-toggle link4" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-user"></i>
             </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -90,6 +86,11 @@ require_once __DIR__ . '/../config/bootstrap.php';
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="logout">Déconnexion</a>
         </div>
+        </li>
+        <?php endif;?>
+        <?php if(role(ROLE_ADMIN)):?>
+        <li class="nav-item">
+            <a href="admin/index_admin.php" class="nav-link link5">Back-office</a>
         </li>
         <?php endif;?>
     </ul>

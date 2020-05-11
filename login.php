@@ -32,7 +32,12 @@ if(isset($_POST['login'])){
       $_SESSION['membre']=$membre;
       ajouterFlash('success','Bonjour '.getMembre()['prenom']);
       session_write_close();
-      header('Location: welcome');
+      if(!empty($_COOKIE["post"])){
+        setcookie('post','',time()-3600);
+        header('Location: post');
+      }else{
+          header('Location: welcome');
+      }
     }
   }
 
