@@ -1,0 +1,5 @@
+RewriteEngine On
+
+RewriteRule ^myaccount$ profil.php
+
+ErrorDocument 404 /Van%20dreams/oups

@@ -1,9 +1,5 @@
 <?php
-if (session_status() === PHP_SESSION_NONE){
-    session_start();
-  }
-
-require_once __DIR__ . '/../config/bootstrap.php';
+$Membre = getMembre($pdo, $_GET['id_membre'] ?? null);
 ?>
 <!doctype html>
 <html lang="fr">
@@ -39,14 +35,14 @@ require_once __DIR__ . '/../config/bootstrap.php';
     <!--Our own stylesheet-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <base href="/Van%20dreams/">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="/Van%20dreams/assets/css/style.css">
+    <link rel="stylesheet" href="/Van%20dreams/user/assets/css/style.css">
     <!-- Js-->
     <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
     
 </head>
-<body>
-<header class="header_index">
-    <div class=container_header_index>
+<header class="header header_user">
+    <div class=container_header>
         <nav>
             <div class="nav-brand">
         <a href="welcome">
@@ -54,45 +50,36 @@ require_once __DIR__ . '/../config/bootstrap.php';
         </a>
     </div>
 
-    <div class="menu-icons_index open" >
+    <div class="menu-icons_user open" >
         <i class="icon ion-md-menu"></i>
     </div>
 
-    <ul class="nav-list">
-        <div class="menu-icons close">
+    <ul class="nav-list_user">
+        <div class="menu-icons_user close">
             <i class="icon ion-md-close"></i>
         </div>
-        <li class="nav-item">
-            <a href="welcome" class="nav-link link1">Accueil</a>
-        </li>
-        <li class="nav-item">
-            <a href="#" class="nav-link link2">Les annonces</a>
-        </li>
-        <li class="nav-item">
-            <a href="post" class="nav-link link3">Déposer une annonces</a>
-        </li>
-        
-        <li class="nav-item">
-            <a class="nav-link dropdown-toggle link4" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-user"></i>
-            </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <?php if(getMembre() === null):?>
-            <a href="login" class="dropdown-item">Inscription</a>    
-            <a href="login" class="dropdown-item">Connexion</a>
-        <?php else :?>          
-          <a class="dropdown-item"  href="user/myaccount">Mon Profil</a>
-          <a class="dropdown-item" href="#">Messagerie </a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="logout">Déconnexion</a>
+        <div>
+            
+            <div class="img_profil"></div>
+            <div class="profil_name">
+                <h3><?= $Membre['prenom']?></h3>
+            </div>
         </div>
+        <li class="nav-item_user">
+            <a href="#" class="nav-link_user">Mes annonces</a>
         </li>
-        <?php endif;?>
-        <?php if(role(ROLE_ADMIN)):?>
-        <li class="nav-item">
-            <a href="admin/index_admin.php" class="nav-link link5">Back-office</a>
+        <li class="nav-item_user">
+            <a href="#" class="nav-link_user">Mes Favoris</a>
         </li>
-        <?php endif;?>
+        <li class="nav-item_user">
+            <a href="#" class="nav-link_user">Messagerie <span class="notif_msg">0</span></a>
+        </li>
+        <li class="nav-item_user">
+            <a href="#" class="nav-link_user">Mes informations</a>
+        </li>
+        <li class="nav-item_user">
+            <a href="/Van%20dreams/logout" class="nav-link_user">Déconnexion</a>
+        </li>
     </ul>
 </nav>
 </div>

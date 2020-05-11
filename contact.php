@@ -43,7 +43,6 @@ include __DIR__.'/assets/includes/header.php';
     <div class="form-box_contact">
         <h3>Contacter-nous</h3>
         <form action="" method="POST" class="input-group" id="login">
-        <div class="logo"></div>
             <input type="email" class="input-field" name="email" placeholder="Votre adresse email" value="<?= htmlspecialchars($_POST['email']??'');?>">
             <input type="text" class="input-field" name="subject" placeholder="Le suject de votre message" value="<?= htmlspecialchars($_POST['subject']??'');?>">
             <textarea class="input-field" name="message" cols="40" rows="18" placeholder="Votre message" 

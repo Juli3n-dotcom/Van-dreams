@@ -1,0 +1,127 @@
+.notif_msg{
+  bottom: initial;
+    left: auto;
+    background-color: red;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    color: white;
+    font-size: 12px;
+    text-align: center;
+    margin-left: 3px;
+    font-weight: 700;
+}
+
+
+
+
+.header_user{
+  background-color: #fafafa;
+}
+
+.container{
+  width: 100%;
+  /* max-width: 98rem; */
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+.container_header{
+  width: 100%;
+  /* max-width: 98rem; */
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+nav{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0;
+  /* border-bottom: 1px solid rgba(255, 255, 255, .2); */
+}
+
+.nav-brand{
+  width: 3rem;
+}
+  
+.nav-brand h2{
+  color: var(--light-black);
+  transition: color 0.5s;
+}
+
+.menu-icons_user i{
+  color: var(--light-black);
+  font-size: 3rem;
+  cursor: pointer;
+}
+.menu-icons i{
+  color: var(--light-black);
+  font-size: 3rem;
+  cursor: pointer;
+}
+
+.close i{
+  color: var(--light-black);
+}
+
+.nav-list_user{
+  width: 25rem;
+  height: 100vh;
+  background-color: var(--white);
+  position: fixed;
+  top: 0;
+  right: -26rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  transition: all 650ms ease-in-out;
+}
+
+.nav-list_user.active{
+  right: 0;
+}
+
+.close{
+  position: absolute;
+  top: 1rem;
+  left: 1.5rem;
+}
+  
+.nav-item_user{
+      margin: 1.5rem 0;
+  }
+
+.nav-link_user{
+   font-size: 1.6rem;
+  text-transform: uppercase;
+  color: var(--light-black);
+}
+
+.img_profil{
+  position: absolute;
+    top: 14rem;
+  background:url("/Van%20dreams/assets//img/user.svg");
+    width:100px;
+    height: 100px;
+    border-radius: 50%;
+    margin:0 auto;
+    box-shadow: 
+    /* logo shadow */
+    0px 0px 2px #5f5f5f,
+    /* offset */
+    0px 0px 0px 5px #ecf0f3,
+    /*bottom right */
+    8px 8px 15px #a7aaaf,
+    /* top left */
+    -8px -8px 15px #ffffff
+    ;
+}
+
+.profil_name h3{
+  text-align: center;
+    top: 0rem;
+    color: var(--light-black);
+    font-size: 4rem;
+}
