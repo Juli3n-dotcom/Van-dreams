@@ -128,11 +128,10 @@ CREATE TABLE `paiements` (
 );
 
 CREATE TABLE favoris(
-    id_favoris INT(3) NOT NULL AUTO_INCREMENT,
-    favoris TINYINT DEFAULT NULL,
+    id_favori INT(3) NOT NULL AUTO_INCREMENT,
     membre_id INT(3) DEFAULT NULL,
-    ip VARCHAR(255)DEFAULT NULL,
     annonce_id INT(3)NOT NULL,
+    est_favori TINYINT,
 PRIMARY KEY(id_favoris),
  CONSTRAINT fk_favoris_membre
       FOREIGN KEY  (membre_id)
@@ -245,3 +244,4 @@ CREATE TABLE recuperation
     confirm TINYINT,
     PRIMARY KEY (id)
 )ENGINE=INNODB;
+

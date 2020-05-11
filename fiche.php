@@ -104,6 +104,37 @@ if (isset($_POST['register'])){
   }
 }
 
+//like
+if(isset($_POST['addFavori'])){
+  if(getMembre() === null){
+    ajouterFlash('danger','merci de vous connecter pour mettre en favori.');
+  }else{
+    $req = $pdo->prepare(
+      'INSERT INTO favoris (membre_id, annonce_id, est_favoris)
+      VALUES (:membre_id, :annonce_id, :est_favoris)'
+  );
+
+  $req->bindParam(':membre_id',getMembre()['id_membre'], PDO::PARAM_INT);
+  $req->bindParam(':annonce_id',$Annonce['id_annonce']);
+  $req->bindValue(':est_favoris',1);
+  $req->execute();
+
+    ajouterFlash('success','Annonce sauvegardée');
+  }
+}
+
+//sup favori
+if(isset($_POST['removeFavori'])){
+  $req = $pdo->prepare(
+    'DELETE FROM favoris
+    WHERE :id = id_favori'
+  );
+  $req->bindParam(':id',$_POST["idSupr"],PDO::PARAM_INT);
+  $req->execute();
+
+  ajouterFlash('success','Annonce retirée de vos favoris');
+}
+
 //Message
 if(isset($_POST['envoyer'])){
   
@@ -178,9 +209,14 @@ include __DIR__.'/assets/includes/header.php';
 
         $data_sub = $pdo->query("SELECT * FROM sub_category WHERE id_sub_cat = '$id_subcat'");
         $subcat = $data_sub->fetch(PDO::FETCH_ASSOC);
+
+        $user = getMembre()['id_membre'];
+        $id = $Annonce['id_annonce'];
+        $data_loved = $pdo->query("SELECT * FROM favoris WHERE membre_id = '$user' AND annonce_id = '$id'");
+        $favori = $data_loved->fetch(PDO::FETCH_ASSOC);
         ?>
              <a href="#portfolio-item-0">
-              <img src="user/data/img/<?=$photo['photo1']?>" alt="photo_annonce">
+              <img src="/Van%20dreams/user/data/img/<?=$photo['photo1']?>" alt="photo_annonce">
             </a>
             </div>
           </div>
@@ -192,8 +228,18 @@ include __DIR__.'/assets/includes/header.php';
               <p class="customer text-muted">Catégorie : <?= $category['titre']?> / <?= $subcat['titre']?></p>
             </div>
             <br>
-            <p class="btn-default btn-lg showcase-btn"><?= $Annonce['prix']?>  €</p>
-            
+            <p class="btn-default btn-lg showcase-price"><?= $Annonce['prix']?>  €</p>
+
+           <?php if($favori['est_favori'] == TRUE):?>
+            <form action="" method="POST">
+              <input type="hidden" name="idSupr" value="<?=$favori['id_favori']?>">
+              <button type="submit" class="favoris" name='removeFavori'><i class="fas fa-heart"></i></button>
+            </form>
+           <?php else:?> 
+            <form action="" method="POST">
+              <button type="submit" class="favoris" name='addFavori'><i class="far fa-heart"></i></button>
+            </form>
+           <?php endif;?>
           </div>
         </div>
       </div>
@@ -214,12 +260,12 @@ include __DIR__.'/assets/includes/header.php';
                 <div class="row">
                   <div class="col-md-6 col-sm-6">
                     <a href="#portfolio-item-1">
-                     <img src="user/data/img/<?=$photo['photo2']?>" alt="photo_annonce">
+                     <img src="/Van%20dreams/user/data/img/<?=$photo['photo2']?>" alt="photo_annonce">
                     </a>
                   </div>
                   <div class="col-md-6 col-sm-6">
                   <a href="#portfolio-item-2">
-                     <img src="user/data/img/<?=$photo['photo3']?>" alt="photo_annonce">
+                     <img src="/Van%20dreams/user/data/img/<?=$photo['photo3']?>" alt="photo_annonce">
                      </a>
                   </div>
                 </div>
@@ -248,7 +294,7 @@ include __DIR__.'/assets/includes/header.php';
             <div class="info-left">
               <h2>Localisation : </h2>
               <p ><strong>Pays :</strong> <?= $country['name']?></p>
-              <p ><strong>Ragion :</strong> <?= $region['name']?></p>
+              <p ><strong>Région :</strong> <?= $region['name']?></p>
               <p ><strong>Ville :</strong> <?= $Annonce['ville']?></p>
               <p ><strong>Code Postal :</strong> <?= $Annonce['cp']?></p>
             </div>
@@ -327,7 +373,7 @@ include __DIR__.'/assets/includes/header.php';
     <a href="#" class="close"></a>
     <a href="#portfolio-item-1" class="next"></a>
     <a href="#portfolio-item-2" class="prev"></a>
-    <img width="500px" height="500px" src="user/data/img/<?=$photo['photo1']?>">
+    <img width="500px" height="500px" src="/Van%20dreams/user/data/img/<?=$photo['photo1']?>">
   </div>
 </div>
 
@@ -336,7 +382,7 @@ include __DIR__.'/assets/includes/header.php';
     <a href="#" class="close"></a>
     <a href="#portfolio-item-2" class="next"></a>
     <a href="#portfolio-item-1" class="prev"></a>
-    <img width="500px" height="500px" src="user/data/img/<?=$photo['photo3']?>">
+    <img width="500px" height="500px" src="/Van%20dreams/user/data/img/<?=$photo['photo3']?>">
   </div>
 </div>
 
@@ -345,14 +391,16 @@ include __DIR__.'/assets/includes/header.php';
     <a href="#" class="close"></a>
     <a href="#portfolio-item-0" class="next"></a>
     <a href="#portfolio-item-1" class="prev"></a>
-    <img width="500px" height="500px" src="user/data/img/<?=$photo['photo3']?>">
+    <img width="500px" height="500px" src="/Van%20dreams/user/data/img/<?=$photo['photo3']?>">
   </div>
 </div>
 
 </div>
 
 <script type="text/javascript" src="assets/js/scroll.js"></script>
-<script type="text/javascript" src="assets/js/login.js"></script>
+<?php if(getMembre() == null) :?>
+  <script type="text/javascript" src="assets/js/login.js"></script>
+<?php endif;?>
 <?php
 include __DIR__.'/assets/includes/footer.php';
 ?>

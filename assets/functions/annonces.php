@@ -34,3 +34,4 @@ function getAnnonces(PDO $pdo):array
        $annonce = $req->fetchAll(PDO::FETCH_ASSOC);
       return $annonce;
         }
+

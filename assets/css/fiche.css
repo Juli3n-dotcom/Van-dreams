@@ -14,7 +14,7 @@
   #showcase .showcase-right{
     margin-top:90px;
   }
-  #showcase .showcase-btn{
+  #showcase .showcase-price{
     background: linear-gradient(to right, #00bd71,#008656);
     box-shadow: 0 0 10px 1px var(--light-black);
     font-size: 16px;
@@ -26,6 +26,15 @@
     text-transform: uppercase;
     transition: background-color 650ms;
   }
+  #showcase .favoris{
+    height: 4rem;
+    width: 4rem;
+    font-size: 3rem;
+    border: none;
+    background: none;
+    color: palevioletred;
+  }
+  
   
   #testimonial{
     background:#f1f1f1;
