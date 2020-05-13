@@ -83,10 +83,12 @@ if (session_status() === PHP_SESSION_NONE){
             <a href="login" class="dropdown-item">Inscription</a>    
             <a href="login" class="dropdown-item">Connexion</a>
         <?php else :?>          
-          <a class="dropdown-item"  href="user/profil.php">Mon Profil</a>
-          <a class="dropdown-item" href="#">Messagerie </a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="logout">Déconnexion</a>
+            <a class="dropdown-item"  href="user/mypost">Mon annonces</a>
+            <a class="dropdown-item"  href="user/favori">Mes favoris</a>
+            <a class="dropdown-item" href="user/mail">Messagerie </a>
+            <a class="dropdown-item"  href="user/myaccount">Mon Profil</a>
+                <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="logout">Déconnexion</a>
         </div>
         </li>
         <?php endif;?>
