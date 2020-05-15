@@ -3,6 +3,23 @@ if (session_status() === PHP_SESSION_NONE){
     session_start();
   }
   require_once __DIR__ . '/../config/bootstrap.php';
+
+
+  $Membre = getMembre($pdo, $_GET['id_membre'] ?? null);
+
+
+  $user = $Membre['id_membre'];
+  $allNewconver = $pdo->query("SELECT *
+                              FROM conversation
+                              WHERE destinataire ='$user'
+                              ORDER BY date_enregistrement DESC");
+  
+  $newmsg = $pdo->query("SELECT count(*) AS nb 
+                          FROM conversation 
+                          WHERE (destinataire = '$user') 
+                          AND (est_lu_destinataire = 1)");
+  $data =  $newmsg->fetch();
+  $NewMessage = $data['nb'];
 ?>
 <!doctype html>
 <html lang="fr">
@@ -37,8 +54,10 @@ if (session_status() === PHP_SESSION_NONE){
     <link href="https://fonts.googleapis.com/css?family=Aldrich&display=swap" rel="stylesheet">
     <!--Our own stylesheet-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <base href="/Van%20dreams/">
+    <base href="/Vandreams/">
+    <!-- <base href="/beta.julien-quentier.fr/"> -->
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/fiche.css">
     <!-- Js-->
     <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
 </head>
@@ -85,7 +104,7 @@ if (session_status() === PHP_SESSION_NONE){
         <?php else :?>          
             <a class="dropdown-item"  href="user/mypost">Mon annonces</a>
             <a class="dropdown-item"  href="user/favori">Mes favoris</a>
-            <a class="dropdown-item" href="user/mail">Messagerie </a>
+            <a class="dropdown-item" href="user/inbox">Messagerie <span class="notif_msg"><?= $NewMessage > 0 ? $NewMessage : '0';?></span></a>
             <a class="dropdown-item"  href="user/myaccount">Mon Profil</a>
                 <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="logout">Déconnexion</a>

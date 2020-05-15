@@ -158,6 +158,19 @@ nav{
     text-transform: uppercase;
     color: var(--light-black);
 }
+.notif_msg{
+    bottom: initial;
+      left: auto;
+      background-color: red;
+      height: 10px;
+      width: 10px;
+      border-radius: 50%;
+      color: white;
+      font-size: 8px;
+      text-align: center;
+      margin-left: 3px;
+      font-weight: 700;
+  }
    
 .coords{
     font-size: 1rem;

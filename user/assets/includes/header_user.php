@@ -1,5 +1,26 @@
 <?php
 $Membre = getMembre($pdo, $_GET['id_membre'] ?? null);
+
+if ($Membre === null){
+    ajouterFlash('success','Vous avez été déconnecté');
+    session_write_close();
+    header('location:welcome');
+}
+    
+
+
+$user = $Membre['id_membre'];
+$allNewconver = $pdo->query("SELECT *
+                            FROM conversation
+                            WHERE destinataire ='$user'
+                            ORDER BY date_enregistrement DESC");
+
+$newmsg = $pdo->query("SELECT count(*) AS nb 
+                        FROM conversation 
+                        WHERE (destinataire = '$user') 
+                        AND (est_lu_destinataire = 1)");
+$data =  $newmsg->fetch();
+$NewMessage = $data['nb'];
 ?>
 <!doctype html>
 <html lang="fr">
@@ -22,10 +43,10 @@ $Membre = getMembre($pdo, $_GET['id_membre'] ?? null);
     <meta property="og:type"          content="website" />
     <meta property="og:title"         content="Van Dreams" />
     <meta property="og:description"   content="vandreams.fr : le site de petites annonces DE TRIPPERS à TRIPPERS. Consultez des milliers d'annonces van aménagé" />
-    <meta property="og:image"         content="assets/img/logo_1.png" />
+    <meta property="og:image"         content="/Vandreams/assets/img/logo_1.png" />
     <meta name="description" content="vandreams.fr : le site de petites annonces DE TRIPPEURS à TRIPPEURS. Consultez des milliers d'annonces de van aménagé  >>>">
     <title><?=$page_title?> | Van Dreams </title>
-    <link rel="icon" href="assets/img/logo_1.png">
+    <link rel="icon" href="/Vandreams/assets/img/logo_1.png">
     <!--Ion Icons-->
     <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
     <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
@@ -34,9 +55,9 @@ $Membre = getMembre($pdo, $_GET['id_membre'] ?? null);
     <link href="https://fonts.googleapis.com/css?family=Aldrich&display=swap" rel="stylesheet">
     <!--Our own stylesheet-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <base href="/Van%20dreams/">
-    <link rel="stylesheet" href="/Van%20dreams/assets/css/style.css">
-    <link rel="stylesheet" href="/Van%20dreams/user/assets/css/style.css">
+    <!-- <base href="/Vandreams/"> -->
+    <link rel="stylesheet" href="/Vandreams/user/assets/css/style.css">
+    <link rel="stylesheet" href="/Vandreams/assets/css/style.css">
     <!-- Js-->
     <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
     
@@ -46,7 +67,7 @@ $Membre = getMembre($pdo, $_GET['id_membre'] ?? null);
         <nav>
             <div class="nav-brand">
         <a href="welcome">
-            <img src="assets/img/logo_1.png" alt="">
+            <img src="/Vandreams/assets/img/logo_1.png" alt="">
         </a>
     </div>
 
@@ -72,7 +93,7 @@ $Membre = getMembre($pdo, $_GET['id_membre'] ?? null);
             <a href="#" class="nav-link_user">Mes Favoris</a>
         </li>
         <li class="nav-item_user">
-            <a href="#" class="nav-link_user">Messagerie <span class="notif_msg">0</span></a>
+            <a href="inbox" class="nav-link_user">Messagerie <span class="notif_msg"><?= $NewMessage > 0 ? $NewMessage : '0';?></span></a>
         </li>
         <li class="nav-item_user">
             <a href="#" class="nav-link_user">Mes informations</a>

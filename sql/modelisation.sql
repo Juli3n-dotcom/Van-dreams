@@ -133,7 +133,7 @@ CREATE TABLE favoris(
     membre_id INT(3) DEFAULT NULL,
     annonce_id INT(3)NOT NULL,
     est_favori TINYINT,
-PRIMARY KEY(id_favoris),
+PRIMARY KEY(id_favori),
  CONSTRAINT fk_favoris_membre
       FOREIGN KEY  (membre_id)
       REFERENCES  membre(id_membre)
@@ -147,15 +147,17 @@ CONSTRAINT fk_favoris_annonce
 CREATE TABLE conversation
 (
    id_conversation INT(3) NOT NULL AUTO_INCREMENT,
-   membre_id1 INT(3) DEFAULT NULL,
+   expediteur INT(3) DEFAULT NULL,
    destinataire INT(3) DEFAULT NULL,
    annonce_id INT(3) DEFAULT NULL,
    subject VARCHAR(255)DEFAULT NULL,
     message TEXT NOT NULL,
+    est_lu_expediteur TINYINT NOT NULL,
+    est_lu_destinataire TINYINT NOT NULL,
     date_enregistrement DATETIME NOT NULL,
    PRIMARY KEY (id_conversation),
-   CONSTRAINT fk_conversation_membre_id1
-      FOREIGN KEY (membre_id1)
+   CONSTRAINT fk_conversation_expediteur
+      FOREIGN KEY (expediteur)
       REFERENCES membre(id_membre)
       ON DELETE CASCADE,
    CONSTRAINT fk_conversation_destinataire
@@ -171,15 +173,14 @@ CREATE TABLE conversation
 CREATE TABLE message
 (
    id_message INT(3) NOT NULL AUTO_INCREMENT,
-   membre_id1 INT(3) DEFAULT NULL,
+   expediteur INT(3) DEFAULT NULL,
    destinataire INT(3) DEFAULT NULL,
    conversation_id INT(3) DEFAULT NULL,
     message TEXT NOT NULL,
-    est_lu TINYINT NOT NULL,
     date_enregistrement DATETIME NOT NULL,
    PRIMARY KEY (id_message),
-   CONSTRAINT fk_message_membre_id1
-      FOREIGN KEY (membre_id1)
+   CONSTRAINT fk_message_expediteur
+      FOREIGN KEY (expediteur)
       REFERENCES membre(id_membre)
       ON DELETE CASCADE,
    CONSTRAINT fk_message_destinataire

@@ -1,5 +1,7 @@
 RewriteEngine On
 
 RewriteRule ^myaccount$ profil.php
+RewriteRule ^inbox$ messagerie_user.php
 
-ErrorDocument 404 /Van%20dreams/oups
+
+ErrorDocument 404 /Vandreams/oups

@@ -1,5 +1,4 @@
 // animation
-
 window.sr = ScrollReveal();
         sr.reveal('.showcase-left', {
           duration: 2000,
