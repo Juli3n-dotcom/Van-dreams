@@ -51,7 +51,7 @@ button:focus{
     position: absolute;
     top: 0;
     left: 0;
-    background: linear-gradient(135deg, rgba(0,0,0,0.4),rgba(0,0,0,0.4)100%),url("../img/mini_van.jpg") center,no-repeat;
+    background: #242f3f;
     display:flex;
     justify-content: center;
     align-items: center;
