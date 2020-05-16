@@ -58,8 +58,10 @@ require_once __DIR__ . '/../config/bootstrap.php';
     <!-- Js-->
     <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
     
+    
 </head>
 <body>
+
 <header class="header_index">
     <div class=container_header_index>
         <nav>
