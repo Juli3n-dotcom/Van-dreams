@@ -126,7 +126,7 @@ if(isset($_POST['add'])){
                               $req2->bindParam(':telephone',$_POST['phone']);
                               $req2->bindValue(':publie',isset($_POST['est_publie']),PDO::PARAM_BOOL);
                               $req2->bindValue(':signal',0);
-                              $req2->bindValue(':date',(new DateTime())->format('Y-m-d H:i:s'));
+                              $req2->bindValue(':date',(new DateTime())->format('d-m-Y H:i:s'));
                               $req2->execute();
            }
         $annonce = $pdo-> lastInsertId();

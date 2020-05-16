@@ -265,4 +265,91 @@ nav{
 
 .myannonces h1{
   text-align: center;
+  margin-bottom: 4rem;
+}
+
+.annonce-box{
+  margin-bottom: 4rem;
+  border: 0.5px solid var(--light-black);
+}
+
+.annnonce-img img{
+width: 100%;
+}
+.annonce-img{
+  position: relative;
+}
+.price{
+  width: 60px;
+  height: 60px;
+background-color: #00bd71;
+color: #FFF;
+text-align: center;
+font-weight: 600;
+border-radius: 50%;
+padding-top: 20px;
+box-shadow: 0 0 10PX 1PX var(--light-black);
+position: absolute;
+left: 20px;
+top: 45%;
+}
+.price p{
+  font-size: 1.2rem !important;
+}
+
+.annonce-details{
+  padding: 20px;
+  text-align: justify;
+}
+.annonce-details h4{
+  font-weight: 600;
+  margin-top: 20px;
+  font-size: 2rem;
+}
+.annonce-details p{
+  font-size: 10px !important;
+  margin-bottom: 0 !important;
+}
+.annonce_date{
+  color: #777;
+    font-size: 12px;
+    bottom: initial;
+    left: initial;
+}
+.annonce_btn{
+  background: linear-gradient(to right, #00bd71,#008656);
+  box-shadow: 0 0 10px 1px var(--light-black);
+  font-size: 1rem;
+  border-radius: 2rem;
+  color: var(--white);
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 1rem 2.5rem;
+  text-transform: uppercase;
+  transition: background-color 650ms;
+}
+.annonce_btn:hover{
+  text-decoration: none;
+  color: var(--white);
+}
+
+.updateAnnonce{
+  border: none;
+  background: linear-gradient(to right, #0000FF,#00008B);
+}
+.SupAnnonce{
+  border: none;
+  background: linear-gradient(to right, #DC143C,#A52A2A);
+}
+@media screen and (min-width: 700px){
+
+  .price{
+    top: 33%;
+  }
+}
+@media screen and (min-width: 900px){
+
+  .price{
+    top: 50%;
+  }
 }
