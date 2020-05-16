@@ -66,7 +66,7 @@ $NewMessage = $data['nb'];
     <div class=container_header>
         <nav>
             <div class="nav-brand">
-        <a href="welcome">
+        <a href="../welcome">
             <img src="/Vandreams/assets/img/logo_1.png" alt="">
         </a>
     </div>
@@ -87,19 +87,19 @@ $NewMessage = $data['nb'];
             </div>
         </div>
         <li class="nav-item_user">
-            <a href="#" class="nav-link_user">Mes annonces</a>
+            <a href="mesannonces" class="nav-link_user">Mes annonces</a>
         </li>
         <li class="nav-item_user">
             <a href="#" class="nav-link_user">Mes Favoris</a>
         </li>
         <li class="nav-item_user">
-            <a href="inbox" class="nav-link_user">Messagerie <span class="notif_msg"><?= $NewMessage > 0 ? $NewMessage : '0';?></span></a>
+            <a href="inbox" class="nav-link_user">Messagerie <span class="notif_msg_user"><?= $NewMessage > 0 ? $NewMessage : '0';?></span></a>
         </li>
         <li class="nav-item_user">
             <a href="#" class="nav-link_user">Mes informations</a>
         </li>
         <li class="nav-item_user">
-            <a href="/Van%20dreams/logout" class="nav-link_user">Déconnexion</a>
+            <a href="/Vandreams/logout" class="nav-link_user">Déconnexion</a>
         </li>
     </ul>
 </nav>

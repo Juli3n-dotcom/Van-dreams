@@ -102,7 +102,7 @@ if (session_status() === PHP_SESSION_NONE){
             <a href="login" class="dropdown-item">Inscription</a>    
             <a href="login" class="dropdown-item">Connexion</a>
         <?php else :?>          
-            <a class="dropdown-item"  href="user/mypost">Mon annonces</a>
+            <a class="dropdown-item"  href="user/mesannonces">Mon annonces</a>
             <a class="dropdown-item"  href="user/favori">Mes favoris</a>
             <a class="dropdown-item" href="user/inbox">Messagerie <span class="notif_msg"><?= $NewMessage > 0 ? $NewMessage : '0';?></span></a>
             <a class="dropdown-item"  href="user/myaccount">Mon Profil</a>

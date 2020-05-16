@@ -1,4 +1,4 @@
-.notif_msg{
+.notif_msg_user{
   bottom: initial;
     left: auto;
     background-color: red;
@@ -251,4 +251,18 @@ nav{
     border: 0;
     outline: none;
     border-radius: 30px;
+}
+
+/* *********************** */
+/* **** Mes annonces **** */
+/* ********************* */
+
+.myannonces{
+  margin: 4rem;
+  margin-top: 10rem;
+  min-height: 80vh;
+}
+
+.myannonces h1{
+  text-align: center;
 }
