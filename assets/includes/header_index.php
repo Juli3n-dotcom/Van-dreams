@@ -97,7 +97,7 @@ require_once __DIR__ . '/../config/bootstrap.php';
             <a href="login" class="dropdown-item">Connexion</a>
         <?php else :?>          
             <a class="dropdown-item"  href="user/mesannonces">Mes annonces</a>
-            <a class="dropdown-item"  href="user/favori">Mes favoris</a>
+            <a class="dropdown-item"  href="user/favoris">Mes favoris</a>
             <a class="dropdown-item" href="user/messagerie_user.php">Messagerie <span class="notif_msg"><?= $NewMessage > 0 ? $NewMessage : '0';?></span></a>
             <a class="dropdown-item"  href="user/myaccount">Mon Profil</a>
                 <div class="dropdown-divider"></div>

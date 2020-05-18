@@ -272,6 +272,7 @@ nav{
   margin-bottom: 4rem;
   /* border: 0.5px solid var(--light-black); */
   min-height: 600px;
+  box-shadow: 0 0 10px 1px var(--light-black);
 }
 
 .annnonce-img img{
@@ -310,6 +311,10 @@ top: 25%;
 .annonce-details p{
   font-size: 10px !important;
   margin-bottom: 0 !important;
+}
+.annonce-details p i{
+  color: #00bd71;
+  font-size: 12px;
 }
 .annonce_date{
   color: #777;
@@ -417,24 +422,64 @@ margin :0 auto !important;
     outline: none;
     border-radius: 30px;
 }
+
+
+/* *********************** */
+/* **** Mes favoris **** */
+/* ********************* */
+
+.myfavoris{
+  margin: 4rem;
+  margin-top: 10rem;
+  min-height: 80vh;
+}
+
+.myfavoris h1{
+  text-align: center;
+  margin-bottom: 4rem;
+}
+.description_annonce{
+  margin-bottom: 2rem;
+}
+.like{
+position: absolute;
+right: 30px;
+top: 28%;
+}
+.like .favoris{
+  width: 40px;
+  height: 40px;
+    font-size: 2rem;
+    border-radius: 50%;
+    background: var(--light-white);
+    color: palevioletred;
+}
+
 @media screen and (min-width: 700px){
 
   .price{
     top: 20%;
   }
+  .like{
+    top: 20%;
+    }
 }
 @media screen and (min-width: 900px){
 
-  .price{
-    top: 23%;
-  }
+  
+  .like{
+    top: 22%;
+    }
   
 }
 @media screen and (min-width: 1000px){
 
   .price{
-    top: 28%;
+    top: 30%;
   }
+  .like{
+    top: 28%;
+    }
 }
 
 @media screen and (min-width: 1200px){
@@ -442,4 +487,7 @@ margin :0 auto !important;
   .price{
     top: 35%;
   }
+  .like{
+    top: 38%;
+    }
 }

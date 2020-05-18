@@ -154,8 +154,8 @@ include __DIR__.'/assets/includes/header_user.php';
                         </div>
                         <div class="annonce-details">
                             <h4><?= $annonce['titre_annonce']?></h4>
-                            <p>Catégorie : <?= $category['titre']?> / <?= $subcat['titre']?></p>
-                            <p>Localisation : <?= $country['name']?> / <?= $region['name']?></p>
+                            <p><i class="fas fa-th-large"></i> : <?= $category['titre']?> / <?= $subcat['titre']?></p>
+                            <p><i class="fas fa-map-marker-alt"></i> : <?= $country['name']?> / <?= $region['name']?></p>
                         </div>
                         <div class="annoncelink">
                         

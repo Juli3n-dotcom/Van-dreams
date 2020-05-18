@@ -90,7 +90,7 @@ $NewMessage = $data['nb'];
             <a href="mesannonces" class="nav-link_user">Mes annonces</a>
         </li>
         <li class="nav-item_user">
-            <a href="#" class="nav-link_user">Mes Favoris</a>
+            <a href="favoris" class="nav-link_user">Mes Favoris</a>
         </li>
         <li class="nav-item_user">
             <a href="inbox" class="nav-link_user">Messagerie <span class="notif_msg_user"><?= $NewMessage > 0 ? $NewMessage : '0';?></span></a>
