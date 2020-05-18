@@ -85,8 +85,8 @@ if(isset($_POST['login'])){
         $req->bindParam(':email',$_POST['email']);
         $req->bindParam(':name',$name);
         $req->bindParam(':password',$hash);
-        $req->bindParam(':nom',$_POST['name']);
-        $req->bindParam(':prenom',$_POST['first_name']);
+        $req->bindParam(':nom',htmlspecialchars($_POST['name']));
+        $req->bindParam(':prenom',htmlspecialchars($_POST['first_name']));
         $req->bindValue(':statut',0);
         $req->bindValue(':cgu',1);
         $req->bindValue(':date',(new DateTime())->format('Y-m-d H:i:s'));
@@ -141,7 +141,7 @@ if(isset($_POST['login'])){
                 </html>
                 ';
     
-        mail($email, "Confimer votre email - vandreams.fr", $message, $header);
+        mail($email, "Confirmer votre email - vandreams.fr", $message, $header);
 
         unset($_POST);    
         session_write_close();

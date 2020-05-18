@@ -108,25 +108,25 @@ if(isset($_POST['add'])){
                    'INSERT INTO annonces (titre_annonce, name, membre_id, description_annonce, prix, km, places, vasp, marque, modele, annee_modele, category_id, subcat_id, photo_id, country_id, region_id, cp, ville, telephone, est_publie, est_signal, date_enregistrement)
                     VALUES (:titre_annonce, :name, :membre_id, :description_annonce, :prix, :km, :places, :vasp, :marque, :modele, :annee_modele, :category_id, :subcat_id, :photo_id, :country_id, :region_id, :cp, :ville, :telephone, :publie, :signal, :date)'
                            );
-                              $req2->bindParam(':titre_annonce',$_POST['titre_annonce']);
+                              $req2->bindParam(':titre_annonce',htmlspecialchars($_POST['titre_annonce']));
                               $req2->bindParam(':name',$name);
                               $req2->bindParam(':membre_id', getMembre()['id_membre'], PDO::PARAM_INT);
-                              $req2->bindParam(':description_annonce',$_POST['description']);
-                              $req2->bindParam(':prix',$_POST['prix']);
-                              $req2->bindParam(':km',$_POST['km']);
-                              $req2->bindParam(':places',$_POST['places']);
+                              $req2->bindParam(':description_annonce',htmlspecialchars($_POST['description']));
+                              $req2->bindParam(':prix',htmlspecialchars($_POST['prix']));
+                              $req2->bindParam(':km',htmlspecialchars($_POST['km']));
+                              $req2->bindParam(':places',htmlspecialchars($_POST['places']));
                               $req2->bindValue(':vasp',isset($_POST['vasp']),PDO::PARAM_BOOL);
-                              $req2->bindParam(':marque',$_POST['marque']);
-                              $req2->bindParam(':modele',$_POST['modele']);
-                              $req2->bindParam(':annee_modele',$_POST['date']);
+                              $req2->bindParam(':marque',htmlspecialchars($_POST['marque']));
+                              $req2->bindParam(':modele',htmlspecialchars($_POST['modele']));
+                              $req2->bindParam(':annee_modele',htmlspecialchars($_POST['date']));
                               $req2->bindValue(':category_id', $_POST['category']);
                               $req2->bindValue(':subcat_id', $_POST['subcat']);
                               $req2->bindValue(':photo_id', $id_photo);
                               $req2->bindParam(':country_id',$_POST['pays']);
                               $req2->bindParam(':region_id',$_POST['region']);
-                              $req2->bindParam(':cp',$_POST['cp']);
-                              $req2->bindParam(':ville',$_POST['ville']);
-                              $req2->bindParam(':telephone',$_POST['phone']);
+                              $req2->bindParam(':cp',htmlspecialchars($_POST['cp']));
+                              $req2->bindParam(':ville',htmlspecialchars($_POST['ville']));
+                              $req2->bindParam(':telephone',htmlspecialchars($_POST['phone']));
                               $req2->bindValue(':publie',isset($_POST['est_publie']),PDO::PARAM_BOOL);
                               $req2->bindValue(':signal',0);
                               $req2->bindValue(':date',(new DateTime())->format('d-m-Y H:i:s'));

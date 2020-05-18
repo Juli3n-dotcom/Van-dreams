@@ -45,7 +45,7 @@ if (session_status() === PHP_SESSION_NONE){
     <meta property="og:description"   content="vandreams.fr : le site de petites annonces DE TRIPPERS à TRIPPERS. Consultez des milliers d'annonces van aménagé" />
     <meta property="og:image"         content="assets/img/logo_1.png" />
     <title><?=$page_title?> | Van Dreams </title>
-    <link rel="icon" href="assets/img/logo_1.png">
+    <link rel="icon" href="assets/img/logo3.png">
     <!--Ion Icons-->
     <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
     <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
@@ -67,7 +67,7 @@ if (session_status() === PHP_SESSION_NONE){
         <nav>
             <div class="nav-brand">
         <a href="welcome">
-            <img src="assets/img/logo_1.png" alt="">
+            <img src="assets/img/logo3.png" alt="">
         </a>
     </div>
 
@@ -102,7 +102,7 @@ if (session_status() === PHP_SESSION_NONE){
             <a href="login" class="dropdown-item">Inscription</a>    
             <a href="login" class="dropdown-item">Connexion</a>
         <?php else :?>          
-            <a class="dropdown-item"  href="user/mesannonces">Mon annonces</a>
+            <a class="dropdown-item"  href="user/mesannonces">Mes annonces</a>
             <a class="dropdown-item"  href="user/favori">Mes favoris</a>
             <a class="dropdown-item" href="user/inbox">Messagerie <span class="notif_msg"><?= $NewMessage > 0 ? $NewMessage : '0';?></span></a>
             <a class="dropdown-item"  href="user/myaccount">Mon Profil</a>

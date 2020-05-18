@@ -22,52 +22,34 @@ if(isset($_POST['update_annonce'])){
         }elseif (!preg_match('~^[0-9-.]+$~',$_POST['price_update'])) {
        ajouterFlash('danger','Merci d\'utiliser que des chiffres pour votre prix');
 
-        }elseif (!preg_match('~^[0-9-.]+$~',$_POST['date_update'])) {
-        ajouterFlash('danger','Merci de rentrer une date valide');
-     
+    
         }elseif (!preg_match('~^[0-9-.]+$~',$_POST['phone_update'])) {
-        ajouterFlash('danger','saisir un numéro de téléphone valide');
-     
-        }elseif (!preg_match('~^[a-zA-Z0-9_-]+$~',$_POST['cp_update'])) {
-       ajouterFlash('danger','saisir un code postal valide');
-    }else{
+        ajouterFlash('danger','saisir un numéro de téléphone valide'); 
 
+    }else{
 
     $req_update = $pdo->prepare(
         'UPDATE annonces SET
         titre_annonce = :titre_annonce,
         description_annonce = :description_annonce,
-        prix= :prix,
+        prix = :prix,
         km = :km,
-        places = :places,
-        vasp = :vasp,
-        marque = :marque,
-        modele = :modele,
-        annee_modele = :annee_modele,
-        cp = :cp,
-        ville = :ville,
         telephone = :telephone,
         est_publie = :publie
         WHERE id_annonce = :id
         ');
 
-    $req_update->bindParam(':titre_annonce',$_POST['title_update']);
-    $req_update->bindParam(':description_annonce',$_POST['description_update']);
-    $req_update->bindParam(':prix',$_POST['price_update']);
-    $req_update->bindParam(':km',$_POST['km_update']);
-    $req_update->bindParam(':places',$_POST['places_update']);
-    $req_update->bindValue(':vasp',isset($_POST['vasp_update']),PDO::PARAM_BOO);
-    $req_update->bindParam(':marque',$_POST['marque_update']);
-    $req_update->bindParam(':modele',$_POST['modele_update']);
-    $req_update->bindParam(':annee_modele',$_POST['date_update']);
-    $req_update->bindParam(':cp',$_POST['cp_update']);
-    $req_update->bindParam(':ville',$_POST['city_update']);
-    $req_update->bindParam(':telephone',$_POST['phone_update']);
+    $req_update->bindParam(':titre_annonce',htmlspecialchars($_POST['title_update']));
+    $req_update->bindParam(':description_annonce',htmlspecialchars($_POST['description_update']));
+    $req_update->bindParam(':prix',htmlspecialchars($_POST['price_update']));
+    $req_update->bindParam(':km',htmlspecialchars($_POST['km_update']));
+    $req_update->bindParam(':telephone',htmlspecialchars($_POST['phone_update']));
     $req_update->bindValue(':publie',isset($_POST['est_publie_update']),PDO::PARAM_BOOL);
     $req_update->bindParam(':id',$_POST['idUpdate'],PDO::PARAM_INT);
     $req_update->execute();
 
     ajouterFlash('success','Annonce modifiée');
+    header('location:mesannonces');  
 }
 
 }
@@ -75,7 +57,7 @@ if(isset($_POST['update_annonce'])){
 
 
 
-// tratement suppression
+// traitement suppression
 if(isset($_POST['delete_annonce'])){
 
     if(!isset($_POST['delete_check'])){
@@ -205,40 +187,11 @@ include __DIR__.'/assets/includes/header_user.php';
                                                 <label for="km_update" class="label_name">kilométrage : </label>
                                                 <input type="text" name="km_update" class="input-field"  value="<?= htmlspecialchars($annonce['km']??'');?>">
                                                 <hr>
-                                                <label for="places_update" class="label_name">Nombre de places : </label>
-                                                <input type="number" name="places_update" class="input-field" value="<?= htmlspecialchars($annonce['places']??'');?>">
-                                                <hr>
-                                                <?php if($annonce['vasp'] == 1):?>
-                                                    <span id="vasp" class="label_name vaspcat"> VASP</span><input type="checkbox" class="vasp" name="vasp_update" checked>
-                                                <?php else:?>
-                                                    <span id="vasp" class="label_name vaspcat"> VASP</span><input type="checkbox" class="vasp" name="vasp_update">
-                                                <?php endif;?>
-                                                <hr>
-                                                <label for="marque_update" class="label_name">Marque : </label>
-                                                <input type="text" name="marque_update" class="input-field"  value="<?= htmlspecialchars($annonce['marque']??'');?>">
-                                                <hr>
-                                                <label for="modele_update" class="label_name">Modèle : </label>
-                                                <input type="text" name="modele_update" class="input-field"  value="<?= htmlspecialchars($annonce['modele']??'');?>">
-                                                <hr>
-                                                <label for="date_update" class="label_name">Année du modèle : </label>
-                                                <input type="text" name="date_update" class="input-field"  value="<?= htmlspecialchars($annonce['annee_modele']??'');?>">
-                                                <hr>
-                                                <label for="city_update" class="label_name">Ville : </label>
-                                                <input type="text" class="input-field" name="city_update" value="<?= htmlspecialchars($annonce['ville']??'')?>">
-                                                <hr>
-                                                <label for="cp_update" class="label_name">Code Postal : </label>
-                                                <input type="text" class="input-field" name="cp_update" value="<?= htmlspecialchars($annonce['cp']??'')?>">
-                                                <hr>
                                                 <label for="price_update" class="label_name">Votre numéro de téléphone : </label>
                                                 <input type="text" class="input-field" name="phone_update" value="<?= htmlspecialchars($annonce['telephone']??'')?>">
                                                 <hr>
                                                 <label for="price_update" class="label_name">Masquer mon numéro : </label>
-                                                <?php if($annonce['est_publie'] == 1):?>
-                                                    <input type="checkbox" class="check-box checkmypost" name="est_publie_update" checked>
-                                                <?php else: ?>
-                                                    <input type="checkbox" class="check-box checkmypost" name="est_publie_update">
-                                                <?php endif;?>
-                                              
+                                                <input type="checkbox" class="check-box checkmypost" name="est_publie_update" <?= $annonce['est_publie'] == 1 ? 'checked' : '' ;?>>     
                                     </div>
                                     <div class="modal-footer">
                                         <input type="hidden" name="idUpdate" value="<?= $annonce['id_annonce'];?>">

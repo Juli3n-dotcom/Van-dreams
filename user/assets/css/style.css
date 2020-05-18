@@ -356,6 +356,67 @@ margin :0 auto !important;
 .modal-footer{
   background-color: #EEE !important;
 }
+
+/* ******************** */
+/* **** Compte **** */
+/* ******************** */
+
+.myaccount{
+  margin: 4rem;
+  margin-top: 10rem;
+  min-height: 80vh;
+  text-align: left;
+}
+.img_profil_myaccount{
+  position: absolute;
+    top: 14rem;
+  background:url("/Vandreams/assets/img/user.svg");
+    width:100px;
+    height: 100px;
+    border-radius: 50%;
+    margin:0 auto;
+    box-shadow: 
+    /* logo shadow */
+    0px 0px 2px #5f5f5f,
+    /* offset */
+    0px 0px 0px 5px #ecf0f3,
+    /*bottom right */
+    8px 8px 15px #a7aaaf,
+    /* top left */
+    -8px -8px 15px #ffffff
+    ;
+}
+.myaccount h1{
+  text-align: center;
+  margin-bottom: 14rem;
+}
+.title_profil{
+  position: initial;
+  bottom: initial;
+}
+
+.infos_profil a{
+ text-decoration: none;
+ color: var(--light-black);
+}
+.infos_profil a:hover{
+  color: #00bd71;
+  text-decoration: none;
+}
+.supProfil{
+    width: 50%;
+    padding: 10px 30px;
+    cursor: pointer;
+    display: block !important;
+    margin: 0 auto;
+    margin-top: 10rem !important;
+    color: var(--white);
+    background: linear-gradient(to right, #DC143C,#A52A2A);
+    box-shadow: 0 0 10px 1px var(--light-black);
+    border: 0;
+    outline: none;
+    border-radius: 30px;
+}
 @media screen and (min-width: 700px){
 
   .price{

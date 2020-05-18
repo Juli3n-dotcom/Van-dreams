@@ -43,10 +43,10 @@ $NewMessage = $data['nb'];
     <meta property="og:type"          content="website" />
     <meta property="og:title"         content="Van Dreams" />
     <meta property="og:description"   content="vandreams.fr : le site de petites annonces DE TRIPPERS à TRIPPERS. Consultez des milliers d'annonces van aménagé" />
-    <meta property="og:image"         content="/Vandreams/assets/img/logo_1.png" />
+    <meta property="og:image"         content="/Vandreams/assets/img/logo3.png" />
     <meta name="description" content="vandreams.fr : le site de petites annonces DE TRIPPEURS à TRIPPEURS. Consultez des milliers d'annonces de van aménagé  >>>">
     <title><?=$page_title?> | Van Dreams </title>
-    <link rel="icon" href="/Vandreams/assets/img/logo_1.png">
+    <link rel="icon" href="/Vandreams/assets/img/logo3.png">
     <!--Ion Icons-->
     <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
     <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
@@ -67,7 +67,7 @@ $NewMessage = $data['nb'];
         <nav>
             <div class="nav-brand">
         <a href="../welcome">
-            <img src="/Vandreams/assets/img/logo_1.png" alt="">
+            <img src="/Vandreams/assets/img/logo3.png" alt="">
         </a>
     </div>
 
@@ -96,7 +96,7 @@ $NewMessage = $data['nb'];
             <a href="inbox" class="nav-link_user">Messagerie <span class="notif_msg_user"><?= $NewMessage > 0 ? $NewMessage : '0';?></span></a>
         </li>
         <li class="nav-item_user">
-            <a href="#" class="nav-link_user">Mes informations</a>
+            <a href="myaccount" class="nav-link_user">Mes informations</a>
         </li>
         <li class="nav-item_user">
             <a href="/Vandreams/logout" class="nav-link_user">Déconnexion</a>

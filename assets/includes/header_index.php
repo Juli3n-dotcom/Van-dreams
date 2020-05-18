@@ -41,10 +41,10 @@ require_once __DIR__ . '/../config/bootstrap.php';
     <meta property="og:type"          content="website" />
     <meta property="og:title"         content="Van Dreams" />
     <meta property="og:description"   content="vandreams.fr : le site de petites annonces DE TRIPPERS à TRIPPERS. Consultez des milliers d'annonces van aménagé" />
-    <meta property="og:image"         content="assets/img/logo_1.png" />
+    <meta property="og:image"         content="assets/img/logo3.png" />
     <meta name="description" content="vandreams.fr : le site de petites annonces DE TRIPPEURS à TRIPPEURS. Consultez des milliers d'annonces de van aménagé  >>>">
     <title><?=$page_title?> | Van Dreams </title>
-    <link rel="icon" href="assets/img/logo_1.png">
+    <link rel="icon" href="assets/img/logo3.png">
     <!--Ion Icons-->
     <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
     <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
@@ -65,7 +65,7 @@ require_once __DIR__ . '/../config/bootstrap.php';
         <nav>
             <div class="nav-brand">
         <a href="welcome">
-            <img src="assets/img/logo_1.png" alt="">
+            <img src="assets/img/logo3.png" alt="">
         </a>
     </div>
 
@@ -96,7 +96,7 @@ require_once __DIR__ . '/../config/bootstrap.php';
             <a href="login" class="dropdown-item">Inscription</a>    
             <a href="login" class="dropdown-item">Connexion</a>
         <?php else :?>          
-            <a class="dropdown-item"  href="user/mesannonces">Mon annonces</a>
+            <a class="dropdown-item"  href="user/mesannonces">Mes annonces</a>
             <a class="dropdown-item"  href="user/favori">Mes favoris</a>
             <a class="dropdown-item" href="user/messagerie_user.php">Messagerie <span class="notif_msg"><?= $NewMessage > 0 ? $NewMessage : '0';?></span></a>
             <a class="dropdown-item"  href="user/myaccount">Mon Profil</a>

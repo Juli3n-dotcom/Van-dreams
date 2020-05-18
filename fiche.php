@@ -144,28 +144,28 @@ if(isset($_POST['envoyer'])){
     }else{
       
         $req = $pdo->prepare(
-            'INSERT INTO conversation (expediteur, destinataire, annonce_id, subject, date_enregistrement)
-            VALUES (:expediteur, :destinataire, :annonce_id, :subject,  :date)'
+            'INSERT INTO conversation (expediteur, destinataire, annonce_id, subject, est_lu_expediteur, est_lu_destinataire, date_enregistrement)
+            VALUES (:expediteur, :destinataire, :annonce_id, :subject, :lu_expediteur, :lu_destinataire, :date)'
         );
         $req->bindParam(':expediteur', getMembre()['id_membre'], PDO::PARAM_INT);
         $req->bindParam(':destinataire', $Annonce['membre_id']);
         $req->bindParam(':annonce_id', $Annonce['id_annonce']);
         $req->bindParam(':subject', $_POST['subject']);
+        $req->bindValue(':lu_expediteur',0);
+        $req->bindValue(':lu_destinataire',1);
         $req->bindValue(':date',(new DateTime())->format('Y-m-d H:i:s'));
         $req->execute();
 
         $id_conversation = $pdo-> lastInsertId();
 
         $req2 = $pdo->prepare(
-          'INSERT INTO message (expediteur, destinataire, conversation_id,  message, est_lu_expediteur, est_lu_destinataire, date_enregistrement)
-          VALUES (:expediteur, :destinataire, :conversation_id, :message, :lu_expediteur, :lu_destinataire, :date)'
+          'INSERT INTO message (expediteur, destinataire, conversation_id,  message, date_enregistrement)
+          VALUES (:expediteur, :destinataire, :conversation_id, :message,  :date)'
       );
       $req2->bindParam(':expediteur', getMembre()['id_membre'], PDO::PARAM_INT);
       $req2->bindParam(':destinataire', $Annonce['membre_id']);
       $req2->bindParam(':conversation_id', $id_conversation);
       $req2->bindParam(':message', $_POST['message']);
-      $req2->bindValue(':lu_expediteur',0);
-      $req2->bindValue(':lu_destinataire',1);
       $req2->bindValue(':date',(new DateTime())->format('Y-m-d H:i:s'));
       $req2->execute();
     }
@@ -328,7 +328,7 @@ include __DIR__.'/assets/includes/header.php';
                     <h3 class="title_part">Votre message pour <?= $membre['prenom']?></h3>
                       <input type="text" class="input-field" name="subject" placeholder="Le suject de votre message" value="<?= htmlspecialchars($_POST['subject']??'');?>">
                       <textarea class="input-field" name="message" cols="40" rows="12" placeholder="Votre message" 
-                      value="<?= htmlspecialchars($_POST['message']??'');?>"></textarea>
+                      value=""><?= htmlspecialchars($_POST['message']??'');?></textarea>
                       <button type="submit" class="submit-btn_depot" name="envoyer">Envoyer</button>
                   </div>
                 </form>
