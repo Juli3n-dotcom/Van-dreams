@@ -6,6 +6,120 @@ require __DIR__ . '/assets/functions/annonces_by_user.php';
 $Membre = getMembre($pdo, $_GET['id_membre'] ?? null);
 
 
+//traitement uodate
+
+if(isset($_POST['update_annonce'])){
+
+    if(empty($_POST['title_update'])||strlen($_POST['title_update'])>255){
+        ajouterFlash('danger','Le titre doit contenir entre 1 et 255 caractéres.');
+     
+        }elseif (empty($_POST['description_update'])) {
+        ajouterFlash('danger','Description manquante.');
+     
+         }elseif (empty($_POST['price_update'])) {
+        ajouterFlash('danger','prix manquant.');
+     
+        }elseif (!preg_match('~^[0-9-.]+$~',$_POST['price_update'])) {
+       ajouterFlash('danger','Merci d\'utiliser que des chiffres pour votre prix');
+
+        }elseif (!preg_match('~^[0-9-.]+$~',$_POST['date_update'])) {
+        ajouterFlash('danger','Merci de rentrer une date valide');
+     
+        }elseif (!preg_match('~^[0-9-.]+$~',$_POST['phone_update'])) {
+        ajouterFlash('danger','saisir un numéro de téléphone valide');
+     
+        }elseif (!preg_match('~^[a-zA-Z0-9_-]+$~',$_POST['cp_update'])) {
+       ajouterFlash('danger','saisir un code postal valide');
+    }else{
+
+
+    $req_update = $pdo->prepare(
+        'UPDATE annonces SET
+        titre_annonce = :titre_annonce,
+        description_annonce = :description_annonce,
+        prix= :prix,
+        km = :km,
+        places = :places,
+        vasp = :vasp,
+        marque = :marque,
+        modele = :modele,
+        annee_modele = :annee_modele,
+        cp = :cp,
+        ville = :ville,
+        telephone = :telephone,
+        est_publie = :publie
+        WHERE id_annonce = :id
+        ');
+
+    $req_update->bindParam(':titre_annonce',$_POST['title_update']);
+    $req_update->bindParam(':description_annonce',$_POST['description_update']);
+    $req_update->bindParam(':prix',$_POST['price_update']);
+    $req_update->bindParam(':km',$_POST['km_update']);
+    $req_update->bindParam(':places',$_POST['places_update']);
+    $req_update->bindValue(':vasp',isset($_POST['vasp_update']),PDO::PARAM_BOO);
+    $req_update->bindParam(':marque',$_POST['marque_update']);
+    $req_update->bindParam(':modele',$_POST['modele_update']);
+    $req_update->bindParam(':annee_modele',$_POST['date_update']);
+    $req_update->bindParam(':cp',$_POST['cp_update']);
+    $req_update->bindParam(':ville',$_POST['city_update']);
+    $req_update->bindParam(':telephone',$_POST['phone_update']);
+    $req_update->bindValue(':publie',isset($_POST['est_publie_update']),PDO::PARAM_BOOL);
+    $req_update->bindParam(':id',$_POST['idUpdate'],PDO::PARAM_INT);
+    $req_update->execute();
+
+    ajouterFlash('success','Annonce modifiée');
+}
+
+}
+
+
+
+
+// tratement suppression
+if(isset($_POST['delete_annonce'])){
+
+    if(!isset($_POST['delete_check'])){
+      ajouterFlash('danger','Merci de confirmer la suppression !');
+  
+    }else{
+  
+      $id_photo = $_POST['idSupr2'];
+  
+      $data = $pdo->query("SELECT * FROM photo WHERE id_photo = '$id_photo'");
+      $photo = $data->fetch(PDO::FETCH_ASSOC);
+  
+      
+      $file = "data/img/";
+      opendir($file);
+      
+      unlink($file.$photo['photo1']);
+      unlink($file.$photo['photo2']);
+      unlink($file.$photo['photo3']);
+      // closedir($file)
+      
+        $req2 =$pdo->prepare(
+          'DELETE FROM photo
+           WHERE :id= id_photo'
+        );
+        
+          $req2->bindParam(':id',$_POST['idSupr2'],PDO::PARAM_INT);
+          $req2->execute();
+  
+  
+  
+        $req3 =$pdo->prepare(
+            'DELETE FROM annonces
+             WHERE :id= id_annonce'
+        );
+          
+          $req3->bindParam(':id',$_POST['idSupr'],PDO::PARAM_INT);
+          $req3->execute();
+      
+      ajouterFlash('success','annonce supprimée !');
+    }
+  
+    
+  }  
 
 $page_title ='Mes annonces';
 include __DIR__.'/assets/includes/header_user.php';
@@ -62,18 +176,112 @@ include __DIR__.'/assets/includes/header_user.php';
                             <p>Localisation : <?= $country['name']?> / <?= $region['name']?></p>
                         </div>
                         <div class="annoncelink">
-                        <a href="annonce/<?=$annonce['id_annonce'];?>" class="annonce_btn">Voir l'annonce</a>
+                        
                         </div>
                         <div class="annonce_bottom">
-                            <a href="" class="annonce_btn updateAnnonce">Modifier</a>
-                            <form method="post">
-                                <input type="hidden" name="SupannonceID" value="<?= $annonce['id_annonce']?>">
-                                <button type="submit" class="annonce_btn SupAnnonce" name="SupAnnonce">Supprimer</button>
-                            </form>
+                        <a href="../annonce/<?=$annonce['id_annonce'];?>" class="annonce_btn">Voir l'annonce</a>
+                        <a href="annonces.php#id=<?=$annonce['id_annonce']?>" class="annonce_btn updateAnnonce" data-toggle="modal" data-target="#<?=$annonce['name']?>update"">Modifier</a>
+                        <!-- Modal update -->
+                        <div class="modal fade" id="<?=$annonce['name']?>update" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-scrollable" role="document">
+                                    <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Modification de l'annonce | <?=$annonce['titre_annonce']??'';?></h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form method="post">
+                                                <label for="title_update" class="label_name">Titre de votre annonce : </label>
+                                                <input type="text" class="input-field" name="title_update" value="<?= htmlspecialchars($annonce['titre_annonce'])?>">
+                                                <hr>
+                                                <label for="description_update" class="label_name">Description de votre annonce : </label>
+                                                <textarea class="input-field" name="description_update" cols="30" rows="10"><?= htmlspecialchars($annonce['description_annonce']??'');?></textarea>
+                                                <hr>
+                                                <label for="price_update" class="label_name">Prix de votre annonce : </label>
+                                                <input type="text" class="input-field" name="price_update" value="<?= htmlspecialchars($annonce['prix']??'')?>">
+                                                <hr>
+                                                <label for="km_update" class="label_name">kilométrage : </label>
+                                                <input type="text" name="km_update" class="input-field"  value="<?= htmlspecialchars($annonce['km']??'');?>">
+                                                <hr>
+                                                <label for="places_update" class="label_name">Nombre de places : </label>
+                                                <input type="number" name="places_update" class="input-field" value="<?= htmlspecialchars($annonce['places']??'');?>">
+                                                <hr>
+                                                <?php if($annonce['vasp'] == 1):?>
+                                                    <span id="vasp" class="label_name vaspcat"> VASP</span><input type="checkbox" class="vasp" name="vasp_update" checked>
+                                                <?php else:?>
+                                                    <span id="vasp" class="label_name vaspcat"> VASP</span><input type="checkbox" class="vasp" name="vasp_update">
+                                                <?php endif;?>
+                                                <hr>
+                                                <label for="marque_update" class="label_name">Marque : </label>
+                                                <input type="text" name="marque_update" class="input-field"  value="<?= htmlspecialchars($annonce['marque']??'');?>">
+                                                <hr>
+                                                <label for="modele_update" class="label_name">Modèle : </label>
+                                                <input type="text" name="modele_update" class="input-field"  value="<?= htmlspecialchars($annonce['modele']??'');?>">
+                                                <hr>
+                                                <label for="date_update" class="label_name">Année du modèle : </label>
+                                                <input type="text" name="date_update" class="input-field"  value="<?= htmlspecialchars($annonce['annee_modele']??'');?>">
+                                                <hr>
+                                                <label for="city_update" class="label_name">Ville : </label>
+                                                <input type="text" class="input-field" name="city_update" value="<?= htmlspecialchars($annonce['ville']??'')?>">
+                                                <hr>
+                                                <label for="cp_update" class="label_name">Code Postal : </label>
+                                                <input type="text" class="input-field" name="cp_update" value="<?= htmlspecialchars($annonce['cp']??'')?>">
+                                                <hr>
+                                                <label for="price_update" class="label_name">Votre numéro de téléphone : </label>
+                                                <input type="text" class="input-field" name="phone_update" value="<?= htmlspecialchars($annonce['telephone']??'')?>">
+                                                <hr>
+                                                <label for="price_update" class="label_name">Masquer mon numéro : </label>
+                                                <?php if($annonce['est_publie'] == 1):?>
+                                                    <input type="checkbox" class="check-box checkmypost" name="est_publie_update" checked>
+                                                <?php else: ?>
+                                                    <input type="checkbox" class="check-box checkmypost" name="est_publie_update">
+                                                <?php endif;?>
+                                              
+                                    </div>
+                                    <div class="modal-footer">
+                                        <input type="hidden" name="idUpdate" value="<?= $annonce['id_annonce'];?>">
+                                        <input type="submit" class="annonce_btn updateAnnonce" name="update_annonce" value="Modifier" >
+                                    </div>
+                                        </form>  
+                                    </div>
+                            </div>
+                            </div>
+
+                            <a href="annonces.php#id=<?=$annonce['id_annonce']?>" class="annonce_btn SupAnnonce" data-toggle="modal" data-target="#<?=$annonce['name']?>">Supprimer</a>
+                            <!-- Modal delete -->
+                            <div class="modal fade" id="<?=$annonce['name']?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-scrollable" role="document">
+                                    <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Supprimer annonce | <?=$annonce['titre_annonce']??'';?></h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form method="post">
+                                            
+                                                <p class="mb-2">Etes vous sur de vouloir supprimer votre annonce ?</p>
+                                            
+                                                <div class='confirm_delete' id="confirm_delete">
+                                                <input type="checkbox" class="delete_check mr-3" name="delete_check"/><label for="delete_check" class="delete_label">Je confirme la suppression</label>
+                                                <input type="hidden" name="idSupr" value="<?=$annonce['id_annonce']?>">
+                                                <input type="hidden" name="idSupr2" value="<?=$annonce['photo_id']?>">
+                                                </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <input type="submit" class="annonce_btn SupAnnonce" name="delete_annonce" value="Supprimer" >
+                                    </div>
+                                        </form>  
+                                    </div>
+                            </div>
                         </div>
-                           
                     </div>
                 </div>
+                          
+            </div>
 
              <?php endforeach;?>
         </div>

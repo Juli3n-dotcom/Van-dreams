@@ -101,7 +101,7 @@ nav{
 
 .img_profil{
   position: absolute;
-    top: 14rem;
+    top: 8rem;
   background:url("/Vandreams/assets/img/user.svg");
     width:100px;
     height: 100px;
@@ -270,7 +270,8 @@ nav{
 
 .annonce-box{
   margin-bottom: 4rem;
-  border: 0.5px solid var(--light-black);
+  /* border: 0.5px solid var(--light-black); */
+  min-height: 600px;
 }
 
 .annnonce-img img{
@@ -291,7 +292,7 @@ padding-top: 20px;
 box-shadow: 0 0 10PX 1PX var(--light-black);
 position: absolute;
 left: 20px;
-top: 45%;
+top: 25%;
 }
 .price p{
   font-size: 1.2rem !important;
@@ -317,14 +318,18 @@ top: 45%;
     left: initial;
 }
 .annonce_btn{
+  width: 85%;
   background: linear-gradient(to right, #00bd71,#008656);
   box-shadow: 0 0 10px 1px var(--light-black);
   font-size: 1rem;
   border-radius: 2rem;
   color: var(--white);
-  display: inline-block;
+  display: block;
+  margin: auto;
+  border: 0;
   margin-top: 2rem;
   padding: 1rem 2.5rem;
+  text-align: center;
   text-transform: uppercase;
   transition: background-color 650ms;
 }
@@ -334,22 +339,46 @@ top: 45%;
 }
 
 .updateAnnonce{
-  border: none;
   background: linear-gradient(to right, #0000FF,#00008B);
 }
 .SupAnnonce{
-  border: none;
   background: linear-gradient(to right, #DC143C,#A52A2A);
+}
+.annonce_bottom{
+  margin-bottom: 2rem;
+}
+.vaspcat{
+  left: 6rem !important;
+}
+.checkmypost{
+margin :0 auto !important;
+}
+.modal-footer{
+  background-color: #EEE !important;
 }
 @media screen and (min-width: 700px){
 
   .price{
-    top: 33%;
+    top: 20%;
   }
 }
 @media screen and (min-width: 900px){
 
   .price{
-    top: 50%;
+    top: 23%;
+  }
+  
+}
+@media screen and (min-width: 1000px){
+
+  .price{
+    top: 28%;
+  }
+}
+
+@media screen and (min-width: 1200px){
+
+  .price{
+    top: 35%;
   }
 }

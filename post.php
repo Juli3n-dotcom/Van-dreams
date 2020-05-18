@@ -23,7 +23,10 @@ if(isset($_POST['add'])){
         ajouterFlash('danger','prix manquant.');
      
         }elseif (!preg_match('~^[0-9-.]+$~',$_POST['prix'])) {
-       ajouterFlash('danger','Merci d\'utiliser que des chiffres et des "." pour votre prix');
+       ajouterFlash('danger','Merci d\'utiliser que des chiffres pour votre prix');
+
+        }elseif (!preg_match('~^[0-9-.]+$~',$_POST['date'])) {
+        ajouterFlash('danger','Merci de rentrer une date valide');
      
         }elseif (!preg_match('~^[0-9-.]+$~',$_POST['phone'])) {
         ajouterFlash('danger','saisir un numéro de téléphone valide');
@@ -210,7 +213,7 @@ include __DIR__.'/assets/includes/header.php';
                 <h3 class="title_part">Les détails de votre annonces</h3>
                     <input type="text" class="input-field" name="titre_annonce" placeholder="Le titre de votre annonce" value="<?= htmlspecialchars($_POST['titre_annonce']??'');?>">
                     <textarea class="input-field" name="description" cols="30" rows="10" placeholder="Description de votre annonce" 
-                    value="<?= htmlspecialchars($_POST['description']??'');?>"></textarea>
+                    ><?= htmlspecialchars($_POST['description']??'');?></textarea>
                     <input type="text" class="input-field" name="prix" placeholder="Votre Prix en €" value="<?= htmlspecialchars($_POST['prix']??'');?>">
                     <button type="button" class="submit-btn_depot" id="next1">Suivant</button>
             </div>
