@@ -252,3 +252,32 @@ nav{
     outline: none;
     border-radius: 30px;
 }
+
+/* ******************** */
+/* **** Compte **** */
+/* ******************** */
+
+.myaccount{
+  margin: 4rem;
+  margin-top: 10rem;
+  min-height: 80vh;
+  text-align: left;
+}
+
+.myaccount h1{
+  text-align: center;
+  margin-bottom: 14rem;
+}
+.title_profil{
+  position: initial;
+  bottom: initial;
+}
+
+.infos_profil a{
+ text-decoration: none;
+ color: var(--light-black);
+}
+.infos_profil a:hover{
+  color: #00bd71;
+  text-decoration: none;
+}

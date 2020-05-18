@@ -141,7 +141,7 @@ if(isset($_POST['login'])){
                 </html>
                 ';
     
-        mail($email, "Confimer votre email - vandreams.fr", $message, $header);
+        mail($email, "Confirmer votre email - vandreams.fr", $message, $header);
 
         unset($_POST);    
         session_write_close();

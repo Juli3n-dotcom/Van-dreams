@@ -96,10 +96,10 @@ $NewMessage = $data['nb'];
             <a href="inbox" class="nav-link_user">Messagerie <span class="notif_msg"><?= $NewMessage > 0 ? $NewMessage : '0';?></span></a>
         </li>
         <li class="nav-item_user">
-            <a href="#" class="nav-link_user">Mes informations</a>
+            <a href="myaccount" class="nav-link_user">Mes informations</a>
         </li>
         <li class="nav-item_user">
-            <a href="/Van%20dreams/logout" class="nav-link_user">Déconnexion</a>
+            <a href="/Vandreams/logout" class="nav-link_user">Déconnexion</a>
         </li>
     </ul>
 </nav>
