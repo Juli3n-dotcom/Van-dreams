@@ -44,7 +44,7 @@ require_once __DIR__ . '/../config/bootstrap.php';
     <meta property="og:image"         content="assets/img/logo_1.png" />
     <meta name="description" content="vandreams.fr : le site de petites annonces DE TRIPPEURS à TRIPPEURS. Consultez des milliers d'annonces de van aménagé  >>>">
     <title><?=$page_title?> | Van Dreams </title>
-    <link rel="icon" href="assets/img/logo_1.png">
+    <link rel="icon" href="assets/img/logo3.png">
     <!--Ion Icons-->
     <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
     <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
@@ -65,7 +65,7 @@ require_once __DIR__ . '/../config/bootstrap.php';
         <nav>
             <div class="nav-brand">
         <a href="welcome">
-            <img src="assets/img/logo_1.png" alt="">
+            <img src="assets/img/logo3.png" alt="">
         </a>
     </div>
 
