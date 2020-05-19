@@ -38,7 +38,7 @@ if(isset($_POST['news_submit_footer'])){
       <ul>
         <li><a href="contactus">Contacter-nous</a></li>
         <li><a href="#">Plan du site</a></li>
-        <li><a href="#">cgu</a></li>
+        <li><a href="cgu">cgu</a></li>
         <li><a href="#">Références</a></li>
      </ul>
     </div>
