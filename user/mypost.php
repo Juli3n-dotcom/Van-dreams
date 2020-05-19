@@ -110,7 +110,7 @@ include __DIR__.'/assets/includes/header_user.php';
 <?php include __DIR__.'/../assets/includes/flash.php';?>
 
 <div class="myannonces">
-    <h1>Mes Annonces</h1>
+    
     <div class="container">
         <div class="row">
             <?php foreach(getAnnoncesByUser($pdo,$Membre['id_membre']) as $annonce):?>
@@ -154,11 +154,6 @@ include __DIR__.'/assets/includes/header_user.php';
                         </div>
                         <div class="annonce-details">
                             <h4><?= $annonce['titre_annonce']?></h4>
-                            <p><i class="fas fa-th-large"></i> : <?= $category['titre']?> / <?= $subcat['titre']?></p>
-                            <p><i class="fas fa-map-marker-alt"></i> : <?= $country['name']?> / <?= $region['name']?></p>
-                        </div>
-                        <div class="annoncelink">
-                        
                         </div>
                         <div class="annonce_bottom">
                         <a href="../annonce/<?=$annonce['id_annonce'];?>" class="annonce_btn">Voir l'annonce</a>

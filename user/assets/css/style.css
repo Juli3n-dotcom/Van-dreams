@@ -147,7 +147,7 @@ nav{
   color: var(--light-white) !important;
 }
 .modal-body{
-  background-color: #EEE !important;
+  background-color: var(--light-gray) !important;
 }
 .messagerie h1{
   text-align: center;
@@ -162,7 +162,7 @@ nav{
 }
 .convers.lu{
   border-left: .5rem solid #00bd71;
-  background-color: #EEE;
+  background-color: var(--light-gray);
 }
 .convers_title_lu i{
   color: #00bd71;
@@ -198,7 +198,7 @@ nav{
 }
 
 .messages_modal{
-  background-color: #EEE;
+  background-color: var(--light-gray);
   height: 50rem;
   width: 100%;
   padding: 10px;
@@ -207,7 +207,7 @@ nav{
 }
 
 .msg_form{
-  background-color: #EEE !important;
+  background-color: var(--light-gray) !important;
 }
 .msg{
   min-height: 100px;
@@ -323,7 +323,10 @@ top: 25%;
     left: initial;
 }
 .annonce_btn{
-  width: 85%;
+  position: absolute;
+  bottom: 70px;
+  left: 20%;
+  width: 60%;
   background: linear-gradient(to right, #00bd71,#008656);
   box-shadow: 0 0 10px 1px var(--light-black);
   font-size: 1rem;
@@ -359,7 +362,7 @@ top: 25%;
 margin :0 auto !important;
 }
 .modal-footer{
-  background-color: #EEE !important;
+  background-color: var(--light-gray) !important;
 }
 
 /* ******************** */
@@ -427,7 +430,36 @@ margin :0 auto !important;
 /* *********************** */
 /* **** Mes favoris **** */
 /* ********************* */
-
+.noFavoris{
+  text-align: center;
+  background-color:var(--light-gray);
+  height: 60vh;
+  position: relative;
+}
+.noFavoris .favorisLink{
+position: absolute; 
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%);
+}
+.favorisLink p{
+  font-size: 2rem;
+}
+.favorisLink a{
+  background: linear-gradient(to right, #00bd71,#008656);
+  box-shadow: 0 0 10px 1px var(--light-black);
+  font-size: 1rem;
+  border-radius: 2rem;
+  color: var(--white);
+  display: block;
+  margin: auto;
+  border: 0;
+  margin-top: 2rem;
+  padding: 1rem 2.5rem;
+  text-align: center;
+  text-transform: uppercase;
+  transition: background-color 650ms;
+}
 .myfavoris{
   margin: 4rem;
   margin-top: 10rem;

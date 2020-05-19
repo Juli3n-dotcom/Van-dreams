@@ -70,7 +70,7 @@
     width: 100%;
     padding: 0 auto;
     padding-top: 2rem;
-    background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url('../img/mini_van.jpg');
+    background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url('../img/van_friend3.jpeg');
     background-position: center;
     background-size: cover;
     text-align: center;
@@ -80,7 +80,7 @@
     height: auto;
     width: 100%;
     padding: 2rem;
-    background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url('../img/mini_van.jpg');
+    background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url('../img/van_friend3.jpeg');
     background-position: center;
     background-size: cover;
     /* position: absolute; */

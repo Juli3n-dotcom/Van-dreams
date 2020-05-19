@@ -23,14 +23,22 @@ include __DIR__.'/assets/includes/header_user.php';
 <?php include __DIR__.'/../assets/includes/flash.php';?>
 
 <div class="myfavoris">
+<?php 
+    $user = $Membre['id_membre'];
+    $count = $pdo->query("SELECT id_favori FROM favoris WHERE membre_id ='$user'");
+    $count->execute();
+    $count = $count->rowCount();
+?>
     <h1>Mes favoris</h1>
+<?php if($count > 0):?>
     <div class="container">
         <div class="row">
         <?php foreach(getfavorisByUser($pdo,$Membre['id_membre']) as $favori):?>
+        
             <?php
 
                 $annonce_id = $favori['annonce_id'];
-
+                
                 $annonce_data = $pdo->query("SELECT * FROM annonces WHERE id_annonce ='$annonce_id'");
                 $annonce = $annonce_data->fetch(PDO::FETCH_ASSOC);
 
@@ -93,7 +101,20 @@ include __DIR__.'/assets/includes/header_user.php';
         </div>  
 
     </div>
+<?php else :?>
+<div class="container">
+    <div class="row">
+        <div class="col-12 noFavoris">
+            <div class="favorisLink">
+                <p>Vous n'avez aucune annonces dans vos favoris</p>
+                <a href=""> Voir toutes les annonces</a>
+            </div>
+        </div>
+    </div>
 </div>
+<?php endif;?>
+</div>
+
 <?php
 include __DIR__.'/assets/includes/footer_user.php';
 ?>

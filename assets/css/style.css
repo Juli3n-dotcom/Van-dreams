@@ -430,7 +430,7 @@ animation: ellipseOrbit 15s ease-in-out infinite;
     width: 100%;
     padding-top: 5rem;
     padding-bottom: 5rem;
-    background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url('../img/mini_van.jpg');
+    background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url('../img/van_friend6.jpeg');
     background-position: center;
     background-size: cover;
     /* position: absolute; */
@@ -612,7 +612,7 @@ span a:hover{
     height: 1000px;
     width: 100%;
     padding-top: 1rem;
-   background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url('../img/mini_van.jpg');
+   background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url('../img/van_friend.jpeg');
     background-position: center;
     background-size: cover;
     /* position: absolute; */
