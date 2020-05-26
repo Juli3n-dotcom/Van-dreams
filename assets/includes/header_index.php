@@ -81,7 +81,7 @@ require_once __DIR__ . '/../config/bootstrap.php';
             <a href="welcome" class="nav-link link1">Accueil</a>
         </li>
         <li class="nav-item">
-            <a href="#" class="nav-link link2">Les annonces</a>
+            <a href="touteslesannonces" class="nav-link link2">Les annonces</a>
         </li>
         <li class="nav-item">
             <a href="post" class="nav-link link3">Déposer une annonces</a>

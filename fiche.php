@@ -115,7 +115,7 @@ if(isset($_POST['addFavori'])){
   );
 
   $req->bindParam(':membre_id',getMembre()['id_membre'], PDO::PARAM_INT);
-  $req->bindParam(':annonce_id',$Annonce['id_annonce']);
+  $req->bindParam(':annonce_id',$_POST['idannonce']);
   $req->bindValue(':est_favoris',1);
   $req->execute();
 
@@ -238,6 +238,7 @@ include __DIR__.'/assets/includes/header.php';
             </form>
            <?php else:?> 
             <form action="" method="POST">
+              <input type="hidden" name="idannonce" value="<?= $Annonce['id_annonce']?>">
               <button type="submit" class="favoris" name='addFavori'><i class="far fa-heart"></i></button>
             </form>
            <?php endif;?>

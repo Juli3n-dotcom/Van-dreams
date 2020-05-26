@@ -83,7 +83,7 @@ if (session_status() === PHP_SESSION_NONE){
             <a href="welcome" class="nav-link">Accueil</a>
         </li>
         <li class="nav-item">
-            <a href="#" class="nav-link">Les annonces</a>
+            <a href="touteslesannonces" class="nav-link">Les annonces</a>
         </li>
         <li class="nav-item">
             <a href="post" class="nav-link">Déposer une annonces</a>

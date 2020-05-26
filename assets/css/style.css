@@ -862,7 +862,137 @@ height: 20px;
 width: 100%;
 text-align: center;
 }
+/* ******************** */
+/* **** all annonces ******* */
+/* ******************** */
 
+.allpost{
+    
+    margin-top: 4rem;
+}
+.search{
+    width: 70%;
+    margin: 0 auto;
+    background-color: var(--light-gray);
+    box-shadow: 0 0 10px 1px var(--light-black);
+    padding: 10px;
+    text-align: center;
+    position: relative;
+}
+
+.search select{
+    min-width: 20rem;
+    margin: .5rem;
+    height: 30px;
+}
+.search select:focus{
+    border: none;
+    outline: none;
+}
+.price_part{
+    display: inline-flex;
+    width: 70%;
+    margin: 0 auto;
+    
+}
+.price_part input{
+    margin: 2rem;
+}
+
+/* **** Partie annonce **** */
+.allannonces{
+    margin-top: 6rem;
+}
+
+.annonce-box{
+    margin-bottom: 4rem;
+    min-height: 600px;
+    box-shadow: 0 0 10px 1px var(--light-black);
+    position: relative;
+  }
+  
+  .annnonce-img img{
+  width: 100%;
+  }
+  .annonce-img{
+    position: relative;
+  }
+  .price{
+    width: 60px;
+    height: 60px;
+  background-color: #00bd71;
+  color: #FFF;
+  text-align: center;
+  font-weight: 600;
+  border-radius: 50%;
+  padding-top: 20px;
+  box-shadow: 0 0 10PX 1PX var(--light-black);
+  position: absolute;
+  left: 30px;
+  top: 230px;
+  }
+  .price p{
+    font-size: 1.2rem !important;
+  }
+  
+  .annonce-details{
+    padding: 20px;
+    text-align: justify;
+  }
+  .annonce-details h4{
+    font-weight: 600;
+    margin-top: 20px;
+    font-size: 2rem;
+  }
+  .annonce-details p{
+    font-size: 10px !important;
+    margin-bottom: 0 !important;
+  }
+  .annonce-details .description_annonce{
+      margin-bottom: 2rem;
+  }
+  .annonce-details p i{
+    color: #00bd71;
+    font-size: 12px;
+  }
+
+  .like{
+    position: absolute;
+    right: 40px;
+    top: 240px;
+    }
+    .like .favoris{
+      width: 40px;
+      height: 40px;
+        font-size: 2rem;
+        border-radius: 50%;
+        background: var(--light-white);
+        color: palevioletred;
+    }
+
+    .annonce_btn{
+        position: absolute;
+        bottom: 30px;
+        left: 20%;
+        width: 60%;
+        background: linear-gradient(to right, #00bd71,#008656);
+        box-shadow: 0 0 10px 1px var(--light-black);
+        font-size: 1rem;
+        border-radius: 2rem;
+        color: var(--white);
+        display: block;
+        margin: auto;
+        border: 0;
+        margin-top: 2rem;
+        padding: 1rem 2.5rem;
+        text-align: center;
+        text-transform: uppercase;
+        transition: background-color 650ms;
+      }
+      .annonce_btn:hover{
+        text-decoration: none;
+        color: var(--white);
+      }
 /* ******************** */
 /* **** cgu ******* */
 /* ******************** */
@@ -870,6 +1000,7 @@ text-align: center;
 .cgu iframe{
     height: 100vh;
     width: 100%;
+    
 }
 
 /* ******************** */
@@ -879,6 +1010,15 @@ text-align: center;
 @media screen and (min-width: 350px){
     .main-message{
         transform: translateY(40%);
+    }
+}
+
+@media screen and (min-width: 400px){
+    .price{
+        top:250px;
+    }
+    .like{
+        top:260px;
     }
 }
 
@@ -981,7 +1121,18 @@ text-align: center;
     .title-heading h1{
         font-size: 2.5rem;
     }
-
+    .search button{
+        width: 40%;
+    }
+    .price{
+        top:210px;
+        left: 20px;
+    }
+    .like{
+        top:220px;
+        right: 20px;
+    }
+    
 }
 @media (min-height: 700px)  and (min-width: 700px){
     .coords{
@@ -1030,10 +1181,26 @@ text-align: center;
         background: url('../img/wave-large-reversed.png');
         background-size: cover;
     }
+    .price{
+        top:190px;
+        
+    }
+    .like{
+        top:200px;
+        
+    }
 }
 
 @media screen and (min-width: 1200px){
     .hero{
         height: 100vh;
+    }
+    .price{
+        top:230px;
+        
+    }
+    .like{
+        top:240px;
+        
     }
 }

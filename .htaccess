@@ -2,6 +2,7 @@ RewriteEngine On
 
 RewriteRule ^welcome$ index.php
 RewriteRule ^post$ post.php
+RewriteRule ^touteslesannonces$ allpost.php
 RewriteRule ^login$ login.php
 RewriteRule ^logout$ logout.php
 RewriteRule ^contactus$ contact.php
