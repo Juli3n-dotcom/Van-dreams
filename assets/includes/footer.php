@@ -44,8 +44,13 @@ if(isset($_POST['news_submit_footer'])){
     </div>
     <div class="col-md-4 footer-part3">
       <h5>Suivez nous</h5>
-          <a href="https://www.facebook.com/Van-Dreams-110020710684274"><img src="assets/img/facebook.svg" alt="logo_facebook"></a>     
-          <a href="https://www.instagram.com/vandreamsfr/"><img src="assets/img/insta.svg" alt="logo_instagram"></a>      
+      <div class="col-6 rsociaux facebook">
+        <a href="https://www.facebook.com/Van-Dreams-110020710684274"><i class="fab fa-facebook-f"></i></a>     
+      </div>
+      <div class="col-6 rsociaux insta">
+        <a href="https://www.instagram.com/vandreamsfr/"><i class="fab fa-instagram"></i></a>      
+      </div>
+           
       </div>
     </div>
   </div>

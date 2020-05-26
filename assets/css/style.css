@@ -849,12 +849,30 @@ footer{
 .footer-part3{
     text-align: center;
 }
-.footer-part3 a img{
-    margin:2rem;
+.footer-part3 .rsociaux{
+    width: 40%;
     height: 30px;
-    width: 30px;
+    padding: 6px 30px;
+    cursor: pointer;
+    display: block;
+    margin: auto;
+    margin-bottom: 1rem;
+    background-size: cover;
+    box-shadow: 0 0 10px 1px var(--light-black);
+    border: 0;
+    outline: none;
+    border-radius: 30px;
 }
-
+.footer-part3 .facebook{
+    background-color: #3B5998;
+}
+.footer-part3 .insta{
+    background: url('../img/instabg.jpg') center;
+}
+.footer-part3 .rsociaux a i{
+    color: var(--white);
+    font-size: 2rem;
+}
 .copy{
 background-color:#FFF;
 color: #000;
