@@ -95,7 +95,7 @@ nav{
 }
 
 .nav-brand{
-    width: 3rem;
+    width: 4rem;
 }
     
 .nav-brand h2{
@@ -103,8 +103,10 @@ nav{
     transition: color 0.5s;
 }
 
+
+
 .menu-icons_index i{
-    color: var(--white);
+    color: var(--light-white);
     font-size: 3rem;
     cursor: pointer;
 }
@@ -933,7 +935,7 @@ text-align: center;
     
     .coords{
         font-size: 0.8rem;
-        top: 50%;
+        top: 70%;
         left: -9.5rem;
         
     }
