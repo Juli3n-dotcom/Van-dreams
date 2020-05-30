@@ -73,7 +73,7 @@ include __DIR__.'/assets/includes/header_user.php';
                 <div class="col-md-4">
                     <div class="annonce-box">
                         <div class="annonce-img">
-                            <img src="data/img/<?= $photo['photo1']?>" alt="photo_annonce">
+                            <img src="/Vandreams/data/<?= $photo['photo1']?>" alt="photo_annonce">
                         </div> 
                         <div class="price">
                            <p><?= $annonce['prix']?>€</p> 
@@ -89,8 +89,9 @@ include __DIR__.'/assets/includes/header_user.php';
                             <div class="description_annonce">
                                 <p><?= substr($annonce['description_annonce'],0,255).'...'?></p>
                             </div>
-                            <p><i class="fas fa-th-large"></i> : <?= $category['titre']?> / <?= $subcat['titre']?></p>
-                            <p><i class="fas fa-map-marker-alt"></i> : <?= $country['name']?> / <?= $region['name']?></p>
+                            <p><i class="fas fa-user"></i> Publié par : <?= $membre['prenom']?></p>
+                            <p><i class="fas fa-th-large"></i> : <?= $category['titre_cat']?> / <?= $subcat['titre_subcat']?></p>
+                            <p><i class="fas fa-map-marker-alt"></i> : <?= $country['name_country']?> / <?= $region['name_region']?></p>
                         </div>
                         <div class="annoncelink">
                         <a href="../annonce/<?=$annonce['id_annonce'];?>" class="annonce_btn">Voir l'annonce</a>

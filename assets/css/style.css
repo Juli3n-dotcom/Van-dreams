@@ -95,7 +95,7 @@ nav{
 }
 
 .nav-brand{
-    width: 3rem;
+    width: 4rem;
 }
     
 .nav-brand h2{
@@ -103,8 +103,10 @@ nav{
     transition: color 0.5s;
 }
 
+
+
 .menu-icons_index i{
-    color: var(--white);
+    color: var(--light-white);
     font-size: 3rem;
     cursor: pointer;
 }
@@ -849,12 +851,30 @@ footer{
 .footer-part3{
     text-align: center;
 }
-.footer-part3 a img{
-    margin:2rem;
+.footer-part3 .rsociaux{
+    width: 40%;
     height: 30px;
-    width: 30px;
+    padding: 6px 30px;
+    cursor: pointer;
+    display: block;
+    margin: auto;
+    margin-bottom: 1rem;
+    background-size: cover;
+    box-shadow: 0 0 10px 1px var(--light-black);
+    border: 0;
+    outline: none;
+    border-radius: 30px;
 }
-
+.footer-part3 .facebook{
+    background-color: #3B5998;
+}
+.footer-part3 .insta{
+    background: url('../img/instabg.jpg') center;
+}
+.footer-part3 .rsociaux a i{
+    color: var(--white);
+    font-size: 2rem;
+}
 .copy{
 background-color:#FFF;
 color: #000;
@@ -966,6 +986,7 @@ text-align: center;
       height: 40px;
         font-size: 2rem;
         border-radius: 50%;
+        border-color: var(--light-white);
         background: var(--light-white);
         color: palevioletred;
     }
@@ -1022,6 +1043,7 @@ text-align: center;
     }
 }
 
+
 @media screen and (min-width: 470px){
     .hero::before{
         margin-top: 4rem;
@@ -1045,17 +1067,17 @@ text-align: center;
     
     .coords{
         font-size: 0.8rem;
-        top: 75%;
+        top: 50%;
         left: -9.5rem;
         
     }
 }
-@media screen and (min-height: 670px){
+@media (min-width: 300px) and (min-height: 670px){
     
     
     .coords{
         font-size: 0.8rem;
-        top: 50%;
+        top: 70%;
         left: -9.5rem;
         
     }

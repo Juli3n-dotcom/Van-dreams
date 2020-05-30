@@ -7,19 +7,21 @@ if (session_status() === PHP_SESSION_NONE){
 
   $Membre = getMembre($pdo, $_GET['id_membre'] ?? null);
 
-
-  $user = $Membre['id_membre'];
-  $allNewconver = $pdo->query("SELECT *
-                              FROM conversation
-                              WHERE destinataire ='$user'
-                              ORDER BY date_enregistrement DESC");
+  if($Membre != null){
+    $user = $Membre['id_membre'];
+    $allNewconver = $pdo->query("SELECT *
+                                FROM conversation
+                                WHERE destinataire ='$user'
+                                ORDER BY date_enregistrement DESC");
+    
+    $newmsg = $pdo->query("SELECT count(*) AS nb 
+                            FROM conversation 
+                            WHERE (destinataire = '$user') 
+                            AND (est_lu_destinataire = 1)");
+    $data =  $newmsg->fetch();
+    $NewMessage = $data['nb'];
+  }
   
-  $newmsg = $pdo->query("SELECT count(*) AS nb 
-                          FROM conversation 
-                          WHERE (destinataire = '$user') 
-                          AND (est_lu_destinataire = 1)");
-  $data =  $newmsg->fetch();
-  $NewMessage = $data['nb'];
 ?>
 <!doctype html>
 <html lang="fr">
@@ -43,7 +45,7 @@ if (session_status() === PHP_SESSION_NONE){
     <meta property="og:type"          content="website" />
     <meta property="og:title"         content="Van Dreams" />
     <meta property="og:description"   content="vandreams.fr : le site de petites annonces DE TRIPPERS à TRIPPERS. Consultez des milliers d'annonces van aménagé" />
-    <meta property="og:image"         content="assets/img/logo_1.png" />
+    <meta property="og:image"         content="assets/img/logo3.png" />
     <title><?=$page_title?> | Van Dreams </title>
     <link rel="icon" href="assets/img/logo3.png">
     <!--Ion Icons-->

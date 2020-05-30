@@ -35,6 +35,12 @@ if(isset($_POST['login'])){
       if(!empty($_COOKIE["post"])){
         setcookie('post','',time()-3600);
         header('Location: post');
+        
+      }elseif(!empty($_COOKIE["allpost"])){
+        ajouterFlash('danger','merci de vous connecter pour liker cette annonce.');
+        setcookie('allpost','',time()-3600);
+        header('Location: touteslesannonces');
+        
       }else{
           header('Location: welcome');
       }

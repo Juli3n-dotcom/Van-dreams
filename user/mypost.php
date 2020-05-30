@@ -71,7 +71,7 @@ if(isset($_POST['delete_annonce'])){
       $photo = $data->fetch(PDO::FETCH_ASSOC);
   
       
-      $file = "data/img/";
+      $file = "Vandreams/data/";
       opendir($file);
       
       unlink($file.$photo['photo1']);
@@ -147,7 +147,7 @@ include __DIR__.'/assets/includes/header_user.php';
                 <div class="col-md-4">
                     <div class="annonce-box">
                         <div class="annonce-img">
-                            <img src="data/img/<?= $photo['photo1']?>" alt="photo_annonce">
+                            <img src="/Vandreams/data/<?= $photo['photo1']?>" alt="photo_annonce">
                         </div> 
                         <div class="price">
                            <p><?= $annonce['prix']?>€</p> 

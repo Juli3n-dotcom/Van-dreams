@@ -10,7 +10,7 @@ $(document).ready(function(){
             regions = JSON.parse(regions);
             $('#regions').empty();
             regions.forEach(function(region){
-                $('#regions').append('<option value="'+region.id_region+'">'+region.name+'</option>')
+                $('#regions').append('<option value="'+region.id_region+'">'+region.name_region+'</option>')
             });
         });
     });

@@ -58,9 +58,9 @@ if(isset($_POST['add'])){
         $extension1 = pathinfo($_FILES['photo1']['name'], PATHINFO_EXTENSION);
         $extension2 = pathinfo($_FILES['photo2']['name'], PATHINFO_EXTENSION);
         $extension3 = pathinfo($_FILES['photo3']['name'], PATHINFO_EXTENSION);
-        $path1 = __DIR__.'/user/data/img';
-        $path2 = __DIR__.'/user/data/img';
-        $path3 = __DIR__.'/user/data/img';
+        $path1 = __DIR__.'/data';
+        $path2 = __DIR__.'/data';
+        $path3 = __DIR__.'/data';
     
         do{
              $filename1 = bin2hex(random_bytes(16));
@@ -224,14 +224,14 @@ include __DIR__.'/assets/includes/header.php';
                     <h5  class="label_name">Catégories :</h5> 
                     <?php foreach(getCategory($pdo) as $cat) : ?>
                         <input type="radio" name="category" value="<?=$cat['id_category'];?>">
-                        <label for="category"><?=$cat['titre'];?></label>
+                        <label for="category"><?=$cat['titre_cat'];?></label>
                     <?php endforeach; ?> 
                 </div>
                 <div class="depot_radio">
                     <h5  class="label_name">Les Sous Catégories :</h5> 
                     <?php foreach(getSubCategory($pdo) as $subcat) : ?>
                         <input type="radio" name="subcat" value="<?=$subcat['id_sub_cat'];?>">
-                        <label for="subcat"><?=$subcat['titre'];?></label>
+                        <label for="subcat"><?=$subcat['titre_subcat'];?></label>
                     <?php endforeach; ?> 
                 </div>
                 <span id="vasp">VASP</span><input type="checkbox" class="vasp" name="vasp">
@@ -277,7 +277,7 @@ include __DIR__.'/assets/includes/header.php';
                         <select name="pays" class="custom-dropdown" id="country">
                             <option selected>Choisir...</option>
                             <?php foreach(getCountry($pdo) as $country) : ?>
-                            <option value="<?=$country['id_country'];?>"><?=$country['name'];?></option>
+                            <option value="<?=$country['id_country'];?>"><?=$country['name_country'];?></option>
                             <?php endforeach; ?>
                             </select>
                     

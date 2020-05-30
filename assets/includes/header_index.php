@@ -5,18 +5,22 @@ if (session_status() === PHP_SESSION_NONE){
   $Membre = getMembre($pdo, $_GET['id_membre'] ?? null);
 
 
-  $user = $Membre['id_membre'];
-  $allNewconver = $pdo->query("SELECT *
-                              FROM conversation
-                              WHERE destinataire ='$user'
-                              ORDER BY date_enregistrement DESC");
-  
-  $newmsg = $pdo->query("SELECT count(*) AS nb 
-                          FROM conversation 
-                          WHERE (destinataire = '$user') 
-                          AND (est_lu_destinataire = 1)");
-  $data =  $newmsg->fetch();
-  $NewMessage = $data['nb'];
+  $Membre = getMembre($pdo, $_GET['id_membre'] ?? null);
+
+  if($Membre != null){
+    $user = $Membre['id_membre'];
+    $allNewconver = $pdo->query("SELECT *
+                                FROM conversation
+                                WHERE destinataire ='$user'
+                                ORDER BY date_enregistrement DESC");
+    
+    $newmsg = $pdo->query("SELECT count(*) AS nb 
+                            FROM conversation 
+                            WHERE (destinataire = '$user') 
+                            AND (est_lu_destinataire = 1)");
+    $data =  $newmsg->fetch();
+    $NewMessage = $data['nb'];
+  }
 
 require_once __DIR__ . '/../config/bootstrap.php';
 ?>
