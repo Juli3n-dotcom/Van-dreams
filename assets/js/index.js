@@ -32,3 +32,23 @@ const lien1 = document.querySelector('.link1');
     lien5.classList.remove('scroll');
    }
 })
+
+const config = {
+  type:'carousel', 
+  autoplay: 3000,
+  animationDuration: 1000,
+  perView:4,
+  breakpoints: {
+    1024: {
+      perView: 3
+    },
+    800: {
+      perView: 2
+    },
+    600: {
+      perView: 1
+    }
+  }
+}
+  new Glide(".glide", config).mount()
+

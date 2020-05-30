@@ -174,6 +174,9 @@ nav{
       font-weight: 700;
   }
    
+/* ******************** */
+/* **** index **** */
+/* ******************** */
 .coords{
     font-size: 1rem;
     display: inline-block;
@@ -362,6 +365,70 @@ animation: ellipseOrbit 15s ease-in-out infinite;
     background-color: #ce587b;
 }
 
+.title-heading{
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 5rem;
+    color: rgba(0, 0, 0, .7);
+}
+/***** Carousel*******/
+.card_carousel{
+    max-width: none !important;
+}
+.glide__arrow{
+    color: var(--light-black) !important;
+}
+
+.part2{
+    width: 100%;
+    height: 40vh;
+    background: linear-gradient(135deg, rgba(0,0,0,0.4),rgba(0,0,0,0.4)100%),url("../img/mountain.jpeg") center,no-repeat;
+    background-size: cover;
+    position: relative;
+}
+.part2::before{
+    content: "";
+    position: absolute;
+    top: -3px;
+    left: 0;
+    width: 100%;
+    height: 4.7rem;
+    background: url("../img/wave-small-reversed.png")center no-repeat;
+    background-size: cover;
+}
+.block2{
+    width: 100%;
+    color: #FAFAFA;
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+.block-text-box{
+    text-transform: uppercase;
+    padding: 0 1.5rem;
+    margin-bottom: 4rem;
+    position: relative;
+    color: var(--light-white);
+}
+
+.index_link{
+    width: 50%;
+    padding: 10px 30px;
+    cursor: pointer;
+    display: block;
+    margin: auto;
+    color: var(--white);
+    background: linear-gradient(to right, #00bd71,#008656);
+    border: 0;
+    outline: none;
+    border-radius: 30px;
+}
+.index_link:hover{
+    color: var(--white);
+    text-decoration: none;
+}
 /* ******************** */
 /* **** lost mdp page **** */
 /* ******************** */
@@ -909,10 +976,13 @@ text-align: center;
         background: url('../img/wave-medium.png');
         background-size: cover;
     }
-    .testimonials::before{
+    .part2::before{
         height: 9.4rem;
         background: url('../img/wave-medium-reversed.png');
         background-size: cover;
+    }
+    .index_link{
+        width: 30%;
     }
 }
 @media screen and (min-height: 470px){
@@ -1045,15 +1115,24 @@ text-align: center;
         background: url('../img/wave-large.png');
         background-size: cover;
     }
-    .testimonials::before{
-        height: 22.7rem;
+    .part2{
+        height: 50vh;
+    }
+    .part2::before{
+        height: 20.7rem;
         background: url('../img/wave-large-reversed.png');
         background-size: cover;
+    }
+    .index_link{
+        width: 20%;
     }
 }
 
 @media screen and (min-width: 1200px){
     .hero{
         height: 100vh;
+    }
+    .part2{
+        height: 60vh;
     }
 }

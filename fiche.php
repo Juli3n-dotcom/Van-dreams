@@ -399,7 +399,7 @@ include __DIR__.'/assets/includes/header.php';
 
 </div>
 
-<script type="text/javascript" src="assets/js/scroll.js"></script>
+
 <?php if(getMembre() == null) :?>
   <script type="text/javascript" src="assets/js/login.js"></script>
 <?php endif;?>
