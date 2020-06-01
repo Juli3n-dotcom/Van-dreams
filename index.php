@@ -7,10 +7,8 @@ require_once __DIR__ . '/assets/functions/membre_function.php';
 $Membre = getMembre($pdo, $_GET['id_membre'] ?? null);
 
 if(isset($_POST['noUser'])){
-setcookie('favindex', true, time()+3600);
-ajouterFlash('danger','merci de vous connecter pour liker cette annonce.');
-  header('location:login');
-}
+    ajouterFlash('danger','merci de vous connecter pour mettre en favori.');
+  }
 
 //like
 if(isset($_POST['addFavori'])){

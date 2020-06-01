@@ -105,24 +105,26 @@ if (isset($_POST['register'])){
   }
 }
 
+if(isset($_POST['noUser'])){
+  ajouterFlash('danger','merci de vous connecter pour mettre en favori.');
+}
+
 //like
 if(isset($_POST['addFavori'])){
-  if(getMembre() === null){
-    ajouterFlash('danger','merci de vous connecter pour mettre en favori.');
-  }else{
+  
     $req = $pdo->prepare(
-      'INSERT INTO favoris (membre_id, annonce_id, est_favoris)
-      VALUES (:membre_id, :annonce_id, :est_favoris)'
+      'INSERT INTO favoris (membre_id, annonce_id, est_favori)
+      VALUES (:membre_id, :annonce_id, :est_favori)'
   );
 
   $req->bindParam(':membre_id',$_POST['iduser']);
   $req->bindParam(':annonce_id',$_POST['idannonce']);
-  $req->bindValue(':est_favoris',1);
+  $req->bindValue(':est_favori',1);
   $req->execute();
 
     ajouterFlash('success','Annonce sauvegardée');
   }
-}
+
 
 //sup favori
 if(isset($_POST['removeFavori'])){
@@ -212,12 +214,9 @@ include __DIR__.'/assets/includes/header.php';
         $data_sub = $pdo->query("SELECT * FROM sub_category WHERE id_sub_cat = '$id_subcat'");
         $subcat = $data_sub->fetch(PDO::FETCH_ASSOC);
 
-        $user = getMembre()['id_membre'];
-        $id = $Annonce['id_annonce'];
-        $data_loved = $pdo->query("SELECT * FROM favoris WHERE membre_id = '$user' AND annonce_id = '$id'");
-        $favori = $data_loved->fetch(PDO::FETCH_ASSOC);
+        
         ?>
-             <a href="#portfolio-item-0">
+             <a href="/Vandreams/annonce/<?= $Annonce['id_annonce']?>#portfolio-item-0">
               <img src="/Vandreams/data/<?= $photo['photo1']?>" alt="photo_annonce">
             </a>
             </div>
@@ -273,12 +272,12 @@ include __DIR__.'/assets/includes/header.php';
               <div class="container">
                 <div class="row">
                   <div class="col-md-6 col-sm-6">
-                    <a href="#portfolio-item-1">
+                    <a href="/Vandreams/annonce/<?= $Annonce['id_annonce']?>#portfolio-item-1">
                      <img src="/Vandreams/data/<?= $photo['photo2']?>" alt="photo_annonce">
                     </a>
                   </div>
                   <div class="col-md-6 col-sm-6">
-                  <a href="#portfolio-item-2">
+                  <a href="/Vandreams/annonce/<?= $Annonce['id_annonce']?>#portfolio-item-2">
                      <img src="/Vandreams/data/<?= $photo['photo3']?>" alt="photo_annonce">
                      </a>
                   </div>
@@ -385,28 +384,28 @@ include __DIR__.'/assets/includes/header.php';
 
 <div class="portfolio-lightbox" id="portfolio-item-0">
   <div class="portfolio-lightbox__content">
-    <a href="#" class="close"></a>
-    <a href="#portfolio-item-1" class="next"></a>
-    <a href="#portfolio-item-2" class="prev"></a>
-    <img width="500px" height="500px" src="/Vandreams/data/<?= $photo['photo1']?>">
+    <a href="/Vandreams/annonce/<?= $Annonce['id_annonce']?>" class="lightbox_close"></a>
+    <a href="/Vandreams/annonce/<?= $Annonce['id_annonce']?>#portfolio-item-1" class="next"></a>
+    <a href="/Vandreams/annonce/<?= $Annonce['id_annonce']?>#portfolio-item-2" class="prev"></a>
+    <img width="400px" height="400px" src="/Vandreams/data/<?= $photo['photo1']?>">
   </div>
 </div>
 
 <div class="portfolio-lightbox" id="portfolio-item-1">
   <div class="portfolio-lightbox__content">
-    <a href="#" class="close"></a>
-    <a href="#portfolio-item-2" class="next"></a>
-    <a href="#portfolio-item-1" class="prev"></a>
-    <img width="500px" height="500px" src="/Vandreams/data/<?= $photo['photo2']?>">
+    <a href="/Vandreams/annonce/<?= $Annonce['id_annonce']?>" class="lightbox_close"></a>
+    <a href="/Vandreams/annonce/<?= $Annonce['id_annonce']?>#portfolio-item-2" class="next"></a>
+    <a href="/Vandreams/annonce/<?= $Annonce['id_annonce']?>#portfolio-item-1" class="prev"></a>
+    <img width="400px" height="400px" src="/Vandreams/data/<?= $photo['photo2']?>">
   </div>
 </div>
 
 <div class="portfolio-lightbox" id="portfolio-item-2">
   <div class="portfolio-lightbox__content">
-    <a href="#" class="close"></a>
-    <a href="#portfolio-item-0" class="next"></a>
-    <a href="#portfolio-item-1" class="prev"></a>
-    <img width="500px" height="500px" src="/Vandreams/data/<?= $photo['photo3']?>">
+    <a href="/Vandreams/annonce/<?= $Annonce['id_annonce']?>" class="lightbox_close"></a>
+    <a href="/Vandreams/annonce/<?= $Annonce['id_annonce']?>#portfolio-item-0" class="next"></a>
+    <a href="/Vandreams/annonce/<?= $Annonce['id_annonce']?>#portfolio-item-1" class="prev"></a>
+    <img width="400px" height="400px" src="/Vandreams/data/<?= $photo['photo3']?>">
   </div>
 </div>
 
