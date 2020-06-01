@@ -412,7 +412,9 @@ animation: ellipseOrbit 15s ease-in-out infinite;
     position: relative;
     color: var(--light-white);
 }
-
+.block-text-box h3{
+margin-top: 3rem;
+}
 .index_link{
     width: 50%;
     padding: 10px 30px;

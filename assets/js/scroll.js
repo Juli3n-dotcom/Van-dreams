@@ -24,6 +24,11 @@ sr.reveal('.part2', {
       distance:'300px',
       origin:'bottom'
         });
+sr.reveal('.annonce',{
+  duration: 1000,
+  distance:'300px',
+  origin:'bottom'
+});
 sr.reveal('.showcase-left', {
           duration: 2000,
           origin:'top',

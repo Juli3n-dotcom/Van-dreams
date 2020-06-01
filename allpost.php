@@ -146,7 +146,7 @@ include __DIR__.'/assets/includes/header.php';
         // $favori = $data_loved->fetch(PDO::FETCH_ASSOC);
         ?>
         <div class="col-md-6 col-lg-4">
-            <div class="annonce-box">
+            <div class="annonce-box annonce">
                 <div class="annonce-img">
                     <img src="/Vandreams/data/<?= $photo['photo1']?>" alt="photo_annonce">
                 </div> 
