@@ -40,6 +40,16 @@ if(isset($_POST['login'])){
         ajouterFlash('danger','merci de vous connecter pour liker cette annonce.');
         setcookie('allpost','',time()-3600);
         header('Location: touteslesannonces');
+
+      }elseif(!empty($_COOKIE["favindex"])){
+        ajouterFlash('danger','merci de vous connecter pour liker cette annonce.');
+        setcookie('allpost','',time()-3600);
+        header('Location: welcome');
+        
+      }elseif(!empty($_COOKIE["fiche"])){
+        ajouterFlash('danger','merci de vous connecter pour liker cette annonce.');
+        setcookie('fiche','',time()-3600);
+        header('Location:'.$HTTP_SERVER_VARS["HTTP_REFERER"]);
         
       }else{
           header('Location: welcome');

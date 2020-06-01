@@ -1,85 +1,29 @@
-$(document).ready(function(){
-    
-    /**
-     * PARTIE DIVERS JAVASCRIPT
-     */
-
-    // $('#prix_min'). keydown(function (e) {
-    //     if (e. keyCode == 13) {
-    //         e. preventDefault();
-    //     return false;
-    //     }
-    // });
-    // $('#prix_max'). keydown(function (e) {
-    //     if (e. keyCode == 13) {
-    //         e. preventDefault();
-    //     return false;
-    //     }
-    // });
 
 
-    /**
-     * PARTIE AJAX FILTRES
-     */
+$("#category, #subcat, #country, #regions, #prix_min, #prix_max").change(function(){
 
-    limite_annonce = 9;
+    var category = $('#category').val();
+    var subcat = $('#subcat').val();
+    var country = $('#country').val(); 
+    var regions = $('#regions').val();
+    var pmin = $('#prix_min').val();
+    var pmax = $('#prix_max').val();
+   
 
-    $('#bouton_voir_plus').click(function(event){
-        event.preventDefault();
-        limite_annonce += 9;
-        ajax();
-    });
+        var parametres = 'category='+category+'&subcat='+subcat+'&country='+country+'&regions='+regions+'&prix_min='+pmin+'&prix_max='+pmax;
+        console.log(parametres);
 
-    $('#category').change(function(event){
-        event.preventDefault();
-        ajax();
-    });
 
-    $('#subcat').change(function(event){
-        event.preventDefault();
-        ajax();
-    });
+        $.post("assets/ajax/ajax_allpost.php", parametres, function(data){
 
-    $('#country').change(function(event){
-        event.preventDefault();
-        ajax();
-    });
-    
-    $('#regions').change(function(event){
-        event.preventDefault();
-        ajax();
-    });
-
-    // $('#prix_max').change(function(event){
-    //     event.preventDefault();
-    //     ajax();
-    // });
-
-    // $('#prix_min').change(function(event){
-    //     event.preventDefault();
-    //     ajax();
-    // });
-
-    // $('#ajax_tri').change(function(event){
-    //     event.preventDefault();
-    //     ajax();
-    // });
-
-    let ajax = function(){
-        let category = $('#category').val();
-        let subcat = $('#subcat').val();
-        let country = $('#country').val(); 
-        let regions = $('#regions').val(); 
-        // let prix = $('#prix_max').val(); 
-        let limite = limite_annonce;
-        // let tri = $('#ajax_tri').val();
-        let parameters = 'id_category='+category+'&id_sub_cat='+subcat+'&id_country='+country+'&id_region='+regions+'&limite='+limite_annonce;
-        console.log(parameters);
-        $.post('assets/ajax/ajax_allpost.php', parameters, function(data){
-            console.log(data.resultat);
+            // console.log(data); // debug
             $('#resultat').html(data.resultat);
-        }, 'json');
-    }
+    
+        },'json');
+
+    
+    
 });
+
 
 

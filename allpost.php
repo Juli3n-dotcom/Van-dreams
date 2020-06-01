@@ -4,6 +4,8 @@ require_once __DIR__ . '/assets/functions/post.php';
 require_once __DIR__ . '/assets/functions/annonces.php';
 require_once __DIR__ . '/assets/functions/membre_function.php';
 
+
+
 $Membre = getMembre($pdo, $_GET['id_membre'] ?? null);
 
 if(isset($_POST['noUser'])){
@@ -53,6 +55,7 @@ include __DIR__.'/assets/includes/header.php';
 <div class="search">
     <form action="" method="post">
         <div class="container">
+            <h2>Affiner votre recherche</h2>
             <div class="row">
         <div class="col-md-6">
         <div class="search_part col">
@@ -75,25 +78,33 @@ include __DIR__.'/assets/includes/header.php';
         </div>
 
         <div class="col-md-6">
-        <div class="search_part col">
-            <select name="country" id="country" class="custom-dropdown">
-                <option selected value="A">Choisir un pays</option>
-            <?php foreach(getCountry($pdo) as $country) : ?>
-                <option value="<?=$country['id_country'];?>"><?=$country['name_country'];?></option>
-            <?php endforeach; ?>
-            </select>
-        </div>
-
-        <div class="search_part col">
-            <select name="regions" id="regions" class="custom-dropdown">
-                <option selected value="A">Choisir un pays en premier</option>
-            </select>
-        </div>
-        </div>
-
+            <div class="search_part col">
+                <select name="country" id="country" class="custom-dropdown">
+                    <option selected value="A">Choisir un pays</option>
+                <?php foreach(getCountry($pdo) as $country) : ?>
+                    <option value="<?=$country['id_country'];?>"><?=$country['name_country'];?></option>
+                <?php endforeach; ?>
+                </select>
             </div>
+
+            <div class="search_part col">
+                <select name="regions" id="regions" class="custom-dropdown">
+                    <option selected value="A">Choisir un pays en premier</option>
+                </select>
+             </div>
         </div>
-       
+
+        
+        <!-- <div class="container">
+            <div class="row price_part">
+                <input type="number" pattern="[0-9]*" class="col input-field" name="prix_min" id="prix_min" placeholder="Prix min">
+                <input type="number" pattern="[0-9]*" class="col input-field" name="prix_max" id="prix_max" placeholder="Prix max">
+            </div>
+        </div> -->
+
+            </div><!-- end container-->
+        </div><!-- end row-->
+       <!-- <button type="submit" id="search">Rechercher</button> -->
     </form>
 </div>
 

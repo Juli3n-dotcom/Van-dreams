@@ -4,8 +4,8 @@ require_once __DIR__ . '/../functions/post.php';
 require_once __DIR__ . '/../functions/annonces.php';
 require_once __DIR__ . '/../functions/membre_function.php';
 
-$Membre = getMembre($pdo, $_GET['id_membre'] ?? null);
 
+$Membre = getMembre($pdo, $_GET['id_membre'] ?? null);
 
 $second_where = false;
 
@@ -34,60 +34,61 @@ $requete = 'SELECT a.id_annonce,
             LEFT JOIN sub_category s ON a.subcat_id = s.id_sub_cat
             LEFT JOIN country p ON a.country_id = p.id_country
             LEFT JOIN region r ON a.region_id = r.id_region
-            LEFT JOIN membre m ON a.membre_id = m.id_membre';
+            LEFT JOIN membre m ON a.membre_id = m.id_membre
+            ';
 
 if(isset($_POST['category']) && $_POST['category'] != 'A'){
-    $requete .= 'WHERE a.category_id = :id_category';
+    $requete .= ' WHERE a.category_id = :id_category';
     $second_where = true;
 }
 
 if(isset($_POST['subcat']) && $_POST['subcat'] != 'A'){
     if($second_where == true){
-        $requete .='AND a.subcat_id = :id_sub_cat';
+        $requete .=' AND a.subcat_id = :id_sub_cat';
     }else{
-        $requete .='WHERE a.subcat_id = :id_sub_cat';
+        $requete .=' WHERE a.subcat_id = :id_sub_cat';
     }
     $second_where = true;
 }
 
 if(isset($_POST['country']) && $_POST['country'] != 'A'){
     if($second_where == true){
-        $requete .='AND a.country_id = :id_country';
+        $requete .=' AND a.country_id = :id_country';
     }else{
-        $requete .='WHERE a.country_id = :id_country';
+        $requete .=' WHERE a.country_id = :id_country';
     }
     $second_where = true;
 }
 
 if(isset($_POST['regions']) && $_POST['regions'] != 'A'){
     if($second_where == true){
-        $requete .='AND a.region_id = :id_region';
+        $requete .=' AND a.region_id = :id_region';
     }else{
-        $requete .= 'WHERE a.region_id = :id_region';
+        $requete .= ' WHERE a.region_id = :id_region';
     }
     $second_where = true;
 }
 
 // if(isset($_POST['prix_min'])){
 //     if($second_where == true){
-//         $requete .= 'AND prix < :pmin';
+//         $requete .= ' AND a.prix > :pmin';
 //     }else{
-//         $requete .= 'WHERE prix < :pmin';
+//         $requete .= ' WHERE a.prix > :pmin';
 //     }
 //     $second_where = true;
 // }
 
 // if(isset($_POST['prix_max'])){
 //     if($second_where == true){
-//         $requete .='AND prix > :pmax';
+//         $requete .=' AND a.prix < :pmax';
 //     }else{
-//         $requete .= 'WHERE prix > :pmax';
+//         $requete .= ' WHERE a.prix < :pmax';
 //     }
 //     $second_where = true;
 // }
 
-// $requete .='ORDER BY date_enregistrement DESC';
-// $requete .='LIMIT :limite';
+$requete .=' ORDER BY a.date_enregistrement DESC';
+// $requete .='LIMIT 1';
 
 //préparation de la requete
 $req = $pdo->prepare($requete);
@@ -113,68 +114,82 @@ if(isset($_POST['regions']) && $_POST['regions'] != 'A'){
 // }
 
 $req->execute();
+$count = $req->rowCount();
 
-$resultat = '<div class="allannonces">';
-    $resultat .= '<div class="container">';
-        $resultat .= '<div class="row">';
-        
-    while($annonce = $req->fetch(PDO::FETCH_ASSOC)){
-$resultat .= '<div class="col-md-6 col-lg-4">';
-    $resultat .= '<div class="annonce-box">';
-        $resultat .= '<div class="annonce-img">';
-            $resultat .= '<img src="/data/'.$annonce['photo1'].'" alt="photo_annonce">';
-        $resultat .= '</div>';
-
-        $resultat .= '<div class="price">';
-            $resultat .= '<p>'.$annonce['prix'].'€</p> ';
-        $resultat .= '</div>';
-
-        $resultat .= '<div class="like">';
-        if($Membre === null){
-            echo '<form action="" method="POST">
-                    <button type="submit" class="favoris" name="noUser"><i class="far fa-heart"></i></button>
-                </form>';  
-        }else{
-            $favori = getfavori($pdo, $Membre['id_membre'], $annonce['id_annonce']);
-
-            if($favori == false){
-                echo '<form action="" method="POST">
-                        <input type="hidden" name="iduser" value="'.$Membre['id_membre'].'">
-                        <input type="hidden" name="idannonce" value="'.$annonce['id_annonce'].'">
-                        <button type="submit" class="favoris" name="addFavori"><i class="far fa-heart"></i></button>
-                    </form>';   
-            }else{
-                echo '<form action="" method="POST">
-                        <input type="hidden" name="idSupr" value="'.$favori.'">
-                        <button type="submit" class="favoris" name="removeFavori"><i class="fas fa-heart"></i></button>
-                    </form>';
-            }
-        }
-        $resultat .= '</div>';
-
-        $resultat .= '<div class="annonce-details">';
-            $resultat .= '<h4>'.$annonce['titre_annonce'].'</h4>';
-            $resultat .= '<div class="description_annonce">';
-                $resultat .= '<p>'.substr($annonce['description_annonce'],0,255)."...".'</p>';
+$resultat = '';
+if($count > 0){
+    $resultat .= '<div class="allannonces">';
+        $resultat .= '<div class="container">';
+            $resultat .= '<div class="row">';
+        while($annonce = $req->fetch(PDO::FETCH_ASSOC)){
+            $photo = ($annonce['photo1'] != null) ? $annonce['photo1'] : 'img-vide.png';
+    $resultat .= '<div class="col-md-6 col-lg-4">';
+        $resultat .= '<div class="annonce-box">';
+            $resultat .= '<div class="annonce-img">';
+                $resultat .= '<img src="data/'.$photo.'" alt="photo_annonce">';
             $resultat .= '</div>';
-                $resultat .= ' <p><i class="fas fa-user"></i> Publié par : '.$annonce['prenom'].'</p>';
-                $resultat .= '<p><i class="fas fa-th-large"></i> : '.$annonce['titre_cat'].' / '. $annonce['titre_subcat'].'</p>';
-                $resultat .= ' <p><i class="fas fa-map-marker-alt"></i> : '.$annonce['name_country'].' / '. $annonce['name_region'].'</p>';
+    
+            $resultat .= '<div class="price">';
+                $resultat .= '<p>'.$annonce['prix'].'€</p> ';
+            $resultat .= '</div>';
+    
+            $resultat .= '<div class="like">';
+            if($Membre === null){
+                $resultat .= '<form action="" method="POST">
+                        <button type="submit" class="favoris" name="noUser"><i class="far fa-heart"></i></button>
+                    </form>';  
+            }else{
+                $favori = getfavori($pdo, $Membre['id_membre'], $annonce['id_annonce']);
+    
+                if($favori == false){
+                    $resultat.= '<form action="" method="POST">
+                            <input type="hidden" name="iduser" value="'.$Membre['id_membre'].'">
+                            <input type="hidden" name="idannonce" value="'.$annonce['id_annonce'].'">
+                            <button type="submit" class="favoris" name="addFavori"><i class="far fa-heart"></i></button>
+                        </form>';   
+                }else{
+                    $resultat .= '<form action="" method="POST">
+                            <input type="hidden" name="idSupr" value="'.$favori.'">
+                            <button type="submit" class="favoris" name="removeFavori"><i class="fas fa-heart"></i></button>
+                        </form>';
+                }
+            }
+            $resultat .= '</div>';
+    
+            $resultat .= '<div class="annonce-details">';
+                $resultat .= '<h4>'.$annonce['titre_annonce'].'</h4>';
+                $resultat .= '<div class="description_annonce">';
+                    $resultat .= '<p>'.substr($annonce['description_annonce'],0,255)."...".'</p>';
+                $resultat .= '</div>';
+                    $resultat .= ' <p><i class="fas fa-user"></i> Publié par : '.$annonce['prenom'].'</p>';
+                    $resultat .= '<p><i class="fas fa-th-large"></i> : '.$annonce['titre_cat'].' / '. $annonce['titre_subcat'].'</p>';
+                    $resultat .= ' <p><i class="fas fa-map-marker-alt"></i> : '.$annonce['name_country'].' / '. $annonce['name_region'].'</p>';
+            $resultat .= '</div>';
+            
+            $resultat .= '<div class="annoncelink">';
+                $resultat .= '<a href="annonce/'.$annonce['id_annonce'].'" class="annonce_btn">Voir l\'annonce</a>';
+            $resultat .= '</div>';
+    
         $resultat .= '</div>';
-        
-        $resultat .= '<div class="annoncelink">';
-            $resultat .= '<a href="annonce/'.$annonce['id_annonce'].'" class="annonce_btn">Voir l\'annonce</a>';
-        $resultat .= '</div>';
-
     $resultat .= '</div>';
-$resultat .= '</div>';
+    }
+    $resultat .= '</div>';
+    $resultat .= '</div>';
+    $resultat .= '</div>';
+}else{
+    $resultat = '<div class="container">
+                    <div class="nofind">
+                        <div class="nofind_animation">
+                            <lottie-player src="/Vandreams/assets/json/search.json"  background="transparent"  speed="1"  style="width: 200px; height: 200px;"  loop  autoplay></lottie-player>
+                        </div>
+                        <h3> Oups!, aucune annonces semble correspondre a vos critéres !</h3>
+                    </div>
+                </div>';
 }
-$resultat .= '</div>';
-$resultat .= '</div>';
-$resultat .= '</div>';
+
+
 
 $tableau['resultat'] = $resultat;
 
 echo json_encode($tableau);
 
-?>

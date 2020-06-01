@@ -62,6 +62,8 @@ if (session_status() === PHP_SESSION_NONE){
     <link rel="stylesheet" href="assets/css/fiche.css">
     <!-- Js-->
     <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
 </head>
 <body>
 <header class="header">
