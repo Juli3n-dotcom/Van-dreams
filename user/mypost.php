@@ -144,7 +144,7 @@ include __DIR__.'/assets/includes/header_user.php';
                     $date = implode('-',array_reverse  (explode('/',$annonce['date_enregistrement'])));
                 ?>
 
-                <div class="col-md-4">
+                <div class="col-md-6 col-lg-4">
                     <div class="annonce-box">
                         <div class="annonce-img">
                             <img src="/Vandreams/data/<?= $photo['photo1']?>" alt="photo_annonce">
@@ -153,11 +153,22 @@ include __DIR__.'/assets/includes/header_user.php';
                            <p><?= $annonce['prix']?>€</p> 
                         </div>
                         <div class="annonce-details">
-                            <h4><?= $annonce['titre_annonce']?></h4>
+                            <h4><?= ($annonce['titre_annonce'])?></h4>
+                        <div class="description_annonce">
+                            <p><?= substr($annonce['description_annonce'],0,255).'...'?></p>
+                        </div>
+                            <p><i class="fas fa-user"></i> Publié par : <?= $membre['prenom']?></p>
+                            <p><i class="fas fa-th-large"></i> : <?= $category['titre_cat']?> / <?= $subcat['titre_subcat']?></p>
+                            <p><i class="fas fa-map-marker-alt"></i> : <?= $country['name_country']?> / <?= $region['name_region']?></p>
                         </div>
                         <div class="annonce_bottom">
-                        <a href="../annonce/<?=$annonce['id_annonce'];?>" class="annonce_btn">Voir l'annonce</a>
-                        <a href="annonces.php#id=<?=$annonce['id_annonce']?>" class="annonce_btn updateAnnonce" data-toggle="modal" data-target="#<?=$annonce['name']?>update"">Modifier</a>
+
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <a href="../annonce/<?=$annonce['id_annonce'];?>" class="btn seeBtn"><i class="fas fa-eye"></i></a>
+                            <a href="annonces.php#id=<?=$annonce['id_annonce']?>" class="btn updateAnnonce" data-toggle="modal" data-target="#<?=$annonce['name']?>update""><i class="fas fa-edit"></i></a>
+                            <a href="annonces.php#id=<?=$annonce['id_annonce']?>" class="btn SupAnnonce" data-toggle="modal" data-target="#<?=$annonce['name']?>"><i class="fas fa-trash-alt"></i></a>
+                        </div>
+                        
                         <!-- Modal update -->
                         <div class="modal fade" id="<?=$annonce['name']?>update" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-scrollable" role="document">
@@ -197,7 +208,7 @@ include __DIR__.'/assets/includes/header_user.php';
                             </div>
                             </div>
 
-                            <a href="annonces.php#id=<?=$annonce['id_annonce']?>" class="annonce_btn SupAnnonce" data-toggle="modal" data-target="#<?=$annonce['name']?>">Supprimer</a>
+                           
                             <!-- Modal delete -->
                             <div class="modal fade" id="<?=$annonce['name']?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-scrollable" role="document">

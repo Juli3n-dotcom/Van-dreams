@@ -1037,7 +1037,7 @@ text-align: center;
   box-shadow: 0 0 10PX 1PX var(--light-black);
   position: absolute;
   left: 30px;
-  top: 230px;
+  top: 170px;
   }
   .price p{
     font-size: 1.2rem !important;

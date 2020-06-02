@@ -270,9 +270,9 @@ nav{
 
 .annonce-box{
   margin-bottom: 4rem;
-  /* border: 0.5px solid var(--light-black); */
   min-height: 600px;
   box-shadow: 0 0 10px 1px var(--light-black);
+  position: relative;
 }
 
 .annnonce-img img{
@@ -292,8 +292,8 @@ border-radius: 50%;
 padding-top: 20px;
 box-shadow: 0 0 10PX 1PX var(--light-black);
 position: absolute;
-left: 20px;
-top: 25%;
+left: 30px;
+  top: 230px;
 }
 .price p{
   font-size: 1.2rem !important;
@@ -345,7 +345,9 @@ top: 25%;
   text-decoration: none;
   color: var(--white);
 }
-
+.seeBtn{
+  background: linear-gradient(to right, #00bd71,#008656);
+}
 .updateAnnonce{
   background: linear-gradient(to right, #0000FF,#00008B);
 }
@@ -353,7 +355,20 @@ top: 25%;
   background: linear-gradient(to right, #DC143C,#A52A2A);
 }
 .annonce_bottom{
-  margin-bottom: 2rem;
+  position: absolute;
+        bottom: 30px;
+        left: 7%;
+        font-size: 1rem;
+        border-radius: 2rem;
+        color: var(--white);
+        display: block;
+        margin: auto;
+        border: 0;
+        margin-top: 2rem;
+        padding: 1rem 2.5rem;
+        text-align: center;
+        text-transform: uppercase;
+        transition: background-color 650ms;
 }
 .vaspcat{
   left: 6rem !important;
@@ -490,34 +505,33 @@ top: 28%;
 @media screen and (min-width: 700px){
 
   .price{
-    top: 20%;
-  }
-  .like{
-    top: 20%;
-    }
+    top:210px;
+    left: 20px;
 }
-@media screen and (min-width: 900px){
+.like{
+    top:220px;
+    right: 20px;
+}
+}
+@media screen and (min-width: 950px){
 
   
-  .like{
-    top: 22%;
-    }
-  
-}
-@media screen and (min-width: 1000px){
-
   .price{
-    top: 30%;
-  }
-  .like{
-    top: 28%;
-    }
+    top:190px;
+    
 }
+.like{
+    top:200px;
+    
+}
+  
+}
+
 
 @media screen and (min-width: 1200px){
 
   .price{
-    top: 35%;
+    top: 230px%;
   }
   .like{
     top: 38%;
