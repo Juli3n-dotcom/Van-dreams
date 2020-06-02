@@ -173,6 +173,15 @@ include __DIR__.'/assets/includes/header_index.php';
         </div>
 </section>
 
+<section class="container part3">
+    <div class="title-heading">
+        <h3>Les aménagés</h3>
+            <h1>Envie de partir directement?</h1>
+                <p>Venez découvrir parmis une selection de véhicules déjà aménagés</p>
+    </div>
+    
+</section>
+
 <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
 <script type="text/javascript" src="assets/js/index.js"></script>
 <?php

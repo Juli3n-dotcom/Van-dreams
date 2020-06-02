@@ -29,9 +29,23 @@ function getAnnonces(PDO $pdo):array
         $req=$pdo->query(
           'SELECT *
           FROM annonces
-          ORDER BY date_enregistrement DESC'
+          ORDER BY date_enregistrement DESC
+          LIMIT 10'
         );
        $annonce = $req->fetchAll(PDO::FETCH_ASSOC);
       return $annonce;
+        }
+
+//récupération des annonces
+function getAnnoncesSubCat(PDO $pdo):array
+      {
+        $req=$pdo->query(
+          'SELECT *
+          FROM annonces
+          WHERE subcat_id = 2
+          ORDER BY date_enregistrement DESC'
+        );
+       $annonce2 = $req->fetchAll(PDO::FETCH_ASSOC);
+      return $annonce2;
         }
 
