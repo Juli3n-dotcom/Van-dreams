@@ -2,6 +2,7 @@
 require_once __DIR__ . '/assets/config/bootstrap.php';
 require_once __DIR__ . '/assets/functions/annonces.php';
 require_once __DIR__ . '/assets/functions/register.php';
+require_once __DIR__ . '/assets/functions/membre_function.php';
 
 $Annonce =  getAnnonceByID($pdo, $_GET['id'] ?? null);
 $Membre = getMembre($pdo, $_GET['id_membre'] ?? null);
@@ -114,8 +115,8 @@ if(isset($_POST['addFavori'])){
       VALUES (:membre_id, :annonce_id, :est_favoris)'
   );
 
-  $req->bindParam(':membre_id',getMembre()['id_membre'], PDO::PARAM_INT);
-  $req->bindParam(':annonce_id',$Annonce['id_annonce']);
+  $req->bindParam(':membre_id',$_POST['iduser']);
+  $req->bindParam(':annonce_id',$_POST['idannonce']);
   $req->bindValue(':est_favoris',1);
   $req->execute();
 
@@ -144,28 +145,28 @@ if(isset($_POST['envoyer'])){
     }else{
       
         $req = $pdo->prepare(
-            'INSERT INTO conversation (expediteur, destinataire, annonce_id, subject, date_enregistrement)
-            VALUES (:expediteur, :destinataire, :annonce_id, :subject,  :date)'
+            'INSERT INTO conversation (expediteur, destinataire, annonce_id, subject, est_lu_expediteur, est_lu_destinataire, date_enregistrement)
+            VALUES (:expediteur, :destinataire, :annonce_id, :subject, :lu_expediteur, :lu_destinataire, :date)'
         );
         $req->bindParam(':expediteur', getMembre()['id_membre'], PDO::PARAM_INT);
         $req->bindParam(':destinataire', $Annonce['membre_id']);
         $req->bindParam(':annonce_id', $Annonce['id_annonce']);
         $req->bindParam(':subject', $_POST['subject']);
+        $req->bindValue(':lu_expediteur',0);
+        $req->bindValue(':lu_destinataire',1);
         $req->bindValue(':date',(new DateTime())->format('Y-m-d H:i:s'));
         $req->execute();
 
         $id_conversation = $pdo-> lastInsertId();
 
         $req2 = $pdo->prepare(
-          'INSERT INTO message (expediteur, destinataire, conversation_id,  message, est_lu_expediteur, est_lu_destinataire, date_enregistrement)
-          VALUES (:expediteur, :destinataire, :conversation_id, :message, :lu_expediteur, :lu_destinataire, :date)'
+          'INSERT INTO message (expediteur, destinataire, conversation_id,  message, date_enregistrement)
+          VALUES (:expediteur, :destinataire, :conversation_id, :message,  :date)'
       );
       $req2->bindParam(':expediteur', getMembre()['id_membre'], PDO::PARAM_INT);
       $req2->bindParam(':destinataire', $Annonce['membre_id']);
       $req2->bindParam(':conversation_id', $id_conversation);
       $req2->bindParam(':message', $_POST['message']);
-      $req2->bindValue(':lu_expediteur',0);
-      $req2->bindValue(':lu_destinataire',1);
       $req2->bindValue(':date',(new DateTime())->format('Y-m-d H:i:s'));
       $req2->execute();
     }
@@ -211,13 +212,9 @@ include __DIR__.'/assets/includes/header.php';
         $data_sub = $pdo->query("SELECT * FROM sub_category WHERE id_sub_cat = '$id_subcat'");
         $subcat = $data_sub->fetch(PDO::FETCH_ASSOC);
 
-        $user = getMembre()['id_membre'];
-        $id = $Annonce['id_annonce'];
-        $data_loved = $pdo->query("SELECT * FROM favoris WHERE membre_id = '$user' AND annonce_id = '$id'");
-        $favori = $data_loved->fetch(PDO::FETCH_ASSOC);
         ?>
              <a href="#portfolio-item-0">
-              <img src="user/data/img/<?=$photo['photo1']?>" alt="photo_annonce">
+              <img src="/Vandreams/data/<?= $photo['photo1']?>" alt="photo_annonce">
             </a>
             </div>
           </div>
@@ -226,21 +223,33 @@ include __DIR__.'/assets/includes/header.php';
               <h1><?= $Annonce['titre_annonce']?></h1>
               
               <p class="customer text-muted">Publié par : <?= $membre['prenom']?></p>
-              <p class="customer text-muted">Catégorie : <?= $category['titre']?> / <?= $subcat['titre']?></p>
+              <p class="customer text-muted">Catégorie : <?= $category['titre_cat']?> / <?= $subcat['titre_subcat']?></p>
             </div>
             <br>
             <p class="btn-default btn-lg showcase-price"><?= $Annonce['prix']?>  €</p>
 
-           <?php if($favori['est_favori'] == TRUE):?>
-            <form action="" method="POST">
-              <input type="hidden" name="idSupr" value="<?=$favori['id_favori']?>">
-              <button type="submit" class="favoris" name='removeFavori'><i class="fas fa-heart"></i></button>
-            </form>
-           <?php else:?> 
-            <form action="" method="POST">
-              <button type="submit" class="favoris" name='addFavori'><i class="far fa-heart"></i></button>
-            </form>
-           <?php endif;?>
+            <?php
+                    if($Membre === null){
+                        echo '<form action="" method="POST">
+                                <button type="submit" class="favoris" name="noUser"><i class="far fa-heart"></i></button>
+                            </form>';  
+                    }else{
+                        $favori = getfavori($pdo, $Membre['id_membre'], $Annonce['id_annonce']);
+    
+                        if($favori == false){
+                            echo '<form action="" method="POST">
+                                    <input type="hidden" name="iduser" value="'.$Membre["id_membre"].'">
+                                    <input type="hidden" name="idannonce" value="'.$Annonce["id_annonce"].'">
+                                    <button type="submit" class="favoris" name="addFavori"><i class="far fa-heart"></i></button>
+                                </form>';   
+                        }else{
+                            echo '<form action="" method="POST">
+                                    <input type="hidden" name="idSupr" value="'.$favori.'">
+                                    <button type="submit" class="favoris" name="removeFavori"><i class="fas fa-heart"></i></button>
+                                </form>';
+                        }
+                    }
+                ?>
           </div>
         </div>
       </div>
@@ -261,12 +270,12 @@ include __DIR__.'/assets/includes/header.php';
                 <div class="row">
                   <div class="col-md-6 col-sm-6">
                     <a href="#portfolio-item-1">
-                     <img src="user/data/img/<?=$photo['photo2']?>" alt="photo_annonce">
+                     <img src="/Vandreams/data/<?= $photo['photo2']?>" alt="photo_annonce">
                     </a>
                   </div>
                   <div class="col-md-6 col-sm-6">
                   <a href="#portfolio-item-2">
-                     <img src="user/data/img/<?=$photo['photo3']?>" alt="photo_annonce">
+                     <img src="/Vandreams/data/<?= $photo['photo3']?>" alt="photo_annonce">
                      </a>
                   </div>
                 </div>
@@ -295,8 +304,8 @@ include __DIR__.'/assets/includes/header.php';
           <div class="col-md-6 col-sm-6">
             <div class="info-left">
               <h2>Localisation : </h2>
-              <p ><strong>Pays :</strong> <?= $country['name']?></p>
-              <p ><strong>Région :</strong> <?= $region['name']?></p>
+              <p ><strong>Pays :</strong> <?= $country['name_country']?></p>
+              <p ><strong>Région :</strong> <?= $region['name_region']?></p>
               <p ><strong>Ville :</strong> <?= $Annonce['ville']?></p>
               <p ><strong>Code Postal :</strong> <?= $Annonce['cp']?></p>
             </div>
@@ -328,7 +337,7 @@ include __DIR__.'/assets/includes/header.php';
                     <h3 class="title_part">Votre message pour <?= $membre['prenom']?></h3>
                       <input type="text" class="input-field" name="subject" placeholder="Le suject de votre message" value="<?= htmlspecialchars($_POST['subject']??'');?>">
                       <textarea class="input-field" name="message" cols="40" rows="12" placeholder="Votre message" 
-                      value="<?= htmlspecialchars($_POST['message']??'');?>"></textarea>
+                      value=""><?= htmlspecialchars($_POST['message']??'');?></textarea>
                       <button type="submit" class="submit-btn_depot" name="envoyer">Envoyer</button>
                   </div>
                 </form>
@@ -375,7 +384,7 @@ include __DIR__.'/assets/includes/header.php';
     <a href="#" class="close"></a>
     <a href="#portfolio-item-1" class="next"></a>
     <a href="#portfolio-item-2" class="prev"></a>
-    <img width="500px" height="500px" src="user/data/img/<?=$photo['photo1']?>">
+    <img width="500px" height="500px" src="/Vandreams/data/<?= $photo['photo1']?>">
   </div>
 </div>
 
@@ -384,7 +393,7 @@ include __DIR__.'/assets/includes/header.php';
     <a href="#" class="close"></a>
     <a href="#portfolio-item-2" class="next"></a>
     <a href="#portfolio-item-1" class="prev"></a>
-    <img width="500px" height="500px" src="user/data/img/<?=$photo['photo3']?>">
+    <img width="500px" height="500px" src="/Vandreams/data/<?= $photo['photo2']?>">
   </div>
 </div>
 
@@ -393,13 +402,13 @@ include __DIR__.'/assets/includes/header.php';
     <a href="#" class="close"></a>
     <a href="#portfolio-item-0" class="next"></a>
     <a href="#portfolio-item-1" class="prev"></a>
-    <img width="500px" height="500px" src="user/data/img/<?=$photo['photo3']?>">
+    <img width="500px" height="500px" src="/Vandreams/data/<?= $photo['photo3']?>">
   </div>
 </div>
 
 </div>
 
-<script type="text/javascript" src="assets/js/scroll.js"></script>
+
 <?php if(getMembre() == null) :?>
   <script type="text/javascript" src="assets/js/login.js"></script>
 <?php endif;?>

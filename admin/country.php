@@ -9,7 +9,7 @@ if(isset($_POST['add_country'])){
    }else{
 
     $req = $pdo ->prepare(
-        'INSERT INTO country (name)
+        'INSERT INTO country (name_country)
             VALUES (:name)'
     );
     $req->bindParam(':name',$_POST['name_country']);
@@ -51,7 +51,7 @@ include __DIR__.'/assets/includes/header_admin.php';
         ?>
             <tr scope="row" class="table_tr">
                 <td scope="row"><?php echo $country['id_country'];?></td>
-                <td><?php echo $country['name'];?></td>
+                <td><?php echo $country['name_country'];?></td>
                 <td><?= $totalAnnonces; ?></td>
         <?php endforeach; ?>
     </tbody>

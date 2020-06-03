@@ -7,19 +7,21 @@ if (session_status() === PHP_SESSION_NONE){
 
   $Membre = getMembre($pdo, $_GET['id_membre'] ?? null);
 
-
-  $user = $Membre['id_membre'];
-  $allNewconver = $pdo->query("SELECT *
-                              FROM conversation
-                              WHERE destinataire ='$user'
-                              ORDER BY date_enregistrement DESC");
+  if($Membre != null){
+    $user = $Membre['id_membre'];
+    $allNewconver = $pdo->query("SELECT *
+                                FROM conversation
+                                WHERE destinataire ='$user'
+                                ORDER BY date_enregistrement DESC");
+    
+    $newmsg = $pdo->query("SELECT count(*) AS nb 
+                            FROM conversation 
+                            WHERE (destinataire = '$user') 
+                            AND (est_lu_destinataire = 1)");
+    $data =  $newmsg->fetch();
+    $NewMessage = $data['nb'];
+  }
   
-  $newmsg = $pdo->query("SELECT count(*) AS nb 
-                          FROM conversation 
-                          WHERE (destinataire = '$user') 
-                          AND (est_lu_destinataire = 1)");
-  $data =  $newmsg->fetch();
-  $NewMessage = $data['nb'];
 ?>
 <!doctype html>
 <html lang="fr">
@@ -43,9 +45,9 @@ if (session_status() === PHP_SESSION_NONE){
     <meta property="og:type"          content="website" />
     <meta property="og:title"         content="Van Dreams" />
     <meta property="og:description"   content="vandreams.fr : le site de petites annonces DE TRIPPERS à TRIPPERS. Consultez des milliers d'annonces van aménagé" />
-    <meta property="og:image"         content="assets/img/logo_1.png" />
+    <meta property="og:image"         content="assets/img/logo3.png" />
     <title><?=$page_title?> | Van Dreams </title>
-    <link rel="icon" href="assets/img/logo_1.png">
+    <link rel="icon" href="assets/img/logo3.png">
     <!--Ion Icons-->
     <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
     <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
@@ -60,6 +62,8 @@ if (session_status() === PHP_SESSION_NONE){
     <link rel="stylesheet" href="assets/css/fiche.css">
     <!-- Js-->
     <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
 </head>
 <body>
 <header class="header">
@@ -67,7 +71,7 @@ if (session_status() === PHP_SESSION_NONE){
         <nav>
             <div class="nav-brand">
         <a href="welcome">
-            <img src="assets/img/logo_1.png" alt="">
+            <img src="assets/img/logo3.png" alt="">
         </a>
     </div>
 
@@ -83,7 +87,7 @@ if (session_status() === PHP_SESSION_NONE){
             <a href="welcome" class="nav-link">Accueil</a>
         </li>
         <li class="nav-item">
-            <a href="#" class="nav-link">Les annonces</a>
+            <a href="touteslesannonces" class="nav-link">Les annonces</a>
         </li>
         <li class="nav-item">
             <a href="post" class="nav-link">Déposer une annonces</a>
@@ -102,8 +106,8 @@ if (session_status() === PHP_SESSION_NONE){
             <a href="login" class="dropdown-item">Inscription</a>    
             <a href="login" class="dropdown-item">Connexion</a>
         <?php else :?>          
-            <a class="dropdown-item"  href="user/mypost">Mon annonces</a>
-            <a class="dropdown-item"  href="user/favori">Mes favoris</a>
+            <a class="dropdown-item"  href="user/mesannonces">Mes annonces</a>
+            <a class="dropdown-item"  href="user/favoris">Mes favoris</a>
             <a class="dropdown-item" href="user/inbox">Messagerie <span class="notif_msg"><?= $NewMessage > 0 ? $NewMessage : '0';?></span></a>
             <a class="dropdown-item"  href="user/myaccount">Mon Profil</a>
                 <div class="dropdown-divider"></div>

@@ -27,6 +27,50 @@ if(isset($_POST['envoyer'])){
        $req->bindValue(':date',(new DateTime())->format('Y-m-d H:i:s'));
        $req->execute();
 
+       $expediteur = $_POST['email'];
+       $contenu =  $_POST['message'];
+
+       $header="MIME-Version: 1.0\r\n";
+        $header.='From:"vandreams.fr"<postmaster@vandreams.fr>'."\n";
+        $header.='Content-Type:text/html; charset="utf-8"'."\n";
+        $header.='Content-Transfer-Encoding: 8bit';
+        $message = '
+                <html>
+                <head>
+                  <title>Un nouveau message - Van Dreams.fr</title>
+                  <meta charset="utf-8" />
+                </head>
+                <body>
+                  <font color="#303030";>
+                    <div align="center">
+                      <table width="600px">
+                        <tr>
+                          <td>
+                            
+                            <div align="center">Bonjour <b>Julien</b>,</div>
+                            <br><br>
+                            <div align="center">Vous avez reçu un nouveau message de : <b>'.$expediteur.'</b></div>
+                            <br><br>
+                            <div align="center">'.$contenu.'</div>
+                            <br><br>
+                            <div align="center">A bientôt sur <a href="vandreams.fr">VanDreams.fr</a> !</div>
+                            
+                          </td>
+                        </tr>
+                        <tr>
+                          <td align="center">
+                            <font size="2">
+                              Ceci est un email automatique, merci de ne pas y répondre
+                            </font>
+                          </td>
+                        </tr>
+                      </table>
+                    </div>
+                  </font>
+                </body>
+                </html>
+                ';
+                mail("julien@vandreams.fr", "Un nouveau message - vandreams.fr", $message, $header);
    }
    unset($_POST);
     ajouterFlash('success','merci pour votre message');

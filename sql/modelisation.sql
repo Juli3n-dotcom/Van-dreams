@@ -151,7 +151,6 @@ CREATE TABLE conversation
    destinataire INT(3) DEFAULT NULL,
    annonce_id INT(3) DEFAULT NULL,
    subject VARCHAR(255)DEFAULT NULL,
-    message TEXT NOT NULL,
     est_lu_expediteur TINYINT NOT NULL,
     est_lu_destinataire TINYINT NOT NULL,
     date_enregistrement DATETIME NOT NULL,

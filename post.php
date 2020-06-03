@@ -23,7 +23,10 @@ if(isset($_POST['add'])){
         ajouterFlash('danger','prix manquant.');
      
         }elseif (!preg_match('~^[0-9-.]+$~',$_POST['prix'])) {
-       ajouterFlash('danger','Merci d\'utiliser que des chiffres et des "." pour votre prix');
+       ajouterFlash('danger','Merci d\'utiliser que des chiffres pour votre prix');
+
+        }elseif (!preg_match('~^[0-9-.]+$~',$_POST['date'])) {
+        ajouterFlash('danger','Merci de rentrer une date valide');
      
         }elseif (!preg_match('~^[0-9-.]+$~',$_POST['phone'])) {
         ajouterFlash('danger','saisir un numéro de téléphone valide');
@@ -55,9 +58,9 @@ if(isset($_POST['add'])){
         $extension1 = pathinfo($_FILES['photo1']['name'], PATHINFO_EXTENSION);
         $extension2 = pathinfo($_FILES['photo2']['name'], PATHINFO_EXTENSION);
         $extension3 = pathinfo($_FILES['photo3']['name'], PATHINFO_EXTENSION);
-        $path1 = __DIR__.'/user/data/img';
-        $path2 = __DIR__.'/user/data/img';
-        $path3 = __DIR__.'/user/data/img';
+        $path1 = __DIR__.'/data';
+        $path2 = __DIR__.'/data';
+        $path3 = __DIR__.'/data';
     
         do{
              $filename1 = bin2hex(random_bytes(16));
@@ -105,25 +108,25 @@ if(isset($_POST['add'])){
                    'INSERT INTO annonces (titre_annonce, name, membre_id, description_annonce, prix, km, places, vasp, marque, modele, annee_modele, category_id, subcat_id, photo_id, country_id, region_id, cp, ville, telephone, est_publie, est_signal, date_enregistrement)
                     VALUES (:titre_annonce, :name, :membre_id, :description_annonce, :prix, :km, :places, :vasp, :marque, :modele, :annee_modele, :category_id, :subcat_id, :photo_id, :country_id, :region_id, :cp, :ville, :telephone, :publie, :signal, :date)'
                            );
-                              $req2->bindParam(':titre_annonce',$_POST['titre_annonce']);
+                              $req2->bindParam(':titre_annonce',htmlspecialchars($_POST['titre_annonce']));
                               $req2->bindParam(':name',$name);
                               $req2->bindParam(':membre_id', getMembre()['id_membre'], PDO::PARAM_INT);
-                              $req2->bindParam(':description_annonce',$_POST['description']);
-                              $req2->bindParam(':prix',$_POST['prix']);
-                              $req2->bindParam(':km',$_POST['km']);
-                              $req2->bindParam(':places',$_POST['places']);
+                              $req2->bindParam(':description_annonce',htmlspecialchars($_POST['description']));
+                              $req2->bindParam(':prix',htmlspecialchars($_POST['prix']));
+                              $req2->bindParam(':km',htmlspecialchars($_POST['km']));
+                              $req2->bindParam(':places',htmlspecialchars($_POST['places']));
                               $req2->bindValue(':vasp',isset($_POST['vasp']),PDO::PARAM_BOOL);
-                              $req2->bindParam(':marque',$_POST['marque']);
-                              $req2->bindParam(':modele',$_POST['modele']);
-                              $req2->bindParam(':annee_modele',$_POST['date']);
+                              $req2->bindParam(':marque',htmlspecialchars($_POST['marque']));
+                              $req2->bindParam(':modele',htmlspecialchars($_POST['modele']));
+                              $req2->bindParam(':annee_modele',htmlspecialchars($_POST['date']));
                               $req2->bindValue(':category_id', $_POST['category']);
                               $req2->bindValue(':subcat_id', $_POST['subcat']);
                               $req2->bindValue(':photo_id', $id_photo);
                               $req2->bindParam(':country_id',$_POST['pays']);
                               $req2->bindParam(':region_id',$_POST['region']);
-                              $req2->bindParam(':cp',$_POST['cp']);
-                              $req2->bindParam(':ville',$_POST['ville']);
-                              $req2->bindParam(':telephone',$_POST['phone']);
+                              $req2->bindParam(':cp',htmlspecialchars($_POST['cp']));
+                              $req2->bindParam(':ville',htmlspecialchars($_POST['ville']));
+                              $req2->bindParam(':telephone',htmlspecialchars($_POST['phone']));
                               $req2->bindValue(':publie',isset($_POST['est_publie']),PDO::PARAM_BOOL);
                               $req2->bindValue(':signal',0);
                               $req2->bindValue(':date',(new DateTime())->format('Y-m-d H:i:s'));
@@ -210,7 +213,7 @@ include __DIR__.'/assets/includes/header.php';
                 <h3 class="title_part">Les détails de votre annonces</h3>
                     <input type="text" class="input-field" name="titre_annonce" placeholder="Le titre de votre annonce" value="<?= htmlspecialchars($_POST['titre_annonce']??'');?>">
                     <textarea class="input-field" name="description" cols="30" rows="10" placeholder="Description de votre annonce" 
-                    value="<?= htmlspecialchars($_POST['description']??'');?>"></textarea>
+                    ><?= htmlspecialchars($_POST['description']??'');?></textarea>
                     <input type="text" class="input-field" name="prix" placeholder="Votre Prix en €" value="<?= htmlspecialchars($_POST['prix']??'');?>">
                     <button type="button" class="submit-btn_depot" id="next1">Suivant</button>
             </div>
@@ -221,14 +224,14 @@ include __DIR__.'/assets/includes/header.php';
                     <h5  class="label_name">Catégories :</h5> 
                     <?php foreach(getCategory($pdo) as $cat) : ?>
                         <input type="radio" name="category" value="<?=$cat['id_category'];?>">
-                        <label for="category"><?=$cat['titre'];?></label>
+                        <label for="category"><?=$cat['titre_cat'];?></label>
                     <?php endforeach; ?> 
                 </div>
                 <div class="depot_radio">
                     <h5  class="label_name">Les Sous Catégories :</h5> 
                     <?php foreach(getSubCategory($pdo) as $subcat) : ?>
                         <input type="radio" name="subcat" value="<?=$subcat['id_sub_cat'];?>">
-                        <label for="subcat"><?=$subcat['titre'];?></label>
+                        <label for="subcat"><?=$subcat['titre_subcat'];?></label>
                     <?php endforeach; ?> 
                 </div>
                 <span id="vasp">VASP</span><input type="checkbox" class="vasp" name="vasp">
@@ -274,7 +277,7 @@ include __DIR__.'/assets/includes/header.php';
                         <select name="pays" class="custom-dropdown" id="country">
                             <option selected>Choisir...</option>
                             <?php foreach(getCountry($pdo) as $country) : ?>
-                            <option value="<?=$country['id_country'];?>"><?=$country['name'];?></option>
+                            <option value="<?=$country['id_country'];?>"><?=$country['name_country'];?></option>
                             <?php endforeach; ?>
                             </select>
                     

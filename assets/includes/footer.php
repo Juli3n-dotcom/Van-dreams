@@ -37,15 +37,18 @@ if(isset($_POST['news_submit_footer'])){
       <h5>Informations</h5>
       <ul>
         <li><a href="contactus">Contacter-nous</a></li>
-        <li><a href="#">Plan du site</a></li>
-        <li><a href="#">cgu</a></li>
-        <li><a href="#">Références</a></li>
+        <li><a href="cgu">CGU</a></li>
      </ul>
     </div>
     <div class="col-md-4 footer-part3">
       <h5>Suivez nous</h5>
-          <a href="https://www.facebook.com/Van-Dreams-110020710684274"><img src="assets/img/facebook.svg" alt="logo_facebook"></a>     
-          <a href="https://www.instagram.com/vandreamsfr/"><img src="assets/img/insta.svg" alt="logo_instagram"></a>      
+      <div class="col-6 rsociaux facebook">
+        <a href="https://www.facebook.com/Van-Dreams-110020710684274"><i class="fab fa-facebook-f"></i></a>     
+      </div>
+      <div class="col-6 rsociaux insta">
+        <a href="https://www.instagram.com/vandreamsfr/"><i class="fab fa-instagram"></i></a>      
+      </div>
+           
       </div>
     </div>
   </div>
@@ -65,7 +68,9 @@ if(isset($_POST['news_submit_footer'])){
 });
     </script>
     <script type="text/javascript" src="assets/js/script.js"></script>
+    <script type="text/javascript" src="assets/js/scroll.js"></script>
     <script type="text/javascript" src="assets/js/ajax_post.js"></script>
+    <script type="text/javascript" src="assets/js/ajax_allpost.js"></script>
     <?php if(getMembre() !== null AND empty($_COOKIE["token"])) :?>
       <script type="text/javascript" src="assets/js/logout.js"></script>
     <?php endif;?>

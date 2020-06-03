@@ -50,7 +50,7 @@ if(isset($_POST['modifier'])){
 
     $req = $pdo ->prepare(
         'UPDATE category SET
-         titre = :titre,
+         titre_cat = :titre,
          name = :name,
          motscles = :motscles
           WHERE id_category = :id_category'
@@ -107,7 +107,7 @@ include __DIR__.'/assets/includes/header_admin.php';
             <?php foreach(getCategory($pdo) as $cat) : ?>
                 <tr scope="row" class="table_tr">
                     <td scope="row"><?php echo $cat['id_category'];?></td>
-                    <td><?php echo $cat['titre'];?></td>
+                    <td><?php echo $cat['titre_cat'];?></td>
                     <td><?php echo $cat['motscles'];?></td>
                     <?php
                     $id = $cat['id_category'];;
@@ -125,7 +125,7 @@ include __DIR__.'/assets/includes/header_admin.php';
                             <div class="modal-dialog modal-dialog-scrollable" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" >Modification Catégorie | <?= $cat['titre']??'';?></h5>
+                                        <h5 class="modal-title" >Modification Catégorie | <?= $cat['titre_cat']??'';?></h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                         </button>
@@ -157,7 +157,7 @@ include __DIR__.'/assets/includes/header_admin.php';
                             <div class="modal-dialog modal-dialog-scrollable" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title">Supprimer Catégorie | <?= $cat['titre']??'';?></h5>
+                                        <h5 class="modal-title">Supprimer Catégorie | <?= $cat['titre_cat']??'';?></h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                         </button>

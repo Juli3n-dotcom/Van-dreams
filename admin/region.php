@@ -11,7 +11,7 @@ if(isset($_POST['add_region'])){
 }   else{
 
     $req = $pdo ->prepare(
-        'INSERT INTO region (name, country_id)
+        'INSERT INTO region (name_region, country_id)
             VALUES (:name, :country_id)'
     );
     $req->bindParam(':name',$_POST['name_region']);
@@ -63,13 +63,13 @@ include __DIR__.'/assets/includes/header_admin.php';
             <?php while($region = $Allregions->fetch()) : ?>
             <tr scope="row" class="table_tr">
                 <td scope="row"><?php echo $region['id_region'];?></td>
-                <td><?php echo $region['name'];?></td>
+                <td><?php echo $region['name_region'];?></td>
                 <?php
                     $id = $region['country_id'];
                     $data = $pdo->query("SELECT name FROM country WHERE id_country = '$id'");
                     $name_country = $data->fetch(PDO::FETCH_ASSOC);
                     ?>
-                <td><?php echo $name_country['name'];?></td>
+                <td><?php echo $name_country['name_country'];?></td>
                 <?php
                 $id = $region['id_region'];
                 $counter =$pdo->query("SELECT COUNT(*) as nb FROM annonces WHERE region_id = '$id'");
@@ -105,7 +105,7 @@ include __DIR__.'/assets/includes/header_admin.php';
 <div class="add" id="add_region">
 <h3>Ajouter une région</h3>
     <div class="container">
-        <form action="country.php" method="post">
+        <form action="region.php" method="post">
 
         <div class="input-group mb-3">
             <div class="input-group-prepend">
@@ -114,7 +114,7 @@ include __DIR__.'/assets/includes/header_admin.php';
             <select class="custom-select" id="inputGroupSelect01" name="country">
                 <option selected>Choisir...</option>
                 <?php foreach(getCountry($pdo) as $country) : ?>
-                <option value="<?=$country['id_country'];?>"><?=$country['name'];?></option>
+                <option value="<?=$country['id_country'];?>"><?=$country['name_country'];?></option>
                 <?php endforeach; ?>
             </select>
         </div>
