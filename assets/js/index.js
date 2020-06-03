@@ -33,8 +33,11 @@ const lien1 = document.querySelector('.link1');
    }
 })
 
-const config = {
-  type:'carousel', 
+var sliders = document.querySelectorAll('.glide');
+
+for(var i= 0; i< sliders.length;i ++){
+  var glide =  new Glide(sliders[i],{
+    type:'carousel', 
   autoplay: 3000,
   animationDuration: 1000,
   perView:3,
@@ -49,7 +52,28 @@ const config = {
       perView: 1
     }
   }
+  });
+  glide.mount();
 }
-  new Glide(".glide", config).mount()
+
+// const config = {
+//   type:'carousel', 
+//   autoplay: 3000,
+//   animationDuration: 1000,
+//   perView:3,
+//   breakpoints: {
+//     1024: {
+//       perView: 3
+//     },
+//     800: {
+//       perView: 2
+//     },
+//     600: {
+//       perView: 1
+//     }
+//   }
+// }
+//   new Glide(".glide", config).mount()
 
   
+    

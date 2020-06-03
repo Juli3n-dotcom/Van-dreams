@@ -45,7 +45,7 @@ function getAnnoncesSubCat(PDO $pdo):array
           WHERE subcat_id = 2
           ORDER BY date_enregistrement DESC'
         );
-       $annonce2 = $req->fetchAll(PDO::FETCH_ASSOC);
-      return $annonce2;
+       $annonce = $req->fetchAll(PDO::FETCH_ASSOC);
+      return $annonce;
         }
 
