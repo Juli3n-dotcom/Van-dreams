@@ -118,7 +118,9 @@
 #login_fiche h3{
   color: white;
 }
-
+.valideCGUfiche{
+  bottom: 60px;
+}
 /* ******************** */
 /* **** lightbox **** */
 /* ******************** */

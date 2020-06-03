@@ -14,5 +14,5 @@ $pdo = new PDO(
 die('Erreur de connexion раMySQL: '.$e->getMessage());
 }
 
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
+// ini_set('display_errors', 1);
+// error_reporting(E_ALL);

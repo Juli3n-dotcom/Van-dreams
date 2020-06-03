@@ -6,7 +6,7 @@ include __DIR__.'/assets/includes/header.php';
 ?>
 <?php include __DIR__.'/assets/includes/flash.php';?>
     <div class="cgu">
-    <iframe src="/Vandreams/assets/docs/cgu_vandreams.pdf" ></iframe>
+    <iframe src="assets/docs/cgu_vandreams.pdf" ></iframe>
     </div>
 
 

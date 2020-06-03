@@ -73,7 +73,7 @@ include __DIR__.'/assets/includes/header_user.php';
                 <div class="col-md-4">
                     <div class="annonce-box">
                         <div class="annonce-img">
-                            <img src="/Vandreams/data/<?= $photo['photo1']?>" alt="photo_annonce">
+                            <img src="/../data/<?= $photo['photo1']?>" alt="photo_annonce">
                         </div> 
                         <div class="price">
                            <p><?= $annonce['prix']?>€</p> 
@@ -108,7 +108,7 @@ include __DIR__.'/assets/includes/header_user.php';
         <div class="col-12 noFavoris">
             <div class="favorisLink">
                 <p>Vous n'avez aucune annonces dans vos favoris</p>
-                <a href=""> Voir toutes les annonces</a>
+                <a href="../touteslesannonces"> Voir toutes les annonces</a>
             </div>
         </div>
     </div>

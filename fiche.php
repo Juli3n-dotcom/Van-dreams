@@ -11,7 +11,7 @@ if ($Annonce === null && !role(ROLE_ADMIN)){
 
     ajouterFlash('warning', 'Annonce inconnu.');
     session_write_close();
-    header('location:welcome');
+    header('location:../oups');
 }
 
 // traitement login
@@ -176,7 +176,7 @@ if(isset($_POST['envoyer'])){
 
 
 $page_title ='Annonce N°VD-00'.$Annonce['id_annonce'];
-include __DIR__.'/assets/includes/header.php';
+include __DIR__.'/assets/includes/header_fiche.php';
 ?>
 
 <?php include __DIR__.'/assets/includes/flash.php';?>
@@ -214,7 +214,7 @@ include __DIR__.'/assets/includes/header.php';
 
         ?>
              <a href="#portfolio-item-0">
-              <img src="/Vandreams/data/<?= $photo['photo1']?>" alt="photo_annonce">
+              <img src="/data/<?= $photo['photo1']?>" alt="photo_annonce">
             </a>
             </div>
           </div>
@@ -270,12 +270,12 @@ include __DIR__.'/assets/includes/header.php';
                 <div class="row">
                   <div class="col-md-6 col-sm-6">
                     <a href="#portfolio-item-1">
-                     <img src="/Vandreams/data/<?= $photo['photo2']?>" alt="photo_annonce">
+                     <img src="/data/<?= $photo['photo2']?>" alt="photo_annonce">
                     </a>
                   </div>
                   <div class="col-md-6 col-sm-6">
                   <a href="#portfolio-item-2">
-                     <img src="/Vandreams/data/<?= $photo['photo3']?>" alt="photo_annonce">
+                     <img src="/data/<?= $photo['photo3']?>" alt="photo_annonce">
                      </a>
                   </div>
                 </div>
@@ -368,7 +368,7 @@ include __DIR__.'/assets/includes/header.php';
             <input type="email" name="email" class="input-field" placeholder="Email" value="<?= $_POST['email'] ?? '' ?>">
             <input type="password" name="password" class="input-field" placeholder="Mot de passe">
             <input type="password" name="confirm" class="input-field" placeholder="Confirmer MDP">
-            <input type="checkbox" class="check-box" name="cgu"><span>J'accepte <a href="cgu">les conditions générales d'utilisation</a></span>
+            <input type="checkbox" class="check-box" name="cgu"><span class="valideCGUfiche">J'accepte <a href="cgu">les conditions générales d'utilisation</a></span>
             <button type="submit" class="submit-btn" name="register">Valider</button>
         </form>
     </div>
@@ -384,7 +384,7 @@ include __DIR__.'/assets/includes/header.php';
     <a href="#" class="close"></a>
     <a href="#portfolio-item-1" class="next"></a>
     <a href="#portfolio-item-2" class="prev"></a>
-    <img width="500px" height="500px" src="/Vandreams/data/<?= $photo['photo1']?>">
+    <img width="500px" height="500px" src="/data/<?= $photo['photo1']?>">
   </div>
 </div>
 
@@ -393,7 +393,7 @@ include __DIR__.'/assets/includes/header.php';
     <a href="#" class="close"></a>
     <a href="#portfolio-item-2" class="next"></a>
     <a href="#portfolio-item-1" class="prev"></a>
-    <img width="500px" height="500px" src="/Vandreams/data/<?= $photo['photo2']?>">
+    <img width="500px" height="500px" src="/data/<?= $photo['photo2']?>">
   </div>
 </div>
 
@@ -402,7 +402,7 @@ include __DIR__.'/assets/includes/header.php';
     <a href="#" class="close"></a>
     <a href="#portfolio-item-0" class="next"></a>
     <a href="#portfolio-item-1" class="prev"></a>
-    <img width="500px" height="500px" src="/Vandreams/data/<?= $photo['photo3']?>">
+    <img width="500px" height="500px" src="/data/<?= $photo['photo3']?>">
   </div>
 </div>
 
@@ -410,7 +410,7 @@ include __DIR__.'/assets/includes/header.php';
 
 
 <?php if(getMembre() == null) :?>
-  <script type="text/javascript" src="assets/js/login.js"></script>
+  <script type="text/javascript" src="/assets/js/login.js"></script>
 <?php endif;?>
 <?php
 include __DIR__.'/assets/includes/footer.php';

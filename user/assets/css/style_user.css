@@ -1,0 +1,555 @@
+.notif_msg_user{
+  bottom: initial;
+    left: auto;
+    background-color: red;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    color: white;
+    font-size: 12px;
+    text-align: center;
+    margin-left: 3px;
+    font-weight: 700;
+}
+
+
+
+
+.header_user{
+  background-color: #fafafa;
+}
+
+.container{
+  width: 100%;
+  /* max-width: 98rem; */
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+.container_header{
+  width: 100%;
+  /* max-width: 98rem; */
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+nav{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0;
+  /* border-bottom: 1px solid rgba(255, 255, 255, .2); */
+}
+
+.nav-brand{
+  width: 3rem;
+}
+  
+.nav-brand h2{
+  color: var(--light-black);
+  transition: color 0.5s;
+}
+
+.menu-icons_user i{
+  color: var(--light-black);
+  font-size: 3rem;
+  cursor: pointer;
+}
+.menu-icons i{
+  color: var(--light-black);
+  font-size: 3rem;
+  cursor: pointer;
+}
+
+.close i{
+  color: var(--light-black);
+}
+
+.nav-list_user{
+  width: 25rem;
+  height: 100vh;
+  background-color: var(--white);
+  position: fixed;
+  top: 0;
+  right: -26rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  transition: all 650ms ease-in-out;
+}
+
+.nav-list_user.active{
+  right: 0;
+}
+
+.close{
+  position: absolute;
+  top: 1rem;
+  left: 1.5rem;
+}
+  
+.nav-item_user{
+      margin: 1.5rem 0;
+  }
+
+.nav-link_user{
+   font-size: 1.6rem;
+  text-transform: uppercase;
+  color: var(--light-black);
+}
+
+.img_profil{
+  position: absolute;
+    top: 8rem;
+  background:url("/../../assets/img/user.svg");
+    width:100px;
+    height: 100px;
+    border-radius: 50%;
+    margin:0 auto;
+    box-shadow: 
+    /* logo shadow */
+    0px 0px 2px #5f5f5f,
+    /* offset */
+    0px 0px 0px 5px #ecf0f3,
+    /*bottom right */
+    8px 8px 15px #a7aaaf,
+    /* top left */
+    -8px -8px 15px #ffffff
+    ;
+}
+
+.profil_name h3{
+  text-align: center;
+    top: 0rem;
+    color: var(--light-black);
+    font-size: 4rem;
+}
+
+/* ******************** */
+/* **** Messagerie **** */
+/* ******************** */
+.reception{
+  margin-bottom: 4rem;
+}
+.messagerie{
+  margin: 4rem;
+  margin-top: 10rem;
+  min-height: 80vh;
+  
+}
+.modal-header{
+  background-color: var(--light-black) !important;
+  color: #FFF !important;
+}
+.modal-header .close{
+  margin: 0rem 3rem -1rem auto !important;
+  color: var(--light-white) !important;
+}
+.modal-body{
+  background-color: var(--light-gray) !important;
+}
+.messagerie h1{
+  text-align: center;
+    margin-bottom: 4rem;
+}
+.convers{
+  border: 0.5px solid var(--light-black);
+  height: auto;
+  min-height: 70px;
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+.convers.lu{
+  border-left: .5rem solid #00bd71;
+  background-color: var(--light-gray);
+}
+.convers_title_lu i{
+  color: #00bd71;
+  opacity: 0.3;
+  animation: opacityKey 2s ease-in-out infinite;
+}
+@keyframes opacityKey{
+  0%{
+      opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+
+.convers_head{
+  border-bottom: 0.5px solid var(--light-black);
+  padding-left: 10px;
+}
+.convers_body{
+  padding-left: 10px;
+}
+.deleteconv{
+  background: none;
+  border: none;
+  color:var(--light-black);
+  right: 3rem;
+  font-size: 1.5rem;
+  position: absolute;
+}
+.deleteconv:hover{
+  color: red;
+}
+
+.messages_modal{
+  background-color: var(--light-gray);
+  height: 50rem;
+  width: 100%;
+  padding: 10px;
+  overflow: auto;
+  
+}
+
+.msg_form{
+  background-color: var(--light-gray) !important;
+}
+.msg{
+  min-height: 100px;
+  width: 60%;
+  background-color: var(--light-white);
+  margin-bottom: 10px;
+  border-radius: 10px;
+  padding: 10px;
+  float: left;
+  clear: both;
+}
+
+.msg_right{
+  float: right;
+  clear: both;
+  background-color: #00bd71;
+  color: #FFF;
+}
+.input_conversation{
+  width: 100%;
+  height: 5rem;
+  border: none;
+  margin-right: 3rem;
+  padding-top: 1rem;
+  padding-left: 1rem;
+}
+.input_conversation:focus{
+  outline: none !important;
+}
+.btn_send_msg{
+  width: 60%;
+    padding: 10px 30px;
+    cursor: pointer;
+    display: block;
+    margin: auto;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    color: var(--white);
+    background: linear-gradient(to right, #00bd71,#008656);
+    box-shadow: 0 0 10px 1px var(--light-black);
+    border: 0;
+    outline: none;
+    border-radius: 30px;
+}
+
+/* *********************** */
+/* **** Mes annonces **** */
+/* ********************* */
+
+.myannonces{
+  margin: 4rem;
+  margin-top: 10rem;
+  min-height: 80vh;
+}
+
+.myannonces h1{
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.annonce-box{
+  margin-bottom: 4rem;
+  min-height: 600px;
+  box-shadow: 0 0 10px 1px var(--light-black);
+  position: relative;
+}
+
+.annnonce-img img{
+width: 100%;
+}
+.annonce-img{
+  position: relative;
+}
+.price{
+  width: 60px;
+  height: 60px;
+background-color: #00bd71;
+color: #FFF;
+text-align: center;
+font-weight: 600;
+border-radius: 50%;
+padding-top: 20px;
+box-shadow: 0 0 10PX 1PX var(--light-black);
+position: absolute;
+left: 30px;
+  top: 230px;
+}
+.price p{
+  font-size: 1.2rem !important;
+}
+
+.annonce-details{
+  padding: 20px;
+  text-align: justify;
+}
+.annonce-details h4{
+  font-weight: 600;
+  margin-top: 20px;
+  font-size: 2rem;
+}
+.annonce-details p{
+  font-size: 10px !important;
+  margin-bottom: 0 !important;
+}
+.annonce-details p i{
+  color: #00bd71;
+  font-size: 12px;
+}
+.annonce_date{
+  color: #777;
+    font-size: 12px;
+    bottom: initial;
+    left: initial;
+}
+.annonce_btn{
+  position: absolute;
+  bottom: 70px;
+  left: 20%;
+  width: 60%;
+  background: linear-gradient(to right, #00bd71,#008656);
+  box-shadow: 0 0 10px 1px var(--light-black);
+  font-size: 1rem;
+  border-radius: 2rem;
+  color: var(--white);
+  display: block;
+  margin: auto;
+  border: 0;
+  margin-top: 2rem;
+  padding: 1rem 2.5rem;
+  text-align: center;
+  text-transform: uppercase;
+  transition: background-color 650ms;
+}
+.annonce_btn:hover{
+  text-decoration: none;
+  color: var(--white);
+}
+.seeBtn{
+  background: linear-gradient(to right, #00bd71,#008656);
+}
+.updateAnnonce{
+  background: linear-gradient(to right, #0000FF,#00008B);
+}
+.SupAnnonce{
+  background: linear-gradient(to right, #DC143C,#A52A2A);
+}
+.annonce_bottom{
+  position: absolute;
+        bottom: 30px;
+        left: 7%;
+        font-size: 1rem;
+        border-radius: 2rem;
+        color: var(--white);
+        display: block;
+        margin: auto;
+        border: 0;
+        margin-top: 2rem;
+        padding: 1rem 2.5rem;
+        text-align: center;
+        text-transform: uppercase;
+        transition: background-color 650ms;
+}
+.vaspcat{
+  left: 6rem !important;
+}
+.checkmypost{
+margin :0 auto !important;
+}
+.modal-footer{
+  background-color: var(--light-gray) !important;
+}
+.label_name_myannonce{
+  color: var(--light-black) !important;
+}
+
+.txtSup{
+  color: var(--light-black) !important;
+  margin-bottom: 3rem;
+}
+.delete_label{
+  color: var(--light-black) !important;
+}
+/* ******************** */
+/* **** Compte **** */
+/* ******************** */
+
+.myaccount{
+  margin: 4rem;
+  margin-top: 10rem;
+  min-height: 80vh;
+  text-align: left;
+}
+.img_profil_myaccount{
+  position: absolute;
+    top: 14rem;
+    background:url("/../../assets/img/user.svg");
+    width:100px;
+    height: 100px;
+    border-radius: 50%;
+    margin:0 auto;
+    box-shadow: 
+    /* logo shadow */
+    0px 0px 2px #5f5f5f,
+    /* offset */
+    0px 0px 0px 5px #ecf0f3,
+    /*bottom right */
+    8px 8px 15px #a7aaaf,
+    /* top left */
+    -8px -8px 15px #ffffff
+    ;
+}
+.myaccount h1{
+  text-align: center;
+  margin-bottom: 14rem;
+}
+.title_profil{
+  position: initial;
+  bottom: initial;
+}
+
+.infos_profil a{
+ text-decoration: none;
+ color: var(--light-black);
+}
+.infos_profil a:hover{
+  color: #00bd71;
+  text-decoration: none;
+}
+.supProfil{
+    width: 50%;
+    padding: 10px 30px;
+    cursor: pointer;
+    display: block !important;
+    margin: 0 auto;
+    margin-top: 10rem !important;
+    color: var(--white);
+    background: linear-gradient(to right, #DC143C,#A52A2A);
+    box-shadow: 0 0 10px 1px var(--light-black);
+    border: 0;
+    outline: none;
+    border-radius: 30px;
+}
+
+
+/* *********************** */
+/* **** Mes favoris **** */
+/* ********************* */
+.noFavoris{
+  text-align: center;
+  background-color:var(--light-gray);
+  height: 60vh;
+  position: relative;
+}
+.noFavoris .favorisLink{
+position: absolute; 
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%);
+}
+.favorisLink p{
+  font-size: 2rem;
+}
+.favorisLink a{
+  background: linear-gradient(to right, #00bd71,#008656);
+  box-shadow: 0 0 10px 1px var(--light-black);
+  font-size: 1rem;
+  border-radius: 2rem;
+  color: var(--white);
+  display: block;
+  margin: auto;
+  border: 0;
+  margin-top: 2rem;
+  padding: 1rem 2.5rem;
+  text-align: center;
+  text-transform: uppercase;
+  transition: background-color 650ms;
+}
+.favorisLink a:hover{
+  text-decoration: none !important;
+  color: #008656 !important;
+  background: var(--white);
+  border:1px solid #008656;
+}
+.myfavoris{
+  margin: 4rem;
+  margin-top: 10rem;
+  min-height: 80vh;
+}
+
+.myfavoris h1{
+  text-align: center;
+  margin-bottom: 4rem;
+}
+.description_annonce{
+  margin-bottom: 2rem;
+}
+.like{
+position: absolute;
+right: 30px;
+top: 28%;
+}
+.like .favoris{
+  width: 40px;
+  height: 40px;
+    font-size: 2rem;
+    border-radius: 50%;
+    background: var(--light-white);
+    color: palevioletred;
+}
+
+@media screen and (min-width: 700px){
+
+  .price{
+    top:210px;
+    left: 20px;
+}
+.like{
+    top:220px;
+    right: 20px;
+}
+}
+@media screen and (min-width: 950px){
+
+  
+  .price{
+    top:190px;
+    
+}
+.like{
+    top:200px;
+    
+}
+  
+}
+
+
+@media screen and (min-width: 1200px){
+
+  .price{
+    top: 230px%;
+  }
+  .like{
+    top: 38%;
+    }
+}

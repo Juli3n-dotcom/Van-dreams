@@ -104,7 +104,7 @@ include __DIR__.'/assets/includes/header_index.php';
                     <div class="col-md-6 col-lg-4 card_carousel">
                     <div class="annonce-box">
                         <div class="annonce-img">
-                            <img src="/Vandreams/data/<?= $photo['photo1']?>" alt="photo_annonce">
+                            <img src="/data/<?= $photo['photo1']?>" alt="photo_annonce">
                         </div>
                         <div class="price">
                             <p><?= $annonce['prix']?>€</p> 
@@ -163,7 +163,7 @@ include __DIR__.'/assets/includes/header_index.php';
             <div class="block2">
                 <div class="block-text-box">
                     <h3>
-                        Et si vous aussi vous vendiez votre van? sur VanDreams?
+                        Et si vous aussi vous vendiez votre van sur VanDreams?
                     </h3>
                 </div>
                 <div class="block-depot">
@@ -214,7 +214,7 @@ include __DIR__.'/assets/includes/header_index.php';
                     <div class="col-md-6 col-lg-4 card_carousel">
                     <div class="annonce-box">
                         <div class="annonce-img">
-                            <img src="/Vandreams/data/<?= $photo['photo1']?>" alt="photo_annonce">
+                            <img src="/data/<?= $photo['photo1']?>" alt="photo_annonce">
                         </div>
                         <div class="price">
                             <p><?= $annonce['prix']?>€</p> 

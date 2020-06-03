@@ -180,7 +180,7 @@ if($count > 0){
     $resultat = '<div class="container">
                     <div class="nofind">
                         <div class="nofind_animation">
-                            <lottie-player src="/Vandreams/assets/json/search.json"  background="transparent"  speed="1"  style="width: 200px; height: 200px;"  loop  autoplay></lottie-player>
+                            <lottie-player src="/assets/json/search.json"  background="transparent"  speed="1"  style="width: 200px; height: 200px;"  loop  autoplay></lottie-player>
                         </div>
                         <h3> Oups!, aucune annonces semble correspondre a vos critéres !</h3>
                     </div>

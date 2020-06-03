@@ -43,10 +43,10 @@ $NewMessage = $data['nb'];
     <meta property="og:type"          content="website" />
     <meta property="og:title"         content="Van Dreams" />
     <meta property="og:description"   content="vandreams.fr : le site de petites annonces DE TRIPPERS à TRIPPERS. Consultez des milliers d'annonces van aménagé" />
-    <meta property="og:image"         content="/Vandreams/assets/img/logo3.png" />
+    <meta property="og:image"         content="/../../assets/img/logo3.png" />
     <meta name="description" content="vandreams.fr : le site de petites annonces DE TRIPPEURS à TRIPPEURS. Consultez des milliers d'annonces de van aménagé  >>>">
     <title><?=$page_title?> | Van Dreams </title>
-    <link rel="icon" href="/Vandreams/assets/img/logo3.png">
+    <link rel="icon" href="/../../assets/img/logo3.png">
     <!--Ion Icons-->
     <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
     <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
@@ -56,8 +56,8 @@ $NewMessage = $data['nb'];
     <!--Our own stylesheet-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <!-- <base href="/Vandreams/"> -->
-    <link rel="stylesheet" href="/Vandreams/user/assets/css/style.css">
-    <link rel="stylesheet" href="/Vandreams/assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style_user.css">
+    <link rel="stylesheet" href="/../../assets/css/style.css">
     <!-- Js-->
     <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
     
@@ -67,7 +67,7 @@ $NewMessage = $data['nb'];
         <nav>
             <div class="nav-brand">
         <a href="../welcome">
-            <img src="/Vandreams/assets/img/logo3.png" alt="">
+            <img src="/../../assets/img/logo3.png" alt="">
         </a>
     </div>
 
@@ -99,7 +99,7 @@ $NewMessage = $data['nb'];
             <a href="myaccount" class="nav-link_user">Mes informations</a>
         </li>
         <li class="nav-item_user">
-            <a href="/Vandreams/logout" class="nav-link_user">Déconnexion</a>
+            <a href="../logout" class="nav-link_user">Déconnexion</a>
         </li>
     </ul>
 </nav>
