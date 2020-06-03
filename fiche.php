@@ -212,10 +212,6 @@ include __DIR__.'/assets/includes/header.php';
         $data_sub = $pdo->query("SELECT * FROM sub_category WHERE id_sub_cat = '$id_subcat'");
         $subcat = $data_sub->fetch(PDO::FETCH_ASSOC);
 
-        $user = getMembre()['id_membre'];
-        $id = $Annonce['id_annonce'];
-        $data_loved = $pdo->query("SELECT * FROM favoris WHERE membre_id = '$user' AND annonce_id = '$id'");
-        $favori = $data_loved->fetch(PDO::FETCH_ASSOC);
         ?>
              <a href="#portfolio-item-0">
               <img src="/Vandreams/data/<?= $photo['photo1']?>" alt="photo_annonce">
