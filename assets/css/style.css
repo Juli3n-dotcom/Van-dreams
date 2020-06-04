@@ -106,23 +106,83 @@ nav{
 .nav-brand img{
     position: absolute;
     width: 7rem;
-    top: 0rem;
+    top: -0.5rem;
+    left: 0rem;
 }
 
+.menu-icons_index{
+    position: absolute;
+    top: 2.5rem;
+    right: 2rem;
+}
 
 .menu-icons_index i{
-    color: var(--light-white);
-    font-size: 3rem;
-    cursor: pointer;
+    background: var(--light-white);
+    content:"";
+    display: block;
+    height: 2px;
+    width: 18px;
+    position: relative;
+    transition: all .2s ease-out;
+    
+}
+.menu-icons_index .nav-icon-1{
+    
+    top: -3px;
+}
+.menu-icons_index .nav-icon-2{
+    width: 16px;
+    top: 0;
+    left: -3px;
+}
+.menu-icons_index .nav-icon-3{
+    top: 3px;
 }
 .menu-icons i{
     color: var(--light-black);
     font-size: 3rem;
     cursor: pointer;
 }
-.menu-icons_index i.active{
-    color: var(--light-black);
-    transition: color 0.5s;
+.menu-icons_index .nav-icon-1.active{
+    background: var(--light-black);
+    transition: background 0.5s;
+}
+.menu-icons_index .nav-icon-2.active{
+    background: var(--light-black);
+    transition: background 0.5s;
+}
+.menu-icons_index .nav-icon-3.active{
+    background: var(--light-black);
+    transition: background 0.5s;
+}
+
+.menu-icons{
+    position: absolute;
+    top: 2.5rem;
+    right: 2rem;
+}
+
+.menu-icons i{
+    background: var(--light-black);
+    content:"";
+    display: block;
+    height: 2px;
+    width: 18px;
+    position: relative;
+    transition: all .2s ease-out;
+    
+}
+.menu-icons .nav-icon-1{
+    
+    top: -3px;
+}
+.menu-icons .nav-icon-2{
+    width: 16px;
+    top: 0;
+    left: -3px;
+}
+.menu-icons .nav-icon-3{
+    top: 3px;
 }
 
 .close i{

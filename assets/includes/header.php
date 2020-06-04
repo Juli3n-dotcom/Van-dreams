@@ -56,9 +56,13 @@ if (session_status() === PHP_SESSION_NONE){
     <link href="https://fonts.googleapis.com/css?family=Aldrich&display=swap" rel="stylesheet">
     <!--Our own stylesheet-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <!-- <base href="/https://www.vandeams.fr/"> -->
-    <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="../assets/css/fiche.css">
+    <base href="/vandreams/">
+    <!-- <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/glide.core.min.css">
+    <link rel="stylesheet" href="../assets/css/glide.theme.min.css"> -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/glide.core.min.css">
+    <link rel="stylesheet" href="assets/css/glide.theme.min.css">
     <!-- Js-->
     <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
@@ -75,7 +79,9 @@ if (session_status() === PHP_SESSION_NONE){
     </div>
 
     <div class="menu-icons open" >
-        <i class="icon ion-md-menu"></i>
+        <i class="nav-icon-1"></i>
+        <i class="nav-icon-2"></i>
+        <i class="nav-icon-3"></i>
     </div>
 
     <ul class="nav-list">
