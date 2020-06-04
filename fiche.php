@@ -413,5 +413,5 @@ include __DIR__.'/assets/includes/header_fiche.php';
   <script type="text/javascript" src="/assets/js/login.js"></script>
 <?php endif;?>
 <?php
-include __DIR__.'/assets/includes/footer.php';
+include __DIR__.'/assets/includes/footer_fiche.php';
 ?>

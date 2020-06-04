@@ -36,8 +36,8 @@ if(isset($_POST['news_submit_footer'])){
     <div class="col-md-4 footer-part2">
       <h5>Informations</h5>
       <ul>
-        <li><a href="contactus">Contacter-nous</a></li>
-        <li><a href="cgu">CGU</a></li>
+        <li><a href="../contactus">Contacter-nous</a></li>
+        <li><a href="../cgu">CGU</a></li>
         <li><a href="https://julien-quentier.fr/">Références</a></li>
      </ul>
     </div>
@@ -64,7 +64,7 @@ if(isset($_POST['news_submit_footer'])){
     <script type="text/javascript" src="../assets/js/ajax_post.js"></script>
     <script type="text/javascript" src="../assets/js/ajax_allpost.js"></script>
     <?php if(getMembre() !== null AND empty($_COOKIE["token"])) :?>
-      <script type="text/javascript" src="assets/js/logout.js"></script>
+      <script type="text/javascript" src="../assets/js/logout.js"></script>
     <?php endif;?>
   </body>
   </body>

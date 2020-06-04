@@ -281,7 +281,7 @@ width: 100%;
 .annonce-img{
   position: relative;
 }
-.price{
+.price_user{
   width: 60px;
   height: 60px;
 background-color: #00bd71;
@@ -292,10 +292,10 @@ border-radius: 50%;
 padding-top: 20px;
 box-shadow: 0 0 10PX 1PX var(--light-black);
 position: absolute;
-left: 30px;
-  top: 230px;
+left: 20px;
+  top: 170px;
 }
-.price p{
+.price_user p{
   font-size: 1.2rem !important;
 }
 
@@ -504,41 +504,49 @@ position: absolute;
 .description_annonce{
   margin-bottom: 2rem;
 }
-.like{
+.like_user{
 position: absolute;
 right: 30px;
-top: 28%;
+top: 30%;
+
 }
-.like .favoris{
+.like_user .favoris{
   width: 40px;
   height: 40px;
     font-size: 2rem;
     border-radius: 50%;
+    border-color: var(--light-white);
     background: var(--light-white);
     color: palevioletred;
 }
 
 @media screen and (min-width: 700px){
 
-  .price{
+  .price_user{
     top:210px;
     left: 20px;
 }
-.like{
+.like_user{
     top:220px;
     right: 20px;
+}
+.annonce_bottom{
+  left: 12%;
 }
 }
 @media screen and (min-width: 950px){
 
   
-  .price{
+  .price_user{
     top:190px;
     
 }
-.like{
+.like_user{
     top:200px;
     
+}
+.annonce_bottom{
+  left: 10%;
 }
   
 }
@@ -546,10 +554,13 @@ top: 28%;
 
 @media screen and (min-width: 1200px){
 
-  .price{
-    top: 230px%;
+  .price_user{
+    top: 230px;
   }
-  .like{
+  .like_user{
     top: 38%;
+    }
+    .annonce_bottom{
+      left: 16%;
     }
 }

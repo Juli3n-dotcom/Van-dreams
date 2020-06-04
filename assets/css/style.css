@@ -103,6 +103,11 @@ nav{
     transition: color 0.5s;
 }
 
+.nav-brand img{
+    position: absolute;
+    width: 7rem;
+    top: 0rem;
+}
 
 
 .menu-icons_index i{
@@ -643,7 +648,7 @@ span a:hover{
 .hero_contact{
     height: 100vh;
     width: 100%;
-    padding-top: 5rem;
+    padding-top: 1rem;
     background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url('../img/mini_van.jpg');
     background-position: center;
     background-size: cover;
@@ -652,7 +657,7 @@ span a:hover{
 
 .form-box_contact{
     width: 380px;
-    height: 680px;
+    height: 600px;
     position: relative;
     margin: 10rem auto;
     background-color:  rgba(255,255,255,.7);
@@ -1023,6 +1028,8 @@ text-align: center;
   width: 100%;
   }
   .annonce-img{
+    min-height: 250px;
+    max-height: 250px;
     position: relative;
   }
   .price{
@@ -1037,7 +1044,7 @@ text-align: center;
   box-shadow: 0 0 10PX 1PX var(--light-black);
   position: absolute;
   left: 30px;
-  top: 170px;
+  top: 225px;
   }
   .price p{
     font-size: 1.2rem !important;

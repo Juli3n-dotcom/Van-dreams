@@ -70,7 +70,7 @@ if (session_status() === PHP_SESSION_NONE){
         <nav>
             <div class="nav-brand">
         <a href="welcome">
-            <img src="assets/img/logo3.png" alt="">
+            <img src="assets/img/logo3.png" alt="logo">
         </a>
     </div>
 

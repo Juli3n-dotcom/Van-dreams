@@ -268,6 +268,7 @@ include __DIR__.'/assets/includes/header_index.php';
 </div>
 </section>
 
+
 <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
 <script type="text/javascript" src="assets/js/index.js"></script>
 <?php

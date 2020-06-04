@@ -85,6 +85,7 @@
     background-size: cover;
     /* position: absolute; */
 }
+
 .form-box_fiche{
   width: 380px;
     height: 480px;
@@ -183,6 +184,12 @@
 /* **** Media query **** */
 /* ******************** */
 
+@media screen and (max-width: 400px){
+  .hero_fiche .form-box {
+    margin-left: -0.7rem;
+  }
+}
+
 @media screen and (min-width: 400px){
   .input-group_fiche{
     left: 40px;
@@ -208,6 +215,7 @@
   #showcase img{
     margin-top: 10rem;
   }
+  
 }
 
 @media screen and (min-width: 900px){

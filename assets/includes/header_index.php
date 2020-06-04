@@ -41,7 +41,7 @@ require_once __DIR__ . '/../config/bootstrap.php';
   gtag('config', 'UA-164356474-1');
 </script>
     <meta name="description" content="vandreams.fr : le site de petites annonces DE TRIPPERS à TRIPPERS. Consultez des milliers d'annonces van aménagé">
-    <meta property="og:url"           content="https://http://vandreams.fr/" />
+    <meta property="og:url"           content="https://https://vandreams.fr/" />
     <meta property="og:type"          content="website" />
     <meta property="og:title"         content="Van Dreams" />
     <meta property="og:description"   content="vandreams.fr : le site de petites annonces DE TRIPPERS à TRIPPERS. Consultez des milliers d'annonces van aménagé" />
@@ -71,7 +71,7 @@ require_once __DIR__ . '/../config/bootstrap.php';
         <nav>
             <div class="nav-brand">
         <a href="welcome">
-            <img src="assets/img/logo3.png" alt="">
+            <img src="assets/img/logo3.png" alt="logo">
         </a>
     </div>
 
