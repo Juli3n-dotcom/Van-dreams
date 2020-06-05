@@ -187,6 +187,7 @@ nav{
 
 .close i{
     color: var(--light-black);
+    font-size: 3rem;
 }
 
 .nav-list{

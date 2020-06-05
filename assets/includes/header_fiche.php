@@ -85,7 +85,7 @@ if (session_status() === PHP_SESSION_NONE){
     </div>
 
     <ul class="nav-list">
-        <div class="menu-icons close">
+    <div class="menu-icons_close close">
             <i class="icon ion-md-close"></i>
         </div>
         <li class="nav-item">
