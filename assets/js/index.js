@@ -61,25 +61,3 @@ for(var i= 0; i< sliders.length;i ++){
   });
   glide.mount();
 }
-
-// const config = {
-//   type:'carousel', 
-//   autoplay: 3000,
-//   animationDuration: 1000,
-//   perView:3,
-//   breakpoints: {
-//     1024: {
-//       perView: 3
-//     },
-//     800: {
-//       perView: 2
-//     },
-//     600: {
-//       perView: 1
-//     }
-//   }
-// }
-//   new Glide(".glide", config).mount()
-
-  
-    

@@ -1136,7 +1136,9 @@ text-align: center;
     right: 40px;
     top: 240px;
     }
-    .like .favoris{
+    .like .favoris, 
+    .noUser, 
+    .removefavori{
       width: 40px;
       height: 40px;
         font-size: 2rem;
@@ -1146,11 +1148,12 @@ text-align: center;
         color: palevioletred;
     }
 
-    .like .favoris:hover{
-        
+    .like .favoris:hover, 
+    .noUser:hover,
+    .removefavori:hover{  
           border-color: palevioletred;
-          
       }
+
     .annonce_btn{
         position: absolute;
         bottom: 30px;
