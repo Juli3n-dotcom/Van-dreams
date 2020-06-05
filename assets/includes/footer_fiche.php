@@ -61,8 +61,44 @@ if(isset($_POST['news_submit_footer'])){
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script type="text/javascript" src="../assets/js/script.js"></script>
     <script type="text/javascript" src="../assets/js/scroll.js"></script>
-    <script type="text/javascript" src="../assets/js/ajax_post.js"></script>
-    <script type="text/javascript" src="../assets/js/ajax_allpost.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+$(".favoris").click(function(e){
+        e.preventDefault();
+        ajax();
+    });
+
+    function ajax()
+    {
+        var idannonce = $('#idannonce').val();
+        var iduser = $('#iduser').val();
+
+        var parameters = 'idannonce='+idannonce+'&iduser='+iduser;
+   
+        $.post('../assets/ajax/ajax_like.php', parameters, function(data){
+            $('#resultat').html(data.resultat);
+        },'json');
+    }
+});
+
+$(document).ready(function(){
+    $(".removefavori").click(function(e){
+        e.preventDefault();
+        ajax();
+    });
+
+    function ajax()
+    {
+        var idSupr = $('#idSupr').val();
+        
+        var parameters = "idSupr="+idSupr;
+
+        $.post('../assets/ajax/ajax_delete_like.php', parameters, function(data){
+            $('#resultat').html(data.resultat);
+        },'json');
+    }
+    });
+    </script>
     <?php if(getMembre() !== null AND empty($_COOKIE["token"])) :?>
       <script type="text/javascript" src="../assets/js/logout.js"></script>
     <?php endif;?>

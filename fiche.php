@@ -104,37 +104,12 @@ if (isset($_POST['register'])){
 
   }
 }
-
-//like
-if(isset($_POST['addFavori'])){
-  if(getMembre() === null){
-    ajouterFlash('danger','merci de vous connecter pour mettre en favori.');
-  }else{
-    $req = $pdo->prepare(
-      'INSERT INTO favoris (membre_id, annonce_id, est_favoris)
-      VALUES (:membre_id, :annonce_id, :est_favoris)'
-  );
-
-  $req->bindParam(':membre_id',$_POST['iduser']);
-  $req->bindParam(':annonce_id',$_POST['idannonce']);
-  $req->bindValue(':est_favoris',1);
-  $req->execute();
-
-    ajouterFlash('success','Annonce sauvegardée');
+if(isset($_POST['noUser'])){
+  
+  ajouterFlash('danger','merci de vous connecter pour liker cette annonce.');
+   
   }
-}
 
-//sup favori
-if(isset($_POST['removeFavori'])){
-  $req = $pdo->prepare(
-    'DELETE FROM favoris
-    WHERE :id = id_favori'
-  );
-  $req->bindParam(':id',$_POST["idSupr"],PDO::PARAM_INT);
-  $req->execute();
-
-  ajouterFlash('success','Annonce retirée de vos favoris');
-}
 
 //Message
 if(isset($_POST['envoyer'])){
@@ -227,29 +202,30 @@ include __DIR__.'/assets/includes/header_fiche.php';
             </div>
             <br>
             <p class="btn-default btn-lg showcase-price"><?= $Annonce['prix']?>  €</p>
-
+            <div id="resultat">
             <?php
                     if($Membre === null){
                         echo '<form action="" method="POST">
-                                <button type="submit" class="favoris" name="noUser"><i class="far fa-heart"></i></button>
+                                <button type="submit" class="noUser" name="noUser"><i class="far fa-heart"></i></button>
                             </form>';  
                     }else{
                         $favori = getfavori($pdo, $Membre['id_membre'], $Annonce['id_annonce']);
     
                         if($favori == false){
                             echo '<form action="" method="POST">
-                                    <input type="hidden" name="iduser" value="'.$Membre["id_membre"].'">
-                                    <input type="hidden" name="idannonce" value="'.$Annonce["id_annonce"].'">
-                                    <button type="submit" class="favoris" name="addFavori"><i class="far fa-heart"></i></button>
+                                    <input type="hidden" name="iduser" id="iduser" value="'.$Membre["id_membre"].'">
+                                    <input type="hidden" name="idannonce" id="idannonce" value="'.$Annonce["id_annonce"].'">
+                                    <button type="submit" class="favoris" id="addFavori" name="addFavori"><i class="far fa-heart"></i></button>
                                 </form>';   
                         }else{
                             echo '<form action="" method="POST">
-                                    <input type="hidden" name="idSupr" value="'.$favori.'">
-                                    <button type="submit" class="favoris" name="removeFavori"><i class="fas fa-heart"></i></button>
+                                    <input type="hidden" id="idSupr" name="idSupr" value="'.$favori.'">
+                                    <button type="submit" class="removefavori" id="removeFavori" name="removeFavori"><i class="fas fa-heart"></i></button>
                                 </form>';
                         }
                     }
                 ?>
+                </div> <!-- fin resultat-->
           </div>
         </div>
       </div>

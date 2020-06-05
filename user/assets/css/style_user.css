@@ -1,3 +1,5 @@
+
+
 .notif_msg_user{
   bottom: initial;
     left: auto;
@@ -49,15 +51,33 @@ nav{
   transition: color 0.5s;
 }
 
-.menu-icons_user i{
-  color: var(--light-black);
-  font-size: 3rem;
-  cursor: pointer;
+.menu-icons_user{
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
 }
-.menu-icons i{
-  color: var(--light-black);
-  font-size: 3rem;
-  cursor: pointer;
+
+.menu-icons_user i{
+  background:var(--light-black);
+  content:"";
+  display: block;
+  height: 2px;
+  width: 18px;
+  position: relative;
+  transition: all .2s ease-out;
+  
+}
+.menu-icons_user .nav-icon-1{
+  
+  top: -3px;
+}
+.menu-icons_user .nav-icon-2{
+  width: 16px;
+  top: 0;
+  left: -3px;
+}
+.menu-icons_user .nav-icon-3{
+  top: 3px;
 }
 
 .close i{
@@ -102,7 +122,7 @@ nav{
 .img_profil{
   position: absolute;
     top: 8rem;
-  background:url("/../../assets/img/user.svg");
+  background:url("../../assets/img/user.svg");
     width:100px;
     height: 100px;
     border-radius: 50%;
@@ -403,7 +423,7 @@ margin :0 auto !important;
 .img_profil_myaccount{
   position: absolute;
     top: 14rem;
-    background:url("/../../assets/img/user.svg");
+    background:url("../../assets/img/user.svg");
     width:100px;
     height: 100px;
     border-radius: 50%;
