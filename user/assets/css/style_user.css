@@ -122,7 +122,7 @@ nav{
 .img_profil{
   position: absolute;
     top: 8rem;
-  background:url("/assets/img/user.svg");
+  background:url("../../assets/img/user.svg");
     width:100px;
     height: 100px;
     border-radius: 50%;
@@ -423,7 +423,7 @@ margin :0 auto !important;
 .img_profil_myaccount{
   position: absolute;
     top: 14rem;
-    background:url("/../../assets/img/user.svg");
+    background:url("../../assets/img/user.svg");
     width:100px;
     height: 100px;
     border-radius: 50%;
