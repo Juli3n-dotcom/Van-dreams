@@ -55,9 +55,9 @@ $NewMessage = $data['nb'];
     <link href="https://fonts.googleapis.com/css?family=Aldrich&display=swap" rel="stylesheet">
     <!--Our own stylesheet-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <!-- <base href="/Vandreams/"> -->
-    <link rel="stylesheet" href="assets/css/style_user.css">
-    <link rel="stylesheet" href="/../../assets/css/style.css">
+    <base href="/Vandreams/">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="user/assets/css/style_user.css">
     <!-- Js-->
     <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
     
@@ -67,12 +67,14 @@ $NewMessage = $data['nb'];
         <nav>
             <div class="nav-brand">
         <a href="../welcome">
-            <img src="/../../assets/img/logo3.png" alt="">
+            <img src="../../assets/img/logo3.png" alt="">
         </a>
     </div>
 
     <div class="menu-icons_user open" >
-        <i class="icon ion-md-menu"></i>
+        <i class="nav-icon-1"></i>
+        <i class="nav-icon-2"></i>
+        <i class="nav-icon-3"></i>
     </div>
 
     <ul class="nav-list_user">
