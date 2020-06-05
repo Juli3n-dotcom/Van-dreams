@@ -111,13 +111,13 @@ if(isset($_POST['addFavori'])){
     ajouterFlash('danger','merci de vous connecter pour mettre en favori.');
   }else{
     $req = $pdo->prepare(
-      'INSERT INTO favoris (membre_id, annonce_id, est_favoris)
-      VALUES (:membre_id, :annonce_id, :est_favoris)'
+      'INSERT INTO favoris (membre_id, annonce_id, est_favori)
+      VALUES (:membre_id, :annonce_id, :est_favori)'
   );
 
   $req->bindParam(':membre_id',$_POST['iduser']);
   $req->bindParam(':annonce_id',$_POST['idannonce']);
-  $req->bindValue(':est_favoris',1);
+  $req->bindValue(':est_favori',1);
   $req->execute();
 
     ajouterFlash('success','Annonce sauvegardée');
