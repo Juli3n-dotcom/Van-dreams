@@ -79,7 +79,10 @@ require_once __DIR__ . '/../config/bootstrap.php';
     </div>
 
     <div class="menu-icons_index open" >
-        <i class="icon ion-md-menu"></i>
+        <!-- <i class="icon ion-md-menu"></i> -->
+        <i class="nav-icon-1"></i>
+        <i class="nav-icon-2"></i>
+        <i class="nav-icon-3"></i>
     </div>
 
     <ul class="nav-list">
