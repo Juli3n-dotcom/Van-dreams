@@ -38,13 +38,14 @@ $NewMessage = $data['nb'];
 
   gtag('config', 'UA-164356474-1');
 </script>
-    <meta name="description" content="vandreams.fr : le site de petites annonces DE TRIPPERS à TRIPPERS. Consultez des milliers d'annonces van aménagé">
+    <meta name="description" content="vandreams.fr : le site de petites annonces pour les vanlifers. Consultez des milliers d'annonces van aménagé">
+    <meta name="Keywords" content="vanlife, vanlifers, van, trip, roadtrip, voyages, tripper, vanhub, vanlifeaddict, camper, petites annonces, van aménagés, fourgon aménagés, camions aménagé, camping, campingcar">
     <meta property="og:url"           content="https://http://vandreams.fr/" />
     <meta property="og:type"          content="website" />
     <meta property="og:title"         content="Van Dreams" />
     <meta property="og:description"   content="vandreams.fr : le site de petites annonces DE TRIPPERS à TRIPPERS. Consultez des milliers d'annonces van aménagé" />
     <meta property="og:image"         content="/../../assets/img/logo3.png" />
-    <meta name="description" content="vandreams.fr : le site de petites annonces DE TRIPPEURS à TRIPPEURS. Consultez des milliers d'annonces de van aménagé  >>>">
+    <meta name="description" content="vandreams.fr : le site de petites annonces pour les vanlifers. Consultez des milliers d'annonces van aménagé">
     <title><?=$page_title?> | Van Dreams </title>
     <link rel="icon" href="/assets/img/logo3.png">
     <!--Ion Icons-->
@@ -55,9 +56,9 @@ $NewMessage = $data['nb'];
     <link href="https://fonts.googleapis.com/css?family=Aldrich&display=swap" rel="stylesheet">
     <!--Our own stylesheet-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <base href="/Vandreams/">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="user/assets/css/style_user.css">
+    <!-- <base href="/Vandreams/"> -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style_user.css">
     <!-- Js-->
     <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
     
@@ -78,7 +79,7 @@ $NewMessage = $data['nb'];
     </div>
 
     <ul class="nav-list_user">
-        <div class="menu-icons_user close">
+        <div class="menu-icons_user_close close">
             <i class="icon ion-md-close"></i>
         </div>
         <div>

@@ -45,9 +45,19 @@ button:focus{
     outline: none !important;
 
 }
-/* body{
-    background-color: cornflowerblue;
-} */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button { 
+	-webkit-appearance: none;
+	margin:0;
+}
+input::-o-inner-spin-button,
+input::-o-outer-spin-button { 
+	-o-appearance: none;
+	margin:0
+}
     
 header{
     width: 100%;
@@ -186,6 +196,7 @@ nav{
 }
 
 .close i{
+    background: none;
     color: var(--light-black);
     font-size: 3rem;
 }
@@ -1089,8 +1100,8 @@ text-align: center;
   width: 100%;
   }
   .annonce-img{
-    min-height: 250px;
-    max-height: 250px;
+    
+    max-height: 280px;
     position: relative;
   }
   .price{
@@ -1258,7 +1269,7 @@ text-align: center;
     
     .coords{
         font-size: 0.8rem;
-        top: 50%;
+        top: 75%;
         left: -9.5rem;
         
     }

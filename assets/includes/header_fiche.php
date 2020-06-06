@@ -40,11 +40,12 @@ if (session_status() === PHP_SESSION_NONE){
   gtag('config', 'UA-164356474-1');
 </script>
 
-    <meta name="description" content="vandreams.fr : le site de petites annonces DE TRIPPERS à TRIPPERS. Consultez des milliers d'annonces van aménagé">
+    <meta name="description" content="vandreams.fr : le site de petites annonces pour les vanlifers. Consultez des milliers d'annonces van aménagé">
+    <meta name="Keywords" content="vanlife, vanlifers, van, trip, roadtrip, voyages, tripper, vanhub, vanlifeaddict, camper, petites annonces, van aménagés, fourgon aménagés, camions aménagé, camping, campingcar">
     <meta property="og:url"           content="https://http://vandreams.fr/" />
     <meta property="og:type"          content="website" />
     <meta property="og:title"         content="Van Dreams" />
-    <meta property="og:description"   content="vandreams.fr : le site de petites annonces DE TRIPPERS à TRIPPERS. Consultez des milliers d'annonces van aménagé" />
+    <meta name="description" content="vandreams.fr : le site de petites annonces pour les vanlifers. Consultez des milliers d'annonces van aménagé">
     <meta property="og:image"         content="/assets/img/logo3.png" />
     <title><?=$page_title?> | Van Dreams </title>
     <link rel="icon" href="/assets/img/logo3.png">
@@ -85,7 +86,7 @@ if (session_status() === PHP_SESSION_NONE){
     </div>
 
     <ul class="nav-list">
-    <div class="menu-icons_close close">
+        <div class="menu-icons close">
             <i class="icon ion-md-close"></i>
         </div>
         <li class="nav-item">

@@ -40,13 +40,14 @@ require_once __DIR__ . '/../config/bootstrap.php';
 
   gtag('config', 'UA-164356474-1');
 </script>
-    <meta name="description" content="vandreams.fr : le site de petites annonces DE TRIPPERS à TRIPPERS. Consultez des milliers d'annonces van aménagé">
+    <meta name="description" content="vandreams.fr : le site de petites annonces pour les vanlifers. Consultez des milliers d'annonces van aménagé">
+    <meta name="Keywords" content="vanlife, vanlifers, van, trip, roadtrip, voyages, tripper, vanhub, vanlifeaddict, camper, petites annonces, van aménagés, fourgon aménagés, camions aménagé, camping, campingcar">
     <meta property="og:url"           content="https://https://vandreams.fr/" />
     <meta property="og:type"          content="website" />
     <meta property="og:title"         content="Van Dreams" />
-    <meta property="og:description"   content="vandreams.fr : le site de petites annonces DE TRIPPERS à TRIPPERS. Consultez des milliers d'annonces van aménagé" />
+    <meta name="description" content="vandreams.fr : le site de petites annonces pour les vanlifers. Consultez des milliers d'annonces van aménagé">
     <meta property="og:image"         content="assets/img/logo3.png" />
-    <meta name="description" content="vandreams.fr : le site de petites annonces DE TRIPPEURS à TRIPPEURS. Consultez des milliers d'annonces de van aménagé  >>>">
+    <meta name="description" content="vandreams.fr : le site de petites annonces pour les vanlifers. Consultez des milliers d'annonces van aménagé">
     <title><?=$page_title?> | Van Dreams </title>
     <link rel="icon" href="assets/img/logo3.png">
     <!--Ion Icons-->
