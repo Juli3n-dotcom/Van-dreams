@@ -156,7 +156,7 @@ include __DIR__.'/assets/includes/flash.php';
     <div class="title-heading">
         <h3>Les aménagés</h3>
             <h1>Envie de partir directement?</h1>
-                <p>Venez découvrir parmis une selection de véhicules déjà aménagés</p>
+                <p>Venez découvrir une selection de véhicules déjà aménagés</p>
     </div>
     <div class="row">
         <div class="glide">

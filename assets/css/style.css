@@ -45,9 +45,19 @@ button:focus{
     outline: none !important;
 
 }
-/* body{
-    background-color: cornflowerblue;
-} */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button { 
+	-webkit-appearance: none;
+	margin:0;
+}
+input::-o-inner-spin-button,
+input::-o-outer-spin-button { 
+	-o-appearance: none;
+	margin:0
+}
     
 header{
     width: 100%;
@@ -1090,7 +1100,7 @@ text-align: center;
   width: 100%;
   }
   .annonce-img{
-    min-height: 280px;
+    
     max-height: 280px;
     position: relative;
   }
