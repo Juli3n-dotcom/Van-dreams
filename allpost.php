@@ -10,7 +10,7 @@ $Membre = getMembre($pdo, $_GET['id_membre'] ?? null);
 
 if(isset($_POST['noUser'])){
 setcookie('allpost', true, time()+3600);
-ajouterFlash('danger','merci de vous connecter pour liker cette annonce.');
+sleep(1);
   header('location:login');
 }
 

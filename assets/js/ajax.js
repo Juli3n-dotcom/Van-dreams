@@ -59,9 +59,9 @@ $(document).ready(function(){
             $('#resultat').html(data.resultat);
         },'json');
     }
-});
 
-$(document).ready(function(){
+
+
     $(".removefavori").click(function(e){
         e.preventDefault();
         ajax();

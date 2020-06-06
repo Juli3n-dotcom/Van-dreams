@@ -8,10 +8,10 @@ require_once __DIR__ . '/assets/functions/membre_function.php';
 $Membre = getMembre($pdo, $_GET['id_membre'] ?? null);
 
 if(isset($_POST['noUser'])){
-
-ajouterFlash('danger','merci de vous connecter pour liker cette annonce.');
-  
-}
+    setcookie('favindex', true, time()+3600, '/', null,false, true);
+    sleep(1);
+      header('location:login');
+    }
 
 if(isset($_POST['addFavori'])){
     ajouterFlash('success','Annonce sauvegardée');
@@ -202,7 +202,7 @@ include __DIR__.'/assets/includes/flash.php';
                         <?php
                     if($Membre === null){
                         echo '<form action="" method="POST">
-                                <button type="submit" class="favoris" name="noUser"><i class="far fa-heart"></i></button>
+                                <button type="submit" class="noUser" name="noUser"><i class="far fa-heart"></i></button>
                             </form>';  
                     }else{
                         $favori = getfavori($pdo, $Membre['id_membre'], $annonce['id_annonce']);

@@ -14,6 +14,13 @@ if ($Annonce === null && !role(ROLE_ADMIN)){
     header('location:../oups');
 }
 
+if(isset($_POST['noUser'])){
+  $id = $Annonce['id_annonce'];
+  setcookie('fiche', $id, time()+3600, '/', null,false, true);
+  sleep(1);
+    header('location:../login');
+  }
+
 // traitement login
 if(isset($_POST['login'])){
    
@@ -104,11 +111,7 @@ if (isset($_POST['register'])){
 
   }
 }
-if(isset($_POST['noUser'])){
-  
-  ajouterFlash('danger','merci de vous connecter pour liker cette annonce.');
-   
-  }
+
 
 
 //Message

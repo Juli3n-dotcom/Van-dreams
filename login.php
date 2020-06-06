@@ -43,14 +43,12 @@ if(isset($_POST['login'])){
 
       }elseif(!empty($_COOKIE["favindex"])){
         ajouterFlash('danger','merci de vous connecter pour liker cette annonce.');
-        setcookie('allpost','',time()-3600);
+        setcookie('favindex','',time()-3600);
         header('Location: welcome');
         
-      // }elseif(!empty($_COOKIE["fiche"])){
-      //   ajouterFlash('danger','merci de vous connecter pour liker cette annonce.');
-      //   setcookie('fiche','',time()-3600);
-      //   header('Location:'.$HTTP_SERVER_VARS["HTTP_REFERER"]);
-        
+      }elseif(!empty($_COOKIE["fiche"])){
+        setcookie('fiche','',time()-3600);
+        header('Location: annonce/'.$_COOKIE["fiche"]);
       }else{
           header('Location: welcome');
       }

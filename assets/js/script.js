@@ -12,20 +12,27 @@ var login = document.getElementById('login');
 var register = document.getElementById('register');
 var btn = document.getElementById('btn');
 
-document.getElementById('register_btn').addEventListener('click', function(){
-login.style.left = "-400px";
-register.style.left = "40px";
-btn.style.left = "120px";
-// login.style.display="none";
-// register.style.display="block";
-})
 
-document.getElementById('login_btn').addEventListener('click', function(){
-login.style.left = "40px";
-register.style.left = "450px";
-btn.style.left = "0";
-// login.style.display="block";
-// register.style.display="none";
-})   
+//Notification like si pas connecté
+$(document).ready(function(){
+   $('.noUser').click(function(){
+      $('body').append('<div id="toats" class="notif alert-danger" onload="killToats()"></div>');    
+         $('#toats').append('<div class="toats_headers"></div>');
+            $('.toats_headers').append(' <a class="toats_die"></a>');
+               $('.toats_die').append('<i class="icon ion-md-close"></i>');
+               $('.toats_header').append('<h5><i class="fas fa-exclamation-circle"></i> Notification :</h5>');
+            $('#toats').append('<div class="toats_core"></div> ')
+               $('.toats_core').append('<p>merci de vous connecter pour liker cette annonce.</p>')
+   });
 
+});
 
+//Gestion Toats
+const toats = document.querySelector('.notif');
+    const close_toats = document.querySelector('.toats_die');
+
+    setTimeout(function(){ document.querySelector(".notif").classList.add("hiden");}, 3000 );
+
+    close_toats.addEventListener('click', ()=>{
+    toats.classList.add('hiden');
+    });
