@@ -354,7 +354,125 @@ include __DIR__.'/assets/includes/header_fiche.php';
 </div>
     <?php endif;?>
     </div>  
+
+<section class="container">
+  <div class="title-heading">
+      <h2>Découvrez les annonces similaires</h2>
+          
+    </div>
+    <?php 
+    $id_category = $Annonce['category_id'];
+    $id_subcat = $Annonce['subcat_id'];
+    $id = $Annonce['id_annonce'];
+    $count = $pdo->query("SELECT id_annonce FROM annonces WHERE category_id ='$id_category' AND subcat_id ='$id_subcat' AND id_annonce != '$id'");
+    $count->execute();
+    $count = $count->rowCount();
+?>
+<?php if($count > 0):?>
+  <div class="row">
+        <div class="glide">
+            <div class="glide__track" data-glide-el="track">
+                <ul class="glide__slides">
+                    <?php foreach(getOtherAnnonce($pdo,$Annonce['category_id'],$Annonce['subcat_id'],$Annonce['id_annonce']) as $annonce):?>
+                    <?php
+                    $id_membre = $annonce['membre_id'];
+                    $id_photo = $annonce['photo_id'];
+                    $id_country = $annonce['country_id'];
+                    $id_region = $annonce['region_id'];
+                    $id_category = $annonce['category_id'];
+                    $id_subcat = $annonce['subcat_id'];
+
+                    $data = $pdo->query("SELECT * FROM photo WHERE id_photo = '$id_photo'");
+                    $photo = $data->fetch(PDO::FETCH_ASSOC);
+
+                    $data_membre = $pdo->query("SELECT * FROM membre WHERE id_membre = '$id_membre'");
+                    $membre = $data_membre->fetch(PDO::FETCH_ASSOC);
+
+                    $data_country = $pdo->query("SELECT * FROM country WHERE id_country = '$id_country'");
+                    $country = $data_country->fetch(PDO::FETCH_ASSOC);
+
+                    $data_region = $pdo->query("SELECT * FROM region WHERE id_region = '$id_region'");
+                    $region = $data_region->fetch(PDO::FETCH_ASSOC);
+
+                    $data_category = $pdo->query("SELECT * FROM category WHERE id_category = '$id_category'");
+                    $category = $data_category->fetch(PDO::FETCH_ASSOC);
+
+                    $data_sub = $pdo->query("SELECT * FROM sub_category WHERE id_sub_cat = '$id_subcat'");
+                    $subcat = $data_sub->fetch(PDO::FETCH_ASSOC);
+                    ?>
+                <li class="glide__slide">
+                    <div class="col-md-6 col-lg-4 card_carousel">
+                    <div class="annonce-box">
+                        <div class="annonce-img">
+                            <img src="/data/<?= $photo['photo1']?>" alt="photo_annonce">
+                        </div>
+                        <div class="price">
+                            <p><?= $annonce['prix']?>€</p> 
+                        </div>
+                        <div class="like">
+                            <div id="#resultat">
+                                <?php
+                                    if($Membre === null){
+                                        echo '<form action="" method="POST">
+                                                <button type="submit" class="noUser" name="noUser"><i class="far fa-heart"></i></button>
+                                            </form>';  
+                                    }else{
+                                        $favori = getfavori($pdo, $Membre['id_membre'], $annonce['id_annonce']);
     
+                                        if($favori == false){
+                                            echo '<form action="" method="POST">
+                                                    <input type="hidden" name="iduser" id="iduser" value="'.$Membre["id_membre"].'">
+                                                    <input type="hidden" name="idannonce" id="idannonce" value="'.$annonce["id_annonce"].'">
+                                                    <button type="submit" class="favoris" id="addFavori" name="addFavori"><i class="far fa-heart"></i></button>
+                                                </form>';   
+                                        }else{
+                                            echo '<form action="" method="POST">
+                                                    <input type="hidden" id="idSupr" name="idSupr" value="'.$favori.'">
+                                                    <button type="submit" class="removefavori" id="removeFavori" name="removeFavori"><i class="fas fa-heart"></i></button>
+                                                </form>';
+                                        }
+                                    }
+                                ?>
+                            </div> <!-- fin resultat-->
+                        </div>
+                        <div class="annonce-details">
+                            <h4><?= ($annonce['titre_annonce'])?></h4>
+                            <div class="description_annonce">
+                                <p><?= substr($annonce['description_annonce'],0,255).'...'?></p>
+                            </div>
+                            <p><i class="fas fa-user"></i> Publié par : <?= $membre['prenom']?></p>
+                            <p><i class="fas fa-th-large"></i> : <?= $category['titre_cat']?> / <?= $subcat['titre_subcat']?></p>
+                            <p><i class="fas fa-map-marker-alt"></i> : <?= $country['name_country']?> / <?= $region['name_region']?></p>
+                        </div>
+                        <div class="annoncelink">
+                            <a href="annonce/<?=$annonce['id_annonce'];?>" class="annonce_btn">Voir l'annonce</a>
+                        </div>
+                    </div>
+                </li>
+            <?php endforeach;?>            
+        </ul>
+    </div>
+  <div class="glide__arrows" data-glide-el="controls">
+    <button class="glide__arrow glide__arrow--left" data-glide-dir="<"><i class="fas fa-chevron-left"></i></button>
+    <button class="glide__arrow glide__arrow--right" data-glide-dir=">"><i class="fas fa-chevron-right"></i></button>
+  </div>
+</div>
+</div>
+<?php elseif:?>
+  
+<?php else:?>
+  <div class="container">
+    <div class="row">
+        <div class="col-12 noAnnonce">
+            <div class="noAnnoncelink">
+                <p>Oups, Il n'y a pas d'annonces similaire</p>
+                <a href="../welcome">Retour à l'acceuil</a>
+            </div>
+        </div>
+    </div>
+</div>
+<?php endif;?>
+</section>
 
 <div class="portfolio-lightboxes">
 
@@ -387,7 +505,30 @@ include __DIR__.'/assets/includes/header_fiche.php';
 
 </div>
 
+<script>
+  var sliders = document.querySelectorAll('.glide');
 
+for(var i= 0; i< sliders.length;i ++){
+  var glide =  new Glide(sliders[i],{
+    type:'carousel', 
+  autoplay: 3000,
+  animationDuration: 1000,
+  perView:3,
+  breakpoints: {
+    1024: {
+      perView: 3
+    },
+    800: {
+      perView: 2
+    },
+    600: {
+      perView: 1
+    }
+  }
+  });
+  glide.mount();
+}
+</script>
 <?php if(getMembre() == null) :?>
   <script type="text/javascript" src="/assets/js/login.js"></script>
 <?php endif;?>

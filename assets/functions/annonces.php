@@ -36,7 +36,7 @@ function getAnnonces(PDO $pdo):array
       return $annonce;
         }
 
-//récupération des annonces
+//récupération des annonces des vans aménagé (index)
 function getAnnoncesSubCat(PDO $pdo):array
       {
         $req=$pdo->query(
@@ -49,3 +49,40 @@ function getAnnoncesSubCat(PDO $pdo):array
       return $annonce;
         }
 
+//récupération des annonce similaire
+function getOtherAnnonce(PDO $pdo, $category_id,$subcat_id,$id)
+      {
+        $req=$pdo->prepare(
+          'SELECT *
+          FROM annonces
+          WHERE category_id = :category_id
+          AND subcat_id = :subcat_id
+          AND id_annonce != :id
+          ORDER BY date_enregistrement DESC'
+        );
+        $req->bindParam(':category_id', $category_id);
+        $req->bindParam(':subcat_id', $subcat_id);
+        $req->bindParam(':id', $id);
+        $req->execute();
+       $annonce = $req->fetchAll(PDO::FETCH_ASSOC);
+      return $annonce;
+        }
+
+//récupération des annonce similaire par régions
+function getOtherAnnoncebylocation(PDO $pdo, $country_id,$region_id,$id)
+      {
+        $req=$pdo->prepare(
+          'SELECT *
+          FROM annonces
+          WHERE country_id = :country_id
+          AND region_id = :region_id
+          AND id_annonce != :id
+          ORDER BY date_enregistrement DESC'
+        );
+        $req->bindParam(':country_id', $country_id);
+        $req->bindParam(':region_id', $region_id);
+        $req->bindParam(':id', $id);
+        $req->execute();
+       $annonce = $req->fetchAll(PDO::FETCH_ASSOC);
+      return $annonce;
+        }

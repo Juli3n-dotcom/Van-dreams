@@ -90,7 +90,47 @@
     background-size: cover;
     text-align: center;
   }
-  
+  .contact_form_fiche{
+    margin-bottom: 4rem;
+  }
+
+  .noAnnonce{
+    text-align: center;
+    background-color:var(--light-gray);
+    height: 60vh;
+    position: relative;
+  }
+  .noAnnonce .noAnnoncelink{
+  position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+  }
+  .noAnnoncelink p{
+    font-size: 2rem;
+  }
+  .noAnnoncelink a{
+    background: linear-gradient(to right, #00bd71,#008656);
+    box-shadow: 0 0 10px 1px var(--light-black);
+    font-size: 1rem;
+    border-radius: 2rem;
+    color: var(--white);
+    display: block;
+    margin: auto;
+    border: 0;
+    margin-top: 2rem;
+    padding: 1rem 2.5rem;
+    text-align: center;
+    text-transform: uppercase;
+    transition: background-color 650ms;
+  }
+  .noAnnoncelink a:hover{
+    text-decoration: none !important;
+    color: #008656 !important;
+    background: var(--white);
+    border:1px solid #008656;
+  }
+
   .hero_fiche{
     height: auto;
     width: 100%;
@@ -137,6 +177,8 @@
 .valideCGUfiche{
   bottom: 60px;
 }
+
+
 /* ******************** */
 /* **** lightbox **** */
 /* ******************** */
