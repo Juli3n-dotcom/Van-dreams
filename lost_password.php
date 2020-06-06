@@ -193,5 +193,6 @@ include __DIR__.'/assets/includes/header.php';
     </div>
 </div>
 <?php
+include __DIR__.'/assets/includes/cookie.php';
 include __DIR__.'/assets/includes/footer.php';
 ?>

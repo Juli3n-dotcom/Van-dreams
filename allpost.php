@@ -172,6 +172,7 @@ include __DIR__.'/assets/includes/header.php';
 
 </section>
 <?php
+include __DIR__.'/assets/includes/cookie.php';
 include __DIR__.'/assets/includes/footer.php';
 ?>
 

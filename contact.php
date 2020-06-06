@@ -97,5 +97,6 @@ include __DIR__.'/assets/includes/header.php';
 </div>
 
 <?php
+include __DIR__.'/assets/includes/cookie.php';
 include __DIR__.'/assets/includes/footer.php';
 ?>

@@ -192,7 +192,7 @@ include __DIR__.'/assets/includes/header_user.php';
                                                 <input type="text" class="input-field" name="title_update" value="<?= htmlspecialchars($annonce['titre_annonce'])?>">
                                                 <hr>
                                                 <label for="description_update" class="label_name_myannonce">Description de votre annonce : </label>
-                                                <textarea class="input-field" name="description_update" cols="30" rows="10"><?= htmlspecialchars($annonce['description_annonce']??'');?></textarea>
+                                                <textarea class="input-field" name="description_update" cols="30" rows="10"><?=nl2br(htmlspecialchars($annonce['description_annonce']??''));?></textarea>
                                                 <hr>
                                                 <label for="price_update" class="label_name_myannonce">Prix de votre annonce : </label>
                                                 <input type="text" class="input-field" name="price_update" value="<?= htmlspecialchars($annonce['prix']??'')?>">

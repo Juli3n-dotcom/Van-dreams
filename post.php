@@ -314,5 +314,6 @@ include __DIR__.'/assets/includes/header.php';
 
 <script type="text/javascript" src="assets/js/depot.js"></script>
 <?php
+include __DIR__.'/assets/includes/cookie.php';
 include __DIR__.'/assets/includes/footer.php';
 ?>

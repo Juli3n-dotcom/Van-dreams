@@ -236,7 +236,7 @@ include __DIR__.'/assets/includes/header_fiche.php';
 
     <section id="testimonial">
       <div class="container">
-        <p><?= $Annonce['description_annonce']?></p>
+        <p><?= nl2br($Annonce['description_annonce'])?></p>
       </div>
     </section>
 
@@ -360,28 +360,28 @@ include __DIR__.'/assets/includes/header_fiche.php';
 
 <div class="portfolio-lightbox" id="portfolio-item-0">
   <div class="portfolio-lightbox__content">
-    <a href="#" class="close"></a>
+    <a href="#" class="close_lightbox"></a>
     <a href="#portfolio-item-1" class="next"></a>
     <a href="#portfolio-item-2" class="prev"></a>
-    <img width="500px" height="500px" src="/data/<?= $photo['photo1']?>">
+    <img  src="/data/<?= $photo['photo1']?>">
   </div>
 </div>
 
 <div class="portfolio-lightbox" id="portfolio-item-1">
   <div class="portfolio-lightbox__content">
-    <a href="#" class="close"></a>
+    <a href="#" class="close_lightbox"></a>
     <a href="#portfolio-item-2" class="next"></a>
     <a href="#portfolio-item-1" class="prev"></a>
-    <img width="500px" height="500px" src="/data/<?= $photo['photo2']?>">
+    <img  src="/data/<?= $photo['photo2']?>">
   </div>
 </div>
 
 <div class="portfolio-lightbox" id="portfolio-item-2">
   <div class="portfolio-lightbox__content">
-    <a href="#" class="close"></a>
+    <a href="#" class="close_lightbox"></a>
     <a href="#portfolio-item-0" class="next"></a>
     <a href="#portfolio-item-1" class="prev"></a>
-    <img width="500px" height="500px" src="/data/<?= $photo['photo3']?>">
+    <img  src="/data/<?= $photo['photo3']?>">
   </div>
 </div>
 
@@ -392,5 +392,6 @@ include __DIR__.'/assets/includes/header_fiche.php';
   <script type="text/javascript" src="/assets/js/login.js"></script>
 <?php endif;?>
 <?php
+include __DIR__.'/assets/includes/cookie.php';
 include __DIR__.'/assets/includes/footer_fiche.php';
 ?>

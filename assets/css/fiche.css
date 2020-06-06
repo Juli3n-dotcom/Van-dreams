@@ -160,7 +160,11 @@
   z-index: 10;
   /* transition: transform ease-in-out 200ms;  */
 }
-
+.portfolio-lightbox__content img{
+  max-width: 80vh !important;
+  max-height: 80vh;
+  position: relative;
+}
 .portfolio-lightbox:target{
   display: flex;
   transform: scale(1,1);
@@ -169,13 +173,13 @@
   position: relative;
 }
 
-.close{
+.close_lightbox{
   position: absolute;
   width: 1em;
   height: 1em;
   background: url('../img/close.svg')center center / 100% no-repeat transparent;
-  top: -1em;
-  right: -1em;
+  top: -2em;
+  right: 1em;
 } 
 .next{
   position: absolute;
