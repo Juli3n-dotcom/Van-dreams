@@ -670,6 +670,34 @@ margin-top: 3rem;
     background: transparent;
 }
 
+.pophover{
+    position: absolute;
+    top: 4rem;
+    width: 200px;
+    height: auto;
+    background-color: var(--white);
+    padding: 1rem;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.5s;
+}
+.pophover::before{
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: var(--white);
+    bottom: 0;
+    transform: rotate(45deg);
+    left: 70px;
+}
+.pophover p{
+    font-size: 1rem;
+}
+.password:focus + .pophover{
+    visibility: visible;
+    opacity: 1;
+}
 .submit-btn{
     width: 85%;
     padding: 10px 30px;

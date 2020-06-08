@@ -345,7 +345,11 @@ include __DIR__.'/assets/includes/header_fiche.php';
             <input type="text" name="name" class="input-field" placeholder="Votre Nom" value="<?= $_POST['name'] ?? '' ?>">
             <input type="text" name="first_name" class="input-field" placeholder="Votre Prénom" value="<?= $_POST['first_name'] ?? '' ?>">
             <input type="email" name="email" class="input-field" placeholder="Email" value="<?= $_POST['email'] ?? '' ?>">
-            <input type="password" name="password" class="input-field" placeholder="Mot de passe">
+            <input type="password" name="password" class="input-field password" placeholder="Mot de passe">
+            <div class="pophover">
+              <h6>Mot de passe:</h6>
+              <p>Votre mot de passe doit contenir un minimim de 8 caractéres, une majuscule, une minuscule et un symbole.</p>
+            </div>
             <input type="password" name="confirm" class="input-field" placeholder="Confirmer MDP">
             <input type="checkbox" class="check-box" name="cgu"><span class="valideCGUfiche">J'accepte <a href="cgu">les conditions générales d'utilisation</a></span>
             <button type="submit" class="submit-btn" name="register">Valider</button>
