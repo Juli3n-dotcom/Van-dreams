@@ -166,6 +166,13 @@ nav{
   margin: 0rem 3rem -1rem auto !important;
   color: var(--light-white) !important;
 }
+.modal-header .close span{
+  color: var(--light-white);
+  font-size: 4rem;
+    bottom: 0;
+    left: 45rem;
+    position: absolute;
+}
 .modal-body{
   background-color: var(--light-gray) !important;
 }

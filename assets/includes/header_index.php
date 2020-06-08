@@ -28,6 +28,7 @@ require_once __DIR__ . '/../config/bootstrap.php';
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <meta name="robots" content="index,follow">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -50,6 +51,7 @@ require_once __DIR__ . '/../config/bootstrap.php';
     <meta name="description" content="vandreams.fr : le site de petites annonces pour les vanlifers. Consultez des milliers d'annonces van aménagé">
     <title><?=$page_title?> | Van Dreams </title>
     <link rel="icon" href="assets/img/logo3.png">
+    <link rel="apple-touch-icon" href="assets/img/logo3.png">
     <!--Ion Icons-->
     <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
     <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
@@ -58,13 +60,13 @@ require_once __DIR__ . '/../config/bootstrap.php';
     <link href="https://fonts.googleapis.com/css?family=Aldrich&display=swap" rel="stylesheet">
     <!--Our own stylesheet-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <!-- <link rel="stylesheet" href="../assets/css/style.css">
+    <!-- <base href="/vandreams/"> -->
+    <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/glide.core.min.css">
-    <link rel="stylesheet" href="../assets/css/glide.theme.min.css"> -->
-    <base href="/vandreams/">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/glide.theme.min.css">
+    <!-- <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/glide.core.min.css">
-    <link rel="stylesheet" href="assets/css/glide.theme.min.css">
+    <link rel="stylesheet" href="assets/css/glide.theme.min.css"> -->
     <!-- Js-->
     <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>

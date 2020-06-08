@@ -159,7 +159,7 @@ if(isset($_POST['add'])){
                             <br><br>
                             <div align="center">Félicitation votre annonce : <b>'.$title.'</b> est en ligne.</div>
                             <br><br>
-                            <div align="center">Cliquer : <a href=https://beta.julien-quentier.fr/fiche.php?id='.$annonce.'> ICI </a> pour la retrouver</div>
+                            <div align="center">Cliquer : <a href=https://vandreams.fr/annonce/?id='.$annonce.'> ICI </a> pour la retrouver</div>
                             <br><br>
                             <div align="center">A bientôt sur <a href="vandreams.fr">VanDreams.fr</a> !</div>
                             
