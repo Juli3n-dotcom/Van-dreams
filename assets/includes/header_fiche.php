@@ -27,6 +27,7 @@ if (session_status() === PHP_SESSION_NONE){
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <meta name="robots" content="index,follow">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -49,6 +50,7 @@ if (session_status() === PHP_SESSION_NONE){
     <meta property="og:image"         content="/assets/img/logo3.png" />
     <title><?=$page_title?> | Van Dreams </title>
     <link rel="icon" href="/assets/img/logo3.png">
+    <link rel="apple-touch-icon" href="assets/img/logo3.png">
     <!--Ion Icons-->
     <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
     <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">

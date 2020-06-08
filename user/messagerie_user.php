@@ -88,7 +88,7 @@ if(isset($_POST['sendmsg'])){
                             <br><br>
                             <div align="center">Vous avez reçu un nouveau message de '.$membre['prenom'].'</div>
                             <br><br>
-                            <div align="center">Cliquer : <a href=https://beta.julien-quentier.fr/login> ICI </a> pour le lire</div>
+                            <div align="center">Cliquer : <a href=https://www.vandreams.fr/login> ICI </a> pour le lire</div>
                             <br><br>
                             <div align="center">A bientôt sur <a href="vandreams.fr">VanDreams.fr</a> !</div>
                             

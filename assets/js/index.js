@@ -22,7 +22,7 @@ const lien1 = document.querySelector('.link1');
     lien2.classList.add('scroll');
     lien3.classList.add('scroll');
     lien4.classList.add('scroll');   
-    lien5.classList.add('scroll');
+    // lien5.classList.add('scroll');
     
   
    }else{
@@ -35,7 +35,7 @@ const lien1 = document.querySelector('.link1');
     lien2.classList.remove('scroll');
     lien3.classList.remove('scroll');
     lien4.classList.remove('scroll');
-    lien5.classList.remove('scroll');
+    // lien5.classList.remove('scroll');
    }
 })
 
