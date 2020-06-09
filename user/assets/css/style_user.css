@@ -1,8 +1,8 @@
 
 
 .notif_msg_user{
-  bottom: initial;
-    left: auto;
+  /* bottom: initial;
+    left: auto; */
     background-color: red;
     height: 16px;
     width: 16px;
@@ -186,6 +186,7 @@ nav{
   min-height: 70px;
   margin-bottom: 5px;
   cursor: pointer;
+  border-radius: none;
 }
 .convers.lu{
   border-left: .5rem solid #00bd71;

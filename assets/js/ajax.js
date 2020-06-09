@@ -54,6 +54,7 @@ $(document).ready(function(){
         var iduser = $('#iduser').val();
 
         var parameters = 'idannonce='+idannonce+'&iduser='+iduser;
+        console.log(parameters)
    
         $.post('assets/ajax/ajax_like.php', parameters, function(data){
             $('#resultat').html(data.resultat);

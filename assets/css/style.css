@@ -238,8 +238,8 @@ nav{
     color: var(--light-black);
 }
 .notif_msg{
-    bottom: initial;
-      left: auto;
+    /* bottom: initial;
+      left: auto; */
       background-color: red;
       height: 10px;
       width: 10px;
@@ -963,6 +963,9 @@ span a:hover{
 
 #depot_5 span {
     bottom: 110px;
+}
+#depot_3 p{
+    font-size: 1rem;
 }
 /* ******************** */
 /* **** Footer **** */
