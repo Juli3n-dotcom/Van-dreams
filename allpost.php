@@ -123,9 +123,9 @@ include __DIR__.'/assets/includes/header.php';
                 <div class="price">
                     <p><?= $annonce['prix']?>€</p> 
                 </div>
-                <div id="resultat">
                     <div class="like">
-                        <!-- <?php
+                        <div class="resultat<?=$annonce['id_annonce']?>">
+                        <?php
                             if($Membre === null){
                                 echo '<form action="" method="POST">
                                         <button type="submit" class="noUser" name="noUser"><i class="far fa-heart"></i></button>
@@ -142,13 +142,15 @@ include __DIR__.'/assets/includes/header.php';
                                 }else{
                                     echo '<form action="" method="POST">
                                             <input type="hidden" id="idSupr" name="idSupr" value="'.$favori.'">
+                                            <input type="hidden" name="iduser" id="iduser" value="'.$Membre["id_membre"].'">
+                                            <input type="hidden" name="idannonce" id="idannonce" value="'.$annonce["id_annonce"].'">
                                              <button type="submit" class="removefavori" id="removeFavori" name="removeFavori"><i class="fas fa-heart"></i></button>
                                         </form>';
                                 }
                             }
-                        ?> -->
+                        ?>
+                    </div> <!-- fin resultat-->
                 </div>
-            </div> <!-- fin resultat-->
                 <div class="annonce-details">
                     <h4><?= ($annonce['titre_annonce'])?></h4>
                     <div class="description_annonce">

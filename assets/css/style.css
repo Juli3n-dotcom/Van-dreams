@@ -978,7 +978,6 @@ footer{
 
 .footer-part1{
     text-align: center;
-    border-right: 1px solid var(--light-white);
     margin-bottom: 4rem;
 }
 .footer-part1 h5, 
@@ -1388,7 +1387,10 @@ text-align: center;
         right: 20px;
     }
 
-    
+    .footer-part1,
+    .footer-part2{
+        border-right: 1px solid var(--light-white);
+    }
     
 }
 @media (min-height: 700px)  and (min-width: 700px){

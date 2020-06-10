@@ -87,8 +87,8 @@ include __DIR__.'/assets/includes/flash.php';
                             <p><?= $annonce['prix']?>€</p> 
                         </div>
                         <div class="like">
-                            <div id="resultat">
-                                <!-- <?php
+                            <div class="resultat<?=$annonce['id_annonce']?>">
+                                <?php
                                     if($Membre === null){
                                         echo '<form action="" method="POST">
                                                 <button type="submit" class="noUser" name="noUser"><i class="far fa-heart"></i></button>
@@ -105,8 +105,11 @@ include __DIR__.'/assets/includes/flash.php';
                                         }else{
                                             echo '<form action="" method="POST">
                                                     <input type="hidden" id="idSupr" name="idSupr" value="'.$favori.'">
-                                                    <button type="submit" class="removefavori" id="removeFavori" name="removeFavori"><i class="fas fa-heart"></i></button>
+                                                    <input type="hidden" name="iduser" id="iduser" value="'.$Membre["id_membre"].'">
+                                                    <input type="hidden" name="idannonce" id="idannonce" value="'.$annonce["id_annonce"].'">
+                                                     <button type="submit" class="removefavori" id="removeFavori" name="removeFavori"><i class="fas fa-heart"></i></button>
                                                 </form>';
+                                        
                                         }
                                     }
                                 ?> -->
@@ -199,7 +202,8 @@ include __DIR__.'/assets/includes/flash.php';
                             <p><?= $annonce['prix']?>€</p> 
                         </div>
                         <div class="like">
-                        <!-- <?php
+                            <div class="resultat<?=$annonce['id_annonce']?>">
+                        <?php
                     if($Membre === null){
                         echo '<form action="" method="POST">
                                 <button type="submit" class="noUser" name="noUser"><i class="far fa-heart"></i></button>
@@ -209,18 +213,21 @@ include __DIR__.'/assets/includes/flash.php';
     
                         if($favori == false){
                             echo '<form action="" method="POST">
-                                    <input type="hidden" name="iduser" value="'.$Membre["id_membre"].'">
-                                    <input type="hidden" name="idannonce" value="'.$annonce["id_annonce"].'">
-                                    <button type="submit" class="favoris" name="addFavori"><i class="far fa-heart"></i></button>
+                                    <input type="hidden" name="iduser" id="iduser" value="'.$Membre["id_membre"].'">
+                                    <input type="hidden" name="idannonce" id="idannonce" value="'.$annonce["id_annonce"].'">
+                                    <button type="submit" class="favoris" id="addFavori" name="addFavori"><i class="far fa-heart"></i></button>
                                 </form>';   
                         }else{
                             echo '<form action="" method="POST">
-                                    <input type="hidden" name="idSupr" value="'.$favori.'">
-                                    <button type="submit" class="favoris" name="removeFavori"><i class="fas fa-heart"></i></button>
+                                    <input type="hidden" id="idSupr" name="idSupr" value="'.$favori.'">
+                                    <input type="hidden" name="iduser" id="iduser" value="'.$Membre["id_membre"].'">
+                                    <input type="hidden" name="idannonce" id="idannonce" value="'.$annonce["id_annonce"].'">
+                                     <button type="submit" class="removefavori" id="removeFavori" name="removeFavori"><i class="fas fa-heart"></i></button>
                                 </form>';
                         }
                     }
-                ?> -->
+                ?>
+                            </div>
                         </div>
                         <div class="annonce-details">
                             <h4><?= ($annonce['titre_annonce'])?></h4>
