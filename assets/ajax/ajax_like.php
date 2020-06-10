@@ -15,12 +15,12 @@ ajouterFlash('success','Annonce sauvegardée');
 $favori = $pdo->lastInsertId();
 
 $resultat = '';
-$resultat .= '<div class="like">';
 $resultat .= '<form method="POST">';
     $resultat .= ' <input type="hidden" name="idSupr" value="'.$favori.'">';
+    $resultat .= '<input type="hidden" name="idannonce" id="idannonce" value="'.$annonce["id_annonce"].'">';
+    $resultat .= '<input type="hidden" name="iduser" id="iduser" value="'.$user.'">';
     $resultat .= ' <button type="submit" class="removefavori" id="removeFavori" name="removeFavori"><i class="fas fa-heart"></i></button>';
 $resultat .= '</form>';
-$resultat .= '</div>';
 
 $tableau['resultat'] = $resultat;
 

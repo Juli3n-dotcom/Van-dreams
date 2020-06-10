@@ -65,39 +65,79 @@ $(document).ready(function(){
         // },'json');
     // }
 
+    // $(function(){
+    //     $(".favoris").click(function(e){
+    //         e.preventDefault();
+    //         var $form = $(this).closest('form');
+    //         var idannonce = $form.find('input[name="idannonce"]').val();
+    //         var iduser = $form.find('input[name="iduser"]').val();
+    //         var parameters = 'idannonce='+idannonce+'&iduser='+iduser;
+    //         console.log(parameters)
+    //     $.post('assets/ajax/ajax_like.php', parameters, function(data){
+    //         data = $('#resultat').html(data.resultat);
+    //          },'json');
+    //     });
+    // });
+
     $(function(){
         $(".favoris").click(function(e){
-
             e.preventDefault();
             var $form = $(this).closest('form');
             var idannonce = $form.find('input[name="idannonce"]').val();
             var iduser = $form.find('input[name="iduser"]').val();
             var parameters = 'idannonce='+idannonce+'&iduser='+iduser;
-            console.log(parameters)
-        $.post('assets/ajax/ajax_like.php', parameters, function(data){
-            $('#resultat').html(data.resultat);
-             },'json');
-        $form.hide(1100);
+            $.ajax({
+                url:'assets/ajax/ajax_like.php',
+                method : 'post',
+                data: parameters,
+                dataType: 'JSON',
+                success: function(data){
+                   retour = $('.resultat'+idannonce).html(data.resultat);
+                   return retour;
+                }  
+            });
         });
     });
 
-
-    $(".removefavori").click(function(e){
-        e.preventDefault();
-        ajax_remove();
+    $(function(){
+        $(".removefavori").click(function(e){
+            e.preventDefault();
+            var $form = $(this).closest('form');
+            var idSupr = $form.find('input[name="idSupr"]').val();
+            var iduser = $form.find('input[name="iduser"]').val();
+            var idannonce = $form.find('input[name="idannonce"]').val();
+            var parameters = "idSupr="+idSupr+"&idannonce="+idannonce+'&iduser='+iduser;
+            console.log(parameters)
+            $.ajax({
+                url:'assets/ajax/ajax_delete_like.php',
+                method : 'post',
+                data: parameters,
+                dataType: 'JSON',
+                success: function(data){
+                   retour = $('.resultat'+idannonce).html(data.resultat);
+                   console.log(retour)
+                   return retour;
+                }  
+            });
+        });
     });
 
-    function ajax_remove()
-    {
-        var idSupr = $('#idSupr').val();
-        
-        var parameters = "idSupr="+idSupr;
+    // $(".removefavori").click(function(e){
+    //     e.preventDefault();
+    //     ajax_remove();
+    // });
 
-        $.post('assets/ajax/ajax_delete_like.php', parameters, function(data){
-            console.log(data);
-            $('#resultat').html(data.resultat);
-        },'json');
-    }
+    // function ajax_remove()
+    // {
+    //     var idSupr = $('#idSupr').val();
+        
+    //     var parameters = "idSupr="+idSupr;
+
+    //     $.post('assets/ajax/ajax_delete_like.php', parameters, function(data){
+    //         console.log(data);
+    //         $('#resultat').html(data.resultat);
+    //     },'json');
+    // }
 
     
 });

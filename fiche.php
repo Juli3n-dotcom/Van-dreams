@@ -4,10 +4,10 @@ require_once __DIR__ . '/assets/functions/annonces.php';
 require_once __DIR__ . '/assets/functions/register.php';
 require_once __DIR__ . '/assets/functions/membre_function.php';
 
-$Annonce =  getAnnonceByID($pdo, $_GET['id'] ?? null);
+$annonce =  getAnnonceByID($pdo, $_GET['id'] ?? null);
 $Membre = getMembre($pdo, $_GET['id_membre'] ?? null);
 
-if ($Annonce === null && !role(ROLE_ADMIN)){
+if ($annonce === null && !role(ROLE_ADMIN)){
 
     ajouterFlash('warning', 'Annonce inconnu.');
     session_write_close();
@@ -15,7 +15,7 @@ if ($Annonce === null && !role(ROLE_ADMIN)){
 }
 
 if(isset($_POST['noUser'])){
-  $id = $Annonce['id_annonce'];
+  $id = $annonce['id_annonce'];
   setcookie('fiche', $id, time()+3600, '/', null,false, true);
   sleep(1);
     header('location:../login');
@@ -127,8 +127,8 @@ if(isset($_POST['envoyer'])){
             VALUES (:expediteur, :destinataire, :annonce_id, :subject, :lu_expediteur, :lu_destinataire, :date)'
         );
         $req->bindParam(':expediteur', getMembre()['id_membre'], PDO::PARAM_INT);
-        $req->bindParam(':destinataire', $Annonce['membre_id']);
-        $req->bindParam(':annonce_id', $Annonce['id_annonce']);
+        $req->bindParam(':destinataire', $annonce['membre_id']);
+        $req->bindParam(':annonce_id', $annonce['id_annonce']);
         $req->bindParam(':subject', $_POST['subject']);
         $req->bindValue(':lu_expediteur',0);
         $req->bindValue(':lu_destinataire',1);
@@ -142,7 +142,7 @@ if(isset($_POST['envoyer'])){
           VALUES (:expediteur, :destinataire, :conversation_id, :message,  :date)'
       );
       $req2->bindParam(':expediteur', getMembre()['id_membre'], PDO::PARAM_INT);
-      $req2->bindParam(':destinataire', $Annonce['membre_id']);
+      $req2->bindParam(':destinataire', $annonce['membre_id']);
       $req2->bindParam(':conversation_id', $id_conversation);
       $req2->bindParam(':message', $_POST['message']);
       $req2->bindValue(':date',(new DateTime())->format('Y-m-d H:i:s'));
@@ -153,7 +153,7 @@ if(isset($_POST['envoyer'])){
 }
 
 
-$page_title ='Annonce N°VD-00'.$Annonce['id_annonce'];
+$page_title ='Annonce N°VD-00'.$annonce['id_annonce'];
 include __DIR__.'/assets/includes/header_fiche.php';
 ?>
 
@@ -165,12 +165,12 @@ include __DIR__.'/assets/includes/header_fiche.php';
           <div class="col-md-6 col-sm-6">
             <div class="showcase-left">
         <?php
-        $id_membre = $Annonce['membre_id'];
-        $id_photo = $Annonce['photo_id'];
-        $id_country = $Annonce['country_id'];
-        $id_region = $Annonce['region_id'];
-        $id_category = $Annonce['category_id'];
-        $id_subcat = $Annonce['subcat_id'];
+        $id_membre = $annonce['membre_id'];
+        $id_photo = $annonce['photo_id'];
+        $id_country = $annonce['country_id'];
+        $id_region = $annonce['region_id'];
+        $id_category = $annonce['category_id'];
+        $id_subcat = $annonce['subcat_id'];
 
         $data = $pdo->query("SELECT * FROM photo WHERE id_photo = '$id_photo'");
         $photo = $data->fetch(PDO::FETCH_ASSOC);
@@ -198,34 +198,36 @@ include __DIR__.'/assets/includes/header_fiche.php';
           </div>
           <div class="col-md-6 col-sm-6">
             <div class="showcase-right">
-              <h1><?= $Annonce['titre_annonce']?></h1>
+              <h1><?= $annonce['titre_annonce']?></h1>
               
               <p class="customer text-muted">Publié par : <?= $membre['prenom']?></p>
               <p class="customer text-muted">Catégorie : <?= $category['titre_cat']?> / <?= $subcat['titre_subcat']?></p>
             </div>
             <br>
-            <p class="btn-default btn-lg showcase-price"><?= $Annonce['prix']?>  €</p>
-            <div id="resultat">
+            <p class="btn-default btn-lg showcase-price"><?= $annonce['prix']?>  €</p>
+            <div class="resultat<?=$annonce['id_annonce']?>">
             <?php
                     if($Membre === null){
                         echo '<form action="" method="POST">
                                 <button type="submit" class="noUser" name="noUser"><i class="far fa-heart"></i></button>
                             </form>';  
                     }else{
-                        $favori = getfavori($pdo, $Membre['id_membre'], $Annonce['id_annonce']);
+                        $favori = getfavori($pdo, $Membre['id_membre'], $annonce['id_annonce']);
     
                         if($favori == false){
-                            echo '<form action="" method="POST">
-                                    <input type="hidden" name="iduser" id="iduser" value="'.$Membre["id_membre"].'">
-                                    <input type="hidden" name="idannonce" id="idannonce" value="'.$Annonce["id_annonce"].'">
-                                    <button type="submit" class="favoris" id="addFavori" name="addFavori"><i class="far fa-heart"></i></button>
-                                </form>';   
-                        }else{
-                            echo '<form action="" method="POST">
-                                    <input type="hidden" id="idSupr" name="idSupr" value="'.$favori.'">
-                                    <button type="submit" class="removefavori" id="removeFavori" name="removeFavori"><i class="fas fa-heart"></i></button>
-                                </form>';
-                        }
+                          echo '<form action="" method="POST">
+                                  <input type="hidden" name="iduser" id="iduser" value="'.$Membre["id_membre"].'">
+                                  <input type="hidden" name="idannonce" id="idannonce" value="'.$annonce["id_annonce"].'">
+                                  <button type="submit" class="favoris" id="addFavori" name="addFavori"><i class="far fa-heart"></i></button>
+                              </form>';   
+                      }else{
+                          echo '<form action="" method="POST">
+                                  <input type="hidden" id="idSupr" name="idSupr" value="'.$favori.'">
+                                  <input type="hidden" name="iduser" id="iduser" value="'.$Membre["id_membre"].'">
+                                  <input type="hidden" name="idannonce" id="idannonce" value="'.$annonce["id_annonce"].'">
+                                   <button type="submit" class="removefavori" id="removeFavori" name="removeFavori"><i class="fas fa-heart"></i></button>
+                              </form>';
+                      }
                     }
                 ?>
                 </div> <!-- fin resultat-->
@@ -236,7 +238,7 @@ include __DIR__.'/assets/includes/header_fiche.php';
 
     <section id="testimonial">
       <div class="container">
-        <p><?= nl2br($Annonce['description_annonce'])?></p>
+        <p><?= nl2br($annonce['description_annonce'])?></p>
       </div>
     </section>
 
@@ -264,12 +266,12 @@ include __DIR__.'/assets/includes/header_fiche.php';
           <div class="col-md-6 col-sm-6">
             <div class="info-right">
               <h2>Critéres : </h2>
-              <p ><strong>Marque :</strong> <?= $Annonce['marque']?></p>
-              <p ><strong>Modele :</strong> <?= $Annonce['modele']?></p>
-              <p ><strong>Kilomètres :</strong> <?= $Annonce['km']?></p>
-              <p ><strong>Annee modele :</strong> <?= $Annonce['annee_modele']?></p>
-              <p ><strong>Nombres de places :</strong> <?= $Annonce['places']?></p>
-              <p ><strong>VASP :</strong> <?= $Annonce['vasp'] == 1 ? 'OUI' :' NON ' ;?></p>
+              <p ><strong>Marque :</strong> <?= $annonce['marque']?></p>
+              <p ><strong>Modele :</strong> <?= $annonce['modele']?></p>
+              <p ><strong>Kilomètres :</strong> <?= $annonce['km']?></p>
+              <p ><strong>Annee modele :</strong> <?= $annonce['annee_modele']?></p>
+              <p ><strong>Nombres de places :</strong> <?= $annonce['places']?></p>
+              <p ><strong>VASP :</strong> <?= $annonce['vasp'] == 1 ? 'OUI' :' NON ' ;?></p>
               <br>
             </div>
           </div>
@@ -285,18 +287,18 @@ include __DIR__.'/assets/includes/header_fiche.php';
               <h2>Localisation : </h2>
               <p ><strong>Pays :</strong> <?= $country['name_country']?></p>
               <p ><strong>Région :</strong> <?= $region['name_region']?></p>
-              <p ><strong>Ville :</strong> <?= $Annonce['ville']?></p>
-              <p ><strong>Code Postal :</strong> <?= $Annonce['cp']?></p>
+              <p ><strong>Ville :</strong> <?= $annonce['ville']?></p>
+              <p ><strong>Code Postal :</strong> <?= $annonce['cp']?></p>
             </div>
           </div>
           <div class="col-md-6 col-sm-6">
             <div class="info-right">
               <h2>Coordonnées : </h2>
-             <?php if($Annonce['est_publie'] == 1):?>
+             <?php if($annonce['est_publie'] == 1):?>
                 <p>La personne qui publie ne souhaite pas afficher ses coordonnées,</p>
                 <p>Merci d'utilser le formulaire de contact</p>
              <?php else:?>
-              <p ><strong>Téléphone :</strong> <?= $Annonce['telephone']?></p>
+              <p ><strong>Téléphone :</strong> <?= $annonce['telephone']?></p>
              <?php endif;?>
             </div>
           </div>
