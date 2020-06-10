@@ -10,27 +10,17 @@ $req = $pdo->exec(
     ");
 
 
-// ajouterFlash('success','Annonce sauvegardée');
+ajouterFlash('success','Annonce sauvegardée');
 
 $favori = $pdo->lastInsertId();
 
-// $resultat = '';
-// $resultat .= '<div id="toats" class="notif alert-success" onload="killToats()">';
-//     $resultat .= '<div class="toats_headers">';
-//         $resultat .= '<a class="toats_die">';
-//             $resultat .= ' <i class="icon ion-md-close"></i>';
-//         $resultat .= '</a>';
-//         $resultat .= '<h5><i class="fas fa-exclamation-circle"></i> Notification :</h5>';
-//     $resultat .= '</div>';
-// $resultat .= '<div class="toats_core">';
-// $resultat .= '<p>Annonce sauvegardée</p>';
-// $resultat .= '</div>';
-// $resultat .= '</div>';
-
+$resultat = '';
+$resultat .= '<div class="like">';
 $resultat .= '<form method="POST">';
     $resultat .= ' <input type="hidden" name="idSupr" value="'.$favori.'">';
     $resultat .= ' <button type="submit" class="removefavori" id="removeFavori" name="removeFavori"><i class="fas fa-heart"></i></button>';
 $resultat .= '</form>';
+$resultat .= '</div>';
 
 $tableau['resultat'] = $resultat;
 

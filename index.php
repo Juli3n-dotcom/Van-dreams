@@ -87,7 +87,7 @@ include __DIR__.'/assets/includes/flash.php';
                             <p><?= $annonce['prix']?>€</p> 
                         </div>
                         <div class="like">
-                            <div id="#resultat">
+                            <div id="resultat">
                                 <?php
                                     if($Membre === null){
                                         echo '<form action="" method="POST">

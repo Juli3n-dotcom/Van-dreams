@@ -43,38 +43,58 @@ $(document).ready(function(){
     });
 
 //like
-    $(".favoris").click(function(e){
-        e.preventDefault();
-        ajax();
-    });
+    // $(".favoris").click(function(e){
+    //     e.preventDefault();
+    //     ajax_like();
+    // });
 
-    function ajax()
-    {
-        var idannonce = $('#idannonce').val();
-        var iduser = $('#iduser').val();
+    // function ajax_like()
+    // {
+    //     var $form = $(this).closest('form');
+    //     var idannonce = $form.find('input[name="idannonce"]').val();
+    //     var iduser = $form.find('input[name="iduser"]').val();
+    //     // var idannonce = $('#idannonce').val();
+    //     // var iduser = $('#iduser').val();
 
-        var parameters = 'idannonce='+idannonce+'&iduser='+iduser;
-        console.log(parameters)
+    //     var parameters = 'idannonce='+idannonce+'&iduser='+iduser;
+    //     console.log(parameters)
    
+        // $.post('assets/ajax/ajax_like.php', parameters, function(data){
+        //     console.log(data);
+        //     $('#resultat').html(data.resultat);
+        // },'json');
+    // }
+
+    $(function(){
+        $(".favoris").click(function(e){
+
+            e.preventDefault();
+            var $form = $(this).closest('form');
+            var idannonce = $form.find('input[name="idannonce"]').val();
+            var iduser = $form.find('input[name="iduser"]').val();
+            var parameters = 'idannonce='+idannonce+'&iduser='+iduser;
+            console.log(parameters)
         $.post('assets/ajax/ajax_like.php', parameters, function(data){
             $('#resultat').html(data.resultat);
-        },'json');
-    }
-
+             },'json');
+        $form.hide(1100);
+        });
+    });
 
 
     $(".removefavori").click(function(e){
         e.preventDefault();
-        ajax();
+        ajax_remove();
     });
 
-    function ajax()
+    function ajax_remove()
     {
         var idSupr = $('#idSupr').val();
         
         var parameters = "idSupr="+idSupr;
 
         $.post('assets/ajax/ajax_delete_like.php', parameters, function(data){
+            console.log(data);
             $('#resultat').html(data.resultat);
         },'json');
     }
