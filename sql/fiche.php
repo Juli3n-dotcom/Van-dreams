@@ -11,8 +11,15 @@ if ($Annonce === null && !role(ROLE_ADMIN)){
 
     ajouterFlash('warning', 'Annonce inconnu.');
     session_write_close();
-    header('location:welcome');
+    header('location:../oups');
 }
+
+if(isset($_POST['noUser'])){
+  $id = $Annonce['id_annonce'];
+  setcookie('fiche', $id, time()+3600, '/', null,false, true);
+  sleep(1);
+    header('location:../login');
+  }
 
 // traitement login
 if(isset($_POST['login'])){
@@ -105,36 +112,7 @@ if (isset($_POST['register'])){
   }
 }
 
-//like
-if(isset($_POST['addFavori'])){
-  if(getMembre() === null){
-    ajouterFlash('danger','merci de vous connecter pour mettre en favori.');
-  }else{
-    $req = $pdo->prepare(
-      'INSERT INTO favoris (membre_id, annonce_id, est_favoris)
-      VALUES (:membre_id, :annonce_id, :est_favoris)'
-  );
 
-  $req->bindParam(':membre_id',$_POST['iduser']);
-  $req->bindParam(':annonce_id',$_POST['idannonce']);
-  $req->bindValue(':est_favoris',1);
-  $req->execute();
-
-    ajouterFlash('success','Annonce sauvegardée');
-  }
-}
-
-//sup favori
-if(isset($_POST['removeFavori'])){
-  $req = $pdo->prepare(
-    'DELETE FROM favoris
-    WHERE :id = id_favori'
-  );
-  $req->bindParam(':id',$_POST["idSupr"],PDO::PARAM_INT);
-  $req->execute();
-
-  ajouterFlash('success','Annonce retirée de vos favoris');
-}
 
 //Message
 if(isset($_POST['envoyer'])){
@@ -176,7 +154,7 @@ if(isset($_POST['envoyer'])){
 
 
 $page_title ='Annonce N°VD-00'.$Annonce['id_annonce'];
-include __DIR__.'/assets/includes/header.php';
+include __DIR__.'/assets/includes/header_fiche.php';
 ?>
 
 <?php include __DIR__.'/assets/includes/flash.php';?>
@@ -214,7 +192,7 @@ include __DIR__.'/assets/includes/header.php';
 
         ?>
              <a href="#portfolio-item-0">
-              <img src="/Vandreams/data/<?= $photo['photo1']?>" alt="photo_annonce">
+              <img src="/data/<?= $photo['photo1']?>" alt="photo_annonce">
             </a>
             </div>
           </div>
@@ -227,29 +205,30 @@ include __DIR__.'/assets/includes/header.php';
             </div>
             <br>
             <p class="btn-default btn-lg showcase-price"><?= $Annonce['prix']?>  €</p>
-
+            <div id="resultat">
             <?php
                     if($Membre === null){
                         echo '<form action="" method="POST">
-                                <button type="submit" class="favoris" name="noUser"><i class="far fa-heart"></i></button>
+                                <button type="submit" class="noUser" name="noUser"><i class="far fa-heart"></i></button>
                             </form>';  
                     }else{
                         $favori = getfavori($pdo, $Membre['id_membre'], $Annonce['id_annonce']);
     
                         if($favori == false){
                             echo '<form action="" method="POST">
-                                    <input type="hidden" name="iduser" value="'.$Membre["id_membre"].'">
-                                    <input type="hidden" name="idannonce" value="'.$Annonce["id_annonce"].'">
-                                    <button type="submit" class="favoris" name="addFavori"><i class="far fa-heart"></i></button>
+                                    <input type="hidden" name="iduser" id="iduser" value="'.$Membre["id_membre"].'">
+                                    <input type="hidden" name="idannonce" id="idannonce" value="'.$Annonce["id_annonce"].'">
+                                    <button type="submit" class="favoris" id="addFavori" name="addFavori"><i class="far fa-heart"></i></button>
                                 </form>';   
                         }else{
                             echo '<form action="" method="POST">
-                                    <input type="hidden" name="idSupr" value="'.$favori.'">
-                                    <button type="submit" class="favoris" name="removeFavori"><i class="fas fa-heart"></i></button>
+                                    <input type="hidden" id="idSupr" name="idSupr" value="'.$favori.'">
+                                    <button type="submit" class="removefavori" id="removeFavori" name="removeFavori"><i class="fas fa-heart"></i></button>
                                 </form>';
                         }
                     }
                 ?>
+                </div> <!-- fin resultat-->
           </div>
         </div>
       </div>
@@ -257,7 +236,7 @@ include __DIR__.'/assets/includes/header.php';
 
     <section id="testimonial">
       <div class="container">
-        <p><?= $Annonce['description_annonce']?></p>
+        <p><?= nl2br($Annonce['description_annonce'])?></p>
       </div>
     </section>
 
@@ -270,12 +249,12 @@ include __DIR__.'/assets/includes/header.php';
                 <div class="row">
                   <div class="col-md-6 col-sm-6">
                     <a href="#portfolio-item-1">
-                     <img src="/Vandreams/data/<?= $photo['photo2']?>" alt="photo_annonce">
+                     <img src="/data/<?= $photo['photo2']?>" alt="photo_annonce">
                     </a>
                   </div>
                   <div class="col-md-6 col-sm-6">
                   <a href="#portfolio-item-2">
-                     <img src="/Vandreams/data/<?= $photo['photo3']?>" alt="photo_annonce">
+                     <img src="/data/<?= $photo['photo3']?>" alt="photo_annonce">
                      </a>
                   </div>
                 </div>
@@ -366,9 +345,13 @@ include __DIR__.'/assets/includes/header.php';
             <input type="text" name="name" class="input-field" placeholder="Votre Nom" value="<?= $_POST['name'] ?? '' ?>">
             <input type="text" name="first_name" class="input-field" placeholder="Votre Prénom" value="<?= $_POST['first_name'] ?? '' ?>">
             <input type="email" name="email" class="input-field" placeholder="Email" value="<?= $_POST['email'] ?? '' ?>">
-            <input type="password" name="password" class="input-field" placeholder="Mot de passe">
+            <input type="password" name="password" class="input-field password" placeholder="Mot de passe">
+            <div class="pophover">
+              <h6>Mot de passe:</h6>
+              <p>Votre mot de passe doit contenir un minimim de 8 caractéres, une majuscule, une minuscule et un symbole.</p>
+            </div>
             <input type="password" name="confirm" class="input-field" placeholder="Confirmer MDP">
-            <input type="checkbox" class="check-box" name="cgu"><span>J'accepte <a href="cgu">les conditions générales d'utilisation</a></span>
+            <input type="checkbox" class="check-box" name="cgu"><span class="valideCGUfiche">J'accepte <a href="cgu">les conditions générales d'utilisation</a></span>
             <button type="submit" class="submit-btn" name="register">Valider</button>
         </form>
     </div>
@@ -381,37 +364,52 @@ include __DIR__.'/assets/includes/header.php';
 
 <div class="portfolio-lightbox" id="portfolio-item-0">
   <div class="portfolio-lightbox__content">
-    <a href="#" class="close"></a>
+    <a href="#" class="close_lightbox"></a>
     <a href="#portfolio-item-1" class="next"></a>
     <a href="#portfolio-item-2" class="prev"></a>
-    <img width="500px" height="500px" src="/Vandreams/data/<?= $photo['photo1']?>">
+    <img  src="/data/<?= $photo['photo1']?>">
   </div>
 </div>
 
 <div class="portfolio-lightbox" id="portfolio-item-1">
   <div class="portfolio-lightbox__content">
-    <a href="#" class="close"></a>
+    <a href="#" class="close_lightbox"></a>
     <a href="#portfolio-item-2" class="next"></a>
     <a href="#portfolio-item-1" class="prev"></a>
-    <img width="500px" height="500px" src="/Vandreams/data/<?= $photo['photo2']?>">
+    <img  src="/data/<?= $photo['photo2']?>">
   </div>
 </div>
 
 <div class="portfolio-lightbox" id="portfolio-item-2">
   <div class="portfolio-lightbox__content">
-    <a href="#" class="close"></a>
+    <a href="#" class="close_lightbox"></a>
     <a href="#portfolio-item-0" class="next"></a>
     <a href="#portfolio-item-1" class="prev"></a>
-    <img width="500px" height="500px" src="/Vandreams/data/<?= $photo['photo3']?>">
+    <img  src="/data/<?= $photo['photo3']?>">
   </div>
 </div>
 
 </div>
 
+<script>
+  //Notification like si pas connecté
+$(document).ready(function(){
+   $('.noUser').click(function(){
+      $('body').append('<div id="toats" class="notif alert-danger" onload="killToats()"></div>');    
+         $('#toats').append('<div class="toats_headers"></div>');
+            $('.toats_headers').append(' <a class="toats_die"></a>');
+               $('.toats_die').append('<i class="icon ion-md-close"></i>');
+               $('.toats_header').append('<h5><i class="fas fa-exclamation-circle"></i> Notification :</h5>');
+            $('#toats').append('<div class="toats_core"></div> ')
+               $('.toats_core').append('<p>merci de vous connecter pour liker cette annonce.</p>')
+   });
 
+});
+</script>
 <?php if(getMembre() == null) :?>
-  <script type="text/javascript" src="assets/js/login.js"></script>
+  <script type="text/javascript" src="/assets/js/login.js"></script>
 <?php endif;?>
 <?php
-include __DIR__.'/assets/includes/footer.php';
+include __DIR__.'/assets/includes/cookie.php';
+include __DIR__.'/assets/includes/footer_fiche.php';
 ?>

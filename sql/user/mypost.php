@@ -110,7 +110,14 @@ include __DIR__.'/assets/includes/header_user.php';
 <?php include __DIR__.'/../assets/includes/flash.php';?>
 
 <div class="myannonces">
-    
+<?php 
+    $user = $Membre['id_membre'];
+    $count = $pdo->query("SELECT id_annonce FROM annonces WHERE membre_id ='$user'");
+    $count->execute();
+    $count = $count->rowCount();
+?>
+ <h1>Mes Annonces</h1>
+ <?php if($count > 0):?>
     <div class="container">
         <div class="row">
             <?php foreach(getAnnoncesByUser($pdo,$Membre['id_membre']) as $annonce):?>
@@ -147,9 +154,9 @@ include __DIR__.'/assets/includes/header_user.php';
                 <div class="col-md-6 col-lg-4">
                     <div class="annonce-box">
                         <div class="annonce-img">
-                            <img src="/Vandreams/data/<?= $photo['photo1']?>" alt="photo_annonce">
+                            <img src="/../data/<?= $photo['photo1']?>" alt="photo_annonce">
                         </div> 
-                        <div class="price">
+                        <div class="price_user">
                            <p><?= $annonce['prix']?>€</p> 
                         </div>
                         <div class="annonce-details">
@@ -174,29 +181,29 @@ include __DIR__.'/assets/includes/header_user.php';
                                 <div class="modal-dialog modal-dialog-scrollable" role="document">
                                     <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title">Modification de l'annonce | <?=$annonce['titre_annonce']??'';?></h5>
+                                        <h5 class="modal-title">Modification de l'annonce | <?= substr($annonce['titre_annonce'],0,20).'...'?></h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
                                     <div class="modal-body">
                                         <form method="post">
-                                                <label for="title_update" class="label_name">Titre de votre annonce : </label>
+                                                <label for="title_update" class="label_name_myannonce">Titre de votre annonce : </label>
                                                 <input type="text" class="input-field" name="title_update" value="<?= htmlspecialchars($annonce['titre_annonce'])?>">
                                                 <hr>
-                                                <label for="description_update" class="label_name">Description de votre annonce : </label>
-                                                <textarea class="input-field" name="description_update" cols="30" rows="10"><?= htmlspecialchars($annonce['description_annonce']??'');?></textarea>
+                                                <label for="description_update" class="label_name_myannonce">Description de votre annonce : </label>
+                                                <textarea class="input-field" name="description_update" cols="30" rows="10"><?=nl2br(htmlspecialchars($annonce['description_annonce']??''));?></textarea>
                                                 <hr>
-                                                <label for="price_update" class="label_name">Prix de votre annonce : </label>
+                                                <label for="price_update" class="label_name_myannonce">Prix de votre annonce : </label>
                                                 <input type="text" class="input-field" name="price_update" value="<?= htmlspecialchars($annonce['prix']??'')?>">
                                                 <hr>
-                                                <label for="km_update" class="label_name">kilométrage : </label>
+                                                <label for="km_update" class="label_name_myannonce">kilométrage : </label>
                                                 <input type="text" name="km_update" class="input-field"  value="<?= htmlspecialchars($annonce['km']??'');?>">
                                                 <hr>
-                                                <label for="price_update" class="label_name">Votre numéro de téléphone : </label>
+                                                <label for="price_update" class="label_name_myannonce">Votre numéro de téléphone : </label>
                                                 <input type="text" class="input-field" name="phone_update" value="<?= htmlspecialchars($annonce['telephone']??'')?>">
                                                 <hr>
-                                                <label for="price_update" class="label_name">Masquer mon numéro : </label>
+                                                <label for="price_update" class="label_name_myannonce">Masquer mon numéro : </label>
                                                 <input type="checkbox" class="check-box checkmypost" name="est_publie_update" <?= $annonce['est_publie'] == 1 ? 'checked' : '' ;?>>     
                                     </div>
                                     <div class="modal-footer">
@@ -214,7 +221,7 @@ include __DIR__.'/assets/includes/header_user.php';
                                 <div class="modal-dialog modal-dialog-scrollable" role="document">
                                     <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title">Supprimer annonce | <?=$annonce['titre_annonce']??'';?></h5>
+                                        <h5 class="modal-title">Supprimer annonce | <?= substr($annonce['titre_annonce'],0,20).'...'?></h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                         </button>
@@ -222,7 +229,7 @@ include __DIR__.'/assets/includes/header_user.php';
                                     <div class="modal-body">
                                         <form method="post">
                                             
-                                                <p class="mb-2">Etes vous sur de vouloir supprimer votre annonce ?</p>
+                                                <p class="txtSup">Etes vous sur de vouloir supprimer votre annonce ?</p>
                                             
                                                 <div class='confirm_delete' id="confirm_delete">
                                                 <input type="checkbox" class="delete_check mr-3" name="delete_check"/><label for="delete_check" class="delete_label">Je confirme la suppression</label>
@@ -231,7 +238,7 @@ include __DIR__.'/assets/includes/header_user.php';
                                                 </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <input type="submit" class="annonce_btn SupAnnonce" name="delete_annonce" value="Supprimer" >
+                                        <input type="submit" class="btn SupAnnonce" name="delete_annonce" value="Supprimer" >
                                     </div>
                                         </form>  
                                     </div>
@@ -245,7 +252,18 @@ include __DIR__.'/assets/includes/header_user.php';
              <?php endforeach;?>
         </div>
     </div>
-    
+    <?php else :?>
+<div class="container">
+    <div class="row">
+        <div class="col-12 noFavoris">
+            <div class="favorisLink">
+                <p>Vous n'avez aucune annonces en ligne</p>
+                <a href="../post"> Déposer une annonce</a>
+            </div>
+        </div>
+    </div>
+</div>
+<?php endif;?>
 </div>
 
 <?php

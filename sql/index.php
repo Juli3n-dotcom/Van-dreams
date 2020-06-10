@@ -4,49 +4,26 @@ require_once __DIR__ . '/assets/functions/post.php';
 require_once __DIR__ . '/assets/functions/annonces.php';
 require_once __DIR__ . '/assets/functions/membre_function.php';
 
+
 $Membre = getMembre($pdo, $_GET['id_membre'] ?? null);
 
 if(isset($_POST['noUser'])){
-setcookie('favindex', true, time()+3600);
-ajouterFlash('danger','merci de vous connecter pour liker cette annonce.');
-  header('location:login');
+    setcookie('favindex', true, time()+3600, '/', null,false, true);
+    sleep(1);
+      header('location:login');
+    }
+
+if(isset($_POST['addFavori'])){
+    ajouterFlash('success','Annonce sauvegardée');
 }
 
-//like
-if(isset($_POST['addFavori'])){
-    
-      $req = $pdo->prepare(
-        'INSERT INTO favoris (membre_id, annonce_id, est_favori)
-        VALUES (:membre_id, :annonce_id, :est_favori)'
-    );
-  
-    $req->bindParam(':membre_id',$_POST['iduser']);
-    $req->bindParam(':annonce_id',$_POST['idannonce']);
-    $req->bindValue(':est_favori',1);
-    $req->execute();
-  
-      ajouterFlash('success','Annonce sauvegardée');
-    }
-  
-  
-  //sup favori
-  if(isset($_POST['removeFavori'])){
-    $req = $pdo->prepare(
-      'DELETE FROM favoris
-      WHERE :id = id_favori'
-    );
-    $req->bindParam(':id',$_POST["idSupr"],PDO::PARAM_INT);
-    $req->execute();
-  
-    ajouterFlash('success','Annonce retirée de vos favoris');
-  }
 
 require_once __DIR__ . '/assets/functions/annonces.php';
 $page_title ='Accueil';
 include __DIR__.'/assets/includes/header_index.php';
+include __DIR__.'/assets/includes/flash.php';
 ?>
 
-<?php include __DIR__.'/assets/includes/flash.php';?>
 
 <section class="hero">
         
@@ -110,28 +87,30 @@ include __DIR__.'/assets/includes/header_index.php';
                             <p><?= $annonce['prix']?>€</p> 
                         </div>
                         <div class="like">
-                        <?php
-                    if($Membre === null){
-                        echo '<form action="" method="POST">
-                                <button type="submit" class="favoris" name="noUser"><i class="far fa-heart"></i></button>
-                            </form>';  
-                    }else{
-                        $favori = getfavori($pdo, $Membre['id_membre'], $annonce['id_annonce']);
+                            <div id="resultat">
+                                <!-- <?php
+                                    if($Membre === null){
+                                        echo '<form action="" method="POST">
+                                                <button type="submit" class="noUser" name="noUser"><i class="far fa-heart"></i></button>
+                                            </form>';  
+                                    }else{
+                                        $favori = getfavori($pdo, $Membre['id_membre'], $annonce['id_annonce']);
     
-                        if($favori == false){
-                            echo '<form action="" method="POST">
-                                    <input type="hidden" name="iduser" value="'.$Membre["id_membre"].'">
-                                    <input type="hidden" name="idannonce" value="'.$annonce["id_annonce"].'">
-                                    <button type="submit" class="favoris" name="addFavori"><i class="far fa-heart"></i></button>
-                                </form>';   
-                        }else{
-                            echo '<form action="" method="POST">
-                                    <input type="hidden" name="idSupr" value="'.$favori.'">
-                                    <button type="submit" class="favoris" name="removeFavori"><i class="fas fa-heart"></i></button>
-                                </form>';
-                        }
-                    }
-                ?>
+                                        if($favori == false){
+                                            echo '<form action="" method="POST">
+                                                    <input type="hidden" name="iduser" id="iduser" value="'.$Membre["id_membre"].'">
+                                                    <input type="hidden" name="idannonce" id="idannonce" value="'.$annonce["id_annonce"].'">
+                                                    <button type="submit" class="favoris" id="addFavori" name="addFavori"><i class="far fa-heart"></i></button>
+                                                </form>';   
+                                        }else{
+                                            echo '<form action="" method="POST">
+                                                    <input type="hidden" id="idSupr" name="idSupr" value="'.$favori.'">
+                                                    <button type="submit" class="removefavori" id="removeFavori" name="removeFavori"><i class="fas fa-heart"></i></button>
+                                                </form>';
+                                        }
+                                    }
+                                ?> -->
+                            </div> <!-- fin resultat-->
                         </div>
                         <div class="annonce-details">
                             <h4><?= ($annonce['titre_annonce'])?></h4>
@@ -163,7 +142,7 @@ include __DIR__.'/assets/includes/header_index.php';
             <div class="block2">
                 <div class="block-text-box">
                     <h3>
-                        Et si vous aussi vous vendiez votre van? sur VanDreams?
+                        Et si vous aussi vous vendiez votre van sur VanDreams?
                     </h3>
                 </div>
                 <div class="block-depot">
@@ -177,7 +156,7 @@ include __DIR__.'/assets/includes/header_index.php';
     <div class="title-heading">
         <h3>Les aménagés</h3>
             <h1>Envie de partir directement?</h1>
-                <p>Venez découvrir parmis une selection de véhicules déjà aménagés</p>
+                <p>Venez découvrir une selection de véhicules déjà aménagés</p>
     </div>
     <div class="row">
         <div class="glide">
@@ -214,16 +193,16 @@ include __DIR__.'/assets/includes/header_index.php';
                     <div class="col-md-6 col-lg-4 card_carousel">
                     <div class="annonce-box">
                         <div class="annonce-img">
-                            <img src="/Vandreams/data/<?= $photo['photo1']?>" alt="photo_annonce">
+                            <img src="/data/<?= $photo['photo1']?>" alt="photo_annonce">
                         </div>
                         <div class="price">
                             <p><?= $annonce['prix']?>€</p> 
                         </div>
                         <div class="like">
-                        <?php
+                        <!-- <?php
                     if($Membre === null){
                         echo '<form action="" method="POST">
-                                <button type="submit" class="favoris" name="noUser"><i class="far fa-heart"></i></button>
+                                <button type="submit" class="noUser" name="noUser"><i class="far fa-heart"></i></button>
                             </form>';  
                     }else{
                         $favori = getfavori($pdo, $Membre['id_membre'], $annonce['id_annonce']);
@@ -241,7 +220,7 @@ include __DIR__.'/assets/includes/header_index.php';
                                 </form>';
                         }
                     }
-                ?>
+                ?> -->
                         </div>
                         <div class="annonce-details">
                             <h4><?= ($annonce['titre_annonce'])?></h4>
@@ -267,6 +246,7 @@ include __DIR__.'/assets/includes/header_index.php';
 </div>
 </div>
 </section>
+
 
 <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
 <script type="text/javascript" src="assets/js/index.js"></script>

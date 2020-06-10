@@ -121,11 +121,11 @@ include __DIR__.'/assets/includes/header.php';
                     <img src="/data/<?= $photo['photo1']?>" alt="photo_annonce">
                 </div> 
                 <div class="price">
-                    <p><?= $annonce['id_annonce']?>€</p> 
+                    <p><?= $annonce['prix']?>€</p> 
                 </div>
                 <div id="resultat">
                     <div class="like">
-                        <?php
+                        <!-- <?php
                             if($Membre === null){
                                 echo '<form action="" method="POST">
                                         <button type="submit" class="noUser" name="noUser"><i class="far fa-heart"></i></button>
@@ -146,7 +146,7 @@ include __DIR__.'/assets/includes/header.php';
                                         </form>';
                                 }
                             }
-                        ?>
+                        ?> -->
                 </div>
             </div> <!-- fin resultat-->
                 <div class="annonce-details">

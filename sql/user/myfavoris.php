@@ -70,15 +70,15 @@ include __DIR__.'/assets/includes/header_user.php';
   
                     $date = implode('-',array_reverse  (explode('/',$annonce['date_enregistrement'])));
                 ?>
-                <div class="col-md-4">
+                <div class="col-md-6 col-lg-4">
                     <div class="annonce-box">
                         <div class="annonce-img">
-                            <img src="/Vandreams/data/<?= $photo['photo1']?>" alt="photo_annonce">
+                            <img src="/../data/<?= $photo['photo1']?>" alt="photo_annonce">
                         </div> 
-                        <div class="price">
+                        <div class="price_user">
                            <p><?= $annonce['prix']?>€</p> 
                         </div>
-                        <div class="like">
+                        <div class="like_user">
                             <form action="" method="POST">
                                 <input type="hidden" name="idSupr" value="<?=$favori['id_favori']?>">
                                 <button type="submit" class="favoris" name='removeFavori'><i class="fas fa-heart"></i></button>
@@ -108,7 +108,7 @@ include __DIR__.'/assets/includes/header_user.php';
         <div class="col-12 noFavoris">
             <div class="favorisLink">
                 <p>Vous n'avez aucune annonces dans vos favoris</p>
-                <a href=""> Voir toutes les annonces</a>
+                <a href="../touteslesannonces"> Voir toutes les annonces</a>
             </div>
         </div>
     </div>

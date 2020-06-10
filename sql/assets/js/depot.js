@@ -12,7 +12,7 @@
     img.file = file;
     preview.appendChild(img);
     img.style.width = '50%';
-    img.style.maxWidth = '100px';
+    img.style.maxWidth = '130px';
     img.style.heigt = 'auto';
     img.style.maxHeight = '150px';
     img.style.display = 'block';

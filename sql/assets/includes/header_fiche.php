@@ -47,9 +47,9 @@ if (session_status() === PHP_SESSION_NONE){
     <meta property="og:type"          content="website" />
     <meta property="og:title"         content="Van Dreams" />
     <meta name="description" content="vandreams.fr : le site de petites annonces pour les vanlifers. Consultez des milliers d'annonces van aménagé">
-    <meta property="og:image"         content="assets/img/logo3.png" />
+    <meta property="og:image"         content="/assets/img/logo3.png" />
     <title><?=$page_title?> | Van Dreams </title>
-    <link rel="icon" href="assets/img/logo3.png">
+    <link rel="icon" href="/assets/img/logo3.png">
     <link rel="apple-touch-icon" href="assets/img/logo3.png">
     <!--Ion Icons-->
     <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
@@ -76,8 +76,8 @@ if (session_status() === PHP_SESSION_NONE){
     <div class=container_header>
         <nav>
             <div class="nav-brand">
-        <a href="welcome">
-            <img src="assets/img/logo3.png" alt="logo">
+        <a href="../welcome">
+            <img src="/assets/img/logo3.png" alt="logo">
         </a>
     </div>
 
@@ -92,13 +92,13 @@ if (session_status() === PHP_SESSION_NONE){
             <i class="icon ion-md-close"></i>
         </div>
         <li class="nav-item">
-            <a href="welcome" class="nav-link">Accueil</a>
+            <a href="../welcome" class="nav-link">Accueil</a>
         </li>
         <li class="nav-item">
-            <a href="touteslesannonces" class="nav-link">Les annonces</a>
+            <a href="../touteslesannonces" class="nav-link">Les annonces</a>
         </li>
         <li class="nav-item">
-            <a href="post" class="nav-link">Déposer une annonces</a>
+            <a href="../post" class="nav-link">Déposer une annonces</a>
         </li>
         <?php if(role(ROLE_ADMIN)):?>
         <li class="nav-item">
@@ -111,15 +111,15 @@ if (session_status() === PHP_SESSION_NONE){
             </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
         <?php if(getMembre() === null):?>
-            <a href="login" class="dropdown-item">Inscription</a>    
-            <a href="login" class="dropdown-item">Connexion</a>
+            <a href="../login" class="dropdown-item">Inscription</a>    
+            <a href="../login" class="dropdown-item">Connexion</a>
         <?php else :?>          
-            <a class="dropdown-item"  href="user/mesannonces">Mes annonces</a>
-            <a class="dropdown-item"  href="user/favoris">Mes favoris</a>
-            <a class="dropdown-item" href="user/inbox">Messagerie <div class="badge notif_msg"><?= $NewMessage > 0 ? $NewMessage : '0';?></div></a>
-            <a class="dropdown-item"  href="user/myaccount">Mon Profil</a>
+            <a class="dropdown-item"  href="../user/mesannonces">Mes annonces</a>
+            <a class="dropdown-item"  href="../user/favoris">Mes favoris</a>
+            <a class="dropdown-item" href="../user/inbox">Messagerie <div class="badge notif_msg"><?= $NewMessage > 0 ? $NewMessage : '0';?></div></a>
+            <a class="dropdown-item"  href="../user/myaccount">Mon Profil</a>
                 <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="logout">Déconnexion</a>
+            <a class="dropdown-item" href="../logout">Déconnexion</a>
         </div>
         </li>
         <?php endif;?>

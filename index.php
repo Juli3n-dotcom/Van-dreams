@@ -88,7 +88,7 @@ include __DIR__.'/assets/includes/flash.php';
                         </div>
                         <div class="like">
                             <div id="resultat">
-                                <?php
+                                <!-- <?php
                                     if($Membre === null){
                                         echo '<form action="" method="POST">
                                                 <button type="submit" class="noUser" name="noUser"><i class="far fa-heart"></i></button>
@@ -109,7 +109,7 @@ include __DIR__.'/assets/includes/flash.php';
                                                 </form>';
                                         }
                                     }
-                                ?>
+                                ?> -->
                             </div> <!-- fin resultat-->
                         </div>
                         <div class="annonce-details">
@@ -199,7 +199,7 @@ include __DIR__.'/assets/includes/flash.php';
                             <p><?= $annonce['prix']?>€</p> 
                         </div>
                         <div class="like">
-                        <?php
+                        <!-- <?php
                     if($Membre === null){
                         echo '<form action="" method="POST">
                                 <button type="submit" class="noUser" name="noUser"><i class="far fa-heart"></i></button>
@@ -220,7 +220,7 @@ include __DIR__.'/assets/includes/flash.php';
                                 </form>';
                         }
                     }
-                ?>
+                ?> -->
                         </div>
                         <div class="annonce-details">
                             <h4><?= ($annonce['titre_annonce'])?></h4>

@@ -10,6 +10,6 @@ RewriteRule ^oups$ 404.html
 RewriteRule ^cgu$ cgu.php
 RewriteRule ^resetpassword$ lost_password.php
 RewriteRule ^annonce/([0-9]+)$ fiche.php?id=$1
-RewriteRule ^annonce/(.+)$ oups
+
 
 ErrorDocument 404 /Vandreams/oups

@@ -28,6 +28,7 @@ require_once __DIR__ . '/../config/bootstrap.php';
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <meta name="robots" content="index,follow">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -40,15 +41,17 @@ require_once __DIR__ . '/../config/bootstrap.php';
 
   gtag('config', 'UA-164356474-1');
 </script>
-    <meta name="description" content="vandreams.fr : le site de petites annonces DE TRIPPERS à TRIPPERS. Consultez des milliers d'annonces van aménagé">
-    <meta property="og:url"           content="https://http://vandreams.fr/" />
+    <meta name="description" content="vandreams.fr : le site de petites annonces pour les vanlifers. Consultez des milliers d'annonces van aménagé">
+    <meta name="Keywords" content="vanlife, vanlifers, van, trip, roadtrip, voyages, tripper, vanhub, vanlifeaddict, camper, petites annonces, van aménagés, fourgon aménagés, camions aménagé, camping, campingcar">
+    <meta property="og:url"           content="https://https://vandreams.fr/" />
     <meta property="og:type"          content="website" />
     <meta property="og:title"         content="Van Dreams" />
-    <meta property="og:description"   content="vandreams.fr : le site de petites annonces DE TRIPPERS à TRIPPERS. Consultez des milliers d'annonces van aménagé" />
+    <meta name="description" content="vandreams.fr : le site de petites annonces pour les vanlifers. Consultez des milliers d'annonces van aménagé">
     <meta property="og:image"         content="assets/img/logo3.png" />
-    <meta name="description" content="vandreams.fr : le site de petites annonces DE TRIPPEURS à TRIPPEURS. Consultez des milliers d'annonces de van aménagé  >>>">
+    <meta name="description" content="vandreams.fr : le site de petites annonces pour les vanlifers. Consultez des milliers d'annonces van aménagé">
     <title><?=$page_title?> | Van Dreams </title>
     <link rel="icon" href="assets/img/logo3.png">
+    <link rel="apple-touch-icon" href="assets/img/logo3.png">
     <!--Ion Icons-->
     <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
     <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
@@ -57,10 +60,13 @@ require_once __DIR__ . '/../config/bootstrap.php';
     <link href="https://fonts.googleapis.com/css?family=Aldrich&display=swap" rel="stylesheet">
     <!--Our own stylesheet-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <!-- <base href="/vandrams/"> -->
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/glide.core.min.css">
     <link rel="stylesheet" href="../assets/css/glide.theme.min.css">
+    <!-- <base href="/vandreams/">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/glide.core.min.css">
+    <link rel="stylesheet" href="assets/css/glide.theme.min.css"> -->
     <!-- Js-->
     <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
@@ -71,16 +77,19 @@ require_once __DIR__ . '/../config/bootstrap.php';
         <nav>
             <div class="nav-brand">
         <a href="welcome">
-            <img src="assets/img/logo3.png" alt="">
+            <img src="assets/img/logo3.png" alt="logo">
         </a>
     </div>
 
     <div class="menu-icons_index open" >
-        <i class="icon ion-md-menu"></i>
+        <!-- <i class="icon ion-md-menu"></i> -->
+        <i class="nav-icon-1"></i>
+        <i class="nav-icon-2"></i>
+        <i class="nav-icon-3"></i>
     </div>
 
     <ul class="nav-list">
-        <div class="menu-icons close">
+        <div class="menu-icons_index close">
             <i class="icon ion-md-close"></i>
         </div>
         <li class="nav-item">
@@ -104,7 +113,7 @@ require_once __DIR__ . '/../config/bootstrap.php';
         <?php else :?>          
             <a class="dropdown-item"  href="user/mesannonces">Mes annonces</a>
             <a class="dropdown-item"  href="user/favoris">Mes favoris</a>
-            <a class="dropdown-item" href="user/messagerie_user.php">Messagerie <span class="notif_msg"><?= $NewMessage > 0 ? $NewMessage : '0';?></span></a>
+            <a class="dropdown-item" href="user/messagerie_user.php">Messagerie <div class="badge notif_msg"><?= $NewMessage > 0 ? $NewMessage : '0';?></div></a>
             <a class="dropdown-item"  href="user/myaccount">Mon Profil</a>
                 <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="logout">Déconnexion</a>

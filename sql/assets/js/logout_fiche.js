@@ -5,7 +5,7 @@ $(function()
         setInterval(function(){
          var storedTimeStamp = sessionStorage.getItem("lastTimeStamp");
          timeCompare(storedTimeStamp);
-        },50000);
+        },10000);
       }
 
       function timeCompare(timeString){
@@ -16,7 +16,7 @@ $(function()
 
          if (minPast > 5){
             sessionStorage.removeItem('lastTimeStamp');
-            window.location = "logout.php";
+            window.location = "../logout.php";
             return false
          }
          
