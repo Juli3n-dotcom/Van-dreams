@@ -63,7 +63,7 @@ if(isset($_POST['news_submit_footer'])){
     <script type="text/javascript" src="../assets/js/scroll.js"></script>
     <script type="text/javascript" src="../assets/js/ajax.js"></script>
     <?php if(getMembre() !== null AND empty($_COOKIE["token"])) :?>
-      <script type="text/javascript" src="assets/js/logout_fiche.js"></script>
+      <script type="text/javascript" src="../assets/js/logout_fiche.js"></script>
     <?php endif;?>
   </body>
   </body>

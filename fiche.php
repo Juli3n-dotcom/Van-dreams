@@ -218,14 +218,14 @@ include __DIR__.'/assets/includes/header_fiche.php';
                           echo '<form action="" method="POST">
                                   <input type="hidden" name="iduser" id="iduser" value="'.$Membre["id_membre"].'">
                                   <input type="hidden" name="idannonce" id="idannonce" value="'.$annonce["id_annonce"].'">
-                                  <button type="submit" class="favoris" id="addFavori" name="addFavori"><i class="far fa-heart"></i></button>
+                                  <button type="submit" class="favoris_fiche" id="addFavori" name="addFavori"><i class="far fa-heart"></i></button>
                               </form>';   
                       }else{
                           echo '<form action="" method="POST">
                                   <input type="hidden" id="idSupr" name="idSupr" value="'.$favori.'">
                                   <input type="hidden" name="iduser" id="iduser" value="'.$Membre["id_membre"].'">
                                   <input type="hidden" name="idannonce" id="idannonce" value="'.$annonce["id_annonce"].'">
-                                   <button type="submit" class="removefavori" id="removeFavori" name="removeFavori"><i class="fas fa-heart"></i></button>
+                                   <button type="submit" class="removefavori_fiche" id="removeFavori" name="removeFavori"><i class="fas fa-heart"></i></button>
                               </form>';
                       }
                     }
@@ -392,22 +392,6 @@ include __DIR__.'/assets/includes/header_fiche.php';
 </div>
 
 </div>
-
-<script>
-  //Notification like si pas connecté
-$(document).ready(function(){
-   $('.noUser').click(function(){
-      $('body').append('<div id="toats" class="notif alert-danger" onload="killToats()"></div>');    
-         $('#toats').append('<div class="toats_headers"></div>');
-            $('.toats_headers').append(' <a class="toats_die"></a>');
-               $('.toats_die').append('<i class="icon ion-md-close"></i>');
-               $('.toats_header').append('<h5><i class="fas fa-exclamation-circle"></i> Notification :</h5>');
-            $('#toats').append('<div class="toats_core"></div> ')
-               $('.toats_core').append('<p>merci de vous connecter pour liker cette annonce.</p>')
-   });
-
-});
-</script>
 <?php if(getMembre() == null) :?>
   <script type="text/javascript" src="/assets/js/login.js"></script>
 <?php endif;?>
