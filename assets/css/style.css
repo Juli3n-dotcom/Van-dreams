@@ -1387,7 +1387,9 @@ text-align: center;
         right: 20px;
     }
 
-    .footer-part1,
+    .footer-part1{
+        border-right: 1px solid var(--light-white);
+    }
     .footer-part2{
         border-right: 1px solid var(--light-white);
     }

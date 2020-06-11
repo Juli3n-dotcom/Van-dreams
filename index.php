@@ -112,7 +112,7 @@ include __DIR__.'/assets/includes/flash.php';
                                         
                                         }
                                     }
-                                ?> -->
+                                ?> 
                             </div> <!-- fin resultat-->
                         </div>
                         <div class="annonce-details">

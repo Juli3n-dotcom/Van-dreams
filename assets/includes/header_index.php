@@ -5,8 +5,6 @@ if (session_status() === PHP_SESSION_NONE){
   $Membre = getMembre($pdo, $_GET['id_membre'] ?? null);
 
 
-  $Membre = getMembre($pdo, $_GET['id_membre'] ?? null);
-
   if($Membre != null){
     $user = $Membre['id_membre'];
     $allNewconver = $pdo->query("SELECT *
