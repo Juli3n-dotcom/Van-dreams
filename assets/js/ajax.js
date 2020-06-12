@@ -124,6 +124,48 @@ $(document).ready(function(){
             });
         });
     });
+
+    $(function(){
+        $(".news").click(function(e){
+            e.preventDefault();
+            var $form = $(this).closest('form');
+            var email_news = $form.find('input[name="email_news"]').val();
+            var ipUser = $form.find('input[name="ipUser"]').val();
+            var parameters = "email_news="+email_news+"&ipUser="+ipUser;
+            $.ajax({
+                url:'assets/ajax/news.php',
+                method : 'post',
+                data: parameters,
+                dataType: 'JSON',
+                success: function(data){
+                   retour = $('#resultat_news').html(data.resultat);
+                   return retour;
+                }  
+            });
+            $form.trigger('reset');
+        });
+    });
+
+    $(function(){
+        $(".news_fiche").click(function(e){
+            e.preventDefault();
+            var $form = $(this).closest('form');
+            var email_news = $form.find('input[name="email_news"]').val();
+            var ipUser = $form.find('input[name="ipUser"]').val();
+            var parameters = "email_news="+email_news+"&ipUser="+ipUser;
+            $.ajax({
+                url:'../assets/ajax/news.php',
+                method : 'post',
+                data: parameters,
+                dataType: 'JSON',
+                success: function(data){
+                   retour = $('#resultat_news').html(data.resultat);
+                   return retour;
+                }  
+            });
+            $form.trigger('reset');
+        });
+    });
     
     
 });

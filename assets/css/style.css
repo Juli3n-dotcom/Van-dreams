@@ -515,6 +515,33 @@ margin-top: 3rem;
 }
 .part3{
     margin-top: 4rem;
+    margin-bottom: 4rem;
+}
+
+.part4{
+    width: 100%;
+    height: 40vh;
+    background: linear-gradient(135deg, rgba(0,0,0,0.4),rgba(0,0,0,0.4)100%),url("../img/van_friend5.jpeg") center,no-repeat;
+    background-size: cover;
+    position: relative;
+}
+.part4::before{
+    content: "";
+    position: absolute;
+    top: -3px;
+    left: 0;
+    width: 100%;
+    height: 4.7rem;
+    background: url("../img/wave-small-reversed.png")center no-repeat;
+    background-size: cover;
+}
+
+.part4 .block-depot input{
+    width: 60%;
+    border-bottom: 1Px solid var(--white);
+}
+.part4 .block-depot input::placeholder{
+    color: var(--light-white);
 }
 /* ******************** */
 /* **** lost mdp page **** */
@@ -1287,6 +1314,11 @@ text-align: center;
         background: url('../img/wave-medium-reversed.png');
         background-size: cover;
     }
+    .part4::before{
+        height: 9.4rem;
+        background: url('../img/wave-medium-reversed.png');
+        background-size: cover;
+    }
     .index_link{
         width: 30%;
     }
@@ -1388,7 +1420,9 @@ text-align: center;
         top:220px;
         right: 20px;
     }
-
+    .part4 .block-depot input{
+        width: 40%;
+    }
     .footer-part1{
         border-right: 1px solid var(--light-white);
     }
@@ -1447,6 +1481,14 @@ text-align: center;
         background: url('../img/wave-large-reversed.png');
         background-size: cover;
     }
+    .part4{
+        height: 50vh;
+    }
+    .part4::before{
+        height: 20.7rem;
+        background: url('../img/wave-large-reversed.png');
+        background-size: cover;
+    }
     .price{
         top:190px;
         
@@ -1483,5 +1525,15 @@ text-align: center;
     .part2::before{
         height: 20.7rem;
        
+    }
+    .part4{
+        height: 50vh;
+    }
+    .part4::before{
+        height: 20.7rem;
+       
+    }
+    .part4 .block-depot input{
+        width: 30%;
     }
 }

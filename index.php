@@ -254,6 +254,27 @@ include __DIR__.'/assets/includes/flash.php';
 </div>
 </section>
 
+<section class="part4">
+        <div class="container">
+            <div class="block2">
+                <div class="block-text-box">
+                    <h3>
+                       Et si nous restions en contact?
+                    </h3>
+                </div>
+                <div class="block-depot">
+                    <form method="post">
+                        <div>
+                            <input type="email" name="email_news" class="input-field-footer" placeholder="Entrer votre email">
+                            <input type="hidden" name="ipUser" value="<?= getIp() ?>">
+                        </div>
+                            <button type="submit" class='news index_link' name="news_submit_footer"> S'inscrire</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+</section>
+
 
 <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
 <script type="text/javascript" src="assets/js/index.js"></script>

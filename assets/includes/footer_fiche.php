@@ -1,25 +1,3 @@
-<?php
-if(isset($_POST['news_submit_footer'])){
-
-  if (!filter_var($_POST['email_footer'], FILTER_VALIDATE_EMAIL)) {
-    ajouterFlash('danger','Email non valide.');
-  }else{
-    $ip = getIp();
-    $req = $pdo->prepare(
-      'INSERT INTO liste_newsletter(email, user_ip, date_enregistrement)
-      VALUES (:email, :user_ip, :date)'
-  );
-  
-  $req->bindParam(':email',$_POST['email_footer']);
-  $req->bindParam(':user_ip',$ip);
-  $req->bindValue(':date',(new DateTime())->format('Y-m-d H:i:s'));
-  $req->execute();
-
-  unset($_POST);
-        ajouterFlash('success','Inscription validée');
-  }
-}
-?>
 </main>
 
 <footer class="container-fluid">
@@ -28,9 +6,10 @@ if(isset($_POST['news_submit_footer'])){
       <h5>Newsletter</h5>
       <form method="post">
         <div>
-          <input type="email" name="email_footer" class="input-field-footer" placeholder="Entrer votre email">
+          <input type="email" name="email_news" class="input-field-footer" placeholder="Entrer votre email">
+          <input type="hidden" name="ipUser" value="<?= getIp() ?>">
         </div>
-        <button type="submit" class='submit-btn-footer' name="news_submit_footer"> S'inscrire</button>
+        <button type="submit" class='news_fiche submit-btn-footer' name="news_submit_footer"> S'inscrire</button>
       </form>
     </div>
     <div class="col-md-4 footer-part2">
