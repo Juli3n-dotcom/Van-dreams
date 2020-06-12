@@ -208,7 +208,7 @@ include __DIR__.'/assets/includes/header_user.php';
                                     </div>
                                     <div class="modal-footer">
                                         <input type="hidden" name="idUpdate" value="<?= $annonce['id_annonce'];?>">
-                                        <input type="submit" class="annonce_btn updateAnnonce" name="update_annonce" value="Modifier" >
+                                        <input type="submit" class="btn updateAnnonce" name="update_annonce" value="Modifier" >
                                     </div>
                                         </form>  
                                     </div>

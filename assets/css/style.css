@@ -245,10 +245,13 @@ nav{
       width: 10px;
       border-radius: 50%;
       color: white;
-      font-size: 8px;
+      font-size: 10px;
       text-align: center;
       margin-left: 3px;
       font-weight: 700;
+  }
+  .badge{
+    padding: 0 !important;
   }
    
 /* ******************** */
@@ -1024,7 +1027,6 @@ footer{
 
 .footer-part2{
     text-align: center;
-    border-right: 1px solid var(--light-white);
     margin-bottom: 4rem;
 }
 .footer-part2 ul li{

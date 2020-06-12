@@ -8,12 +8,14 @@
     width: 16px;
     border-radius: 50%;
     color: white;
-    font-size: 12px;
+    font-size: 16px;
     text-align: center;
     margin-left: 3px;
     font-weight: 700;
 }
-
+.badge{
+  padding: -0 !important;
+}
 
 
 
@@ -586,7 +588,7 @@ top: 30%;
     top: 230px;
   }
   .like_user{
-    top: 38%;
+    top: 40%;
     }
     .annonce_bottom{
       left: 16%;
