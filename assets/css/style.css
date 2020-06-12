@@ -543,6 +543,12 @@ margin-top: 3rem;
 .part4 .block-depot input::placeholder{
     color: var(--light-white);
 }
+.part5 .devise{
+    margin-top: 4rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+}
 /* ******************** */
 /* **** lost mdp page **** */
 /* ******************** */

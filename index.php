@@ -275,6 +275,49 @@ include __DIR__.'/assets/includes/flash.php';
         </div>
 </section>
 
+<section class="part5">
+        <div class="container">
+        <div class="title-heading">
+            <h3>Qui sommes nous</h3>
+                <h2>Et si nous faisons plus connaissance?</h2>
+                
+            </div>
+                <div class="block-depot">
+                    <div class="row">
+                        <div class="col-md-6" id="logo_presentation">
+                            <img src="assets/img/logo3.png" alt="logo">
+                        </div>
+                        <div class="col-md-6 text_presentation">
+                            <p>
+                            Tout est parti d’une belle rencontre et d’un projet de vivre l’aventure vanlife, 
+                            incluant l’achat d’un van aménagé.
+                            </p>
+                            <p>
+                            Ce projet est vite devenus un parcours du combattant, 
+                            quand il a fallu faire le tri entre des sites connus de petites annonces qui avec surtout des
+                             d’annonces de professionnels a des prix exorbitants, ou encore la nuée de pages 
+                             sur les réseaux sociaux dédié à la vente de vans aménagés.
+                            </p>
+                            <p>
+                            Je me suis rendu compte qu’il n’excitait pas d’endroit regroupant 
+                            facilement des annonces spécialisée de vans aménagés entre vanlifeurs. 
+                            </p>
+                            <p>
+                            Le projet de Van Dreams a vu le jours durant le confinement, 
+                            le but étant de créer un site de petites annonces pour mettre en
+                             relation les vanlifeurs, pouvant facilement vendre ou trouver 
+                             leurs véhicules pour vivre à leur tour l’aventure vanlife.
+                            </p>
+                            <p class="devise">
+                                Le premier site de petites annonces entre vanlifeurs
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+
 
 <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
 <script type="text/javascript" src="assets/js/index.js"></script>

@@ -24,7 +24,22 @@ sr.reveal('.part2', {
       distance:'300px',
       origin:'bottom'
         });
+sr.reveal('.part4', {
+          duration: 1000,
+          distance:'300px',
+          origin:'bottom'
+            });
 sr.reveal('.annonce',{
+  duration: 1000,
+  distance:'300px',
+  origin:'bottom'
+});
+sr.reveal('#logo_presentation',{
+  duration: 1000,
+  distance:'300px',
+  origin:'bottom'
+});
+sr.reveal('.text_presentation',{
   duration: 1000,
   distance:'300px',
   origin:'bottom'
