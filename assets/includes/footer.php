@@ -1,25 +1,3 @@
-<?php
-if(isset($_POST['news_submit_footer'])){
-
-  if (!filter_var($_POST['email_footer'], FILTER_VALIDATE_EMAIL)) {
-    ajouterFlash('danger','Email non valide.');
-  }else{
-    $ip = getIp();
-    $req = $pdo->prepare(
-      'INSERT INTO liste_newsletter(email, user_ip, date_enregistrement)
-      VALUES (:email, :user_ip, :date)'
-  );
-  
-  $req->bindParam(':email',$_POST['email_footer']);
-  $req->bindParam(':user_ip',$ip);
-  $req->bindValue(':date',(new DateTime())->format('Y-m-d H:i:s'));
-  $req->execute();
-
-  unset($_POST);
-        ajouterFlash('success','Inscription validée');
-  }
-}
-?>
 </main>
 
 <footer class="container-fluid">
@@ -28,10 +6,12 @@ if(isset($_POST['news_submit_footer'])){
       <h5>Newsletter</h5>
       <form method="post">
         <div>
-          <input type="email" name="email_footer" class="input-field-footer" placeholder="Entrer votre email">
+          <input type="email" name="email_news" class="input-field-footer" placeholder="Entrer votre email">
+          <input type="hidden" name="ipUser" value="<?= getIp() ?>">
         </div>
-        <button type="submit" class='submit-btn-footer' name="news_submit_footer"> S'inscrire</button>
+        <button type="submit" class='news submit-btn-footer' name="news_submit_footer"> S'inscrire</button>
       </form>
+      <div id="resultat_news"></div>
     </div>
     <div class="col-md-4 footer-part2">
       <h5>Informations</h5>
@@ -59,6 +39,9 @@ if(isset($_POST['news_submit_footer'])){
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="   crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <!-- <script type="text/javascript" src="../assets/js/script.js"></script>
+    <script type="text/javascript" src="../assets/js/scroll.js"></script>
+    <script type="text/javascript" src="../assets/js/ajax.js"></script> -->
     <script type="text/javascript" src="assets/js/script.js"></script>
     <script type="text/javascript" src="assets/js/scroll.js"></script>
     <script type="text/javascript" src="assets/js/ajax.js"></script>

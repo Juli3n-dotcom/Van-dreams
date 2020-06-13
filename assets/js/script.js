@@ -12,6 +12,28 @@ var login = document.getElementById('login');
 var register = document.getElementById('register');
 var btn = document.getElementById('btn');
 
+var sliders = document.querySelectorAll('.glide');
+
+for(var i= 0; i< sliders.length;i ++){
+  var glide =  new Glide(sliders[i],{
+    type:'carousel', 
+  autoplay: 3000,
+  animationDuration: 1000,
+  perView:3,
+  breakpoints: {
+    1024: {
+      perView: 3
+    },
+    800: {
+      perView: 2
+    },
+    600: {
+      perView: 1
+    }
+  }
+  });
+  glide.mount();
+}
 
 //Notification like si pas connecté
 $(document).ready(function(){
@@ -27,12 +49,3 @@ $(document).ready(function(){
 
 });
 
-//Gestion Toats
-const toats = document.querySelector('.notif');
-    const close_toats = document.querySelector('.toats_die');
-
-    setTimeout(function(){ document.querySelector(".notif").classList.add("hiden");}, 3000 );
-
-    close_toats.addEventListener('click', ()=>{
-    toats.classList.add('hiden');
-    });

@@ -1,19 +1,21 @@
 
 
 .notif_msg_user{
-  bottom: initial;
-    left: auto;
+  /* bottom: initial;
+    left: auto; */
     background-color: red;
     height: 16px;
     width: 16px;
     border-radius: 50%;
     color: white;
-    font-size: 12px;
+    font-size: 16px;
     text-align: center;
     margin-left: 3px;
     font-weight: 700;
 }
-
+.badge{
+  padding: -0 !important;
+}
 
 
 
@@ -166,6 +168,13 @@ nav{
   margin: 0rem 3rem -1rem auto !important;
   color: var(--light-white) !important;
 }
+.modal-header .close span{
+  color: var(--light-white);
+  font-size: 4rem;
+    bottom: 0;
+    left: 45rem;
+    position: absolute;
+}
 .modal-body{
   background-color: var(--light-gray) !important;
 }
@@ -179,6 +188,7 @@ nav{
   min-height: 70px;
   margin-bottom: 5px;
   cursor: pointer;
+  border-radius: none;
 }
 .convers.lu{
   border-left: .5rem solid #00bd71;
@@ -578,7 +588,7 @@ top: 30%;
     top: 230px;
   }
   .like_user{
-    top: 38%;
+    top: 40%;
     }
     .annonce_bottom{
       left: 16%;

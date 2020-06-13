@@ -159,7 +159,7 @@ if(isset($_POST['add'])){
                             <br><br>
                             <div align="center">Félicitation votre annonce : <b>'.$title.'</b> est en ligne.</div>
                             <br><br>
-                            <div align="center">Cliquer : <a href=https://beta.julien-quentier.fr/fiche.php?id='.$annonce.'> ICI </a> pour la retrouver</div>
+                            <div align="center">Cliquer : <a href=https://vandreams.fr/annonce/?id='.$annonce.'> ICI </a> pour la retrouver</div>
                             <br><br>
                             <div align="center">A bientôt sur <a href="vandreams.fr">VanDreams.fr</a> !</div>
                             
@@ -248,6 +248,7 @@ include __DIR__.'/assets/includes/header.php';
 
             <div class="input-group_depot" id="depot_3">
                 <h3 class="title_part">Les Photos</h3>
+                        <p>Pour une bonne visibilité de votre annonce, nous vous recommandons de privilégier les photos en format paysage</p>
                 <div class="picture_box">
                     <input type="file" class="display_none" id="photo1" name="photo1">
                     <label id="etiquette_image1" class="depot_annonce_photo" for="photo1"><i class="far fa-image"></i></label>

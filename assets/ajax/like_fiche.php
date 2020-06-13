@@ -19,7 +19,7 @@ $resultat .= '<form method="POST">';
     $resultat .= ' <input type="hidden" name="idSupr" value="'.$favori.'">';
     $resultat .= '<input type="hidden" name="idannonce" id="idannonce" value="'.$annonce.'">';
     $resultat .= '<input type="hidden" name="iduser" id="iduser" value="'.$user.'">';
-    $resultat .= ' <button type="submit" class="removefavori" id="removeFavori" name="removeFavori"><i class="fas fa-heart"></i></button>';
+    $resultat .= ' <button type="submit" class="removefavori_fiche" id="removeFavori" name="removeFavori"><i class="fas fa-heart"></i></button>';
 $resultat .= '</form>';
 
 $tableau['resultat'] = $resultat;

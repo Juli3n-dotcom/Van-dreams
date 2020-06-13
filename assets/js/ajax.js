@@ -43,40 +43,129 @@ $(document).ready(function(){
     });
 
 //like
-    $(".favoris").click(function(e){
-        e.preventDefault();
-        ajax();
+    $(function(){
+        $(".favoris").click(function(e){
+            e.preventDefault();
+            var $form = $(this).closest('form');
+            var idannonce = $form.find('input[name="idannonce"]').val();
+            var iduser = $form.find('input[name="iduser"]').val();
+            var parameters = 'idannonce='+idannonce+'&iduser='+iduser;
+            $.ajax({
+                url:'assets/ajax/ajax_like.php',
+                method : 'post',
+                data: parameters,
+                dataType: 'JSON',
+                success: function(data){
+                    retour = $('.resultat'+idannonce).html(data.resultat);
+                   return retour;
+                }  
+            });
+        });
     });
 
-    function ajax()
-    {
-        var idannonce = $('#idannonce').val();
-        var iduser = $('#iduser').val();
-
-        var parameters = 'idannonce='+idannonce+'&iduser='+iduser;
-   
-        $.post('assets/ajax/ajax_like.php', parameters, function(data){
-            $('#resultat').html(data.resultat);
-        },'json');
-    }
-
-
-
-    $(".removefavori").click(function(e){
-        e.preventDefault();
-        ajax();
+    $(function(){
+        $(".removefavori").click(function(e){
+            e.preventDefault();
+            var $form = $(this).closest('form');
+            var idSupr = $form.find('input[name="idSupr"]').val();
+            var iduser = $form.find('input[name="iduser"]').val();
+            var idannonce = $form.find('input[name="idannonce"]').val();
+            var parameters = "idSupr="+idSupr+"&idannonce="+idannonce+'&iduser='+iduser;
+            $.ajax({
+                url:'assets/ajax/delete_like.php',
+                method : 'post',
+                data: parameters,
+                dataType: 'JSON',
+                success: function(data){
+                   retour = $('.resultat'+idannonce).html(data.resultat);
+                   return retour;
+                }  
+            });
+        });
     });
 
-    function ajax()
-    {
-        var idSupr = $('#idSupr').val();
-        
-        var parameters = "idSupr="+idSupr;
+    $(function(){
+        $(".favoris_fiche").click(function(e){
+            e.preventDefault();
+            var $form = $(this).closest('form');
+            var idannonce = $form.find('input[name="idannonce"]').val();
+            var iduser = $form.find('input[name="iduser"]').val();
+            var parameters = 'idannonce='+idannonce+'&iduser='+iduser;
+            $.ajax({
+                url:'../assets/ajax/like_fiche.php',
+                method : 'post',
+                data: parameters,
+                dataType: 'JSON',
+                success: function(data){
+                   retour = $('.resultat'+idannonce).html(data.resultat);
+                   return retour;
+                }  
+            });
+        });
+    });
 
-        $.post('assets/ajax/ajax_delete_like.php', parameters, function(data){
-            $('#resultat').html(data.resultat);
-        },'json');
-    }
+    $(function(){
+        $(".removefavori_fiche").click(function(e){
+            e.preventDefault();
+            var $form = $(this).closest('form');
+            var idSupr = $form.find('input[name="idSupr"]').val();
+            var iduser = $form.find('input[name="iduser"]').val();
+            var idannonce = $form.find('input[name="idannonce"]').val();
+            var parameters = "idSupr="+idSupr+"&idannonce="+idannonce+'&iduser='+iduser;
+            $.ajax({
+                url:'../assets/ajax/delete_like_fiche.php',
+                method : 'post',
+                data: parameters,
+                dataType: 'JSON',
+                success: function(data){
+                   retour = $('.resultat'+idannonce).html(data.resultat);
+                   return retour;
+                }  
+            });
+        });
+    });
 
+    $(function(){
+        $(".news").click(function(e){
+            e.preventDefault();
+            var $form = $(this).closest('form');
+            var email_news = $form.find('input[name="email_news"]').val();
+            var ipUser = $form.find('input[name="ipUser"]').val();
+            var parameters = "email_news="+email_news+"&ipUser="+ipUser;
+            $.ajax({
+                url:'assets/ajax/news.php',
+                method : 'post',
+                data: parameters,
+                dataType: 'JSON',
+                success: function(data){
+                   retour = $('#resultat_news').html(data.resultat);
+                   return retour;
+                }  
+            });
+            $form.trigger('reset');
+        });
+    });
+
+    $(function(){
+        $(".news_fiche").click(function(e){
+            e.preventDefault();
+            var $form = $(this).closest('form');
+            var email_news = $form.find('input[name="email_news"]').val();
+            var ipUser = $form.find('input[name="ipUser"]').val();
+            var parameters = "email_news="+email_news+"&ipUser="+ipUser;
+            $.ajax({
+                url:'../assets/ajax/news.php',
+                method : 'post',
+                data: parameters,
+                dataType: 'JSON',
+                success: function(data){
+                   retour = $('#resultat_news').html(data.resultat);
+                   return retour;
+                }  
+            });
+            $form.trigger('reset');
+        });
+    });
+    
     
 });

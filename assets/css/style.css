@@ -238,17 +238,20 @@ nav{
     color: var(--light-black);
 }
 .notif_msg{
-    bottom: initial;
-      left: auto;
+    /* bottom: initial;
+      left: auto; */
       background-color: red;
       height: 10px;
       width: 10px;
       border-radius: 50%;
       color: white;
-      font-size: 8px;
+      font-size: 10px;
       text-align: center;
       margin-left: 3px;
       font-weight: 700;
+  }
+  .badge{
+    padding: 0 !important;
   }
    
 /* ******************** */
@@ -512,6 +515,39 @@ margin-top: 3rem;
 }
 .part3{
     margin-top: 4rem;
+    margin-bottom: 4rem;
+}
+
+.part4{
+    width: 100%;
+    height: 40vh;
+    background: linear-gradient(135deg, rgba(0,0,0,0.4),rgba(0,0,0,0.4)100%),url("../img/van_friend5.jpeg") center,no-repeat;
+    background-size: cover;
+    position: relative;
+}
+.part4::before{
+    content: "";
+    position: absolute;
+    top: -3px;
+    left: 0;
+    width: 100%;
+    height: 4.7rem;
+    background: url("../img/wave-small-reversed.png")center no-repeat;
+    background-size: cover;
+}
+
+.part4 .block-depot input{
+    width: 60%;
+    border-bottom: 1Px solid var(--white);
+}
+.part4 .block-depot input::placeholder{
+    color: var(--light-white);
+}
+.part5 .devise{
+    margin-top: 4rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
 }
 /* ******************** */
 /* **** lost mdp page **** */
@@ -579,7 +615,7 @@ margin-top: 3rem;
 /* ******************** */
 
 .hero_login{
-    height: 100vh;
+    /* height: 100vh; */
     width: 100%;
     padding-top: 5rem;
     padding-bottom: 5rem;
@@ -670,6 +706,34 @@ margin-top: 3rem;
     background: transparent;
 }
 
+.pophover{
+    position: absolute;
+    top: 4rem;
+    width: 200px;
+    height: auto;
+    background-color: var(--white);
+    padding: 1rem;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.5s;
+}
+.pophover::before{
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: var(--white);
+    bottom: 0;
+    transform: rotate(45deg);
+    left: 70px;
+}
+.pophover p{
+    font-size: 1rem;
+}
+.password:focus + .pophover{
+    visibility: visible;
+    opacity: 1;
+}
 .submit-btn{
     width: 85%;
     padding: 10px 30px;
@@ -936,6 +1000,9 @@ span a:hover{
 #depot_5 span {
     bottom: 110px;
 }
+#depot_3 p{
+    font-size: 1rem;
+}
 /* ******************** */
 /* **** Footer **** */
 /* ******************** */
@@ -947,7 +1014,6 @@ footer{
 
 .footer-part1{
     text-align: center;
-    border-right: 1px solid var(--light-white);
     margin-bottom: 4rem;
 }
 .footer-part1 h5, 
@@ -994,7 +1060,6 @@ footer{
 
 .footer-part2{
     text-align: center;
-    border-right: 1px solid var(--light-white);
     margin-bottom: 4rem;
 }
 .footer-part2 ul li{
@@ -1255,6 +1320,11 @@ text-align: center;
         background: url('../img/wave-medium-reversed.png');
         background-size: cover;
     }
+    .part4::before{
+        height: 9.4rem;
+        background: url('../img/wave-medium-reversed.png');
+        background-size: cover;
+    }
     .index_link{
         width: 30%;
     }
@@ -1356,8 +1426,17 @@ text-align: center;
         top:220px;
         right: 20px;
     }
-
-    
+    .part4 .block-depot input{
+        width: 40%;
+    }
+    .footer-part1{
+        border-bottom: none;
+        border-right: 1px solid var(--light-white);
+    }
+    .footer-part2{
+        border-bottom: none;
+        border-right: 1px solid var(--light-white);
+    }
     
 }
 @media (min-height: 700px)  and (min-width: 700px){
@@ -1410,6 +1489,14 @@ text-align: center;
         background: url('../img/wave-large-reversed.png');
         background-size: cover;
     }
+    .part4{
+        height: 50vh;
+    }
+    .part4::before{
+        height: 20.7rem;
+        background: url('../img/wave-large-reversed.png');
+        background-size: cover;
+    }
     .price{
         top:190px;
         
@@ -1446,5 +1533,15 @@ text-align: center;
     .part2::before{
         height: 20.7rem;
        
+    }
+    .part4{
+        height: 50vh;
+    }
+    .part4::before{
+        height: 20.7rem;
+       
+    }
+    .part4 .block-depot input{
+        width: 30%;
     }
 }

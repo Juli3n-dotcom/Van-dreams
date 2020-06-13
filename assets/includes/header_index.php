@@ -5,8 +5,6 @@ if (session_status() === PHP_SESSION_NONE){
   $Membre = getMembre($pdo, $_GET['id_membre'] ?? null);
 
 
-  $Membre = getMembre($pdo, $_GET['id_membre'] ?? null);
-
   if($Membre != null){
     $user = $Membre['id_membre'];
     $allNewconver = $pdo->query("SELECT *
@@ -28,6 +26,7 @@ require_once __DIR__ . '/../config/bootstrap.php';
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <meta name="robots" content="index,follow">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -50,6 +49,7 @@ require_once __DIR__ . '/../config/bootstrap.php';
     <meta name="description" content="vandreams.fr : le site de petites annonces pour les vanlifers. Consultez des milliers d'annonces van aménagé">
     <title><?=$page_title?> | Van Dreams </title>
     <link rel="icon" href="assets/img/logo3.png">
+    <link rel="apple-touch-icon" href="assets/img/logo3.png">
     <!--Ion Icons-->
     <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
     <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
@@ -111,7 +111,7 @@ require_once __DIR__ . '/../config/bootstrap.php';
         <?php else :?>          
             <a class="dropdown-item"  href="user/mesannonces">Mes annonces</a>
             <a class="dropdown-item"  href="user/favoris">Mes favoris</a>
-            <a class="dropdown-item" href="user/messagerie_user.php">Messagerie <span class="notif_msg"><?= $NewMessage > 0 ? $NewMessage : '0';?></span></a>
+            <a class="dropdown-item" href="user/messagerie_user.php">Messagerie <div class="badge notif_msg"><?= $NewMessage > 0 ? $NewMessage : '0';?></div></a>
             <a class="dropdown-item"  href="user/myaccount">Mon Profil</a>
                 <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="logout">Déconnexion</a>

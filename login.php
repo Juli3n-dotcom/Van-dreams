@@ -135,7 +135,7 @@ if(isset($_POST['login'])){
                             <br><br>
                             <div align="center">Bienvenue Chez Van Dreams.</div>
                             <br><br>
-                            <div align="center"><a href="https://beta.julien-quentier.fr/confirm.php?name='.urlencode($name).'&token='.$token.'">Merci de confirmer votre adresse email</a></div>
+                            <div align="center"><a href="https://vandreams.fr/confirm.php?name='.urlencode($name).'&token='.$token.'">Merci de confirmer votre adresse email</a></div>
                             <br><br>
                             <div align="center">A bientôt sur <a href="vandreams.fr">VanDreams.fr</a> !</div>
                             
@@ -189,8 +189,12 @@ include __DIR__.'/assets/includes/header.php';
             <input type="text" name="name" class="input-field" placeholder="Votre Nom" value="<?= htmlspecialchars($_POST['name']) ?? '' ?>">
             <input type="text" name="first_name" class="input-field" placeholder="Votre Prénom" value="<?= htmlspecialchars($_POST['first_name']) ?? '' ?>">
             <input type="email" name="email" class="input-field" placeholder="Email" value="<?= htmlspecialchars($_POST['email']) ?? '' ?>">
-            <input type="password" name="password" class="input-field" placeholder="Mot de passe">
-            <input type="password" name="confirm" class="input-field" placeholder="Confirmer MDP">
+            <input type="password" name="password" class="input-field password" placeholder="Mot de passe">
+            <div class="pophover">
+              <h6>Mot de passe:</h6>
+              <p>Votre mot de passe doit contenir un minimim de 8 caractéres, une majuscule, une minuscule et un symbole.</p>
+            </div>
+            <input type="password" name="confirm" class="input-field" placeholder="Confirmer votre mot de passe">
             <input type="checkbox" class="check-box" name="cgu"><span class="cgu">J'accepte <a href="cgu">les conditions générales d'utilisation</a></span>
             <button type="submit" class="submit-btn" name="register">Valider</button>
         </form>
