@@ -71,7 +71,7 @@ if(isset($_POST['delete_annonce'])){
       $photo = $data->fetch(PDO::FETCH_ASSOC);
   
       
-      $file = "Vandreams/data/";
+      $file = "/../data/";
       opendir($file);
       
       unlink($file.$photo['photo1']);
@@ -207,6 +207,7 @@ include __DIR__.'/assets/includes/header_user.php';
                                                 <input type="checkbox" class="check-box checkmypost" name="est_publie_update" <?= $annonce['est_publie'] == 1 ? 'checked' : '' ;?>>     
                                     </div>
                                     <div class="modal-footer">
+                                    <button type="button" class="btn annulebtn" data-dismiss="modal">Annuler</button>
                                         <input type="hidden" name="idUpdate" value="<?= $annonce['id_annonce'];?>">
                                         <input type="submit" class="btn updateAnnonce" name="update_annonce" value="Modifier" >
                                     </div>
@@ -238,6 +239,7 @@ include __DIR__.'/assets/includes/header_user.php';
                                                 </div>
                                     </div>
                                     <div class="modal-footer">
+                                    <button type="button" class="btn annulebtn" data-dismiss="modal">Annuler</button>
                                         <input type="submit" class="btn SupAnnonce" name="delete_annonce" value="Supprimer" >
                                     </div>
                                         </form>  

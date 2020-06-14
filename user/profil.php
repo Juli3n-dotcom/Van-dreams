@@ -172,6 +172,7 @@ include __DIR__.'/assets/includes/header_user.php';
         
       </div>
       <div class="modal-footer">
+      <button type="button" class="btn annulebtn" data-dismiss="modal">Annuler</button>
         <input type="hidden" name="idmembre" value="<?= $Membre['id_membre']?>">
         <button type="submit" name="updateEmail" class="btn updateAnnonce">Valider</button>
         </form>
@@ -197,6 +198,7 @@ include __DIR__.'/assets/includes/header_user.php';
         
       </div>
       <div class="modal-footer">
+      <button type="button" class="btn annulebtn" data-dismiss="modal">Annuler</button>
         <input type="hidden" name="idmembre" value="<?= $Membre['id_membre']?>">
         <button type="submit" name="updateMdp" class="btn updateAnnonce">Valider</button>
         </form>
@@ -226,6 +228,7 @@ include __DIR__.'/assets/includes/header_user.php';
                 </div>
                 </div>
                 <div class="modal-footer">
+                <button type="button" class="btn annulebtn" data-dismiss="modal">Annuler</button>
                     <input type="submit" class="btn SupAnnonce" name="delete_membre" value="Supprimer Mon compte" >
                 </div>
             </form>  

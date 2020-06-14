@@ -361,6 +361,37 @@ include __DIR__.'/assets/includes/header_fiche.php';
     <?php endif;?>
     </div>  
 
+    <div class="portfolio-lightboxes">
+
+<div class="portfolio-lightbox" id="portfolio-item-0">
+  <div class="portfolio-lightbox__content">
+    <a href="#" class="close_lightbox"></a>
+    <a href="#portfolio-item-1" class="next"></a>
+    <a href="#portfolio-item-2" class="prev"></a>
+    <img  src="/data/<?= $photo['photo1']?>">
+  </div>
+</div>
+
+<div class="portfolio-lightbox" id="portfolio-item-1">
+  <div class="portfolio-lightbox__content">
+    <a href="#" class="close_lightbox"></a>
+    <a href="#portfolio-item-2" class="next"></a>
+    <a href="#portfolio-item-1" class="prev"></a>
+    <img  src="/data/<?= $photo['photo2']?>">
+  </div>
+</div>
+
+<div class="portfolio-lightbox" id="portfolio-item-2">
+  <div class="portfolio-lightbox__content">
+    <a href="#" class="close_lightbox"></a>
+    <a href="#portfolio-item-0" class="next"></a>
+    <a href="#portfolio-item-1" class="prev"></a>
+    <img  src="/data/<?= $photo['photo3']?>">
+  </div>
+</div>
+
+</div>
+
 <section class="container">
   <div class="title-heading">
       <h2>Découvrez les annonces similaires</h2>
@@ -449,7 +480,7 @@ include __DIR__.'/assets/includes/header_fiche.php';
                         <p><i class="fas fa-map-marker-alt"></i> : <?= $country['name_country']?> / <?= $region['name_region']?></p>
                 </div>
                 <div class="annoncelink">
-                    <a href="annonce/<?=$annonce['id_annonce'];?>" class="annonce_btn">Voir l'annonce</a>
+                    <a href="../annonce/<?=$annonce['id_annonce'];?>" class="annonce_btn">Voir l'annonce</a>
                 </div>
             </div>
         </div>
@@ -472,36 +503,7 @@ include __DIR__.'/assets/includes/header_fiche.php';
 <?php endif;?>
 </section>
 
-<div class="portfolio-lightboxes">
 
-<div class="portfolio-lightbox" id="portfolio-item-0">
-  <div class="portfolio-lightbox__content">
-    <a href="#" class="close_lightbox"></a>
-    <a href="#portfolio-item-1" class="next"></a>
-    <a href="#portfolio-item-2" class="prev"></a>
-    <img  src="/data/<?= $photo['photo1']?>">
-  </div>
-</div>
-
-<div class="portfolio-lightbox" id="portfolio-item-1">
-  <div class="portfolio-lightbox__content">
-    <a href="#" class="close_lightbox"></a>
-    <a href="#portfolio-item-2" class="next"></a>
-    <a href="#portfolio-item-1" class="prev"></a>
-    <img  src="/data/<?= $photo['photo2']?>">
-  </div>
-</div>
-
-<div class="portfolio-lightbox" id="portfolio-item-2">
-  <div class="portfolio-lightbox__content">
-    <a href="#" class="close_lightbox"></a>
-    <a href="#portfolio-item-0" class="next"></a>
-    <a href="#portfolio-item-1" class="prev"></a>
-    <img  src="/data/<?= $photo['photo3']?>">
-  </div>
-</div>
-
-</div>
 
 
 <?php if(getMembre() == null) :?>

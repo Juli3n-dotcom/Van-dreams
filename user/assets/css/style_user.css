@@ -381,8 +381,16 @@ left: 20px;
 .updateAnnonce{
   background: linear-gradient(to right, #0000FF,#00008B);
 }
+.updateAnnonce:hover{
+  color: var(--white);
+  text-decoration: none;
+}
 .SupAnnonce{
   background: linear-gradient(to right, #DC143C,#A52A2A);
+}
+.SupAnnonce:hover{
+  color: var(--white);
+  text-decoration: none;
 }
 .annonce_bottom{
   position: absolute;
@@ -481,7 +489,21 @@ margin :0 auto !important;
     border-radius: 30px;
 }
 
-
+.annulebtn{
+  padding: 10px 30px;
+  cursor: pointer;
+  display: block;
+  color: var(--white);
+  background: linear-gradient(to right, #6e6766,rgba(0, 0, 0, .7));
+  box-shadow: 0 0 10px 1px var(--light-black);
+  border: 0;
+  outline: none;
+  border-radius: 30px;
+}
+.annulebtn:hover{
+  color: var(--white);
+  background: linear-gradient(to right, #6e6766,rgba(0, 0, 0, .7));
+}
 /* *********************** */
 /* **** Mes favoris **** */
 /* ********************* */

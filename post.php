@@ -37,19 +37,19 @@ if(isset($_POST['add'])){
        //Intégration des photos
 //Photo1
     }elseif ($_FILES['photo1']['error']!== UPLOAD_ERR_OK) {
-        ajouterFlash('warning','1 Probléme lors de l\'envoi du fichier.code '.$_FILES['photo1']['error']);
+        ajouterFlash('warning','[1] Probléme lors de l\'envoi du fichier.code '.$_FILES['photo1']['error']);
     
         }elseif ($_FILES['photo1']['size']<12 || exif_imagetype($_FILES['photo1']['tmp_name'])=== false ){
         ajouterFlash('danger','Le fichier 1 envoyé n\'est pas une image');
     //Photo2
         }elseif ($_FILES['photo2']['error']!== UPLOAD_ERR_OK) {
-        ajouterFlash('warning','2 Probléme lors de l\'envoi du fichier.code '.$_FILES['photo2']['error']);
+        ajouterFlash('warning','[2] Probléme lors de l\'envoi du fichier.code '.$_FILES['photo2']['error']);
     
         }elseif ($_FILES['photo2']['size']<12 || exif_imagetype($_FILES['photo2']['tmp_name'])=== false ){
         ajouterFlash('danger','Le fichier 2 envoyé n\'est pas une image');
     //Photo3
         }elseif ($_FILES['photo3']['error']!== UPLOAD_ERR_OK) {
-        ajouterFlash('warning','3 Probléme lors de l\'envoi du fichier.code '.$_FILES['photo3']['error']);
+        ajouterFlash('warning','[3] Probléme lors de l\'envoi du fichier.code '.$_FILES['photo3']['error']);
     
         }elseif ($_FILES['photo3']['size']<12 || exif_imagetype($_FILES['photo3']['tmp_name'])=== false ){
         ajouterFlash('danger','Le fichier 3 envoyé n\'est pas une image');
@@ -214,7 +214,7 @@ include __DIR__.'/assets/includes/header.php';
                     <input type="text" class="input-field" name="titre_annonce" placeholder="Le titre de votre annonce" value="<?= htmlspecialchars($_POST['titre_annonce']??'');?>">
                     <textarea class="input-field" name="description" cols="30" rows="10" placeholder="Description de votre annonce" 
                     ><?= htmlspecialchars($_POST['description']??'');?></textarea>
-                    <input type="number" pattern="\d*" class="input-field" name="prix" placeholder="Votre Prix en €" value="<?= htmlspecialchars($_POST['prix']??'');?>">
+                    <input type="number"  class="input-field" name="prix" placeholder="Votre Prix en €" value="<?= htmlspecialchars($_POST['prix']??'');?>">
                     <button type="button" class="submit-btn_depot" id="next1">Suivant</button>
             </div>
         
@@ -237,9 +237,9 @@ include __DIR__.'/assets/includes/header.php';
                 <span id="vasp">VASP</span><input type="checkbox" class="vasp" name="vasp">
                 <input type="text" name="marque" class="input-field" placeholder="La marque du véhicule" value="<?= htmlspecialchars($_POST['marque']??'');?>">
                 <input type="text" name="modele" class="input-field" placeholder="Le modele" value="<?= htmlspecialchars($_POST['modele']??'');?>">
-                <input type="number" pattern="\d*" name="km" class="input-field" placeholder="Nombre de Kilométre" value="<?= htmlspecialchars($_POST['km']??'');?>">
-                <input type="number"pattern="\d*"  name="date" class="input-field" placeholder="Date de mise en circulation" value="<?= htmlspecialchars($_POST['date']??'');?>">
-                <input type="number"  pattern="\d*" name="places" class="input-field" placeholder="Nombre de sièges" value="<?= htmlspecialchars($_POST['places']??'');?>">
+                <input type="number"  name="km" class="input-field" placeholder="Nombre de Kilométre" value="<?= htmlspecialchars($_POST['km']??'');?>">
+                <input type="number"   name="date" class="input-field" placeholder="Date de mise en circulation" value="<?= htmlspecialchars($_POST['date']??'');?>">
+                <input type="number"   name="places" class="input-field" placeholder="Nombre de sièges" value="<?= htmlspecialchars($_POST['places']??'');?>">
                 <div class="btn_bottom">
                     <button type="button" class="prev-btn" id="prev1">Précedent</button>
                     <button type="button" class="submit-btn_depot" id="next2">Suivant</button>
@@ -291,8 +291,8 @@ include __DIR__.'/assets/includes/header.php';
                         </select>
                 </div>
                 <input type="text" name="ville" class="input-field" placeholder="La ville" value="<?= htmlspecialchars($_POST['ville']??'');?>">
-                <input type="text" pattern="\d*" name="cp" class="input-field" placeholder="Le code postal" value="<?= htmlspecialchars($_POST['cp']??'');?>">
-                <input type="tel" pattern="\d*" name="phone" class="input-field" placeholder="Votre numéro de téléphone" value="<?= htmlspecialchars($_POST['phone']??'');?>"> 
+                <input type="text"  name="cp" class="input-field" placeholder="Le code postal" value="<?= htmlspecialchars($_POST['cp']??'');?>">
+                <input type="tel"  name="phone" class="input-field" placeholder="Votre numéro de téléphone" value="<?= htmlspecialchars($_POST['phone']??'');?>"> 
                 <input type="checkbox" class="check-box" name="est_publie"><span>masquer mon numéro</span>
                 <div class="btn_bottom">
                     <button type="button" class="prev-btn" id="prev3">Précedent</button>
