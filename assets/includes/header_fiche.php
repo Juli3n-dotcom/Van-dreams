@@ -100,11 +100,6 @@ if (session_status() === PHP_SESSION_NONE){
         <li class="nav-item">
             <a href="../post" class="nav-link">Déposer une annonces</a>
         </li>
-        <?php if(role(ROLE_ADMIN)):?>
-        <li class="nav-item">
-            <a href="admin/index_admin.php" class="nav-link link4">Back-office</a>
-        </li>
-        <?php endif;?>
         <li class="nav-item">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-user"></i>
@@ -127,5 +122,8 @@ if (session_status() === PHP_SESSION_NONE){
 </nav>
 </div>
 </header>
-
+<?php if(role(ROLE_ADMIN)){
+   include __DIR__.'/admin_menu.php';
+}
+?>
 <main>

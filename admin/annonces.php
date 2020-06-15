@@ -16,7 +16,7 @@ if(isset($_POST['delete_annonce'])){
     $photo = $data->fetch(PDO::FETCH_ASSOC);
 
     
-    $file = "../user/data/img/";
+    $file = "../data/";
     opendir($file);
     
     unlink($file.$photo['photo1']);

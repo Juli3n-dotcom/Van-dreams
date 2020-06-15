@@ -253,7 +253,28 @@ nav{
   .badge{
     padding: 0 !important;
   }
-   
+   .menu-icons_admin{
+       position: fixed;
+       height: 40px;
+       width: 40px;
+       z-index: 1;
+       background-color: var(--light-black);
+       color: var(--white);
+       top: 10rem;
+       left: .5rem;
+       border-radius: 50%;
+       font-size: 20px;
+       text-align: center;
+       padding: .5rem;
+       box-shadow: 0 0 29px rgba(0,0,0,.3);
+       text-transform: uppercase;
+   }
+   .menu-icons_admin a i{
+    color: var(--white);
+   }
+   .dropdown-menu{
+       border-radius: 10%;
+   }
 /* ******************** */
 /* **** index **** */
 /* ******************** */
