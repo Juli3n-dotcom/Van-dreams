@@ -129,13 +129,28 @@ if(isset($_POST['login'])){
                     <div align="center">
                       <table width="600px">
                         <tr>
-                          <td>
-                            
+                       <img src="assets/img/logo3.png" alt="logo" width="200" style="display: block;margin-left: auto;
+                         margin-right: auto;">
+                          <td style="background-color: #EEE;height: 600px; border-radius: 10%; font-size: 20px;>
                             <div align="center">Bonjour <b>'.$prenom.'</b>,</div>
                             <br><br>
                             <div align="center">Bienvenue Chez Van Dreams.</div>
                             <br><br>
-                            <div align="center"><a href="https://vandreams.fr/confirm.php?name='.urlencode($name).'&token='.$token.'">Merci de confirmer votre adresse email</a></div>
+                            <div align="center">Merci de confirmer votre adresse email.</div>
+                            <br><br>
+                            <div align="center"><a href="https://vandreams.fr/confirm.php?name='.urlencode($name).'&token='.$token.'"
+                            tyle=" width: 30%;
+                                padding: 10px 30px;
+                                cursor: pointer;
+                                display: block;
+                                margin: auto;
+                                color: #FFF;
+                                background: linear-gradient(to right, #00bd71,#008656);
+                                border: 0;
+                                outline: none;
+                                border-radius: 30px;
+                                text-decoration: none;"
+                            >Je confirmer mon email</a></div>
                             <br><br>
                             <div align="center">A bientôt sur <a href="vandreams.fr">VanDreams.fr</a> !</div>
                             

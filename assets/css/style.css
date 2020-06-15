@@ -452,7 +452,7 @@ animation: ellipseOrbit 15s ease-in-out infinite;
 }
 
 .btn{
-    background-color: #eb648c;
+   
     border-radius: 2rem;
     color: var(--white);
     display: inline-block;
@@ -462,9 +462,7 @@ animation: ellipseOrbit 15s ease-in-out infinite;
     transition: background-color 650ms;
 }
 
-.btn:hover{
-    background-color: #ce587b;
-}
+
 
 .title-heading{
     text-align: center;
