@@ -63,6 +63,7 @@ if(isset($_POST['sendmsg'])){
 
         $email = getMembre()['email'];
         $prenom = getMembre()['prenom'];
+        $msg = $message;
         $id_destinataire = $_POST['destinataire_answer'];
         $data_membre = $pdo->query("SELECT * FROM membre WHERE id_membre = '$id_destinataire'");
         $membre = $data_membre->fetch(PDO::FETCH_ASSOC);
@@ -82,13 +83,29 @@ if(isset($_POST['sendmsg'])){
                     <div align="center">
                       <table width="600px">
                         <tr>
-                          <td>
+                       <img src="https://www.vandreams.fr/assets/img/logo3.png" alt="logo" width="200" style="display: block;margin-left: auto;
+                         margin-right: auto;">
+                        <td style="background-color: #EEE;height: 600px; border-radius: 10%; font-size: 20px; text-align:center;>
                             
                             <div align="center">Bonjour <b>'.$prenom.'</b>,</div>
                             <br><br>
                             <div align="center">Vous avez reçu un nouveau message de '.$membre['prenom'].'</div>
                             <br><br>
-                            <div align="center">Cliquer : <a href=https://www.vandreams.fr/login> ICI </a> pour le lire</div>
+                            <div align="center">'.$msg.'</div>
+                            <br><br>
+                            <div align="center"><a href="https://www.vandreams.fr/login"
+                            style=" width: 30%;
+                                padding: 10px 30px;
+                                cursor: pointer;
+                                display: block;
+                                margin: auto;
+                                color: #FFF;
+                                background: linear-gradient(to right, #00bd71,#008656);
+                                border: 0;
+                                outline: none;
+                                border-radius: 30px;
+                                text-decoration: none;"
+                            > ICI </a>Voir le message</div>
                             <br><br>
                             <div align="center">A bientôt sur <a href="vandreams.fr">VanDreams.fr</a> !</div>
                             

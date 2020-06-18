@@ -153,13 +153,24 @@ if(isset($_POST['add'])){
                     <div align="center">
                       <table width="600px">
                         <tr>
-                          <td>
-                            
+                       <img src="https://www.vandreams.fr/assets/img/logo3.png" alt="logo" width="200" style="display: block;margin-left: auto;
+                         margin-right: auto;">
+                          <td style="background-color: #EEE;height: 600px; border-radius: 10%; font-size: 20px; text-align:center;>
                             <div align="center">Bonjour <b>'.$prenom.'</b>,</div>
                             <br><br>
                             <div align="center">Félicitation votre annonce : <b>'.$title.'</b> est en ligne.</div>
                             <br><br>
-                            <div align="center">Cliquer : <a href=https://vandreams.fr/annonce/?id='.$annonce.'> ICI </a> pour la retrouver</div>
+                            <div align="center"><a href=https://vandreams.fr/annonce/?id='.$annonce.' style=" width: 30%;
+                                padding: 10px 30px;
+                                cursor: pointer;
+                                display: block;
+                                margin: auto;
+                                color: #FFF;
+                                background: linear-gradient(to right, #00bd71,#008656);
+                                border: 0;
+                                outline: none;
+                                border-radius: 30px;
+                                text-decoration: none;"> Voir mon annonce </a></div>
                             <br><br>
                             <div align="center">A bientôt sur <a href="vandreams.fr">VanDreams.fr</a> !</div>
                             

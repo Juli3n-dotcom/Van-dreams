@@ -129,9 +129,9 @@ if(isset($_POST['login'])){
                     <div align="center">
                       <table width="600px">
                         <tr>
-                       <img src="assets/img/logo3.png" alt="logo" width="200" style="display: block;margin-left: auto;
+                       <img src="https://www.vandreams.fr/assets/img/logo3.png" alt="logo" width="200" style="display: block;margin-left: auto;
                          margin-right: auto;">
-                          <td style="background-color: #EEE;height: 600px; border-radius: 10%; font-size: 20px;>
+                          <td style="background-color: #EEE;height: 600px; border-radius: 10%; font-size: 20px; text-align:center;>
                             <div align="center">Bonjour <b>'.$prenom.'</b>,</div>
                             <br><br>
                             <div align="center">Bienvenue Chez Van Dreams.</div>
@@ -139,7 +139,7 @@ if(isset($_POST['login'])){
                             <div align="center">Merci de confirmer votre adresse email.</div>
                             <br><br>
                             <div align="center"><a href="https://vandreams.fr/confirm.php?name='.urlencode($name).'&token='.$token.'"
-                            tyle=" width: 30%;
+                            style=" width: 30%;
                                 padding: 10px 30px;
                                 cursor: pointer;
                                 display: block;
@@ -150,7 +150,7 @@ if(isset($_POST['login'])){
                                 outline: none;
                                 border-radius: 30px;
                                 text-decoration: none;"
-                            >Je confirmer mon email</a></div>
+                            >Je confirme mon email</a></div>
                             <br><br>
                             <div align="center">A bientôt sur <a href="vandreams.fr">VanDreams.fr</a> !</div>
                             
@@ -173,9 +173,9 @@ if(isset($_POST['login'])){
         mail($email, "Confirmer votre email - vandreams.fr", $message, $header);
 
         unset($_POST);    
-        session_write_close();
         ajouterFlash('success','Bienvenue!');
         header('location:login');
+        session_write_close();
     }
 }
   

@@ -525,6 +525,7 @@ margin-top: 3rem;
     border: 0;
     outline: none;
     border-radius: 30px;
+    text-align: center;
 }
 .index_link:hover{
    background: var(--white);
@@ -566,6 +567,7 @@ margin-top: 3rem;
     margin-top: 4rem;
     font-weight: bold;
     text-transform: uppercase;
+    color:var(--light-black);
     text-align: center;
 }
 /* ******************** */
@@ -628,6 +630,10 @@ margin-top: 3rem;
     border-bottom: 1Px solid #999;
     outline: none;
     background: transparent;
+}
+
+.msg_code{
+    margin-top: 1rem;
 }
 /* ******************** */
 /* **** Login2 page **** */
@@ -1346,6 +1352,7 @@ text-align: center;
     }
     .index_link{
         width: 30%;
+        
     }
 }
 @media screen and (min-height: 470px){

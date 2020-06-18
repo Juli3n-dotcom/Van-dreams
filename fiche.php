@@ -148,6 +148,75 @@ if(isset($_POST['envoyer'])){
       $req2->bindValue(':date',(new DateTime())->format('Y-m-d H:i:s'));
       $req2->execute();
     }
+    $msg = $_POST['message'];
+    $subject = $_POST['subject'];
+    $id_destinataire = $annonce['membre_id'];
+    $data_membre = $pdo->query("SELECT * FROM membre WHERE id_membre = '$id_destinataire'");
+    $membre = $data_membre->fetch(PDO::FETCH_ASSOC);
+    $email = $membre['email'];
+    $prenom = $membre['prenom'];
+    $id_expediteur = getMembre()['id_membre'];
+    $data_expediteur = $pdo->query("SELECT * FROM membre WHERE id_membre = '$id_expediteur'");
+    $expediteur = $data_expediteur->fetch(PDO::FETCH_ASSOC);
+    $prenom_expediteur = $expediteur['prenom'];
+
+    $header="MIME-Version: 1.0\r\n";
+        $header.='From:"vandreams.fr"<postmaster@vandreams.fr>'."\n";
+        $header.='Content-Type:text/html; charset="utf-8"'."\n";
+        $header.='Content-Transfer-Encoding: 8bit';
+        $message = '
+                <html>
+                <head>
+                  <title>Nouveau Message de '.$prenom_expediteur.' - Van Dreams.fr</title>
+                  <meta charset="utf-8" />
+                </head>
+                <body>
+                  <font color="#303030";>
+                    <div align="center">
+                      <table width="600px">
+                        <tr>
+                       <img src="https://www.vandreams.fr/assets/img/logo3.png" alt="logo" width="200" style="display: block;margin-left: auto;
+                         margin-right: auto;">
+                          <td style="background-color: #EEE;height: 600px; border-radius: 10%; font-size: 20px; text-align:center;>
+                            
+                            <div align="center">Bonjour <b>'.$prenom.'</b>,</div>
+                            <br><br>
+                            <div align="center">Vous avez reçu un nouveau message de '. $prenom_expediteur.'</div>
+                            <br><br>
+                            <div align="center">'.$msg.'</div>
+                            <br><br>
+                            <div align="center"><a href="https://www.vandreams.fr/login"
+                            style=" width: 30%;
+                                padding: 10px 30px;
+                                cursor: pointer;
+                                display: block;
+                                margin: auto;
+                                color: #FFF;
+                                background: linear-gradient(to right, #00bd71,#008656);
+                                border: 0;
+                                outline: none;
+                                border-radius: 30px;
+                                text-decoration: none;"
+                            > Voir le message </a></div>
+                            <br><br>
+                            <div align="center">A bientôt sur <a href="vandreams.fr">VanDreams.fr</a> !</div>
+                            
+                          </td>
+                        </tr>
+                        <tr>
+                          <td align="center">
+                            <font size="2">
+                              Ceci est un email automatique, merci de ne pas y répondre
+                            </font>
+                          </td>
+                        </tr>
+                      </table>
+                    </div>
+                  </font>
+                </body>
+                </html>
+                ';
+        mail($email, "Nouveau message de ".$prenom_expediteur." - vandreams.fr", $message, $header);
     unset($_POST);
     ajouterFlash('success','Votre message a bien été envoyé');
 }
