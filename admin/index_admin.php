@@ -35,14 +35,7 @@ include __DIR__.'/assets/includes/header_admin.php';
           </div>
         </div>
 
-        <div class="col-md-3">
-          <div class="card text-white text-center bg-info"> 
-            <div class="card-header">Nombre de visiteurs ce mois-ci</div>
-                <div class="card-body">
-                    <p class="card-text"><?php echo $this_month; ?></p>
-                </div>
-          </div>
-        </div>
+        
 
       </div> <!-- end row -->
     </div> <!-- end container-->
@@ -75,14 +68,7 @@ include __DIR__.'/assets/includes/header_admin.php';
           </div>
         </div>
 
-        <div class="col-md-3">
-          <div class="card text-white text-center bg-primary"> 
-            <div class="card-header">Nombre de visiteurs ce mois-ci</div>
-                <div class="card-body">
-                    <p class="card-text"><?php echo $this_month; ?></p>
-                </div>
-          </div>
-        </div>
+        
 
       </div> <!-- end row -->
     </div> <!-- end container-->
