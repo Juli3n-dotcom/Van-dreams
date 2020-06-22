@@ -62,11 +62,27 @@ if(isset($_POST['submit'],$_POST['email'])){
                     <div align="center">
                       <table width="600px">
                         <tr>
-                          <td>
+                       <img src="https://www.vandreams.fr/assets/img/logo3.png" alt="logo" width="200" style="display: block;margin-left: auto;
+                       margin-right: auto;">
+                        <td style="background-color: #EEE;height: 600px; border-radius: 10%; font-size: 20px; text-align:center;>
                             
                             <div align="center">Bonjour <b>'.$prenom.'</b>,</div>
                             <br><br>
-                            <div align="center">Voici votre code de récupération: <b>'.$recup_code.'</b></div>
+                            <div align="center">Voici votre code de récupération:</b>,</div>
+                            <br><br>
+                            <div align="center" 
+                            style=" width: 30%;
+                                padding: 10px 30px;
+                                cursor: pointer;
+                                display: block;
+                                margin: auto;
+                                color: #FFF;
+                                background: linear-gradient(to right, #00bd71,#008656);
+                                border: 0;
+                                outline: none;
+                                border-radius: 30px;
+                                text-decoration: none;"
+                            ><b>'.$recup_code.'</b></div>
                             <br><br>
                             <div align="center">A bientôt sur <a href="vandreams.fr">VanDreams.fr</a> !</div>
                             
@@ -167,7 +183,7 @@ include __DIR__.'/assets/includes/header.php';
         <?php if($section == 'code'):?>
 
         <form method="POST" class="input-group" id="lost">
-            <p>Un code de vérification vous a été envoyé sur : <?= $_SESSION['recup_email']?></p>
+            <p class="msg_code">Un code de vérification vous a été envoyé sur : <?= $_SESSION['recup_email']?></p>
             <br><br>
             <input type="number"  pattern="[0-9]*" class="input-field_lost" name="verif_code" placeholder="Code de vérification">
             <button type="submit" class="submit-btn_lost" name="submit_verif">Valider</button>

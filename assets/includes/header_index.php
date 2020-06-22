@@ -118,14 +118,13 @@ require_once __DIR__ . '/../config/bootstrap.php';
         </div>
         </li>
         <?php endif;?>
-        <?php if(role(ROLE_ADMIN)):?>
-        <li class="nav-item">
-            <a href="admin/index_admin.php" class="nav-link link5">Back-office</a>
-        </li>
-        <?php endif;?>
+        
     </ul>
 </nav>
 </div>
 </header>
-
+<?php if(role(ROLE_ADMIN)){
+   include __DIR__.'/admin_menu.php';
+}
+?>
 <main>

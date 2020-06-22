@@ -16,7 +16,7 @@ if(isset($_POST['delete_annonce'])){
     $photo = $data->fetch(PDO::FETCH_ASSOC);
 
     
-    $file = "../user/data/img/";
+    $file = "../data/";
     opendir($file);
     
     unlink($file.$photo['photo1']);
@@ -91,7 +91,7 @@ include __DIR__.'/assets/includes/header_admin.php';
         $data_sub = $pdo->query("SELECT * FROM sub_category WHERE id_sub_cat = '$id_subcat'");
         $subcat = $data_sub->fetch(PDO::FETCH_ASSOC);
     ?>
-      <img src="../user/data/img/<?= $photo['photo1']?>" class="card-img-top" alt="image_annonce">
+      <img src="../data/<?= $photo['photo1']?>" class="card-img-top" alt="image_annonce">
       <div class="card-body">
         <h4 class="card-title mb-3"><?=$annonce['titre_annonce']?></h4>
         <p class="card-text mb-3">Publiée par :  <?=$membre['prenom']?></p>

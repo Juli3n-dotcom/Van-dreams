@@ -71,7 +71,7 @@ if(isset($_POST['delete_annonce'])){
       $photo = $data->fetch(PDO::FETCH_ASSOC);
   
       
-      $file = "Vandreams/data/";
+      $file = "../data/";
       opendir($file);
       
       unlink($file.$photo['photo1']);
@@ -192,7 +192,7 @@ include __DIR__.'/assets/includes/header_user.php';
                                                 <input type="text" class="input-field" name="title_update" value="<?= htmlspecialchars($annonce['titre_annonce'])?>">
                                                 <hr>
                                                 <label for="description_update" class="label_name_myannonce">Description de votre annonce : </label>
-                                                <textarea class="input-field" name="description_update" cols="30" rows="10"><?=nl2br(htmlspecialchars($annonce['description_annonce']??''));?></textarea>
+                                                <textarea class="input-field" name="description_update" cols="30" rows="10"><?=htmlspecialchars($annonce['description_annonce']??'');?></textarea>
                                                 <hr>
                                                 <label for="price_update" class="label_name_myannonce">Prix de votre annonce : </label>
                                                 <input type="text" class="input-field" name="price_update" value="<?= htmlspecialchars($annonce['prix']??'')?>">
@@ -207,6 +207,7 @@ include __DIR__.'/assets/includes/header_user.php';
                                                 <input type="checkbox" class="check-box checkmypost" name="est_publie_update" <?= $annonce['est_publie'] == 1 ? 'checked' : '' ;?>>     
                                     </div>
                                     <div class="modal-footer">
+                                    <button type="button" class="btn annulebtn" data-dismiss="modal">Annuler</button>
                                         <input type="hidden" name="idUpdate" value="<?= $annonce['id_annonce'];?>">
                                         <input type="submit" class="btn updateAnnonce" name="update_annonce" value="Modifier" >
                                     </div>
@@ -238,6 +239,7 @@ include __DIR__.'/assets/includes/header_user.php';
                                                 </div>
                                     </div>
                                     <div class="modal-footer">
+                                    <button type="button" class="btn annulebtn" data-dismiss="modal">Annuler</button>
                                         <input type="submit" class="btn SupAnnonce" name="delete_annonce" value="Supprimer" >
                                     </div>
                                         </form>  

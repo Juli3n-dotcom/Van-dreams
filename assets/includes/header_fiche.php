@@ -59,13 +59,13 @@ if (session_status() === PHP_SESSION_NONE){
     <link href="https://fonts.googleapis.com/css?family=Aldrich&display=swap" rel="stylesheet">
     <!--Our own stylesheet-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <!-- <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/glide.core.min.css">
-    <link rel="stylesheet" href="../assets/css/glide.theme.min.css"> -->
-    <base href="/vandreams/">
+    <link rel="stylesheet" href="../assets/css/glide.theme.min.css">
+    <!-- <base href="/vandreams/">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/glide.core.min.css">
-    <link rel="stylesheet" href="assets/css/glide.theme.min.css">
+    <link rel="stylesheet" href="assets/css/glide.theme.min.css"> -->
     <!-- Js-->
     <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
@@ -100,11 +100,6 @@ if (session_status() === PHP_SESSION_NONE){
         <li class="nav-item">
             <a href="../post" class="nav-link">Déposer une annonces</a>
         </li>
-        <?php if(role(ROLE_ADMIN)):?>
-        <li class="nav-item">
-            <a href="admin/index_admin.php" class="nav-link link4">Back-office</a>
-        </li>
-        <?php endif;?>
         <li class="nav-item">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-user"></i>
@@ -127,5 +122,8 @@ if (session_status() === PHP_SESSION_NONE){
 </nav>
 </div>
 </header>
-
+<?php if(role(ROLE_ADMIN)){
+   include __DIR__.'/admin_menu.php';
+}
+?>
 <main>

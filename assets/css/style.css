@@ -253,7 +253,28 @@ nav{
   .badge{
     padding: 0 !important;
   }
-   
+   .menu-icons_admin{
+       position: fixed;
+       height: 40px;
+       width: 40px;
+       z-index: 1;
+       background-color: var(--light-black);
+       color: var(--white);
+       top: 10rem;
+       left: .5rem;
+       border-radius: 50%;
+       font-size: 20px;
+       text-align: center;
+       padding: .5rem;
+       box-shadow: 0 0 29px rgba(0,0,0,.3);
+       text-transform: uppercase;
+   }
+   .menu-icons_admin a i{
+    color: var(--white);
+   }
+   .dropdown-menu{
+       border-radius: 10%;
+   }
 /* ******************** */
 /* **** index **** */
 /* ******************** */
@@ -431,7 +452,7 @@ animation: ellipseOrbit 15s ease-in-out infinite;
 }
 
 .btn{
-    background-color: #eb648c;
+   
     border-radius: 2rem;
     color: var(--white);
     display: inline-block;
@@ -441,9 +462,7 @@ animation: ellipseOrbit 15s ease-in-out infinite;
     transition: background-color 650ms;
 }
 
-.btn:hover{
-    background-color: #ce587b;
-}
+
 
 .title-heading{
     text-align: center;
@@ -506,6 +525,7 @@ margin-top: 3rem;
     border: 0;
     outline: none;
     border-radius: 30px;
+    text-align: center;
 }
 .index_link:hover{
    background: var(--white);
@@ -547,6 +567,7 @@ margin-top: 3rem;
     margin-top: 4rem;
     font-weight: bold;
     text-transform: uppercase;
+    color:var(--light-black);
     text-align: center;
 }
 /* ******************** */
@@ -609,6 +630,10 @@ margin-top: 3rem;
     border-bottom: 1Px solid #999;
     outline: none;
     background: transparent;
+}
+
+.msg_code{
+    margin-top: 1rem;
 }
 /* ******************** */
 /* **** Login2 page **** */
@@ -1327,6 +1352,7 @@ text-align: center;
     }
     .index_link{
         width: 30%;
+        
     }
 }
 @media screen and (min-height: 470px){

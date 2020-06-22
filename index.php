@@ -40,6 +40,12 @@ include __DIR__.'/assets/includes/flash.php';
         
 </section>
 
+<?php
+$count = $pdo->query("SELECT id_annonce FROM annonces");
+$count->execute();
+$count = $count->rowCount();
+?>
+<?php if($count > 0):?>
 <section class="container">
     <div class="title-heading">
         <h3>Nouveautés</h3>
@@ -254,6 +260,23 @@ include __DIR__.'/assets/includes/flash.php';
 </div>
 </section>
 
+<?php else :?>
+
+    <section class="part_nopost">
+        <div class="container">
+        <div class="title-heading">
+                <h3>Bonjour</h3>
+                 <h1>Nous venons d'ouvrir</h1>
+                <p>Soyez le premier a poster une annonce</p>
+        </div>
+        <div class="block-depot">
+                   <a href="post" class="index_link">Déposer une annonce</a>
+                </div>
+            </div>
+        </div>
+</section>
+<?php endif;?>
+
 <section class="part4">
         <div class="container">
             <div class="block2">
@@ -293,14 +316,14 @@ include __DIR__.'/assets/includes/flash.php';
                             incluant l’achat d’un van aménagé.
                             </p>
                             <p>
-                            Ce projet est vite devenus un parcours du combattant, 
-                            quand il a fallu faire le tri entre des sites connus de petites annonces qui avec surtout des
-                             d’annonces de professionnels a des prix exorbitants, ou encore la nuée de pages 
+                            Ce projet est vite devenu un parcours du combattant, 
+                            quand il a fallu faire le tri entre des sites connus de petites annonces avec surtout des
+                            annonces de professionnels a des prix exorbitants, ou encore la nuée de pages 
                              sur les réseaux sociaux dédié à la vente de vans aménagés.
                             </p>
                             <p>
-                            Je me suis rendu compte qu’il n’excitait pas d’endroit regroupant 
-                            facilement des annonces spécialisée de vans aménagés entre vanlifeurs. 
+                            Je me suis rendu compte qu’il n’existait pas d’endroit regroupant 
+                            facilement des annonces spécialisées de vans aménagés entre vanlifeurs. 
                             </p>
                             <p>
                             Le projet de Van Dreams a vu le jours durant le confinement, 

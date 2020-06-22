@@ -66,7 +66,7 @@ include __DIR__.'/assets/includes/header_admin.php';
                 <td><?php echo $region['name_region'];?></td>
                 <?php
                     $id = $region['country_id'];
-                    $data = $pdo->query("SELECT name FROM country WHERE id_country = '$id'");
+                    $data = $pdo->query("SELECT name_country FROM country WHERE id_country = '$id'");
                     $name_country = $data->fetch(PDO::FETCH_ASSOC);
                     ?>
                 <td><?php echo $name_country['name_country'];?></td>
