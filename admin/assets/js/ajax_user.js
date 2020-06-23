@@ -10,7 +10,7 @@ $(document).ready(function(){
 
         var parameters = "user="+ user; 
 
-        $.post("ajax_user.php", parameters, function(data){
+        $.post("assets/ajax_admin/ajax_user.php", parameters, function(data){
             $('#resultat').html(data.resultat); 
             $('#search_user').val(""); 
         },'json'); 

@@ -81,7 +81,7 @@ include __DIR__.'/assets/includes/header_admin.php';
         ?>
         <div class="col-md-3">
           <div class="card text-white text-center bg-warning"> 
-            <div class="card-header">Annonces signalée</div>
+            <div class="card-header">Annonces signalées</div>
                 <div class="card-body">
                     <p class="card-text"><?= $signal; ?></p>
                 </div>

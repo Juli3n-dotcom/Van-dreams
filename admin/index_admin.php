@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/../assets/config/bootstrap_admin.php';
+require __DIR__ . '/assets/functions/annonces_functions.php';
 $vues = nombre_vues();
 $page_title ='Back-office';
 include __DIR__.'/assets/includes/header_admin.php';
@@ -68,12 +69,59 @@ include __DIR__.'/assets/includes/header_admin.php';
           </div>
         </div>
 
-        
-
-      </div> <!-- end row -->
+        </div> <!-- end row -->
     </div> <!-- end container-->
   </div>
 
+  <div class="py-5"> <!-- Membre -->
+    <div class="container-fluid">
+        <h4 class="title_container"><i class="fas fa-archive"></i> Les Annonces</h4>
+      <div class="row hidden-md-up">
+      
+          
+        <div class="col-md-3">
+          <div class="card text-white text-center bg-success"> 
+            <div class="card-header">Dernière annonce</div>
+            <?php foreach(getLastAnnonce($pdo) as $key => $Annonce) :?>
+                <div class="card-body">
+                    <p class="card-text"><?php  echo $Annonce['titre_annonce'] ?></p>
+                </div>
+            <?php endforeach;?>
+          </div>
+        </div>
+        <?php
+        $counter =$pdo->query('SELECT COUNT(*) as nb FROM annonces');
+        $data_annonces = $counter->fetch();
+        $totalAnnonces =$data_annonces['nb'];
+        ?>
+        <div class="col-md-3">
+          <div class="card text-white text-center bg-success"> 
+            <div class="card-header">Annonces totales</div>
+                <div class="card-body">
+                    <p class="card-text"><?= $totalAnnonces; ?></p>
+                </div>
+          </div>
+        </div>
+
+        <?php
+        $annoncesSignale=$pdo->query('SELECT COUNT(*)AS nb FROM annonces WHERE est_signal = 1');
+        $data = $annoncesSignale ->fetch();
+        $signal = $data['nb'];
+        ?>
+        <div class="col-md-3">
+          <div class="card text-white text-center bg-warning"> 
+            <div class="card-header">Annonces signalées</div>
+                <div class="card-body">
+                    <p class="card-text"><?= $signal; ?></p>
+                </div>
+          </div>
+        </div>
+
+
+        </div> <!-- end row -->
+    </div> <!-- end container-->
+  </div>
+      
 <?php
 include __DIR__.'/assets/includes/footer_admin.php';
 ?>
