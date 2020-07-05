@@ -168,10 +168,10 @@ include __DIR__.'/assets/includes/header_user.php';
                     </div>
                         <div class="convers_body">
                             <?= $newconver['subject']?>
-                            <form method="post">
+                            <!-- <form method="post">
                                 <input type="hidden" name="idSupConvers" value="<?= $newconver['id_conversation']?>">
                                 <button type="subit" name="deleteConv" class="deleteconv"><i class="fas fa-trash"></i></button>
-                            </form>
+                            </form> -->
                         </div>
                 </div>
 
@@ -232,10 +232,10 @@ include __DIR__.'/assets/includes/header_user.php';
                     </div>
                         <div class="convers_body">
                             <?= $newconver['subject']?>
-                            <form method="post">
+                            <!-- <form method="post">
                                 <input type="hidden" name="idSupConvers" value="<?= $newconver['id_conversation']?>">
                                 <button type="subit" name="deleteConv" class="deleteconv"><i class="fas fa-trash"></i></button>
-                            </form>
+                            </form> -->
                         </div>
                 </div>
 
