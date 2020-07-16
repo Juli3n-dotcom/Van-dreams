@@ -87,7 +87,7 @@ $count = $count->rowCount();
                     <div class="col-md-6 col-lg-4 card_carousel">
                     <div class="annonce-box">
                         <div class="annonce-img">
-                            <img src="/vandreams/data/<?= $photo['photo1']?>" alt="photo_annonce">
+                            <img src="/data/thumb/<?= $photo['thumb']?>" alt="photo_annonce">
                         </div>
                         <div class="price">
                             <p><?= $annonce['prix']?>€</p> 
@@ -144,6 +144,7 @@ $count = $count->rowCount();
   </div>
 </div>
 </div>
+<a href="touteslesannonces" id="index_post"class="index_link index_post">Voir toutes les annonces</a>
 </section>
 
 <section class="part2">
@@ -202,7 +203,7 @@ $count = $count->rowCount();
                     <div class="col-md-6 col-lg-4 card_carousel">
                     <div class="annonce-box">
                         <div class="annonce-img">
-                            <img src="/data/<?= $photo['photo1']?>" alt="photo_annonce">
+                            <img src="/data/thumb/<?= $photo['thumb']?>" alt="photo_annonce">
                         </div>
                         <div class="price">
                             <p><?= $annonce['prix']?>€</p> 

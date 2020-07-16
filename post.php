@@ -61,6 +61,7 @@ if(isset($_POST['add'])){
         $path1 = __DIR__.'/data';
         $path2 = __DIR__.'/data';
         $path3 = __DIR__.'/data';
+        
     
         do{
              $filename1 = bin2hex(random_bytes(16));
@@ -76,6 +77,7 @@ if(isset($_POST['add'])){
              $filename3 = bin2hex(random_bytes(16));
              $complete_path3 = $path3.'/'.$filename3.'.'.$extension3;
         }while (file_exists( $complete_path3));
+
     
     
             if(!move_uploaded_file($_FILES['photo1']['tmp_name'],$complete_path1)){
@@ -89,19 +91,32 @@ if(isset($_POST['add'])){
             
        
             }else{
+
+                if(file_exists($complete_path1)){
+
+                    $source = $_FILES['photo1']['tmp_name'];
+                    $path4 = __DIR__.'/data/thumb';
+                    $filename4 = bin2hex(random_bytes(16));
+                    $thumb = $filename4.'.'.$extension1;
+
+                    redim($complete_path1, $path4.'/'.$thumb, '284', '213',50);
+                }
+
     
                 $req1 = $pdo->prepare(
-                    'INSERT INTO photo(photo1, photo2, photo3)
-                         VALUES (:photo1,:photo2,:photo3)'
+                    'INSERT INTO photo(photo1, photo2, photo3, thumb)
+                         VALUES (:photo1,:photo2,:photo3,:thumb)'
                           );
                             
                 $req1->bindValue('photo1',$filename1.'.'.$extension1);
                 $req1->bindValue('photo2',$filename2.'.'.$extension2);
                 $req1->bindValue('photo3',$filename3.'.'.$extension3);
+                $req1->bindValue('thumb',$thumb);
                 $req1->execute();
 
+
+
                 $id_photo = $pdo-> lastInsertId();
-                // $explode = explode('',$_POST['titre_annonce']);
                 $name = 'vd'.getMembre()['id_membre'].$_POST['category'].$_POST['subcat'].bin2hex(random_bytes(6));
            
                 $req2 = $pdo->prepare(

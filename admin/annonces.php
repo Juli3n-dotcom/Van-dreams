@@ -16,13 +16,19 @@ if(isset($_POST['delete_annonce'])){
     $photo = $data->fetch(PDO::FETCH_ASSOC);
 
     
-    $file = "../data/";
+    $file = "../data/thumb/";
     opendir($file);
     
-    unlink($file.$photo['photo1']);
-    unlink($file.$photo['photo2']);
-    unlink($file.$photo['photo3']);
-    // closedir($file)
+    unlink($file.$photo['thumb']);
+    // closedir($file);
+
+    $file2 = "../data/";
+    opendir($file2);
+    
+    unlink($file2.$photo['photo1']);
+    unlink($file2.$photo['photo2']);
+    unlink($file2.$photo['photo3']);
+    // closedir($file2);
     
       $req2 =$pdo->prepare(
         'DELETE FROM photo
@@ -123,7 +129,7 @@ include __DIR__.'/assets/includes/header_admin.php';
         $data_sub = $pdo->query("SELECT * FROM sub_category WHERE id_sub_cat = '$id_subcat'");
         $subcat = $data_sub->fetch(PDO::FETCH_ASSOC);
     ?>
-      <img src="../data/<?= $photo['photo1']?>" class="card-img-top" alt="image_annonce">
+      <img src="../data/thumb/<?= $photo['photo1']?>" class="card-img-top" alt="image_annonce">
       <div class="card-body">
         <h4 class="card-title mb-3"><?=$annonce['titre_annonce']?></h4>
         <p class="card-text mb-3">Publiée par :  <?=$membre['prenom']?></p>

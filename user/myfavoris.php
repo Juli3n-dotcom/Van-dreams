@@ -73,7 +73,7 @@ include __DIR__.'/assets/includes/header_user.php';
                 <div class="col-md-6 col-lg-4">
                     <div class="annonce-box">
                         <div class="annonce-img">
-                            <img src="/../data/<?= $photo['photo1']?>" alt="photo_annonce">
+                            <img src="/../data/thumb/<?= $photo['thumb']?>" alt="photo_annonce">
                         </div> 
                         <div class="price_user">
                            <p><?= $annonce['prix']?>€</p> 

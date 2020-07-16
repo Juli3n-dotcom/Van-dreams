@@ -71,13 +71,19 @@ if(isset($_POST['delete_annonce'])){
       $photo = $data->fetch(PDO::FETCH_ASSOC);
   
       
-      $file = "../data/";
-      opendir($file);
-      
-      unlink($file.$photo['photo1']);
-      unlink($file.$photo['photo2']);
-      unlink($file.$photo['photo3']);
-      // closedir($file)
+      $file = "../data/thumb/";
+    opendir($file);
+    
+    unlink($file.$photo['thumb']);
+    // closedir($file);
+
+    $file2 = "../data/";
+    opendir($file2);
+    
+    unlink($file2.$photo['photo1']);
+    unlink($file2.$photo['photo2']);
+    unlink($file2.$photo['photo3']);
+    // closedir($file2);
       
         $req2 =$pdo->prepare(
           'DELETE FROM photo
@@ -154,7 +160,7 @@ include __DIR__.'/assets/includes/header_user.php';
                 <div class="col-md-6 col-lg-4">
                     <div class="annonce-box">
                         <div class="annonce-img">
-                            <img src="/../data/<?= $photo['photo1']?>" alt="photo_annonce">
+                            <img src="/../data/thumb/<?= $photo['thumb']?>" alt="photo_annonce">
                         </div> 
                         <div class="price_user">
                            <p><?= $annonce['prix']?>€</p> 

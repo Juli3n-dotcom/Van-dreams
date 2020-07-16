@@ -20,7 +20,7 @@ $requete = 'SELECT a.id_annonce,
                     a.membre_id,
                     a.photo_id,
                     i.id_photo,
-                    i.photo1,
+                    i.thumb,
                     m.prenom,
                     p.id_country,
                     p.name_country,
@@ -122,11 +122,11 @@ if($count > 0){
         $resultat .= '<div class="container">';
             $resultat .= '<div class="row">';
         while($annonce = $req->fetch(PDO::FETCH_ASSOC)){
-            $photo = ($annonce['photo1'] != null) ? $annonce['photo1'] : 'img-vide.png';
+            $photo = ($annonce['thumb'] != null) ? $annonce['thumb'] : 'img-vide.png';
     $resultat .= '<div class="col-md-6 col-lg-4">';
         $resultat .= '<div class="annonce-box">';
             $resultat .= '<div class="annonce-img">';
-                $resultat .= '<img src="data/'.$photo.'" alt="photo_annonce">';
+                $resultat .= '<img src="data/thumb/'.$photo.'" alt="photo_annonce">';
             $resultat .= '</div>';
     
             $resultat .= '<div class="price">';

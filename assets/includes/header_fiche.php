@@ -98,7 +98,7 @@ if (session_status() === PHP_SESSION_NONE){
             <a href="../touteslesannonces" class="nav-link">Les annonces</a>
         </li>
         <li class="nav-item">
-            <a href="../post" class="nav-link">Déposer une annonces</a>
+            <a href="../post" class="nav-link post_header">Déposer une annonce</a>
         </li>
         <li class="nav-item">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

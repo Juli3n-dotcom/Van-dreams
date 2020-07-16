@@ -237,6 +237,7 @@ nav{
     text-transform: uppercase;
     color: var(--light-black);
 }
+
 .notif_msg{
     /* bottom: initial;
       left: auto; */
@@ -275,6 +276,22 @@ nav{
    .dropdown-menu{
        border-radius: 10%;
    }
+
+.post_header{
+    
+        width: 90%;
+        background: linear-gradient(to right, #00bd71,#008656);
+        font-size: 1rem;
+        border-radius: 2rem;
+        color: var(--white);
+        display: block;
+        margin: auto;
+        border: 0;
+        padding: 0.5rem 2.5rem;
+        text-align: center;
+        text-transform: uppercase;
+        transition: background-color 650ms;
+}
 /* ******************** */
 /* **** index **** */
 /* ******************** */
@@ -469,6 +486,9 @@ animation: ellipseOrbit 15s ease-in-out infinite;
     text-transform: uppercase;
     margin-bottom: 5rem;
     color:var(--light-black);
+}
+.index_post{
+    margin-bottom: 4rem !important;
 }
 /***** Carousel*******/
 .card_carousel{
@@ -1463,7 +1483,17 @@ text-align: center;
         border-bottom: none;
         border-right: 1px solid var(--light-white);
     }
-    
+    .post_header{
+    left: 0 !important;
+    width: 100%;
+    position: initial;
+        display: block;
+        margin: auto;
+        border: 0;
+        text-align: center;
+        text-transform: uppercase;
+        transition: background-color 650ms;
+}
 }
 @media (min-height: 700px)  and (min-width: 700px){
     .coords{

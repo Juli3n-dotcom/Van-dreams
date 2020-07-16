@@ -9,6 +9,11 @@ sr.reveal('.coords', {
   duration: 1000,
   origin:'left'
     });
+sr.reveal('#index_post', {
+      duration: 1000,
+      distance:'300px',
+      origin:'bottom'
+        });
 sr.reveal('.title-heading', {
   duration: 1000,
   distance:'300px',
